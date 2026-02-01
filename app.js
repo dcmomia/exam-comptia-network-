@@ -246,14 +246,16 @@ prevBtn.onclick = () => {
 
 skipBtn.onclick = skipQuestion;
 
-// Selector dinámico para asegurar que capturamos el botón tras cambios en el DOM
-document.addEventListener('click', (e) => {
-    if (e.target.id === 'finish-btn') {
-        if (confirm('¿Estás seguro de que quieres finalizar el examen ahora? Se mostrarán los resultados de las preguntas respondidas hasta el momento.')) {
-            showResults();
-        }
+// Usamos una función dedicada para procesar el cierre
+function finishExamEarly() {
+    if (confirm('¿Estás seguro de que quieres finalizar el examen ahora? Se calculará tu puntaje actual.')) {
+        // Aseguramos que todas las preguntas hasta el momento se guarden
+        saveProgress();
+        showResults();
     }
-});
+}
+
+finishBtn.onclick = finishExamEarly;
 
 // Mostrar Resultados
 function showResults() {
@@ -262,6 +264,22 @@ function showResults() {
     resultsScreen.classList.add('active');
 
     const total = questions.length;
+
+    // Rellenamos los huecos en userAnswers para preguntas no llegadas aún
+    for (let i = 0; i < total; i++) {
+        if (!userAnswers[i]) {
+            const q = questions[i];
+            const chapterMatch = q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0";
+            const domainName = getDomainForChapter(chapterMatch);
+            userAnswers[i] = {
+                questionId: q.id,
+                omitted: true,
+                isCorrect: false,
+                domain: domainName
+            };
+        }
+    }
+
     const answered = userAnswers.filter(a => a && !a.omitted);
     const correct = answered.filter(a => a.isCorrect).length;
     const omitted = total - answered.length;
