@@ -44,7 +44,6 @@
         <!-- Quiz Screen -->
         <section id="quiz-screen" class="screen">
             <header class="header-stats">
-                <button id="prev-btn" class="btn-icon" title="Volver a la anterior">⬅️</button>
                 <span id="question-number">Pregunta 1/90</span>
                 <div class="timer-box">
                     <span>⏱️</span>
@@ -63,10 +62,15 @@
                 </div>
             </div>
 
+            <!-- Primary Action -->
+            <button id="next-btn" class="btn btn-primary hidden">Siguiente Pregunta</button>
+
             <!-- Botones de Acción Secundarios -->
             <div class="quiz-actions">
-                <button id="finish-btn" class="btn btn-outline btn-finish">Finalizar Examen</button>
-                <button id="skip-btn" class="btn btn-outline">Saltar Pregunta</button>
+                <button id="finish-btn" class="btn btn-outline btn-finish" title="Terminar ahora">Finalizar
+                    Examen</button>
+                <button id="skip-btn" class="btn btn-outline">Saltar</button>
+                <button id="prev-btn" class="btn btn-outline" title="Volver a la anterior">Atrás</button>
             </div>
 
             <!-- Feedback Container -->
@@ -81,7 +85,6 @@
                 </div>
             </div>
 
-            <button id="next-btn" class="btn btn-primary hidden mt-20">Siguiente Pregunta</button>
         </section>
 
         <!-- Results Screen -->

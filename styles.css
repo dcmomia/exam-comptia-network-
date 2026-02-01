@@ -101,9 +101,10 @@ h1 {
 /* --- Quiz UI --- */
 .header-stats {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 25px;
+    position: relative;
 }
 
 .timer-box {
@@ -115,6 +116,8 @@ h1 {
     background: #f1f5f9;
     padding: 6px 12px;
     border-radius: 20px;
+    position: absolute;
+    right: 0;
 }
 
 .progress-container {
@@ -436,7 +439,8 @@ h1 {
 .quiz-actions {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 20px;
+    align-items: center;
+    margin-top: 15px;
     gap: 12px;
 }
 

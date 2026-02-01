@@ -82,6 +82,7 @@ async function init() {
 function startQuiz() {
     currentIndex = 0;
     userAnswers = [];
+    localStorage.removeItem('network_plus_exam_state'); // Limpiar progreso anterior al iniciar nuevo
     startScreen.classList.remove('active');
     resultsScreen.classList.remove('active');
     quizScreen.classList.add('active');
@@ -89,6 +90,16 @@ function startQuiz() {
     startTime = Date.now();
     startTimer();
     renderQuestion();
+}
+
+// Cargar Progreso (Opcional, pero implementamos guardado persistente)
+function saveProgress() {
+    const state = {
+        currentIndex,
+        userAnswers,
+        startTime
+    };
+    localStorage.setItem('network_plus_exam_state', JSON.stringify(state));
 }
 
 // Timer
@@ -145,6 +156,10 @@ function renderQuestion() {
             revealFeedback(userAnswers[currentIndex].isCorrect, q.explanation, q.source_reference);
             nextBtn.classList.remove('hidden');
             skipBtn.classList.add('hidden');
+        } else {
+            // Si fue omitida, mostrar botón siguiente pero ocultar feedback
+            nextBtn.classList.remove('hidden');
+            skipBtn.classList.add('hidden');
         }
     }
 }
@@ -181,6 +196,7 @@ function selectOption(element, selectedText) {
     revealFeedback(isCorrect, q.explanation, q.source_reference);
     nextBtn.classList.remove('hidden');
     skipBtn.classList.add('hidden');
+    saveProgress();
 }
 
 function revealFeedback(isCorrect, explanation, source) {
@@ -208,6 +224,7 @@ function skipQuestion() {
         domain: domainName
     };
 
+    saveProgress();
     currentIndex++;
     renderQuestion();
 }
@@ -215,23 +232,28 @@ function skipQuestion() {
 // Navegación
 nextBtn.onclick = () => {
     currentIndex++;
+    saveProgress();
     renderQuestion();
 };
 
 prevBtn.onclick = () => {
     if (currentIndex > 0) {
         currentIndex--;
+        saveProgress();
         renderQuestion();
     }
 };
 
 skipBtn.onclick = skipQuestion;
 
-finishBtn.onclick = () => {
-    if (confirm('¿Estás seguro de que quieres finalizar el examen ahora? Se mostrarán los resultados de las preguntas respondidas hasta el momento.')) {
-        showResults();
+// Selector dinámico para asegurar que capturamos el botón tras cambios en el DOM
+document.addEventListener('click', (e) => {
+    if (e.target.id === 'finish-btn') {
+        if (confirm('¿Estás seguro de que quieres finalizar el examen ahora? Se mostrarán los resultados de las preguntas respondidas hasta el momento.')) {
+            showResults();
+        }
     }
-};
+});
 
 // Mostrar Resultados
 function showResults() {
@@ -330,6 +352,7 @@ function renderDomainProgress() {
 
 startBtn.onclick = startQuiz;
 restartBtn.onclick = () => {
+    localStorage.removeItem('network_plus_exam_state');
     resultsScreen.classList.remove('active');
     startScreen.classList.add('active');
 };
