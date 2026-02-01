@@ -49,6 +49,7 @@ const startBtn = document.getElementById('start-btn');
 const nextBtn = document.getElementById('next-btn');
 const prevBtn = document.getElementById('prev-btn');
 const skipBtn = document.getElementById('skip-btn');
+const finishBtn = document.getElementById('finish-btn');
 const restartBtn = document.getElementById('restart-btn');
 
 const questionText = document.getElementById('question-text');
@@ -225,6 +226,12 @@ prevBtn.onclick = () => {
 };
 
 skipBtn.onclick = skipQuestion;
+
+finishBtn.onclick = () => {
+    if (confirm('¿Estás seguro de que quieres finalizar el examen ahora? Se mostrarán los resultados de las preguntas respondidas hasta el momento.')) {
+        showResults();
+    }
+};
 
 // Mostrar Resultados
 function showResults() {

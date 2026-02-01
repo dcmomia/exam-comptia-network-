@@ -436,7 +436,18 @@ h1 {
 .quiz-actions {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    gap: 12px;
+}
+
+.btn-finish {
+    border-color: #fca5a5 !important;
+    color: #ef4444 !important;
+}
+
+.btn-finish:hover {
+    background: #fef2f2 !important;
+    border-color: #ef4444 !important;
 }
 
 .btn-outline {
