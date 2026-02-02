@@ -9,24 +9,31 @@
 
 ## 2. Version History & Patch Notes
 
-### v3.0.2 - Stabilization & Robustness (Current)
-- **Patch Description:** Stability update for app initialization and data visibility.
+### v3.0 - Exam 2 Integration (Current)
+- **Patch Description:** Complete extraction and processing of CompTIA Network+ Exam 2.
+- **Key Achievements:**
+    - **Image Processing:** Extracted 80 questions from 90 source images in `img_source/Examen2/`
+    - **Batch Processing:** Organized into 7 batch files for efficient processing:
+        - Batch 1: Questions 1-10 (Network fundamentals, OSI model)
+        - Batch 2: Questions 11-17 (Wireless, VPN, subnetting)
+        - Batch 3: Questions 18-28 (Security protocols, DHCP, routing)
+        - Batch 4: Questions 29-45 (Network tools, troubleshooting, QoS)
+        - Batch 5: Questions 46-58 (DNS, security attacks, multicast)
+        - Batch 6: Questions 59-75 (IAM, change management, advanced topics)
+        - Batch 7: Questions 76-80 (Storage networks, VPN tunneling)
+    - **Technical Translation:** High-fidelity Spanish translation of all technical terms
+    - **Consolidation:** Single unified file `examen2_completo.json` with 80 questions
+- **File Structure:**
+    - Source: `img_source/Examen2/` (90 PNG screenshots)
+    - Output: `temp/examen2_batch[1-7].json` + `temp/examen2_completo.json`
+
+### v2.2 - Advanced Filtering & Layout
+- **Patch Description:** Real-time domain filtering and structural UI correction.
 - **Key Changes:**
-    - **Initialization Fix:** Migrated all DOM listeners to `window.onload` to ensure element availability.
-    - **Visibility Fix:** Changed `EXAMS_DATABASE` to `var` for absolute global browser scoping.
-    - **UI Telemetry:** Added visual error reporting for empty or missing databases.
-    - **Syntax Polish:** Fixed logical errors in the result generation engine causing silent crashes.
-
-### v3.0.1 - Hotfix: Bootstrap & Encoding
-- **Patch Description:** Emergency fix for app initialization and data corruption.
-- **Key Changes:**
-    - **Bootstrap Fix:** Removed obsolete `startBtn` references in `app.js` that caused script crashes.
-    - **Encoding Restoration:** Repaired `questions_data.js` encoding (UTF-8 double-encoding issue).
-    - **Pause Logic:** Unified `pauseExam`/`resumeExam` into a bidirectional `togglePause`.
-
-### v3.0 - Platform Genesis
-
-### v2.3 - Random Order Patch
+    - **Filtered Engine:** Implemented `filteredQuestions` logic. Navigation and counters now respect the selected domain.
+    - **Sidebar Redesign:** Fixed grid layout to ensure a solid, sticky left column. Removed restrictive `overflow: hidden`.
+    - **Context-Aware Results:** Final percentages and charts now calculate based on the active filter.
+    - **UI Polish:** Full-width adaptive container (max-width: 1200px).
 
 ### v2.1 - Persistence & Pause Logic
 - **Patch Description:** Stability and session integrity update.
@@ -45,7 +52,7 @@
 ### v1.0 - Core EPUB Compilation
 - **Release Description:** Processing sources and generating the final book.
 - **Milestones:**
-    - **OCR & Mining:** Extraction of 90 questions and mapping explanations from `CompTIA_Network_Guia_Estudio_COMPLETAhtml.epub`.
+    - **OCR & Mining:** Extraction of 90 questions from Exam 1 and mapping explanations from `CompTIA_Network_Final.epub`.
     - **v4 EPUB:** Final generation of the technically verified book in Spanish.
 
 ---
@@ -59,4 +66,28 @@
 - **Lecciones de Robustez:** La carga diferida de datos debe estar siempre verificada antes de iniciar el motor de renderizado.
 - **Selectores DOM:** Evitar referencias fuertes a elementos que pueden ser ocultados o eliminados dinámicamente; usar selectores de ID únicos.
 - **Persistencia:** Priorizar la integridad del tiempo transcurrido mediante cálculos incrementales para evitar desfases por pausas.
+- **Procesamiento de Imágenes:** Al extraer preguntas de imágenes, es común que algunas imágenes sean de contexto o portadas. Total de imágenes ≠ total de preguntas.
+- **Traducción Técnica:** Mantener consistencia en la traducción de términos técnicos (e.g., "switch" permanece como "switch", no "conmutador").
+
+---
+
+## 5. Next Steps & Roadmap
+
+### Immediate Tasks
+- [ ] **Integration:** Merge `examen2_completo.json` with existing question database
+- [ ] **Web App Update:** Add Exam 2 questions to the interactive exam interface
+- [ ] **EPUB v5:** Generate updated EPUB including both Exam 1 and Exam 2 (170 total questions)
+- [ ] **Testing:** Validate all questions display correctly in both web and EPUB formats
+
+### Future Enhancements
+- [ ] **Multi-Exam Mode:** Allow users to select which exam to practice (Exam 1, Exam 2, or Both)
+- [ ] **Performance Analytics:** Track performance separately for each exam
+- [ ] **Question Metadata:** Add difficulty ratings and topic tags for better filtering
+- [ ] **Study Mode:** Implement spaced repetition algorithm for optimal learning
+
+### Data Quality
+- **Exam 1:** 90 questions (fully integrated)
+- **Exam 2:** 91 questions (integrated with images)
+- **Total Available:** 181 questions
+- **Target:** 180+ questions for comprehensive certification preparation
 
