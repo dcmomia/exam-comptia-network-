@@ -16,6 +16,7 @@
     - **Exam 2 Integration:** merged 90 new questions from `temp/examen2_completo.json`.
     - **Automation:** Updated `reference_correction_script.py` to ensure future data generations maintain the correct structure and multi-exam support.
 - **Total Questions:** 180 (90 from Exam 1 + 90 from Exam 2).
+- **Status:** Complete & Publicly Deployed (v3.1.4 / Data v4.2).
 
 ### v3.0 - Exam 2 Processing
 - **Patch Description:** Complete extraction and processing of CompTIA Network+ Exam 2.
@@ -112,7 +113,7 @@
 
 ### Data Quality
 - **Exam 1:** 90 questions (fully integrated)
-- **Exam 2:** 90 questions (fully translated & verified)
+- **Exam 2:** 90 questions (Source: `temp/examen2_final_integrated.json`)
 - **Total Available:** 180 questions (Complete Set)
 - **Target:** 180+ questions for comprehensive certification preparation
 
