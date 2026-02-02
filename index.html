@@ -44,51 +44,79 @@
 
         <!-- Quiz Screen -->
         <section id="quiz-screen" class="screen">
-            <header class="header-stats">
-                <span id="question-number">Pregunta 1/90</span>
-                <div class="header-controls">
-                    <button id="pause-btn" class="btn-icon" title="Pausar Examen">⏸️</button>
-                    <div class="timer-box">
-                        <span>⏱️</span>
-                        <span id="timer">00:00</span>
+            <div class="quiz-layout">
+                <!-- Sidebar de Navegación -->
+                <aside id="quiz-sidebar">
+                    <div class="sidebar-header">
+                        <h3>Preguntas</h3>
+                        <select id="domain-filter">
+                            <option value="all">Todos los Dominios</option>
+                            <option value="1.0 Conceptos de Redes">1.0 Conceptos</option>
+                            <option value="2.0 Implementación de Redes">2.0 Implementación</option>
+                            <option value="3.0 Operaciones de Red">3.0 Operaciones</option>
+                            <option value="4.0 Seguridad de Red">4.0 Seguridad</option>
+                            <option value="5.0 Solución de Problemas">5.0 Resolución</option>
+                        </select>
+                    </div>
+                    <div id="question-grid" class="question-grid">
+                        <!-- Botones de preguntas generados por JS -->
+                    </div>
+                    <div class="sidebar-legend">
+                        <span class="legend-item"><i class="dot correct"></i> Correcto</span>
+                        <span class="legend-item"><i class="dot incorrect"></i> Incorrecto</span>
+                        <span class="legend-item"><i class="dot current"></i> Actual</span>
+                    </div>
+                </aside>
+
+                <!-- Contenido Principal -->
+                <div class="quiz-main">
+                    <header class="header-stats">
+                        <span id="question-number">Pregunta 1/90</span>
+                        <div class="header-controls">
+                            <button id="pause-btn" class="btn-icon" title="Pausar Examen">⏸️</button>
+                            <div class="timer-box">
+                                <span>⏱️</span>
+                                <span id="timer">00:00</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="progress-container">
+                        <div id="progress-bar-fill" class="progress-bar-fill"></div>
+                    </div>
+
+                    <div id="question-container">
+                        <p id="question-text" class="question-text">Cargando pregunta...</p>
+                        <div id="options-list" class="options-list">
+                            <!-- Options inject here -->
+                        </div>
+                    </div>
+
+                    <!-- Primary Action -->
+                    <button id="next-btn" class="btn btn-primary hidden">Siguiente Pregunta</button>
+
+                    <!-- Botones de Acción Secundarios -->
+                    <div class="quiz-actions">
+                        <button id="finish-btn" class="btn btn-outline btn-finish" title="Terminar ahora">Finalizar
+                            Examen</button>
+                        <button id="skip-btn" class="btn btn-outline">Saltar</button>
+                        <button id="prev-btn" class="btn btn-outline" title="Volver a la anterior"
+                            style="visibility: hidden;">Atrás</button>
+                    </div>
+
+                    <!-- Feedback Container -->
+                    <div id="feedback-container" class="feedback-container hidden">
+                        <div class="feedback-header">
+                            <span id="feedback-message" class="feedback-message"></span>
+                            <span id="chapter-ref" class="chapter-badge"></span>
+                        </div>
+                        <p id="explanation-text" class="explanation-text"></p>
+                        <div class="source-info">
+                            <strong>Referencia:</strong> <span id="source-text"></span>
+                        </div>
                     </div>
                 </div>
-            </header>
-
-            <div class="progress-container">
-                <div id="progress-bar-fill" class="progress-bar-fill"></div>
             </div>
-
-            <div id="question-container">
-                <p id="question-text" class="question-text">Cargando pregunta...</p>
-                <div id="options-list" class="options-list">
-                    <!-- Options inject here -->
-                </div>
-            </div>
-
-            <!-- Primary Action -->
-            <button id="next-btn" class="btn btn-primary hidden">Siguiente Pregunta</button>
-
-            <!-- Botones de Acción Secundarios -->
-            <div class="quiz-actions">
-                <button id="finish-btn" class="btn btn-outline btn-finish" title="Terminar ahora">Finalizar
-                    Examen</button>
-                <button id="skip-btn" class="btn btn-outline">Saltar</button>
-                <button id="prev-btn" class="btn btn-outline" title="Volver a la anterior">Atrás</button>
-            </div>
-
-            <!-- Feedback Container -->
-            <div id="feedback-container" class="feedback-container hidden">
-                <div class="feedback-header">
-                    <span id="feedback-message" class="feedback-message"></span>
-                    <span id="chapter-ref" class="chapter-badge"></span>
-                </div>
-                <p id="explanation-text" class="explanation-text"></p>
-                <div class="source-info">
-                    <strong>Referencia:</strong> <span id="source-text"></span>
-                </div>
-            </div>
-
         </section>
 
         <!-- Results Screen -->

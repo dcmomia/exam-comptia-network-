@@ -70,6 +70,8 @@ const explanationText = document.getElementById('explanation-text');
 const questionNumber = document.getElementById('question-number');
 const progressBarFill = document.getElementById('progress-bar-fill');
 const timerDisplay = document.getElementById('timer');
+const questionGrid = document.getElementById('question-grid');
+const domainFilter = document.getElementById('domain-filter');
 
 // Inicialización
 async function init() {
@@ -84,6 +86,14 @@ async function init() {
         }
     } catch (error) {
         console.error('Error inicializando datos:', error);
+    }
+
+    // Listener para el filtro de dominios
+    if (domainFilter) {
+        domainFilter.addEventListener('change', (e) => {
+            const selectedDomain = e.target.value;
+            filterSidebarByDomain(selectedDomain);
+        });
     }
 }
 
@@ -136,6 +146,7 @@ function loadExamSession() {
             startTimer();
         }
         renderQuestion();
+        renderQuestionList();
     }
 }
 
@@ -190,6 +201,53 @@ function togglePause() {
     else pauseExam();
 }
 
+// Nueva: Renderizar lista de navegación lateral
+function renderQuestionList() {
+    if (!questionGrid) return;
+    questionGrid.innerHTML = '';
+
+    questions.forEach((q, index) => {
+        const chip = document.createElement('div');
+        chip.className = 'q-chip';
+        chip.textContent = index + 1;
+
+        // Determinar estado visual
+        if (index === currentIndex) {
+            chip.classList.add('current');
+        } else if (userAnswers[index]) {
+            if (userAnswers[index].isCorrect) {
+                chip.classList.add('correct');
+            } else if (!userAnswers[index].omitted) {
+                chip.classList.add('incorrect');
+            }
+        }
+
+        // Aplicar filtro si existe
+        const selectedDomain = domainFilter ? domainFilter.value : 'all';
+        const qChapter = q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0";
+        const qDomain = getDomainForChapter(qChapter);
+
+        if (selectedDomain !== 'all' && qDomain !== selectedDomain) {
+            chip.classList.add('filtered-out');
+        }
+
+        chip.onclick = () => jumpToQuestion(index);
+        questionGrid.appendChild(chip);
+    });
+}
+
+// Nueva: Saltar a una pregunta específica
+function jumpToQuestion(index) {
+    if (index === currentIndex) return;
+    currentIndex = index;
+    renderQuestion();
+}
+
+// Nueva: Filtrar sidebar
+function filterSidebarByDomain(selectedDomain) {
+    renderQuestionList();
+}
+
 // Renderizar Pregunta
 function renderQuestion() {
     if (!isDataLoaded()) {
@@ -204,6 +262,9 @@ function renderQuestion() {
     const q = questions[currentIndex];
     questionText.textContent = q.question;
     optionsList.innerHTML = '';
+
+    // Actualizar sidebar para marcar la actual
+    renderQuestionList();
     feedbackContainer.classList.add('hidden');
     nextBtn.classList.add('hidden');
     skipBtn.classList.remove('hidden');
