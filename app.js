@@ -57,7 +57,7 @@ let isPaused = false;
 // Elementos UI
 let startScreen, quizScreen, resultsScreen, pauseOverlay, resumeExamBtn, examsCatalog;
 let nextBtn, prevBtn, skipBtn, finishBtn, restartBtn, pauseBtn;
-let questionText, optionsList, feedbackContainer, feedbackMessage, chapterRef, sourceText, explanationText, questionImage;
+let questionText, optionsList, feedbackContainer, feedbackMessage, explanationText, questionImage;
 let questionNumber, progressBarFill, timerDisplay, questionGrid, domainFilter;
 
 function isDataLoaded() { return filteredQuestions && filteredQuestions.length > 0; }
@@ -96,8 +96,6 @@ async function init() {
         optionsList = document.getElementById('options-list');
         feedbackContainer = document.getElementById('feedback-container');
         feedbackMessage = document.getElementById('feedback-message');
-        chapterRef = document.getElementById('chapter-ref');
-        sourceText = document.getElementById('source-text');
         explanationText = document.getElementById('explanation-text');
         questionNumber = document.getElementById('question-number');
         progressBarFill = document.getElementById('progress-bar-fill');
@@ -371,9 +369,6 @@ function revealFeedback(isCorrect, explanation) {
     feedbackContainer.classList.remove('hidden');
     feedbackContainer.className = `feedback-container ${isCorrect ? 'correct' : 'incorrect'}`;
     feedbackMessage.textContent = isCorrect ? '¡Correcto!' : 'Incorrecto';
-    // Remove reference display
-    if (chapterRef) chapterRef.style.display = 'none';
-    if (sourceText) sourceText.style.display = 'none';
     explanationText.textContent = explanation;
 }
 
