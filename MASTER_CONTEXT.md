@@ -9,14 +9,15 @@
 
 ## 2. Version History & Patch Notes
 
-### v2.3 - Random Order Patch (Current)
-- **Patch Description:** Added question randomization for enhanced practice.
+### v3.0 - Platform Genesis (Current)
+- **Feature Description:** Evolution from a single exam app to a multi-exam platform.
 - **Key Changes:**
-    - **Shuffling Logic:** Fisher-Yates algorithm implemented to randomize `questions` on start.
-    - **Shuffled Persistence:** The random order is now saved via IDs in `localStorage`, ensuring consistency when resuming a session.
-    - **Refined Filtering:** Domain filters now operate over the randomized set for a more dynamic study experience.
+    - **Multi-Exam Architecture:** Questions migrated to `EXAMS_DATABASE` to support multiple simulacrums.
+    - **Premium UI/UX Catalog:** New start screen with glassmorphism-style exam cards and micro-animations.
+    - **Dynamic Loading:** The engine now loads sets dynamically based on selection.
+    - **Isolated Discovery:** Specific persistence for each exam session via `activeExamId`.
 
-### v2.2 - Advanced Filtering & Layout
+### v2.3 - Random Order Patch
 
 ### v2.1 - Persistence & Pause Logic
 - **Patch Description:** Stability and session integrity update.

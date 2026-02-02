@@ -34,12 +34,15 @@
             </div>
 
             <p class="start-description">
-                Este examen evalúa tus conocimientos en redes, seguridad, infraestructura y resolución de problemas.
-                Recibirás explicaciones detalladas después de cada pregunta.
+                Elige un simulacro para comenzar. Cada examen evalúa tus conocimientos en redes, seguridad e
+                infraestructura.
             </p>
 
-            <button id="start-btn" class="btn btn-primary">Comenzar Examen</button>
-            <button id="resume-exam-btn" class="btn btn-outline hidden">Reanudar Examen</button>
+            <div id="exams-catalog" class="exams-catalog">
+                <!-- Tarjetas inyectadas por JS -->
+            </div>
+
+            <button id="resume-exam-btn" class="btn btn-outline hidden">Reanudar Examen Guardado</button>
         </section>
 
         <!-- Quiz Screen -->
@@ -49,7 +52,7 @@
                 <aside id="quiz-sidebar">
                     <div class="sidebar-header">
                         <h3>Preguntas</h3>
-                        <select id="domain-filter">
+                        <select id="domain-filter" title="Filtrar preguntas por dominio">
                             <option value="all">Todos los Dominios</option>
                             <option value="1.0 Conceptos de Redes">1.0 Conceptos</option>
                             <option value="2.0 Implementación de Redes">2.0 Implementación</option>
@@ -100,8 +103,7 @@
                         <button id="finish-btn" class="btn btn-outline btn-finish" title="Terminar ahora">Finalizar
                             Examen</button>
                         <button id="skip-btn" class="btn btn-outline">Saltar</button>
-                        <button id="prev-btn" class="btn btn-outline" title="Volver a la anterior"
-                            style="visibility: hidden;">Atrás</button>
+                        <button id="prev-btn" class="btn btn-outline" title="Volver a la anterior">Atrás</button>
                     </div>
 
                     <!-- Feedback Container -->

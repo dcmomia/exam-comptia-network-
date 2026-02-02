@@ -43,6 +43,7 @@ function shuffleArray(array) {
 }
 
 // Variables de estado
+let activeExamId = null;
 let questions = [];
 let filteredQuestions = [];
 let currentFilter = 'all';
@@ -58,15 +59,9 @@ let isPaused = false;
 const startScreen = document.getElementById('start-screen');
 const quizScreen = document.getElementById('quiz-screen');
 const resultsScreen = document.getElementById('results-screen');
-const startBtn = document.getElementById('start-btn');
-const nextBtn = document.getElementById('next-btn');
-const prevBtn = document.getElementById('prev-btn');
-const skipBtn = document.getElementById('skip-btn');
-const finishBtn = document.getElementById('finish-btn');
-const restartBtn = document.getElementById('restart-btn');
-const pauseBtn = document.getElementById('pause-btn');
 const pauseOverlay = document.getElementById('pause-overlay');
 const resumeExamBtn = document.getElementById('resume-exam-btn');
+const examsCatalog = document.getElementById('exams-catalog');
 
 // Protecciones de Inicialización
 const isDataLoaded = () => filteredQuestions && filteredQuestions.length > 0;
@@ -99,14 +94,12 @@ const domainFilter = document.getElementById('domain-filter');
 // Inicialización
 async function init() {
     try {
-        if (typeof QUESTIONS_DATA !== 'undefined') {
-            questions = QUESTIONS_DATA;
-            updateFilteredQuestions('all'); // Inicialmente todas
-            console.log('Preguntas cargadas:', questions.length);
+        if (typeof EXAMS_DATABASE !== 'undefined') {
+            renderExamsCatalog();
             checkPreviousSession();
         } else {
-            console.error('No se encontró QUESTIONS_DATA.');
-            alert('Error: No se pudieron cargar las preguntas.');
+            console.error('No se encontró EXAMS_DATABASE.');
+            alert('Error: No se pudieron cargar los datos de los exámenes.');
         }
     } catch (error) {
         console.error('Error inicializando datos:', error);
@@ -142,9 +135,34 @@ function checkPreviousSession() {
     }
 }
 
+function renderExamsCatalog() {
+    if (!examsCatalog) return;
+    examsCatalog.innerHTML = '';
+
+    Object.values(EXAMS_DATABASE).forEach(exam => {
+        const card = document.createElement('div');
+        card.className = 'exam-card';
+        card.innerHTML = `
+            <div class="exam-card-badge">${exam.version || 'v3.0'}</div>
+            <div class="exam-card-icon">📚</div>
+            <h3>${exam.title}</h3>
+            <p>${exam.questions.length} preguntas disponibles</p>
+            <button class="btn btn-primary" onclick="startQuiz('${exam.id}')">Seleccionar</button>
+        `;
+        examsCatalog.appendChild(card);
+    });
+}
+
 // Iniciar Examen
-function startQuiz() {
-    questions = [...QUESTIONS_DATA];
+function startQuiz(examId) {
+    const examData = EXAMS_DATABASE[examId];
+    if (!examData) {
+        console.error('Examen no encontrado:', examId);
+        return;
+    }
+
+    activeExamId = examId;
+    questions = [...examData.questions];
     shuffleArray(questions);
 
     // Aplicar filtro inicial si el selector tiene algo
@@ -174,11 +192,13 @@ function loadExamSession() {
     if (savedState) {
         const state = JSON.parse(savedState);
 
-        // Restaurar orden aleatorio si existe
-        if (state.shuffledIds && typeof QUESTIONS_DATA !== 'undefined') {
-            questions = state.shuffledIds.map(id => QUESTIONS_DATA.find(q => q.id === id)).filter(q => q);
-        } else if (typeof QUESTIONS_DATA !== 'undefined') {
-            questions = [...QUESTIONS_DATA];
+        activeExamId = state.activeExamId || 'network_plus_exam_1';
+        const examData = EXAMS_DATABASE[activeExamId];
+
+        if (state.shuffledIds && examData) {
+            questions = state.shuffledIds.map(id => examData.questions.find(q => q.id === id)).filter(q => q);
+        } else if (examData) {
+            questions = [...examData.questions];
         }
 
         userAnswers = state.userAnswers || [];
@@ -212,6 +232,7 @@ function loadExamSession() {
 // Cargar Progreso (Opcional, pero implementamos guardado persistente)
 function saveProgress() {
     const state = {
+        activeExamId,
         currentIndex,
         currentFilter,
         shuffledIds: questions.map(q => q.id),
