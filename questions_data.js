@@ -2543,10 +2543,11 @@ var EXAMS_DATABASE = {
 
 
 
+
 EXAMS_DATABASE["network_plus_exam_2"] = {
     id: "network_plus_exam_2",
     title: "CompTIA Network+ - Examen 2",
-    version: "v3.1",
+    version: "v3.1.2",
     questions: [
     {
         "id": 1,
@@ -3706,34 +3707,6 @@ EXAMS_DATABASE["network_plus_exam_2"] = {
         "source_reference": "Capítulo 16: Ataques de Red > Ataques Inalámbricos"
     },
     {
-        "id": 83,
-        "has_context_image": false,
-        "question": "Lorraine is the sole network administrator for her company. After investigating reports from users in the accounting department, she discovers that a crucial switch port connected to the department's server is not transmitting data. Upon inspection, she notes that the switch port's LED indicator is not lit. This seems strange to her since she has not disabled the port. Which of the following is the MOST likely reason for this issue?",
-        "options": [
-            "The port is configured with an incorrect VLAN assignment.",
-            "The port is suspended due to an STP (Spanning Tree Protocol) issue.",
-            "The port has been error disabled due to a violation.",
-            "The port is administratively down."
-        ],
-        "answer": "The port has been error disabled due to a violation.",
-        "explanation": "Si el LED del puerto está apagado y el administrador no lo ha deshabilitado manualmente ('administratively down'), es probable que el puerto haya entrado en estado 'error-disabled' debido a una violación de seguridad (como Port Security). STP generalmente muestra un LED ámbar o parpadeante, no apagado.",
-        "source_reference": "Capítulo 20: Solución de Problemas de Red > Problemas de Puertos de Switch"
-    },
-    {
-        "id": 84,
-        "has_context_image": false,
-        "question": "A small office is experiencing frequent Wi-Fi interference on their 2.4 GHz wireless network. The network administrator identifies that multiple neighboring networks are using overlapping channels, causing signal interference and reduced performance. To mitigate this issue and improve the Wi-Fi experience, which of the following actions should the administrator take?",
-        "options": [
-            "Set the access points to use the widest available channel width on the 2.4 GHz band.",
-            "Configure the access points to use channels 1, 6, and 11.",
-            "Implement a mesh network topology to improve coverage across the office.",
-            "Increase the transmission power of all access points to overpower interference."
-        ],
-        "answer": "Configure the access points to use channels 1, 6, and 11.",
-        "explanation": "En la banda de 2.4 GHz, los únicos canales que no se superponen son el 1, 6 y 11. Configurar los puntos de acceso en estos canales minimiza la interferencia de canal adyacente (ACI) y mejora el rendimiento en entornos congestionados.",
-        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Canales y Frecuencias"
-    },
-    {
         "id": 85,
         "has_context_image": false,
         "question": "Which protocol is used to establish a secure and encrypted VPN tunnel that can be initiated through a web browser?",
@@ -3788,20 +3761,6 @@ EXAMS_DATABASE["network_plus_exam_2"] = {
         "answer": "Full Tunnel",
         "explanation": "En una configuración 'Full Tunnel', TODO el tráfico del cliente (tanto el destinado a la red corporativa como el tráfico general de Internet) se enruta a través del túnel VPN. 'Split Tunnel' solo enruta el tráfico corporativo por la VPN.",
         "source_reference": "Capítulo 17: Autenticación y Control de Acceso > Configuraciones VPN"
-    },
-    {
-        "id": 89,
-        "has_context_image": false,
-        "question": "You have just replaced the edge switch on the second floor of Dion Training. After you finish, a user states they can no longer access the network but everything was working fine yesterday before you replaced the switch. The user's coworkers claim their computers are able to access the network without any issues. You check the back of the user's workstation and you do not see any LED lights lit or blinking on their network interface card. Which of the following should you check next to solve this issue?",
-        "options": [
-            "Verify the switch is connected to the router",
-            "Verify the network interface card is operating properly",
-            "Verify the network cable is attached to the new switch",
-            "Verify the device is using the correct cable type"
-        ],
-        "answer": "Verify the network cable is attached to the new switch",
-        "explanation": "Dado que se acaba de reemplazar el switch y el problema es aislado (solo un usuario) con la luz de enlace apagada, lo más probable es que el cable de red de ese usuario no se haya conectado correctamente al nuevo switch. Si fuera el router, fallecería toda la red. Si fuera la NIC, no habría funcionado ayer.",
-        "source_reference": "Capítulo 20: Solución de Problemas de Red > Problemas de Capa Física"
     },
     {
         "id": 90,

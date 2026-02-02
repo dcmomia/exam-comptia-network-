@@ -93,7 +93,7 @@
 
 ### Data Quality
 - **Exam 1:** 90 questions (fully integrated)
-- **Exam 2:** 91 questions (integrated with images)
-- **Total Available:** 181 questions
+- **Exam 2:** 88 questions (cleaned & verified)
+- **Total Available:** 178 questions
 - **Target:** 180+ questions for comprehensive certification preparation
 
