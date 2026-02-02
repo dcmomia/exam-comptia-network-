@@ -33,6 +33,15 @@ function getDomainForChapter(chapterName) {
     return "Otros Temas";
 }
 
+// Nueva: Algoritmo de barajado Fisher-Yates
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 // Variables de estado
 let questions = [];
 let filteredQuestions = [];
@@ -135,6 +144,13 @@ function checkPreviousSession() {
 
 // Iniciar Examen
 function startQuiz() {
+    questions = [...QUESTIONS_DATA];
+    shuffleArray(questions);
+
+    // Aplicar filtro inicial si el selector tiene algo
+    const initialDomain = domainFilter ? domainFilter.value : 'all';
+    updateFilteredQuestions(initialDomain);
+
     if (!isDataLoaded()) {
         console.error('No hay preguntas cargadas.');
         return;
@@ -157,6 +173,14 @@ function loadExamSession() {
     const savedState = localStorage.getItem('network_plus_exam_state');
     if (savedState) {
         const state = JSON.parse(savedState);
+
+        // Restaurar orden aleatorio si existe
+        if (state.shuffledIds && typeof QUESTIONS_DATA !== 'undefined') {
+            questions = state.shuffledIds.map(id => QUESTIONS_DATA.find(q => q.id === id)).filter(q => q);
+        } else if (typeof QUESTIONS_DATA !== 'undefined') {
+            questions = [...QUESTIONS_DATA];
+        }
+
         userAnswers = state.userAnswers || [];
         totalElapsedTime = state.totalElapsedTime || 0;
         isPaused = state.isPaused || false;
@@ -190,6 +214,7 @@ function saveProgress() {
     const state = {
         currentIndex,
         currentFilter,
+        shuffledIds: questions.map(q => q.id),
         userAnswers,
         totalElapsedTime: totalElapsedTime + (isPaused ? 0 : (sessionStartTime ? (Date.now() - sessionStartTime) : 0)),
         isPaused

@@ -9,13 +9,14 @@
 
 ## 2. Version History & Patch Notes
 
-### v2.2 - Advanced Filtering & Layout (Current)
-- **Patch Description:** Real-time domain filtering and structural UI correction.
+### v2.3 - Random Order Patch (Current)
+- **Patch Description:** Added question randomization for enhanced practice.
 - **Key Changes:**
-    - **Filtered Engine:** Implemented `filteredQuestions` logic. Navigation and counters now respect the selected domain.
-    - **Sidebar Redesign:** Fixed grid layout to ensure a solid, sticky left column. Removed restrictive `overflow: hidden`.
-    - **Context-Aware Results:** Final percentages and charts now calculate based on the active filter.
-    - **UI Polish:** Full-width adaptive container (max-width: 1200px).
+    - **Shuffling Logic:** Fisher-Yates algorithm implemented to randomize `questions` on start.
+    - **Shuffled Persistence:** The random order is now saved via IDs in `localStorage`, ensuring consistency when resuming a session.
+    - **Refined Filtering:** Domain filters now operate over the randomized set for a more dynamic study experience.
+
+### v2.2 - Advanced Filtering & Layout
 
 ### v2.1 - Persistence & Pause Logic
 - **Patch Description:** Stability and session integrity update.
