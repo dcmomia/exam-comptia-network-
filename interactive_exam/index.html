@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Interactivo CompTIA Network+</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Start Screen -->
+        <section id="start-screen" class="screen active">
+            <div class="hero-icon">🚀</div>
+            <h1>CompTIA Network+</h1>
+            <p class="subtitle">Examen de Práctica Interactivo</p>
+
+            <div class="exam-info">
+                <div class="info-card">
+                    <strong>Enfoque</strong>
+                    <p>Objetivos N10-008/009</p>
+                </div>
+                <div class="info-card">
+                    <strong>Modo</strong>
+                    <p>Práctica con Retroalimentación</p>
+                </div>
+            </div>
+
+            <p class="start-description">
+                Elige un simulacro para comenzar. Cada examen evalúa tus conocimientos en redes, seguridad e
+                infraestructura.
+            </p>
+
+            <div id="exams-catalog" class="exams-catalog">
+                <!-- Tarjetas inyectadas por JS -->
+            </div>
+
+            <button id="resume-exam-btn" class="btn btn-outline hidden">Reanudar Examen Guardado</button>
+        </section>
+
+        <!-- Quiz Screen -->
+        <section id="quiz-screen" class="screen">
+            <div class="quiz-layout">
+                <!-- Sidebar de Navegación -->
+                <aside id="quiz-sidebar">
+                    <div class="sidebar-header">
+                        <h3>Preguntas</h3>
+                        <select id="domain-filter" title="Filtrar preguntas por dominio">
+                            <option value="all">Todos los Dominios</option>
+                            <option value="1.0 Conceptos de Redes">1.0 Conceptos</option>
+                            <option value="2.0 Implementación de Redes">2.0 Implementación</option>
+                            <option value="3.0 Operaciones de Red">3.0 Operaciones</option>
+                            <option value="4.0 Seguridad de Red">4.0 Seguridad</option>
+                            <option value="5.0 Solución de Problemas">5.0 Resolución</option>
+                        </select>
+                    </div>
+                    <div id="question-grid" class="question-grid">
+                        <!-- Botones de preguntas generados por JS -->
+                    </div>
+                    <div class="sidebar-legend">
+                        <span class="legend-item"><i class="dot correct"></i> Correcto</span>
+                        <span class="legend-item"><i class="dot incorrect"></i> Incorrecto</span>
+                        <span class="legend-item"><i class="dot current"></i> Actual</span>
+                    </div>
+                </aside>
+
+                <!-- Contenido Principal -->
+                <div class="quiz-main">
+                    <header class="header-stats">
+                        <span id="question-number">Pregunta 1/90</span>
+                        <div class="header-controls">
+                            <button id="pause-btn" class="btn-icon" title="Pausar Examen">⏸️</button>
+                            <div class="timer-box">
+                                <span>⏱️</span>
+                                <span id="timer">00:00</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <div class="progress-container">
+                        <div id="progress-bar-fill" class="progress-bar-fill"></div>
+                    </div>
+
+                    <div id="question-container">
+                        <img id="question-image" class="question-image hidden" src="" alt="Contexto de la pregunta">
+                        <p id="question-text" class="question-text">Cargando pregunta...</p>
+                        <div id="options-list" class="options-list">
+                            <!-- Options inject here -->
+                        </div>
+                    </div>
+
+                    <!-- Primary Action -->
+                    <button id="next-btn" class="btn btn-primary hidden">Siguiente Pregunta</button>
+
+                    <!-- Botones de Acción Secundarios -->
+                    <div class="quiz-actions">
+                        <button id="finish-btn" class="btn btn-outline btn-finish" title="Terminar ahora">Finalizar
+                            Examen</button>
+                        <button id="skip-btn" class="btn btn-outline">Saltar</button>
+                        <button id="prev-btn" class="btn btn-outline" title="Volver a la anterior">Atrás</button>
+                    </div>
+
+                    <!-- Feedback Container -->
+                    <div id="feedback-container" class="feedback-container hidden">
+                        <div class="feedback-header">
+                            <span id="feedback-message" class="feedback-message"></span>
+                            <span id="chapter-ref" class="chapter-badge"></span>
+                        </div>
+                        <p id="explanation-text" class="explanation-text"></p>
+                        <div class="source-info">
+                            <strong>Referencia:</strong> <span id="source-text"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section id="results-screen" class="screen">
+            <div class="results-header">
+                <h2>Resultados del Examen</h2>
+                <p class="subtitle">Buen trabajo finalizando la práctica</p>
+            </div>
+
+            <div class="score-circle">
+                <canvas id="resultsChart"></canvas>
+                <div class="score-data">
+                    <span id="final-percentage">0%</span>
+                    <span id="correct-count" class="badge">(0/0)</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="label">Correctas</span>
+                    <span id="correct-val" class="value text-success">0</span>
+                </div>
+                <div id="omitted-stat" class="stat-item">
+                    <span class="label">Omitidas</span>
+                    <span id="omitted-val" class="value text-muted">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="label">Tiempo</span>
+                    <span id="time-taken" class="value">0 min</span>
+                </div>
+            </div>
+
+            <div class="domain-analysis">
+                <h3>Desempeño por Dominios</h3>
+                <div id="domains-list">
+                    <!-- Domain progress inject here -->
+                </div>
+            </div>
+
+            <button id="restart-btn" class="btn btn-secondary">Volver al Inicio</button>
+        </section>
+
+        <!-- Pause Overlay -->
+        <div id="pause-overlay" class="overlay hidden">
+            <div class="overlay-content">
+                <div class="pause-icon">⏸️</div>
+                <h2>Examen Pausado</h2>
+                <p>Tu progreso está a salvo. Pulsa el botón de la cabecera para continuar.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data & Logic -->
+    <script src="questions_data.js?v=4.2"></script>
+    <script src="app.js?v=3.1.4"></script>
+</body>
+
+</html>
