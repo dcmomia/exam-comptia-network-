@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="es">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Capítulo 2: Dispositivos de Infraestructura y Hardware de Red</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 2: Hardware de Red: Dispositivos y sus Funciones</h1>
+
+        <h2>Introducción: De la Teoría a la Práctica</h2>
+        <p>En el capítulo anterior, exploramos el «alma» conceptual de la red: el Modelo OSI y sus siete capas
+            funcionales. Ahora es el momento de conocer el «cuerpo» físico y virtual que hace posible que los bits,
+            tramas y paquetes se muevan efectivamente desde su origen hasta su destino. Para que las comunicaciones de
+            red sean una realidad, necesitamos dispositivos que realicen las funciones descritas en cada capa del modelo
+            OSI. Estos dispositivos pueden ser físicos, como una caja de metal con luces parpadeantes en un rack de
+            servidores, o virtuales, como una instancia de software que cumple las mismas funciones que un dispositivo
+            físico.</p>
+
+        <p>En este capítulo, analizaremos las «cajas» y sistemas que encontrarás en un rack de servidores típico, en un
+            armario de cableado de una oficina, o en un centro de datos empresarial. Para el examen CompTIA Network+
+            N10-009, no basta con saber cómo se ven estos dispositivos; debes comprender exactamente qué funciones
+            realizan, en qué capa del modelo OSI operan, y cómo toman decisiones sobre el tráfico de red. Este
+            conocimiento es fundamental tanto para el examen como para tu carrera profesional como administrador de
+            sistemas o ingeniero de redes. Los empleadores buscan profesionales que no solo puedan conectar cables, sino
+            que entiendan profundamente cómo fluye el tráfico y cómo optimizar su movimiento.</p>
+
+        <p>Organizaremos nuestro estudio de los dispositivos de red en tres categorías principales: los dispositivos de
+            conectividad básica que mueven los datos desde el punto A hasta el punto B, los dispositivos de seguridad y
+            optimización que protegen y mejoran el rendimiento de la red, y los sistemas de almacenamiento que manejan
+            los enormes volúmenes de datos que las organizaciones modernas generan y procesan diariamente. Cada
+            categoría incluye dispositivos que operan en diferentes capas del modelo OSI y que cumplen funciones
+            críticas para el funcionamiento de cualquier infraestructura de red moderna.</p>
+
+        <h2>Dispositivos de Conectividad: Los Cimientos de la Red</h2>
+        <p>Estos son los dispositivos fundamentales encargados de mover los datos a través de la infraestructura de red.
+            Son los equivalentes modernos de los carteros y mensajeros que entregaban cartas en épocas anteriores, pero
+            operando a velocidades de millones de paquetes por segundo y con una precisión extraordinaria. Sin estos
+            dispositivos, ninguna comunicación de red sería posible, independientemente de la calidad del cableado o la
+            sofisticación del software utilizado.</p>
+
+        <h3>El Switch (Conmutador)</h3>
+        <p>Si el switch fuera una persona, sería un agente de tráfico extremadamente eficiente e inteligente que conoce
+            exactamente dónde vive cada residente de su zona y puede dirigir el tráfico de manera óptima. El switch
+            opera principalmente en la Capa 2 (Enlace de Datos) del modelo OSI, aunque los switches modernos más
+            sofisticados también pueden realizar funciones de Capa 3 y son llamados switches multicapa o multilayer
+            switches. Su función principal es conectar dispositivos dentro de la misma red local, como computadoras,
+            impresoras, servidores y puntos de acceso inalámbrico, facilitando la comunicación directa entre ellos.</p>
+
+        <p>A diferencia de su antecesor obsoleto, el hub (concentrador) que simplemente recibía datos en un puerto y los
+            retransmitía a todos los demás puertos sin discriminación, el switch es inteligente y aprende activamente.
+            Cada vez que llega una trama a un puerto, el switch examina la dirección MAC de origen y la registra en su
+            tabla MAC junto con el puerto por el que llegó. Esta tabla, también conocida como tabla CAM (Content
+            Addressable Memory), permite al switch realizar decisiones de envío instantáneas: cuando llega una trama con
+            una dirección MAC de destino específica, el switch la envía únicamente por el puerto donde reside ese
+            dispositivo, no por todos los puertos como haría un hub.</p>
+
+        <a id="section_1"></a>
+
+        <figure class="kdp-image-wrapper">
+            <img alt="Diagrama de funcionamiento de un hub" src="../Images/hub.png" class="responsive-img"/>
+        </figure>
+
+        <a id="section_2"></a>
+
+        <p>Esta inteligencia tiene implicaciones profundas para el rendimiento de la red. Los switches rompen los
+            dominios de colisión que existían en las redes basadas en hubs, permitiendo que cada dispositivo pueda
+            transmitir y recibir datos simultáneamente (comunicación full-duplex) sin interrumpir a los demás
+            dispositivos conectados al mismo switch. Si un empleado en el puerto 1 está descargando un archivo grande
+            mientras otro en el puerto 2 envía un correo electrónico, ambas comunicaciones pueden ocurrir
+            simultáneamente sin colisiones ni degradación significativa del rendimiento. Esta segmentación es una de las
+            razones por las que las redes Ethernet modernas son tan eficientes comparadas con las redes hub de décadas
+            pasadas.</p>
+
+        <div class="important-note">
+            <p><strong>Nota importante para el examen:</strong> Cuando el examen menciona un «switch» sin especificar
+                más detalles, debes asumir que se refiere a un switch de Capa 2 tradicional. Sin embargo, si menciona
+                explícitamente un «multilayer switch» o «switch de Capa 3», debes pensar en funciones adicionales de
+                enrutamiento, incluyendo la capacidad de tomar decisiones basadas en direcciones IP y configurar
+                interfaces VLAN con direcciones IP asignadas.</p>
+        </div>
+
+        <h3>El Router (Enrutador)</h3>
+        <p>El router es el director de orquesta de las redes conectadas, el dispositivo que permite que múltiples redes
+            diferentes se comuniquen entre sí de manera ordenada y eficiente. Mientras que el switch conecta
+            dispositivos dentro de una misma red local, el router conecta redes distintas, funcionando como la frontera
+            entre diferentes dominios de broadcast y diferentes segmentos de red. Si tu switch conecta las computadoras
+            de tu oficina entre sí, tu router conecta esa oficina con el mundo exterior, ya sea otras sucursales de tu
+            empresa a través de una red privada o Internet público.</p>
+
+        <p>El router opera en la Capa 3 (Red) del modelo OSI, tomando decisiones basadas en direcciones IP en lugar de
+            direcciones MAC. Mantiene una tabla de enrutamiento que contiene información sobre las redes que conoce y
+            las rutas disponibles para alcanzarlas. Cuando llega un paquete, el router examina la dirección IP de
+            destino, consulta su tabla de enrutamiento para determinar cuál es el mejor «próximo salto» (next hop) hacia
+            ese destino, y reenvía el paquete apropiadamente. Este proceso se repite en cada router que el paquete
+            atraviesa en su viaje desde el origen hasta el destino final.</p>
+
+        <p>Un concepto fundamental que debes entender es que los routers detienen los mensajes de difusión o broadcasts.
+            Cuando una computadora envía un paquete de broadcast (destinado a todos los dispositivos de la red local),
+            el router no reenvía ese paquete a otras redes. Esta característica es crucial para la escalabilidad de las
+            redes: sin ella, un broadcast inicial podría propagarse a través de todas las redes conectadas en Internet,
+            causando una congestión catastrófica conocida como «broadcast storm» o tormenta de broadcast. Los routers
+            actúan como cortafuegos de broadcasts, conteniendo el tráfico de broadcast dentro de cada segmento de red
+            individual.</p>
+
+        <p>Además de su función de enrutamiento básico, los routers modernos incorporan numerosas características
+            adicionales como firewall integrado, soporte para VPNs, calidad de servicio (QoS) para priorización de
+            tráfico, y capacidades de detección y prevención de intrusiones. Esta combinación de funciones ha difuminado
+            las líneas tradicionales entre routers y firewalls, creando dispositivos de seguridad de red
+            multifuncionales que son comunes en las organizaciones modernas.</p>
+
+        <h3>Dispositivos Inalámbricos: Puntos de Acceso y Controladores</h3>
+        <p>La red moderna ya no está atada a un escritorio con cables Ethernet. La proliferación de laptops,
+            smartphones, tablets y dispositivos IoT ha hecho que las redes inalámbricas sean tan importantes como las
+            cableadas, si no más. Dos componentes clave hacen posible esta conectividad sin cables: el punto de acceso
+            (Access Point o AP) y el controlador de red inalámbrica (Wireless LAN Controller o WLC).</p>
+
+        <p>El punto de acceso no es lo mismo que un router, aunque los routers domésticos típicamente incluyen
+            funcionalidad de punto de acceso integrada. Un punto de acceso es fundamentalmente un puente o bridge que
+            convierte las señales de cable (Ethernet) en ondas de radio (Wi-Fi) y viceversa. Opera en las Capas 1 y 2
+            del modelo OSI, recibiendo datos cableados y transmitiéndolos como señales Wi-Fi para los dispositivos
+            inalámbricos, y haciendo el proceso inverso para los datos que llegan desde los dispositivos inalámbricos
+            hacia la red cableada. Un punto de acceso típico puede manejar docenas de conexiones simultáneas de
+            dispositivos, aunque el rendimiento se degrada a medida que más dispositivos se conectan y compiten por el
+            ancho de banda disponible.</p>
+
+        <p>En una empresa pequeña con uno o dos puntos de acceso, la configuración manual de cada AP puede ser
+            manejable. Sin embargo, en una organización grande con 50, 100 o incluso miles de puntos de acceso
+            distribuidos en múltiples edificios y pisos, configurar cada uno individualmente es absolutamente
+            impracticable. Aquí es donde entra el controlador de red inalámbrica. El WLC es el cerebro central que
+            gestiona de manera masiva la seguridad, las actualizaciones de firmware, la configuración de canales y
+            potencia de transmisión, y el balanceo de carga entre todos los puntos de acceso de la organización. Desde
+            una única consola de administración, el equipo de TI puede implementar cambios que afectan a todos los APs
+            simultáneamente, asegurando consistencia y reduciendo dramáticamente la carga administrativa.</p>
+
+
+        <div class="chapter-update">
+            <h3>⚡ Datos Críticos: Clasificación por Alcance</h3>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Alcance</th>
+                        <th>Tecnologías Típicas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>PAN</strong></td>
+                        <td>~3 metros (alrededor usuario)</td>
+                        <td>Bluetooth, NFC, USB</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LAN</strong></td>
+                        <td>~100 metros (edificio)</td>
+                        <td>Ethernet, Wi-Fi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CAN</strong></td>
+                        <td>Varios edificios (campus)</td>
+                        <td>Fibra óptica, Ethernet</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MAN</strong></td>
+                        <td>~40 km (ciudad)</td>
+                        <td>Metro Ethernet, Fibra dedicada</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WAN</strong></td>
+                        <td>Global / País</td>
+                        <td>Internet, MPLS, Satélite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>Una característica particularmente valiosa de los sistemas wireless empresariales gestionados por un
+            controlador es el roaming transparente. Cuando un usuario se mueve por un edificio con su laptop o teléfono,
+            la señal se pasa fluidamente de un punto de acceso a otro sin que la conexión se interrumpa. Esto es posible
+            porque todos los APs están coordinados por el controlador y comparten la información de sesión del cliente,
+            permitiendo una transición impecable que es esencial para aplicaciones sensibles como las llamadas de voz
+            sobre Wi-Fi (VoWiFi) o las videoconferencias móviles.</p>
+
+        <h3>Hardware para IoT: Z-Wave y Zigbee</h3>
+        <p>Además del Wi-Fi estándar, el Internet de las Cosas (IoT) utiliza hardware especializado para la
+            automatización y domótica. Es vital distinguir estos dos protocolos que requieren sus propios concentradores
+            (hubs) o gateways para comunicarse con la red IP principal:</p>
+        <ul>
+            <li><strong>Z-Wave:</strong> Protocolo inalámbrico de baja energía que opera en frecuencias sub-1GHz (no
+                interfiere con Wi-Fi). Se utiliza comúnmente en iluminación, cerraduras y sensores de seguridad.</li>
+            <li><strong>Zigbee:</strong> Protocolo de estándar abierto (IEEE 802.15.4) que opera frecuentemente en 2.4
+                GHz. Es popular en entornos industriales y domésticos (ej. bombillas inteligentes) y soporta redes en
+                malla (mesh) de bajo consumo.</li>
+        </ul>
+
+        <h2>Dispositivos de Seguridad y Optimización: Los Guardianes</h2>
+        <p>Una vez que tenemos conectividad básica, necesitamos asegurar esa comunicación contra amenazas externas y
+            optimizarla para que funcione de manera eficiente incluso cuando los recursos son limitados. Los
+            dispositivos de seguridad y optimización son los guardianes que protegen la red de atacantes y los árbitros
+            que distribuyen los recursos de red de manera justa y eficiente entre los diferentes usuarios y
+            aplicaciones.</p>
+
+        <h3>El Firewall (Cortafuegos)</h3>
+        <p>El firewall es el guardia de seguridad en la puerta de entrada de tu red, el primer punto de control que
+            examina todo el tráfico que intenta entrar o salir de tu infraestructura. Opera en las Capas 3 y 4 del
+            modelo OSI en su forma más básica, y en firewalls más modernos puede extenderse hasta la Capa 7 para
+            inspección profunda de paquetes (Deep Packet Inspection o DPI). Su función principal es filtrar el tráfico
+            basándose en un conjunto de reglas predefinidas llamadas Listas de Control de Acceso (ACLs), decidiendo qué
+            paquetes pasan y cuáles se bloquean basándose en criterios como direcciones IP origen y destino, números de
+            puerto, protocolo utilizado, y el contenido del paquete.</p>
+
+        <p>Los firewalls pueden ser dispositivos físicos dedicados, equipos que son esencialmente servidores optimizados
+            para funciones de seguridad, o pueden ser firewalls de software que se ejecutan en servidores o incluso en
+            la nube. También existe el firewall basado en host (Host-based Firewall), que es un software instalado en
+            cada computadora individual que controla el tráfico hacia y desde ese dispositivo específico. La estrategia
+            más efectiva combina múltiples capas de firewalls: un firewall perimetral que protege el perímetro de la
+            red, firewalls internos que segmentan diferentes zonas de seguridad dentro de la red, y firewalls basados en
+            host que proporcionan una última capa de defensa en cada endpoint.</p>
+
+        <p>Los tipos de firewalls incluyen el firewall de red tradicional que filtra paquetes basándose en direcciones y
+            puertos, el firewall de siguiente generación (Next-Generation Firewall o NGFW) que incluye capacidades
+            adicionales como prevención de intrusiones (IPS), inspección de tráfico cifrado (SSL/TLS inspection), y
+            filtrado de contenido basado en aplicaciones. Los firewalls modernos también incorporan inteligencia de
+            amenazas que les permite identificar y bloquear patrones de tráfico asociados con malware conocido,
+            ransomware, y otros ataques sofisticados.</p>
+
+        <h3>IDS vs. IPS: Detectando y Previniendo Intrusiones</h3>
+        <p>Estos sistemas vigilan la red continuamente en busca de comportamientos sospechosos o firmas de ataques
+            conocidos. Es crucial que no los confundas, ya que tienen funciones diferentes y complementarias en la
+            estrategia de defensa de la red.</p>
+
+        <a id="section_3"></a>
+
+        <figure class="kdp-image-wrapper">
+            <img alt="Sistemas IDS e IPS" src="../Images/ids.png" class="responsive-img"/>
+        </figure>
+
+        <a id="section_4"></a>
+
+        <p>El IDS (Sistema de Detección de Intrusos) es como una alarma antirrobo sofisticada para tu red. Monitoriza
+            pasivamente el tráfico que fluye a través de la red y, si detecta algo que coincide con patrones de ataque
+            conocidos o comportamientos anómalos, genera alertas para notificar al administrador de seguridad. El IDS es
+            un dispositivo «pasivo» que opera fuera de banda (out-of-band), lo que significa que el tráfico no atraviesa
+            el IDS para llegar a su destino; el IDS simplemente «escucha» una copia del tráfico. Esta arquitectura de
+            monitoreo pasivo significa que el IDS nunca puede ser un punto único de fallo que cause la caída de la red,
+            pero también significa que no puede actuar directamente para detener un ataque en progreso.</p>
+
+        <p>El IPS (Sistema de Prevención de Intrusos) es más como un guardia armado que no solo ve al intruso sino que
+            puede tomar acción inmediata para detenerlo. Opera en línea (in-band), lo que significa que el tráfico de
+            red atraviesa el IPS para llegar a su destino. Cuando detecta un ataque, el IPS puede bloquear activamente
+            el tráfico malicioso, terminar conexiones suspectas, y aislar automáticamente sistemas comprometidos. Esta
+            capacidad de respuesta inmediata hace que el IPS sea una herramienta más proactiva que el IDS, pero también
+            conlleva riesgos: un IPS mal configurado podría bloquear tráfico legítimo, causando interrupciones de
+            servicio que afectan a usuarios y aplicaciones legítimas.</p>
+
+        <p>La decisión entre IDS e IPS, o la implementación de ambos en una arquitectura de defensa en profundidad,
+            depende del nivel de riesgo de la organización, el presupuesto disponible, y la tolerancia al riesgo de
+            falsos positivos. Muchos entornos de alta seguridad implementan ambos: el IDS proporciona visibilidad y
+            alertas detalladas para análisis forense, mientras que el IPS proporciona protección en tiempo real contra
+            ataques conocidos.</p>
+
+        <h3>Balanceador de Carga (Load Balancer)</h3>
+        <p>Imagina que tienes un sitio web muy popular que recibe millones de visitas diarias. Un solo servidor, por
+            poderoso que sea, no podría manejar todo ese tráfico de manera eficiente. El balanceador de carga se coloca
+            delante de un grupo de servidores (llamados server farm o cluster), recibe todas las solicitudes de los
+            usuarios, y las distribuye equitativamente entre los servidores disponibles según algoritmos sofisticados
+            que consideran factores como la carga actual de cada servidor, la latencia de respuesta, y la afinidad de
+            sesión cuando es necesaria.</p>
+
+        <p>La función del balanceador de carga va más allá de simple distribución de tráfico. También mejora la
+            disponibilidad general del servicio: si uno de los servidores del grupo falla, el balanceador detecta que el
+            servidor está inoperativo y deja de enviarle tráfico, redirigiendo todas las solicitudes a los servidores
+            restantes. Esta detección de fallos y redistribución automática es completamente transparente para los
+            usuarios finales, quienes continúan recibiendo servicio sin notar la falla del servidor subyacente. El
+            balanceador también puede realizar «health checks» periódicos a los servidores backend para verificar que
+            están funcionando correctamente antes de enviarles tráfico.</p>
+
+        <p>Los algoritmos de balanceo de carga incluyen round robin (distribución secuencial simple), weighted round
+            robin (considerando diferentes capacidades de servidores), least connections (enviar tráfico al servidor con
+            menos conexiones activas), y algoritmos más sofisticados que consideran la latencia de respuesta o el tiempo
+            de procesamiento histórico de cada servidor. Los balanceadores modernos también pueden realizar terminación
+            SSL/TLS, descargando el trabajo de encriptación y desencriptación de los servidores backend, y pueden
+            implementar mecanismos de protección contra ataques de denegación de servicio distribuido (DDoS).</p>
+
+        <h3>Servidor Proxy</h3>
+        <p>El proxy actúa como un intermediario o «hombre en el medio» autorizado que representa a los usuarios internos
+            cuando interactúan con recursos externos en Internet. Cuando un usuario interno quiere navegar por una
+            página web o acceder a un servicio externo, la petición no va directamente a Internet; primero va al proxy,
+            que la realiza en nombre del usuario. La respuesta del servidor externo vuelve al proxy, quien luego la
+            entrega al usuario interno original.</p>
+
+        <p>Esta arquitectura de intermediación proporciona múltiples beneficios. Primero, el proxy puede cachear
+            contenido frecuentemente solicitado (como páginas web populares), reduciendo el ancho de banda necesario
+            hacia Internet y acelerando el acceso a ese contenido para usuarios subsiguientes. Segundo, el proxy puede
+            aplicar políticas de filtrado que bloquean el acceso a sitios web inapropiados o no relacionados con el
+            trabajo. Tercero, el proxy oculta las direcciones IP internas de la red, proporcionando un nivel adicional
+            de anonimato y protección contra ataques directos. Cuarto, el proxy puede registrar y auditar todo el
+            tráfico web, proporcionando visibilidad sobre las actividades de navegación de los usuarios para
+            cumplimiento normativo o investigación de seguridad.</p>
+
+        <p>Existen diferentes tipos de proxies con propósitos específicos: forward proxy para usuarios internos
+            accediendo a Internet, reverse proxy para servidor es externos siendo accedidos desde Internet (común para
+            sitios web de alto tráfico), proxy web específico para tráfico HTTP/HTTPS, y proxy SOCKS para otros tipos de
+            tráfico. Los proxies también pueden implementar autenticación de usuarios, requiriendo credenciales antes de
+            permitir acceso a Internet, lo que es especialmente útil en entornos empresariales donde se necesita
+            rastrear y controlar el uso de la red corporativa.</p>
+
+        <h2>Almacenamiento en Red: Guardando los Datos</h2>
+        <p>Los servidores modernos necesitan guardar y acceder a enormes cantidades de datos de manera eficiente y
+            confiable. No usamos simplemente discos duros simples conectados directamente a un servidor; en su lugar,
+            utilizamos redes de almacenamiento especializadas que permiten compartir recursos de almacenamiento entre
+            múltiples servidores y proporcionar niveles de redundancia y rendimiento que los discos locales no pueden
+            igualar.</p>
+
+        <h3>NAS (Network Attached Storage)</h3>
+        <p>El almacenamiento conectado a la red es, en esencia, un servidor dedicado con muchos discos duros que se
+            conecta a tu red normal mediante un cable Ethernet estándar. A diferencia de un servidor de propósito
+            general que puede ejecutar múltiples aplicaciones, un dispositivo NAS está optimizado específicamente para
+            una tarea: almacenar y servir archivos. Accedes a los datos a nivel de archivos y carpetas compartidas, como
+            si tuvieras una unidad de red adicional en tu explorador de archivos. Los protocolos comunes utilizados
+            incluyen SMB/CIFS para entornos Windows y NFS para entornos Linux/Unix.</p>
+
+        <p>El NAS es ideal para compartir archivos en oficinas pequeñas y medianas, realizar copias de seguridad
+            sencillas, y proporcionar almacenamiento centralizado para hogares con múltiples dispositivos. Es más barato
+            y significativamente más fácil de configurar y administrar que soluciones empresariales más complejas.
+            Dispositivos NAS de consumo como los de Synology, QNAP o Western Digital My Cloud proporcionan interfaces
+            web intuitivas que permiten a usuarios no técnicos configurar almacenamiento compartido, copias de seguridad
+            automáticas, y servicios básicos de nube privada sin necesidad de conocimientos especializados de redes o
+            almacenamiento.</p>
+
+        <p>Las limitaciones del NAS incluyen el cuello de botella potencial del ancho de banda de la red Ethernet
+            (aunque los modelos profesionales soportan enlaces de 10GbE o más), y el hecho de que el tráfico de
+            almacenamiento compite con el tráfico regular de la red por los mismos recursos. Para aplicaciones que
+            requieren el máximo rendimiento, como bases de datos de alto rendimiento o virtualización intensiva, una
+            solución diferente es más apropiada.</p>
+
+        <h3>SAN (Storage Area Network)</h3>
+        <p>La red de área de almacenamiento representa el siguiente nivel de sofisticación en infraestructura de
+            almacenamiento empresarial. A diferencia del NAS que proporciona almacenamiento a nivel de archivos, el SAN
+            proporciona almacenamiento a nivel de bloque, lo que significa que el servidor ve el almacenamiento como si
+            fuera un disco duro interno virgen, completamente formateado y listo para usar, en lugar de carpetas
+            compartidas en red. Esta diferencia fundamental tiene implicaciones importantes para el rendimiento y las
+            aplicaciones que pueden beneficiarse de cada tecnología.</p>
+
+        <p>La SAN es una red completamente separada de la red de datos principal, dedicada exclusivamente a mover datos
+            entre servidores y dispositivos de almacenamiento masivo. Esta separación física es crucial para el
+            rendimiento: el tráfico de almacenamiento no compite con el tráfico de aplicaciones de usuario, garantizando
+            que las operaciones de disco intensivo no degraden la experiencia del usuario final y viceversa. Las
+            tecnologías de interconexión típicas incluyen Fibre Channel (FC), que ofrece alto rendimiento y baja
+            latencia con velocidades de hasta 128Gbps en las versiones más nuevas, y iSCSI que permite implementar redes
+            SAN utilizando infraestructura Ethernet estándar, reduciendo los costos de implementación.</p>
+
+        <p>Las SAN se utilizan en centros de datos empresariales para alojar bases de datos de alto rendimiento que
+            requieren acceso de lectura/escritura extremadamente rápido y confiable, sistemas de virtualización donde
+            múltiples máquinas virtuales acceden a almacenamiento compartido, y aplicaciones críticas que no pueden
+            tolerar el más mínimo tiempo de inactividad. La SAN típicamente incorpora niveles avanzados de redundancia,
+            con múltiples rutas de datos, múltiples controladores, y sistemas de replicación que pueden sincronizar
+            datos a otra SAN en una ubicación diferente para desastres. Es costoso y complejo de implementar y
+            administrar, pero proporciona niveles de rendimiento, disponibilidad y escalabilidad que ninguna otra
+            tecnología de almacenamiento puede igualar.</p>
+
+        <div class="summary-box">
+            <h3>Resumen de Puntos Clave para el Examen</h3>
+            <p>Aquí tienes el «cheat sheet» mental para el Dominio 1.2 del examen:</p>
+
+            <ul>
+                <li><strong>Switch:</strong> Capa 2. Usa Direcciones MAC. Conecta dispositivos en la LAN. Inteligente.
+                    Aprende direcciones MAC automáticamente.</li>
+                <li><strong>Router:</strong> Capa 3. Usa Direcciones IP. Conecta redes distintas (LAN a WAN). Detiene
+                    broadcasts.</li>
+                <li><strong>Firewall:</strong> Filtra tráfico basado en reglas/puertos. Seguridad perimetral. Puede ser
+                    de Capa 3-4 o de próxima generación (Capa 7).</li>
+                <li><strong>IDS:</strong> Detecta y alerta (Pasivo). Opera fuera de línea (out-of-band). Solo monitoreo,
+                    no bloqueo.</li>
+                <li><strong>IPS:</strong> Previene y bloquea (Activo/En línea). Opera en línea con el tráfico. Puede
+                    causar interrupciones si está mal configurado.</li>
+                <li><strong>Load Balancer:</strong> Distribuye tráfico entre servidores para rendimiento y redundancia.
+                    Balanceo de carga y alta disponibilidad.</li>
+                <li><strong>Proxy:</strong> Intermediario. Hace peticiones por ti. Proporciona caché, filtrado y
+                    anonimato.</li>
+                <li><strong>NAS:</strong> Almacenamiento a nivel de Archivo. Conectado a la red normal (Ethernet).
+                    Protocolos SMB/NFS.</li>
+                <li><strong>SAN:</strong> Almacenamiento a nivel de Bloque. Red dedicada de alta velocidad (Fibre
+                    Channel o iSCSI). Rendimiento máximo.</li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

@@ -9,16 +9,15 @@
 
 ## 2. Version History & Patch Notes
 
-### v3.1.4 - Exam Data Restoration & Exam 2 Integration (Current)
-- **Patch Description:** Fixed major loading error and integrated complete Exam 2 dataset.
-- **Key Changes:**
-    - **Data Structure:** Restored `EXAMS_DATABASE` object in `questions_data.js` to match frontend expectations.
-    - **Exam 2 Integration:** merged 90 new questions from `temp/examen2_completo.json`.
-    - **Automation:** Updated `reference_correction_script.py` to ensure future data generations maintain the correct structure and multi-exam support.
-- **Total Questions:** 180 (90 from Exam 1 + 90 from Exam 2).
-- **Status:** Complete & Publicly Deployed (v3.1.4 / Data v4.2).
+### v3.1 - Book v5 Synchronization
+- **Patch Description:** Full reference synchronization with CompTIA Network+ Book v5.
+- **Key Achievements:**
+    - **Structure Mapping:** Updated references to match the new 22-chapter structure.
+    - **New Content:** Integrated references for SSE/SASE, VXLAN/VNI, and Heat-Maps.
+    - **Renumbering:** Corrected chapter shifts (Subnetting Ch 4 -> Ch 6, Cloud Ch 8 -> Ch 3).
+    - **Accuracy:** 100% of simulator questions now point to valid Book v5 sections.
 
-### v3.0 - Exam 2 Processing
+### v3.0 - Exam 2 Integration (Current)
 - **Patch Description:** Complete extraction and processing of CompTIA Network+ Exam 2.
 - **Key Achievements:**
     - **Image Processing:** Extracted 80 questions from 90 source images in `img_source/Examen2/`
@@ -35,12 +34,6 @@
 - **File Structure:**
     - Source: `img_source/Examen2/` (90 PNG screenshots)
     - Output: `temp/examen2_batch[1-7].json` + `temp/examen2_completo.json`
-
-### v3.1.1 - Hotfix: Cache Busting
-- **Patch Description:** Solucionado problema de renderizado donde solo aparecía el Examen 1.
-- **Key Changes:**
-    - **Cache Busting:** Se añadió parámetro de versión (`?v=3.1`) a la carga de scripts en `index.html`.
-    - **Force Reload:** Garantiza que los navegadores carguen la última versión de `questions_data.js` con los datos del Examen 2.
 
 ### v2.2 - Advanced Filtering & Layout
 - **Patch Description:** Real-time domain filtering and structural UI correction.
@@ -89,9 +82,10 @@
 ## 5. Next Steps & Roadmap
 
 ### Immediate Tasks
-- [ ] **Integration:** Merge `examen2_completo.json` with existing question database
-- [ ] **Web App Update:** Add Exam 2 questions to the interactive exam interface
-- [ ] **EPUB v5:** Generate updated EPUB including both Exam 1 and Exam 2 (170 total questions)
+- [x] **Integration:** Merge `examen2_completo.json` with existing question database
+- [/] **Web App Update:** Add Exam 2 questions to the interactive exam interface
+- [/] **EPUB v5:** Generate updated EPUB including both Exam 1 and Exam 2 (170 total questions)
+- [x] **Ref Sync:** Synchronize all question references with Book v5 structure
 - [ ] **Testing:** Validate all questions display correctly in both web and EPUB formats
 
 ### Future Enhancements
@@ -100,20 +94,9 @@
 - [ ] **Question Metadata:** Add difficulty ratings and topic tags for better filtering
 - [ ] **Study Mode:** Implement spaced repetition algorithm for optimal learning
 
-### v3.1.3 - Translation & Restoration (Final)
-- **Patch Description:** Restauración y traducción de preguntas para objetivo de 90 items.
-- **Key Changes:**
-    - **Data Integrity:** Restauradas 3 preguntas eliminadas (IDs 83, 89, 90) y traducidas al español.
-    - **Cleanup:** Eliminado duplicado exacto (ID 91 -> ID 80) para mantener recuento preciso.
-    - **Total Count:** 90 Preguntas verificadas.
-
-### v3.1.2 - Hotfix: Clean Duplicate English Questions
-
-[...]
-
 ### Data Quality
 - **Exam 1:** 90 questions (fully integrated)
-- **Exam 2:** 90 questions (Source: `temp/examen2_final_integrated.json`)
-- **Total Available:** 180 questions (Complete Set)
+- **Exam 2:** 91 questions (integrated with images)
+- **Total Available:** 181 questions
 - **Target:** 180+ questions for comprehensive certification preparation
 

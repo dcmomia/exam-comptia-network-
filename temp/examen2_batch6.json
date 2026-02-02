@@ -1,0 +1,240 @@
+[
+    {
+        "id": 59,
+        "has_context_image": false,
+        "question": "Anoche, los administradores de sistemas de su empresa realizaron una actualización del servidor. Esta mañana, varios usuarios tienen problemas para acceder a la unidad compartida de la empresa en la red. Se le ha pedido que solucione el problema. ¿Qué documento debería consultar primero para crear una teoría probable sobre la causa del problema?",
+        "options": [
+            "Notas de la versión del software del servidor",
+            "Diagrama de red física",
+            "Documentación de gestión de cambios (Change management)",
+            "Plan de gestión de cableado"
+        ],
+        "answer": "Documentación de gestión de cambios (Change management)",
+        "explanation": "La documentación de gestión de cambios registra todas las modificaciones realizadas en la infraestructura de TI. Dado que el problema comenzó después de una actualización, este documento proporcionará detalles sobre qué se cambió exactamente, ayudando a identificar la causa potencial del problema.",
+        "source_reference": "Capítulo 18: Políticas y Procedimientos > Gestión de Cambios"
+    },
+    {
+        "id": 60,
+        "has_context_image": false,
+        "question": "Un técnico está instalando un firewall de red y desea bloquear todo el tráfico de WAN a LAN que utilice puertos distintos a los puertos predeterminados para la conectividad de internet y correo electrónico. ¿Qué regla debería verificar el técnico PRIMERO?",
+        "options": [
+            "Que esté habilitado un denegar implícito (implicit deny)",
+            "Que todo el tráfico de salida esté bloqueado",
+            "Que todo el tráfico de entrada esté bloqueado",
+            "Que se haya creado una DMZ"
+        ],
+        "answer": "Que esté habilitado un denegar implícito (implicit deny)",
+        "explanation": "El 'denegar implícito' es un principio de seguridad donde todo lo que no está explícitamente permitido se prohíbe. Al verificar que exista una regla de denegación implícita al final de la lista de control de acceso (ACL), el técnico asegura que solo se permita el tráfico específicamente autorizado.",
+        "source_reference": "Capítulo 12: Firewalls y Gateways > Reglas de Firewall (ACL)"
+    },
+    {
+        "id": 61,
+        "has_context_image": false,
+        "question": "Según el modelo OSI, ¿en cuál de las siguientes capas se encapsulan los datos en paquetes?",
+        "options": [
+            "Capa 2",
+            "Capa 5",
+            "Capa 4",
+            "Capa 3"
+        ],
+        "answer": "Capa 3",
+        "explanation": "En el modelo OSI, los datos se encapsulan en 'paquetes' en la Capa de Red (Capa 3). En la Capa 4 se llaman segmentos o datagramas, y en la Capa 2 se llaman tramas.",
+        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > Capa 3: Red"
+    },
+    {
+        "id": 62,
+        "has_context_image": false,
+        "question": "¿Qué capa del modelo OSI es responsable del cifrado de datos y la conversión de conjuntos de caracteres, como de ASCII a UTF-8?",
+        "options": [
+            "Capa 7",
+            "Capa 5",
+            "Capa 4",
+            "Capa 6"
+        ],
+        "answer": "Capa 6",
+        "explanation": "La Capa de Presentación (Capa 6) se encarga de la entrega y el formato de la información, lo que incluye el cifrado, la compresión y la traducción de conjuntos de caracteres.",
+        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > Capa 6: Presentación"
+    },
+    {
+        "id": 63,
+        "has_context_image": false,
+        "question": "Mientras trabaja como técnico de red, a Leah se le asigna la tarea de configurar registros DNS para permitir búsquedas DNS inversas en la red de su organización. Como parte de su tarea, necesita crear registros que mapeen direcciones IP a nombres de dominio. ¿Qué tipo de registro específico debería usar Leah para facilitar las búsquedas DNS inversas?",
+        "options": [
+            "CNAME",
+            "AAAA",
+            "PTR",
+            "NS"
+        ],
+        "answer": "PTR",
+        "explanation": "Un registro de puntero (PTR) se utiliza para búsquedas DNS inversas, permitiendo resolver una dirección IP en un nombre de dominio.",
+        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Tipos de Registros DNS"
+    },
+    {
+        "id": 64,
+        "has_context_image": false,
+        "question": "Dion Training acaba de instalar un servidor web para un nuevo nombre de dominio. ¿Cuál de los siguientes registros DNS debería crearse para permitir que los usuarios lleguen al sitio web usando su nombre de dominio y luego redirigir a los clientes a la dirección IPv6 correcta del servidor?",
+        "options": [
+            "AAAA",
+            "A",
+            "SOA",
+            "MX"
+        ],
+        "answer": "AAAA",
+        "explanation": "Un registro AAAA mapea un nombre de dominio a una dirección IPv6 (a diferencia del registro A, que mapea a IPv4).",
+        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Tipos de Registros DNS"
+    },
+    {
+        "id": 65,
+        "has_context_image": false,
+        "question": "¿Qué término en redes se refiere a una extensión de un protocolo de transferencia de correo electrónico comúnmente utilizado que proporciona cifrado y autenticación?",
+        "options": [
+            "SMTPS",
+            "HTTPS",
+            "POP3",
+            "IMAP"
+        ],
+        "answer": "SMTPS",
+        "explanation": "SMTPS (Simple Mail Transfer Protocol Secure) es una extensión de SMTP que utiliza SSL/TLS para proporcionar cifrado y autenticación en la transferencia de correos.",
+        "source_reference": "Capítulo 14: Fortalecimiento de Red > Protocolos Seguros"
+    },
+    {
+        "id": 66,
+        "has_context_image": false,
+        "question": "Dion Training está reestructurando su sitio web y desea dirigir el tráfico de una URL antigua a una URL nueva sin cambiar el nombre de dominio original. ¿Qué tipo de registro DNS permite que el dominio apunte a otro dominio como un alias?",
+        "options": [
+            "A",
+            "CNAME",
+            "NS",
+            "PTR"
+        ],
+        "answer": "CNAME",
+        "explanation": "Un registro de nombre canónico (CNAME) se utiliza para crear un alias de un nombre de dominio, apuntándolo hacia otro nombre de dominio (el nombre canónico).",
+        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Tipos de Registros DNS"
+    },
+    {
+        "id": 67,
+        "has_context_image": false,
+        "question": "Fail To Pass Systems acaba de ser víctima de una filtración de datos. Su administrador de base de datos necesitaba trabajar desde casa este fin de semana, por lo que descargó la base de datos corporativa en su laptop de trabajo. En su camino a casa, dejó la laptop en un Uber y, unos días después, los datos fueron publicados en internet. ¿Cuál de las siguientes mitigaciones habría proporcionado la mayor protección contra esta filtración de datos?",
+        "options": [
+            "Requerir que se utilice una VPN para todos los empleados que teletrabajen",
+            "Requerir que todos los nuevos empleados firmen un acuerdo de confidencialidad (NDA)",
+            "Requerir el enmascaramiento de datos para cualquier información almacenada en la base de datos",
+            "Requerir el cifrado de datos en reposo en todos los endpoints"
+        ],
+        "answer": "Requerir el cifrado de datos en reposo en todos los endpoints",
+        "explanation": "El cifrado de datos en reposo (como el cifrado de disco completo) habría protegido los datos en la laptop incluso si esta fuera perdida o robada, ya que los archivos serían ilegibles sin la clave de descifrado.",
+        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Seguridad de Endpoints"
+    },
+    {
+        "id": 68,
+        "has_context_image": false,
+        "question": "¿Cuál de los siguientes requeriría que el administrador de la red programe una ventana de mantenimiento?",
+        "options": [
+            "Una actualización de versión menor de un router de producción",
+            "Una actualización de versión mayor de un switch central en un laboratorio de pruebas",
+            "Reiniciar la laptop del administrador de la red",
+            "Se debe enviar una notificación de correo electrónico a toda la empresa"
+        ],
+        "answer": "Una actualización de versión menor de un router de producción",
+        "explanation": "Cualquier cambio o actualización en un dispositivo de producción (como un router) que pueda causar una interrupción del servicio o afectar la red operativa requiere una ventana de mantenimiento programada y comunicada.",
+        "source_reference": "Capítulo 18: Políticas y Procedimientos > Mantenimiento y Parches"
+    },
+    {
+        "id": 69,
+        "has_context_image": false,
+        "question": "Cameron ha ingresado recientemente el comando 'show arp' en la terminal de un dispositivo de red. ¿Cuál de las siguientes opciones describe mejor la salida que Cameron verá de este comando?",
+        "options": [
+            "La lista de VLANs configuradas en el switch y su estado.",
+            "Los ajustes de energía actuales y el consumo del dispositivo de red.",
+            "Una tabla que mapea direcciones IP y direcciones MAC actualmente reconocidas por el dispositivo.",
+            "Una lista de direcciones IP asignadas al dispositivo y sus tiempos de expiración."
+        ],
+        "answer": "Una tabla que mapea direcciones IP y direcciones MAC actualmente reconocidas por el dispositivo.",
+        "explanation": "El comando 'show arp' muestra la tabla ARP, que contiene el mapeo entre las direcciones de Capa 3 (IP) y las direcciones de Capa 2 (MAC) para los dispositivos locales.",
+        "source_reference": "Capítulo 16: Comandos de Línea de Comandos > show arp"
+    },
+    {
+        "id": 70,
+        "has_context_image": false,
+        "question": "¿En qué se diferencia Security Service Edge (SSE) de los enfoques tradicionales de seguridad basados en el perímetro?",
+        "options": [
+            "SSE integra inteligencia de amenazas para detectar y responder a incidentes de seguridad.",
+            "SSE prioriza la segmentación de red sobre el cifrado para la protección de datos.",
+            "SSE depende de reglas de firewall estáticas para proteger el perímetro de la red.",
+            "SSE se enfoca en asegurar recursos internos en lugar de amenazas externas."
+        ],
+        "answer": "SSE integra inteligencia de amenazas para detectar y responder a incidentes de seguridad.",
+        "explanation": "SSE es un componente de SASE que ofrece servicios de seguridad desde la nube (como SWG, CASB y ZTNA) de forma unificada. Al estar basado en la nube, permite una integración mucho más profunda de inteligencia de amenazas global y una respuesta ágil, a diferencia de los firewalls perimetrales tradicionales que a menudo actúan de forma aislada.",
+        "source_reference": "Capítulo 12: Firewalls y Gateways > SASE y SSE"
+    },
+    {
+        "id": 71,
+        "has_context_image": false,
+        "question": "¿Qué número de puerto utiliza LDAP?",
+        "options": [
+            "1433",
+            "636",
+            "3389",
+            "389"
+        ],
+        "answer": "389",
+        "explanation": "LDAP (Lightweight Directory Access Protocol) utiliza el puerto 389. El puerto 636 se utiliza para LDAPS (LDAP sobre SSL/TLS).",
+        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Protocolos de Directorio"
+    },
+    {
+        "id": 72,
+        "has_context_image": false,
+        "question": "¿Qué sistema permite a las organizaciones controlar y gestionar las identidades de los usuarios y su acceso a los recursos dentro de una red?",
+        "options": [
+            "QoS",
+            "VPN",
+            "DNS",
+            "IAM"
+        ],
+        "answer": "IAM",
+        "explanation": "IAM (Identity and Access Management) es el marco de políticas y tecnologías que asegura que las personas adecuadas dentro de un ecosistema tengan el acceso correcto a los recursos tecnológicos.",
+        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Fundamentos de IAM"
+    },
+    {
+        "id": 73,
+        "has_context_image": false,
+        "question": "¿Cuál de los siguientes se considera un protocolo de enrutamiento sin clase (classless)?",
+        "options": [
+            "STP",
+            "RIPv1",
+            "IGRP",
+            "OSPF"
+        ],
+        "answer": "OSPF",
+        "explanation": "OSPF (Open Shortest Path First) es un protocolo de enrutamiento sin clase, lo que significa que incluye la máscara de subred en sus actualizaciones, permitiendo el uso de VLSM y CIDR. RIPv1 e IGRP son protocolos con clase que no soportan estas funciones.",
+        "source_reference": "Capítulo 6: Enrutamiento IP > Protocolos de Enrutamiento"
+    },
+    {
+        "id": 74,
+        "has_context_image": false,
+        "question": "Dean tiene la tarea de optimizar la red para VoIP dentro de su organización. Después de pensarlo, decide configurar una Voice VLAN en varios switches. ¿Cuál es la razón principal para configurar este tipo de Voice VLAN?",
+        "options": [
+            "Segregar y priorizar el tráfico de voz para garantizar la calidad del servicio (QoS).",
+            "Agregar tráfico de voz a través de múltiples enlaces para redundancia.",
+            "Crear una VLAN separada solo para tráfico de datos.",
+            "Evitar que el tráfico de voz sea etiquetado por 802.1Q."
+        ],
+        "answer": "Segregar y priorizar el tráfico de voz para garantizar la calidad del servicio (QoS).",
+        "explanation": "Una Voice VLAN permite separar el tráfico de voz del tráfico de datos general, lo que facilita la aplicación de políticas de Calidad de Servicio (QoS) para dar prioridad a los paquetes de voz y reducir la latencia y el jitter.",
+        "source_reference": "Capítulo 13: Conceptos Avanzados de Red > VLANs y QoS"
+    },
+    {
+        "id": 75,
+        "has_context_image": false,
+        "question": "Una oficina sucursal pequeña con aproximadamente 50 dispositivos necesita una solución simple y rentable para enrutar el tráfico entre la red de la sucursal y su router de puerta de enlace. El protocolo de enrutamiento elegido debe ser fácil de configurar y utilizar la menor cantidad de sobrecarga (overhead). Los dispositivos en la red local también requieren una solución que proporcione un alto rendimiento para la conectividad por cable. ¿Qué combinación de protocolo de enrutamiento y hardware de red debería seleccionarse?",
+        "options": [
+            "OSPF como protocolo de enrutamiento; conectar los dispositivos con un switch de Capa 2 de 100 Mbps",
+            "EIGRP como protocolo de enrutamiento; conectar los dispositivos con un punto de acceso inalámbrico 802.11n",
+            "BGP como protocolo de enrutamiento; conectar los dispositivos con un switch de Capa 3 Gigabit",
+            "RIP como protocolo de enrutamiento; conectar los dispositivos con un switch de Capa 2 Gigabit"
+        ],
+        "answer": "RIP como protocolo de enrutamiento; conectar los dispositivos con un switch de Capa 2 Gigabit",
+        "explanation": "Para una oficina pequeña con 50 dispositivos, RIP es una solución simple y de baja sobrecarga. Un switch de Capa 2 Gigabit proporciona el alto rendimiento requerido (1000 Mbps) para la conectividad por cable de forma rentable.",
+        "source_reference": "Capítulo 6: Enrutamiento IP > Comparación de Protocolos"
+    }
+]

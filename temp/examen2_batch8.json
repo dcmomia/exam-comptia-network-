@@ -1,0 +1,142 @@
+[
+    {
+        "id": 82,
+        "has_context_image": false,
+        "question": "Which attack utilizes a wireless access point made to look as if it belongs to the network by mimicking the corporate network's SSID in order to eavesdrop on the wireless traffic?",
+        "options": [
+            "Shoulder surfing",
+            "Rogue access point",
+            "WEP attack",
+            "Evil twin"
+        ],
+        "answer": "Evil twin",
+        "explanation": "Un ataque 'Evil Twin' implica configurar un punto de acceso falso que imita el SSID legítimo de la red corporativa para engañar a los usuarios y que se conecten a él, permitiendo al atacante interceptar el tráfico. Un 'Rogue AP' es un AP no autorizado, pero no necesariamente imita al legítimo para interceptación activa como el Evil Twin.",
+        "source_reference": "Capítulo 16: Ataques de Red > Ataques Inalámbricos"
+    },
+    {
+        "id": 83,
+        "has_context_image": false,
+        "question": "Lorraine is the sole network administrator for her company. After investigating reports from users in the accounting department, she discovers that a crucial switch port connected to the department's server is not transmitting data. Upon inspection, she notes that the switch port's LED indicator is not lit. This seems strange to her since she has not disabled the port. Which of the following is the MOST likely reason for this issue?",
+        "options": [
+            "The port is configured with an incorrect VLAN assignment.",
+            "The port is suspended due to an STP (Spanning Tree Protocol) issue.",
+            "The port has been error disabled due to a violation.",
+            "The port is administratively down."
+        ],
+        "answer": "The port has been error disabled due to a violation.",
+        "explanation": "Si el LED del puerto está apagado y el administrador no lo ha deshabilitado manualmente ('administratively down'), es probable que el puerto haya entrado en estado 'error-disabled' debido a una violación de seguridad (como Port Security). STP generalmente muestra un LED ámbar o parpadeante, no apagado.",
+        "source_reference": "Capítulo 20: Solución de Problemas de Red > Problemas de Puertos de Switch"
+    },
+    {
+        "id": 84,
+        "has_context_image": false,
+        "question": "A small office is experiencing frequent Wi-Fi interference on their 2.4 GHz wireless network. The network administrator identifies that multiple neighboring networks are using overlapping channels, causing signal interference and reduced performance. To mitigate this issue and improve the Wi-Fi experience, which of the following actions should the administrator take?",
+        "options": [
+            "Set the access points to use the widest available channel width on the 2.4 GHz band.",
+            "Configure the access points to use channels 1, 6, and 11.",
+            "Implement a mesh network topology to improve coverage across the office.",
+            "Increase the transmission power of all access points to overpower interference."
+        ],
+        "answer": "Configure the access points to use channels 1, 6, and 11.",
+        "explanation": "En la banda de 2.4 GHz, los únicos canales que no se superponen son el 1, 6 y 11. Configurar los puntos de acceso en estos canales minimiza la interferencia de canal adyacente (ACI) y mejora el rendimiento en entornos congestionados.",
+        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Canales y Frecuencias"
+    },
+    {
+        "id": 85,
+        "has_context_image": false,
+        "question": "Which protocol is used to establish a secure and encrypted VPN tunnel that can be initiated through a web browser?",
+        "options": [
+            "PPTP",
+            "SSL",
+            "IPsec",
+            "PPP"
+        ],
+        "answer": "SSL",
+        "explanation": "Las VPNs basadas en SSL (Secure Sockets Layer) o TLS permiten establecer túneles seguros directamente desde un navegador web, a menudo conocidas como VPNs sin cliente (clientless) o portales WebVPN.",
+        "source_reference": "Capítulo 17: Autenticación y Control de Acceso > Tecnologías VPN"
+    },
+    {
+        "id": 86,
+        "has_context_image": false,
+        "question": "What term refers to a malicious technique or software crafted to exploit vulnerabilities in computer systems, often leading to unauthorized access or system compromise?",
+        "options": [
+            "Vulnerability",
+            "Exploit",
+            "Hacker",
+            "Virus"
+        ],
+        "answer": "Exploit",
+        "explanation": "Un 'Exploit' es una pieza de software, un fragmento de datos o una secuencia de comandos diseñada para aprovechar una vulnerabilidad o fallo de seguridad específico en un sistema para causar un comportamiento no intencionado.",
+        "source_reference": "Capítulo 16: Ataques de Red > Conceptos de Seguridad"
+    },
+    {
+        "id": 87,
+        "has_context_image": false,
+        "question": "Which storage network technology utilizes file-level storage to function properly?",
+        "options": [
+            "iSCSI",
+            "NAS",
+            "FCoE",
+            "SAN"
+        ],
+        "answer": "NAS",
+        "explanation": "NAS (Network Attached Storage) opera a nivel de archivo (file-level), permitiendo a los usuarios acceder a archivos a través de la red. SAN, iSCSI y FCoE operan a nivel de bloque (block-level).",
+        "source_reference": "Capítulo 10: Tecnologías WAN y Centros de Datos > Almacenamiento en Red"
+    },
+    {
+        "id": 88,
+        "has_context_image": false,
+        "question": "In a client-to-site VPN configuration, what type of tunneling setup routes all traffic, including both corporate network traffic and internet-bound traffic, through the VPN tunnel?",
+        "options": [
+            "Clientless",
+            "Split Tunnel",
+            "Full Tunnel",
+            "Direct Tunnel"
+        ],
+        "answer": "Full Tunnel",
+        "explanation": "En una configuración 'Full Tunnel', TODO el tráfico del cliente (tanto el destinado a la red corporativa como el tráfico general de Internet) se enruta a través del túnel VPN. 'Split Tunnel' solo enruta el tráfico corporativo por la VPN.",
+        "source_reference": "Capítulo 17: Autenticación y Control de Acceso > Configuraciones VPN"
+    },
+    {
+        "id": 89,
+        "has_context_image": false,
+        "question": "You have just replaced the edge switch on the second floor of Dion Training. After you finish, a user states they can no longer access the network but everything was working fine yesterday before you replaced the switch. The user's coworkers claim their computers are able to access the network without any issues. You check the back of the user's workstation and you do not see any LED lights lit or blinking on their network interface card. Which of the following should you check next to solve this issue?",
+        "options": [
+            "Verify the switch is connected to the router",
+            "Verify the network interface card is operating properly",
+            "Verify the network cable is attached to the new switch",
+            "Verify the device is using the correct cable type"
+        ],
+        "answer": "Verify the network cable is attached to the new switch",
+        "explanation": "Dado que se acaba de reemplazar el switch y el problema es aislado (solo un usuario) con la luz de enlace apagada, lo más probable es que el cable de red de ese usuario no se haya conectado correctamente al nuevo switch. Si fuera el router, fallecería toda la red. Si fuera la NIC, no habría funcionado ayer.",
+        "source_reference": "Capítulo 20: Solución de Problemas de Red > Problemas de Capa Física"
+    },
+    {
+        "id": 90,
+        "has_context_image": false,
+        "question": "Which of the following is a method that is used to automatically configure IPv6 host addresses?",
+        "options": [
+            "EUI-64",
+            "APIPA",
+            "EIA-568B",
+            "EBCDIC"
+        ],
+        "answer": "EUI-64",
+        "explanation": "EUI-64 es un método utilizado en IPv6 para generar automáticamente la porción de interfaz (Host ID) de 64 bits de una dirección IPv6 a partir de la dirección MAC de 48 bits del dispositivo.",
+        "source_reference": "Capítulo 4: Direccionamiento IP > IPv6"
+    },
+    {
+        "id": 91,
+        "has_context_image": false,
+        "question": "You have been asked to create a network where visitors can access the Internet without disrupting the office's own intranet. Which of the following types of networks should you create?",
+        "options": [
+            "Guest network",
+            "MU-MIMO",
+            "Demilitarized zone",
+            "Screened subnet"
+        ],
+        "answer": "Guest network",
+        "explanation": "Una 'Guest Network' (Red de Invitados) es una red separada diseñada específicamente para proporcionar acceso a Internet a visitantes manteniendo aislada la red interna (intranet) de la empresa por seguridad.",
+        "source_reference": "Capítulo 18: Seguridad Física y de Red > Segmentación de Red"
+    }
+]

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="es">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Capítulo 17: Amenazas y Ataques Modernos</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 17: Amenazas y Ataques Modernos</h1>
+
+        <h2 class="section-title">Introducción: Conociendo al Enemigo</h2>
+        <p>Para defender una red, debes pensar como quien quiere atacarla. Los hackers no siempre usan código complejo
+            estilo "Matrix"; a veces simplemente te piden la contraseña amablemente. En este capítulo, desglosaremos las
+            armas más comunes en el arsenal de un atacante, desde la fuerza bruta hasta la manipulación psicológica.</p>
+        <p>El objetivo del examen no es que sepas lanzar estos ataques, sino que sepas <strong>reconocerlos y
+                detenerlos</strong>.</p>
+
+        <h2 class="section-title">Ataques de Red: Fuerza Bruta y Saturación</h2>
+        <p>Estos ataques buscan romper la infraestructura o dejarla inutilizable.</p>
+
+        <h3 class="subsection-title">DoS y DDoS (Denial of Service)</h3>
+        <ul>
+            <li><strong>DoS (Denegación de Servicio):</strong> Un atacante envía tantos datos a un servidor que este se
+                satura y no puede responder a usuarios legítimos. Es como si una persona bloqueara la puerta giratoria
+                de una tienda.</li>
+            <li><strong>DDoS (Distributed DoS):</strong> El atacante usa un ejército de computadoras infectadas (Botnet)
+                para atacar desde miles de lugares a la vez. Es mucho más difícil de detener porque no puedes
+                simplemente bloquear una IP.</li>
+        </ul>
+
+        <h3 class="subsection-title">On-Path Attack (Antes llamado Man-in-the-Middle)</h3>
+        <p>El atacante se coloca secretamente entre tú y el servidor.</p>
+        <ul>
+            <li><strong>Escenario:</strong> Crees que estás hablando con tu banco, pero en realidad estás hablando con
+                el hacker, y el hacker habla con el banco por ti. Él ve todo lo que pasa.</li>
+            <li><strong>Prevención:</strong> Encriptación fuerte (HTTPS/TLS) y autenticación mutua.</li>
+        </ul>
+
+        <h2 class="section-title">Ataques de Protocolo: Mintiendo a la Red</h2>
+        <p>La red confía demasiado en ciertos protocolos. Los atacantes abusan de esa confianza.</p>
+
+        <h3 class="subsection-title">Envenenamiento (Poisoning)</h3>
+        <p>ARP y DNS son protocolos que se basan en la confianza ciega. Los atacantes abusan de la falta de
+            autenticación para desviar el tráfico.</p>
+
+        <div class="chapter-update">
+            <h4>⚡ Datos Críticos: ARP Spoofing vs. Poisoning</h4>
+            <p>Aunque a menudo se usan como sinónimos, hay una diferencia táctica en el examen:</p>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Técnica</th>
+                        <th>Alcance</th>
+                        <th>Mitigación Clave</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>ARP Spoofing</b></td>
+                        <td>Específico (un solo host víctima).</td>
+                        <td>Entradas ARP estáticas (no escalable).</td>
+                    </tr>
+                    <tr>
+                        <td><b>ARP Poisoning</b></td>
+                        <td>Masivo (ataca el Gateway de la red).</td>
+                        <td><b>DAI</b> (Dynamic ARP Inspection) en el Switch.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="warning-box">⚠️ <b>Síntoma de Examen:</b> Si al ejecutar <code>arp -a</code> ves que dos IPs
+                diferentes (ej: el Gateway y otro PC) tienen la <b>misma dirección MAC</b>, estás bajo un ataque de ARP
+                Poisoning.</p>
+        </div>
+
+        <div class="chapter-update">
+            <h4>DNS Cache Poisoning</h4>
+            <p>El atacante inserta registros falsos en la caché de un servidor DNS. Cuando pides "banco.com", el
+                servidor te da la IP del atacante. La defensa definitiva es <b>DNSSEC</b>, que añade firmas digitales
+                para validar los datos.</p>
+        </div>
+
+        <h3 class="subsection-title">VLAN Hopping (Salto de VLAN)</h3>
+        <p>El objetivo es saltar de una VLAN restringida a una segura eludiendo el enrutamiento de Capa 3.</p>
+
+        <div class="chapter-update">
+            <h4>Técnicas de Salto de VLAN</h4>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Técnica</th>
+                        <th>Mecanismo y Limitación</th>
+                        <th>Mitigación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Switch Spoofing</b></td>
+                        <td>Abusa de <b>DTP</b> para negociar un enlace Trunk y ver todas las VLANs.</td>
+                        <td><code>switchport mode access</code> y deshabilitar DTP.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Double Tagging</b></td>
+                        <td>Usa dos etiquetas 802.1Q (Nativa + Víctima). Es <b>unidireccional</b>.</td>
+                        <td>Cambiar la VLAN Nativa a una ID no utilizada (no la 1).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="subsection-title">Dispositivos Rogue (Pícaros)</h3>
+        <ul>
+            <li><strong>Rogue DHCP:</strong> Alguien conecta un router barato en la oficina. Este router empieza a
+                repartir direcciones IP incorrectas a los empleados, dejándolos sin internet o redirigiendo su tráfico.
+            </li>
+            <li><strong>Rogue AP / Evil Twin:</strong> Un punto de acceso Wi-Fi falso con el mismo nombre que la red
+                legítima (ej: "Wifi_Empresa"). Si te conectas por error, el hacker intercepta tus datos.</li>
+        </ul>
+
+        <h2 class="section-title">Ataques Humanos y de Software</h2>
+        <p>A veces, el eslabón más débil no es el código, sino la persona.</p>
+
+        <h3 class="subsection-title">Ingeniería Social (Social Engineering)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Phishing</strong></td>
+                    <td>Correos electrónicos masivos falsos ("Su cuenta ha sido bloqueada, haga clic aquí").</td>
+                </tr>
+                <tr>
+                    <td><strong>Spear Phishing</strong></td>
+                    <td>Phishing dirigido a una persona específica con información personalizada.</td>
+                </tr>
+                <tr>
+                    <td><strong>Shoulder Surfing</strong></td>
+                    <td>Mirar por encima del hombro de alguien para ver su contraseña.</td>
+                </tr>
+                <tr>
+                    <td><strong>Tailgating</strong></td>
+                    <td>Colarse en un edificio seguro caminando justo detrás de alguien que tiene tarjeta de acceso.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subsection-title">Malware</h3>
+        <p>Software malicioso.</p>
+        <ul>
+            <li><strong>Ransomware:</strong> Cifra tus archivos y pide un rescate (dinero) para darte la clave. Es la
+                amenaza #1 actual.</li>
+            <li><strong>Troyano:</strong> Parece un programa útil (un juego, un PDF), pero lleva una carga maliciosa
+                dentro.</li>
+            <li><strong>Botnet:</strong> Malware que convierte tu PC en un "zombi" controlado remotamente para lanzar
+                ataques DDoS o enviar spam.</li>
+        </ul>
+
+        <div class="summary-box">
+            <h3>📌 Resumen de Puntos Clave</h3>
+            <ul>
+                <li><strong>DDoS:</strong> Ataque distribuido para saturar un servicio.</li>
+                <li><strong>On-Path (MitM):</strong> Intercepción activa de datos.</li>
+                <li><strong>ARP Poisoning:</strong> Mentir sobre la dirección MAC en la LAN.</li>
+                <li><strong>Rogue DHCP:</strong> Servidor DHCP no autorizado que causa caos.</li>
+                <li><strong>Evil Twin:</strong> Wi-Fi falso que imita al real.</li>
+                <li><strong>Phishing:</strong> Engaño por correo.</li>
+                <li><strong>Ransomware:</strong> Secuestro de datos por encriptación.</li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <strong>💡 Consejo del Instructor:</strong> En el examen, si ves un escenario donde "los usuarios obtienen
+            direcciones IP que no coinciden con el esquema de la empresa", busca un <strong>Rogue DHCP</strong>.
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,142 @@
+[
+    {
+        "id": 1,
+        "has_context_image": false,
+        "question": "Usted está resolviendo un problema de conectividad de red en la estación de trabajo de un estudiante en Dion Training. Al verificar los detalles de la conexión inalámbrica, determina que el cliente inalámbrico está configurado para usar AES y el punto de acceso inalámbrico 802.11ac está configurado para usar WEP para asegurar la red. ¿Cuál de los siguientes problemas podría experimentarse debido a esta configuración?",
+        "options": [
+            "SSID incorrecto",
+            "Cobertura inalámbrica insuficiente",
+            "Desajuste en el protocolo de cifrado",
+            "Frase de contraseña (passphrase) incorrecta"
+        ],
+        "answer": "Desajuste en el protocolo de cifrado",
+        "explanation": "Un desajuste en el protocolo de cifrado (Encryption protocol mismatch) ocurre cuando el cliente y el punto de acceso (AP) están configurados con diferentes estándares de seguridad (en este caso, AES frente a WEP). Esto impide que el cliente se asocie o autentique correctamente con la red, ya que no pueden establecer un túnel cifrado compatible.",
+        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Resolución de Problemas Inalámbricos"
+    },
+    {
+        "id": 2,
+        "has_context_image": false,
+        "question": "Al preparar su red para el despliegue de IPv6, debe asegurarse de que el DNS pueda resolver nombres de dominio a direcciones IPv6. ¿Qué tipo de registro DNS está diseñado específicamente para este propósito?",
+        "options": [
+            "NS",
+            "AAAA",
+            "A",
+            "CNAME"
+        ],
+        "answer": "AAAA",
+        "explanation": "El registro AAAA (Quad-A) se utiliza en el sistema de nombres de dominio (DNS) para mapear un nombre de host a una dirección IPv6 de 128 bits. Es el equivalente al registro 'A' utilizado para IPv4.",
+        "source_reference": "Capítulo 5: Servicios y Protocolos de Red > DNS y Direccionamiento IPv6"
+    },
+    {
+        "id": 3,
+        "has_context_image": false,
+        "question": "¿Qué dispositivo de red opera en la Capa 1 del modelo OSI?",
+        "options": [
+            "Hub",
+            "Firewall",
+            "Bridge (Puente)",
+            "Router"
+        ],
+        "answer": "Hub",
+        "explanation": "Un Hub (concentrador) opera en la Capa 1 (Capa Física) del modelo OSI. Simplemente regenera y retransmite señales eléctricas a todos los puertos, sin capacidad de procesar direcciones MAC (Capa 2) ni direcciones IP (Capa 3).",
+        "source_reference": "Capítulo 2: Medios de Red y Dispositivos de Conexión > Dispositivos de Capa 1"
+    },
+    {
+        "id": 4,
+        "has_context_image": false,
+        "question": "Alexander necesita configurar dos servidores web orientados al público y asegurarse de que un atacante no pueda acceder a su intranet si esos servidores se ven comprometidos. ¿Cuál de los siguientes elementos debería utilizar?",
+        "options": [
+            "VPN",
+            "VNC",
+            "EAP",
+            "DMZ"
+        ],
+        "answer": "DMZ",
+        "explanation": "Una DMZ (Zona Desmilitarizada) es una subred aislada que contiene los servicios externos de una organización (como servidores web). Al colocar estos servidores en una DMZ, Alexander crea una capa de seguridad que evita que un atacante que comprometa un servidor web tenga acceso directo a la red interna (intranet).",
+        "source_reference": "Capítulo 18: Fortalecimiento y Defensa de la Red > Zonas de Seguridad y DMZ"
+    },
+    {
+        "id": 5,
+        "has_context_image": false,
+        "question": "En un centro de datos, ¿qué componente se puede asegurar con un mecanismo de bloqueo para evitar el acceso no autorizado a las conexiones de red y al cableado?",
+        "options": [
+            "Cable Ethernet",
+            "Panel de parcheo (Patch panel)",
+            "Transceptor óptico",
+            "Interfaz Virtual de Switch (SVI)"
+        ],
+        "answer": "Panel de parcheo (Patch panel)",
+        "explanation": "Aunque físicamente se pueden proteger los cables, los paneles de parcheo (Patch panels) suelen estar alojados en armarios o bastidores (racks) que cuentan con mecanismos de bloqueo. Además, existen cubiertas bloqueables específicas para paneles de parcheo que impiden la desconexión o conexión no autorizada de cables, protegiendo la integridad física de la red.",
+        "source_reference": "Capítulo 10: Instalaciones Físicas y Factores Ambientales > Seguridad Física"
+    },
+    {
+        "id": 6,
+        "has_context_image": false,
+        "question": "¿Cuál de las siguientes tecnologías inalámbricas utiliza MU-MIMO en canales no superpuestos para aumentar el ancho de banda de la red inalámbrica?",
+        "options": [
+            "802.11ac",
+            "802.11n",
+            "802.11b",
+            "802.11g"
+        ],
+        "answer": "802.11ac",
+        "explanation": "El estándar 802.11ac (también conocido como Wi-Fi 5) introdujo MU-MIMO (Multiple User - Multiple Input Multiple Output), que permite a un punto de acceso comunicarse con múltiples clientes simultáneamente. Además, opera exclusivamente en la banda de 5 GHz, aprovechando canales más anchos y no superpuestos para aumentar el rendimiento.",
+        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Estándares Wi-Fi"
+    },
+    {
+        "id": 7,
+        "has_context_image": false,
+        "question": "¿Cuál de los siguientes puertos debe estar abierto para permitir la sincronización de un sistema jerárquico y semiestratificado de fuentes de tiempo dentro de una red?",
+        "options": [
+            "143",
+            "3389",
+            "123",
+            "389"
+        ],
+        "answer": "123",
+        "explanation": "El puerto 123 (UDP) es utilizado por el protocolo NTP (Network Time Protocol) para sincronizar los relojes de los dispositivos en una red mediante una estructura jerárquica de estratos (stratum).",
+        "source_reference": "Capítulo 5: Servicios y Protocolos de Red > NTP"
+    },
+    {
+        "id": 8,
+        "has_context_image": false,
+        "question": "Una instalación de investigación remota situada en el terreno accidentado de una región montañosa requiere una conectividad a Internet robusta para dar soporte a proyectos de investigación que hacen un uso intensivo de datos. Las conexiones por cable son impracticables debido al difícil paisaje. Teniendo en cuenta sus necesidades, ¿qué tecnología deberían priorizar para obtener la conectividad más fiable con la menor latencia?",
+        "options": [
+            "Internet por satélite",
+            "Radio de alta frecuencia",
+            "Conexión por microondas",
+            "Red celular"
+        ],
+        "answer": "Conexión por microondas",
+        "explanation": "Una conexión por microondas (Microwave link) de punto a punto ofrece una latencia significativamente menor en comparación con el satélite (cuyas señales deben viajar al espacio y volver). En regiones montañosas donde no se puede tender cable, los enlaces de microondas son una solución de alto rendimiento y baja latencia muy efectiva entre cimas o puntos con línea de visión.",
+        "source_reference": "Capítulo 8: Tecnologías de Red de Área Amplia (WAN) > Enlaces Inalámbricos Terrestres"
+    },
+    {
+        "id": 9,
+        "has_context_image": false,
+        "question": "¿Cuál de los siguientes puertos utiliza el protocolo SIP?",
+        "options": [
+            "5060/5061",
+            "139/445",
+            "80/443",
+            "389/636"
+        ],
+        "answer": "5060/5061",
+        "explanation": "SIP (Session Initiation Protocol), utilizado para la señalización en VoIP, utiliza por defecto el puerto 5060 para conexiones no cifradas y el puerto 5061 para SIP sobre TLS (cifrado).",
+        "source_reference": "Capítulo 5: Servicios y Protocolos de Aplicación IP > Puertos de Voz sobre IP"
+    },
+    {
+        "id": 10,
+        "has_context_image": false,
+        "question": "¿Qué factor ambiental es fundamental para evitar la corrosión de los equipos y la acumulación de estática?",
+        "options": [
+            "Supresión de incendios",
+            "Control de humedad",
+            "Filtración de polvo",
+            "Aire acondicionado"
+        ],
+        "answer": "Control de humedad",
+        "explanation": "El control de la humedad es crítico en los centros de datos: una humedad demasiado baja aumenta el riesgo de descargas electrostáticas (ESD/estática), mientras que una humedad demasiado alta puede provocar condensación y corrosión de los componentes electrónicos.",
+        "source_reference": "Capítulo 10: Instalaciones Físicas y Factores Ambientales > Control de Humedad"
+    }
+]

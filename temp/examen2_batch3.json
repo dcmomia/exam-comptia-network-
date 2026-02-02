@@ -1,0 +1,156 @@
+[
+    {
+        "id": 18,
+        "has_context_image": false,
+        "question": "¿Cuál de las siguientes herramientas utilizaría para conectar un conector RJ-45 a un cable de cobre de par trenzado sin blindaje (UTP) utilizando el estándar EIA/TIA-568B?",
+        "options": [
+            "Empalmadora de fusión",
+            "Crimpadora de cable",
+            "Tijeras para cable",
+            "Herramienta de impacto (Punchdown tool)"
+        ],
+        "answer": "Crimpadora de cable",
+        "explanation": "Una crimpadora de cable (Cable crimper) es la herramienta utilizada para fijar mecánicamente un conector RJ-45 al extremo de un cable UTP, asegurando que los pines del conector hagan contacto con los hilos de cobre del cable.",
+        "source_reference": "Capítulo 2: Cables y Conectores de Red > Herramientas de Cableado"
+    },
+    {
+        "id": 19,
+        "has_context_image": false,
+        "question": "¿Cuál es el flag utilizado para terminar una conexión entre dos hosts cuando el emisor cree que algo ha ido mal con la conexión TCP entre ellos?",
+        "options": [
+            "ACK",
+            "FIN",
+            "SYN",
+            "RST"
+        ],
+        "answer": "RST",
+        "explanation": "El flag RST (Reset) se utiliza para abortar una conexión de forma inmediata cuando se detecta un error irrecuperable o cuando un host recibe un segmento que no esperaba para una conexión existente. A diferencia de FIN, que cierra la conexión de forma ordenada, RST la termina abruptamente.",
+        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > TCP y Flags"
+    },
+    {
+        "id": 20,
+        "has_context_image": false,
+        "question": "John, un especialista en seguridad, quiere implementar una mayor seguridad para las conexiones entre los centros de datos locales y en la nube. ¿Cuál de los siguientes permitirá extender los servicios de red virtual a través de diferentes entornos de nube y locales y mejorar la seguridad de los datos en tránsito mediante la tunelización?",
+        "options": [
+            "VPN",
+            "VPC Peering",
+            "CDN",
+            "SD-WAN"
+        ],
+        "answer": "VPN",
+        "explanation": "Una VPN (Red Privada Virtual) utiliza la tunelización y el cifrado para crear una conexión segura sobre una red pública (como Internet), permitiendo que los recursos locales y de la nube se comuniquen como si estuvieran en la misma red privada, protegiendo los datos en tránsito.",
+        "source_reference": "Capítulo 18: Fortalecimiento y Defensa de la Red > Tecnologías VPN"
+    },
+    {
+        "id": 21,
+        "has_context_image": false,
+        "question": "Usted está tratando de seleccionar el mejor dispositivo para instalar para detener proactivamente a los atacantes externos antes de que lleguen a su red interna. ¿Cuál de los siguientes dispositivos sería el MEJOR para seleccionar?",
+        "options": [
+            "Servidor Syslog",
+            "Servidor Proxy",
+            "IPS",
+            "IDS"
+        ],
+        "answer": "IPS",
+        "explanation": "Un IPS (Sistema de Prevención de Intrusiones) es capaz de detectar y detener (bloquear) proactivamente el tráfico malicioso en tiempo real antes de que afecte a la red interna. A diferencia de un IDS, que solo detecta y alerta, el IPS toma medidas defensivas inmediatas.",
+        "source_reference": "Capítulo 18: Fortalecimiento y Defensa de la Red > Sistemas de Detección y Prevención"
+    },
+    {
+        "id": 22,
+        "has_context_image": false,
+        "question": "En un segmento de red recién ampliado, los usuarios informan de problemas intermitentes de conectividad de red. El equipo de red descubre que algunos dispositivos de red pierden ocasionalmente las conexiones con los recursos compartidos. ¿Qué debe comprobarse PRIMERO para identificar la causa de estos problemas de conectividad?",
+        "options": [
+            "Ajustes de velocidad y dúplex",
+            "Posibles direcciones IP duplicadas",
+            "Configuración de los puertos del switch",
+            "Ajustes de Power over Ethernet (PoE)"
+        ],
+        "answer": "Posibles direcciones IP duplicadas",
+        "explanation": "En un segmento de red ampliado, las direcciones IP duplicadas son una causa muy común de conectividad intermitente. Cuando dos dispositivos tienen la misma IP, el tráfico se dirige a uno u otro de forma errática (basado en el último anuncio ARP), lo que provoca desconexiones aleatorias.",
+        "source_reference": "Capítulo 19: Metodología de Resolución de Problemas > Problemas Comunes de DHCP e IP"
+    },
+    {
+        "id": 23,
+        "has_context_image": false,
+        "question": "Usted trabaja como técnico de redes inalámbricas y utiliza un controlador inalámbrico para ayudar en la administración de la red. Su supervisor le ha pedido que implemente un servicio de autenticación centralizado. ¿Cuál de los siguientes dispositivos debería instalar y configurar si desea reducir el tiempo dedicado a la administración de la red manteniendo un servicio de autenticación centralizado para sus usuarios?",
+        "options": [
+            "Switch de Capa 3",
+            "Servidor Proxy",
+            "Concentrador VPN",
+            "Servidor RADIUS"
+        ],
+        "answer": "Servidor RADIUS",
+        "explanation": "Un servidor RADIUS (Remote Authentication Dial-In User Service) proporciona autenticación, autorización y contabilidad (AAA) centralizada. Al usar RADIUS, el técnico puede gestionar las credenciales de todos los usuarios en un solo lugar en lugar de configurarlas individualmente en cada punto de acceso o switch, lo que reduce drásticamente el tiempo de administración.",
+        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Servicios RADIUS"
+    },
+    {
+        "id": 24,
+        "has_context_image": false,
+        "question": "Yvonne, administradora de redes, necesita verificar la información de enrutamiento en un router para solucionar un problema de enrutamiento en la red. ¿Qué comando debería utilizar Yvonne para mostrar las entradas de la tabla de enrutamiento en el router?",
+        "options": [
+            "show route",
+            "show interface",
+            "show config",
+            "show power"
+        ],
+        "answer": "show route",
+        "explanation": "El comando 'show ip route' (o abreviado 'show route' en algunos entornos) es el comando estándar para visualizar la tabla de enrutamiento de un router, mostrando las redes conocidas, las métricas y el siguiente salto para cada destino.",
+        "source_reference": "Capítulo 16: Comandos de Línea de Comandos > Comandos de Diagnóstico de Red"
+    },
+    {
+        "id": 25,
+        "has_context_image": false,
+        "question": "Su empresa está experimentando velocidades de red lentas de unos 54 Mbps en su red inalámbrica. Se le ha pedido que realice una evaluación de la red inalámbrica existente y recomiende una solución. Ha recomendado que la empresa se actualice a una infraestructura inalámbrica 802.11n u 802.11ac para obtener mayores velocidades de red. ¿Cuál de las siguientes tecnologías permite a una red 802.11n u 802.11ac alcanzar velocidades superiores a 54 Mbps?",
+        "options": [
+            "WPA2",
+            "LWAPP",
+            "MIMO",
+            "PoE"
+        ],
+        "answer": "MIMO",
+        "explanation": "La tecnología MIMO (Multiple Input Multiple Output) utiliza múltiples antenas tanto en el transmisor como en el receptor para enviar y recibir múltiples flujos de datos simultáneamente sobre el mismo canal de frecuencia. Esto es lo que permite a los estándares 802.11n y 802.11ac superar con creces el límite de 54 Mbps de los estándares anteriores (802.11a/g).",
+        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Tecnologías de Antena"
+    },
+    {
+        "id": 26,
+        "has_context_image": false,
+        "question": "Gladys ha sido contratada para conectar dos edificios dentro de una red de campus mediante una conexión por cable directa. La distancia entre estos edificios es significativa, y ella quiere asegurar la integridad de la transmisión de datos. ¿Qué tipo de cable es MÁS adecuado para estas tiradas de larga distancia entre edificios?",
+        "options": [
+            "Cable coaxial",
+            "UTP Cat5e",
+            "Fibra monomodo",
+            "STP Cat6"
+        ],
+        "answer": "Fibra monomodo",
+        "explanation": "La fibra óptica monomodo (Single-mode fiber) es la opción ideal para conexiones de larga distancia (varios kilómetros) entre edificios, ya que ofrece un ancho de banda altísimo y una atenuación de señal mínima, además de ser inmune a las interferencias electromagnéticas.",
+        "source_reference": "Capítulo 2: Cables y Conectores de Red > Medios de Fibra Óptica"
+    },
+    {
+        "id": 27,
+        "has_context_image": false,
+        "question": "Dion Training utiliza una red cableada en todo el edificio para proporcionar conectividad de red. A Jason le preocupa que un visitante pueda enchufar su portátil a una toma de pared CAT 5e en el vestíbulo y acceder a la red corporativa. ¿Qué tecnología debería utilizarse para evitar que los usuarios accedan a los recursos de la red si pueden conectar sus portátiles a la red?",
+        "options": [
+            "VPN",
+            "UTM",
+            "NAC",
+            "DMZ"
+        ],
+        "answer": "NAC",
+        "explanation": "NAC (Network Access Control) es una tecnología que inspecciona los dispositivos cuando intentan conectarse a la red. Puede requerir autenticación y verificar el cumplimiento de políticas de seguridad antes de permitir el acceso. Si un usuario no autorizado conecta su portátil, el sistema NAC puede bloquear el puerto del switch o enviarlo a una VLAN de invitados aislada.",
+        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Control de Admisión a la Red"
+    },
+    {
+        "id": 28,
+        "has_context_image": false,
+        "question": "Un técnico ha terminado (punched down) solo los dos pines centrales (pines 4 y 5) en un panel de parcheo Ethernet. ¿Para qué uso ha cableado el técnico este puerto?",
+        "options": [
+            "POTS",
+            "568A",
+            "10BaseT",
+            "568B"
+        ],
+        "answer": "POTS",
+        "explanation": "POTS (Plain Old Telephone Service), o servicio telefónico analógico, utiliza típicamente un solo par de hilos. En un conector RJ-45 o RJ-11, el par central (pines 4 y 5) se utiliza tradicionalmente para la primera línea telefónica. Ethernet (10BaseT/100BaseT) requiere los pares 1-2 y 3-6.",
+        "source_reference": "Capítulo 2: Cables y Conectores de Red > Estándares de Cableado"
+    }
+]

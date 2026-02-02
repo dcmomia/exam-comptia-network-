@@ -1,0 +1,17 @@
+[
+    {
+        "id": 81,
+        "has_context_image": true,
+        "image_path": "assets/images/exam2/Captura de pantalla 2026-02-01 181009.png",
+        "question": "(Esta es una pregunta simulada basada en el rendimiento). Su empresa ha comprado un nuevo edificio en la misma calle para sus suites ejecutivas. Se le ha pedido que seleccione una antena para AP1, AP2 y AP3 para establecer una conexión inalámbrica dentro del edificio principal para que la usen los visitantes. ¿Cuál de las siguientes es la MEJOR configuración de antena para controlar la propagación de la señal y evitar que la señal inalámbrica se transmita fuera del edificio principal?",
+        "options": [
+            "5 dB Directional Right for AP1, 5 dB Directional Left for AP2, and 5 dB Omnidirectional for AP3",
+            "5 dB Directional Left for AP1, 5 dB Omnidirectional for AP2, and 5 dB Directional Right for AP3",
+            "5 dB Omnidirectional for AP1, 5 dB Directional Left for AP2, and 5 dB Directional Right for AP3",
+            "5 dB Directional Right for AP1, 5 dB Omnidirectional for AP2, and 5 dB Directional Left for AP3"
+        ],
+        "answer": "5 dB Directional Right for AP1, 5 dB Omnidirectional for AP2, and 5 dB Directional Left for AP3",
+        "explanation": "Mirando el plano, AP1 está en la pared izquierda, AP3 está en la pared derecha y AP2 está en el centro. Para mantener la señal DENTRO del edificio: AP1 debe transmitir hacia la derecha (Directional Right). AP3 debe transmitir hacia la izquierda (Directional Left). AP2, al estar en el centro y rodeado de oficinas, debe cubrir 360 grados (Omnidirectional).",
+        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Tipos de Antenas y Colocación"
+    }
+]

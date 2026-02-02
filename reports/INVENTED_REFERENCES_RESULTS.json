@@ -1,0 +1,1086 @@
+{
+    "questions.json": [
+        {
+            "question_id": 1,
+            "original_reference": "Capítulo 19: Troubleshooting > Metodología de Resolución de Problemas (7 Pasos)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 2,
+            "original_reference": "Capítulo 12: Monitoreo > Monitoreo y Syslog",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 3,
+            "original_reference": "Capítulo 10: Instalaciones Físicas > Organización de Racks",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 4,
+            "original_reference": "Capítulo 9: Wireless > Arquitectura Wireless",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 5,
+            "original_reference": "Capítulo 18: Defensa de la Red > Zonas de Seguridad (Networking)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 6,
+            "original_reference": "Capítulo 5: Medios y Topologías > Servicios de Nombres (DNS)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 7,
+            "original_reference": "Capítulo 20: Problemas Físicos > Métricas de Resiliencia (RTO/RPO)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 8,
+            "original_reference": "Capítulo 15: Acceso Remoto > Documentación y Gestión de Activos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 9,
+            "original_reference": "Capítulo 8: Switches y VLANs > Entornos Cloud",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 10,
+            "original_reference": "Capítulo 19: Troubleshooting > Herramientas de Línea de Comandos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 11,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > Direccionamiento IP y Subnetting",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 12,
+            "original_reference": "Capítulo 8: Switches y VLANs > Tecnologías de Disponibilidad",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 13,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Sistemas de Seguridad de Red",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 14,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > Implementación de DHCP",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 15,
+            "original_reference": "Capítulo 8: Switches y VLANs > Servicios Cloud",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 16,
+            "original_reference": "Capítulo 9: Wireless > Instalación de Wireless",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 17,
+            "original_reference": "Capítulo 2: Hardware de Red > Cables y Conectores de Fibra",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 18,
+            "original_reference": "Capítulo 18: Defensa de la Red > Zonas de Seguridad (Networking)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 19,
+            "original_reference": "Capítulo 7: Enrutamiento > Configuración de VLANs",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 20,
+            "original_reference": "Capítulo 8: Switches y VLANs > Métricas de Desempeño",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 21,
+            "original_reference": "Capítulo 9: Wireless > ESSID",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 22,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > Vulnerabilidades de Seguridad",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 23,
+            "original_reference": "Capítulo 19: Troubleshooting > Configuración de Red",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 24,
+            "original_reference": "Capítulo 2: Hardware de Red > Categorías de Cable de Cobre",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 25,
+            "original_reference": "Capítulo 10: Instalaciones Físicas > Instalaciones Físicas",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 26,
+            "original_reference": "Capítulo 2: Hardware de Red > Cables de Cobre Directos y Cruzados",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 27,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > Malware",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 28,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Seguridad Inalámbrica",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 29,
+            "original_reference": "Capítulo 2: Hardware de Red > Cables de Fibra Óptica",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 30,
+            "original_reference": "Capítulo 8: Switches y VLANs > EtherChannel y Agregación",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 31,
+            "original_reference": "Capítulo 9: Wireless > Despliegue de APs",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 32,
+            "original_reference": "Capítulo 7: Enrutamiento > Enlaces Troncales",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 33,
+            "original_reference": "Capítulo 2: Hardware de Red > Solución de Problemas de Cobre",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 34,
+            "original_reference": "Capítulo 12: Monitoreo > Detección de Red",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 35,
+            "original_reference": "Capítulo 12: Monitoreo > Protocolos de Monitoreo",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 36,
+            "original_reference": "Capítulo 12: Monitoreo > Captura de Paquetes",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 37,
+            "original_reference": "Capítulo 8: Switches y VLANs > Métricas de Salud de Red",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 38,
+            "original_reference": "Capítulo 10: Instalaciones Físicas > Monitoreo Físico",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 39,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Defensa Inalámbrica",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 40,
+            "original_reference": "Capítulo 7: Enrutamiento > EtherChannel (LACP)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 41,
+            "original_reference": "Capítulo 18: Defensa de la Red > AAA e Identidad",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 42,
+            "original_reference": "Capítulo 5: Medios y Topologías > DHCP Scopes",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 43,
+            "original_reference": "Capítulo 9: Wireless > Solución de Problemas Wireless",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 44,
+            "original_reference": "Capítulo 10: Instalaciones Físicas > PDU",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 45,
+            "original_reference": "Capítulo 12: Monitoreo > Congestión",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 46,
+            "original_reference": "Capítulo 9: Wireless > Estándares Inalámbricos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 47,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > Direccionamiento VLSM",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 48,
+            "original_reference": "Capítulo 19: Troubleshooting > Herramientas de Línea de Comandos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 49,
+            "original_reference": "Capítulo 11: Documentación > Conectividad WAN",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 50,
+            "original_reference": "Capítulo 18: Defensa de la Red > Infraestructura de Clave Pública (PKI)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 51,
+            "original_reference": "Capítulo 8: Switches y VLANs > Virtualización de Red",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 52,
+            "original_reference": "Capítulo 18: Defensa de la Red > Arquitecturas de Seguridad Modernas (SASE/SSE)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 53,
+            "original_reference": "Capítulo 18: Defensa de la Red > Zonas de Seguridad (Networking)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 54,
+            "original_reference": "Capítulo 19: Troubleshooting > Metodología de Resolución de Problemas (7 Pasos)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 55,
+            "original_reference": "Capítulo 19: Troubleshooting > Herramientas de Línea de Comandos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 56,
+            "original_reference": "Capítulo 2: Hardware de Red > Tipos de Cableado de Cobre",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 57,
+            "original_reference": "Capítulo 12: Monitoreo > Gestión de Inventario",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 58,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Ataques de Acceso y Persistencia",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 59,
+            "original_reference": "Capítulo 5: Medios y Topologías > Registros de Recursos DNS",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 60,
+            "original_reference": "Capítulo 18: Defensa de la Red > Servicios AAA",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 61,
+            "original_reference": "Capítulo 5: Medios y Topologías > Puertos de Protocolo de Correo",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 62,
+            "original_reference": "Capítulo 12: Monitoreo > Monitoreo y Gestión de Eventos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 63,
+            "original_reference": "Capítulo 11: Documentación > Gestión de Parches y Actualizaciones",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 64,
+            "original_reference": "Capítulo 18: Defensa de la Red > Listas de Control de Acceso (ACL)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 65,
+            "original_reference": "Capítulo 2: Hardware de Red > Conceptos de Switching",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 66,
+            "original_reference": "Capítulo 18: Defensa de la Red > Dispositivos de Seguridad",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 67,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > Flujos de Tráfico",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 68,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Malware",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 69,
+            "original_reference": "Capítulo 15: Acceso Remoto > Control de Incendios",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 70,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Ataques Inalámbricos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 71,
+            "original_reference": "Capítulo 5: Medios y Topologías > NTP",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 72,
+            "original_reference": "Capítulo 7: Enrutamiento > Sistema Autónomo (AS)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 73,
+            "original_reference": "Capítulo 6: Direccionamiento IPv4 > Subneteado",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 74,
+            "original_reference": "Capítulo 1: El Modelo OSI > Capa 5: Sesión",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 75,
+            "original_reference": "Capítulo 9: Wireless > Estándares Wi-Fi",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 76,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > Modelo Jerárquico",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 77,
+            "original_reference": "Capítulo 5: Medios y Topologías > Puertos Comunes",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 78,
+            "original_reference": "Capítulo 19: Troubleshooting > Problemas Físicos de Fibra",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 79,
+            "original_reference": "Capítulo 19: Troubleshooting > Herramientas de Línea de Comandos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 80,
+            "original_reference": "Capítulo 2: Hardware de Red > Operación del Switch",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 81,
+            "original_reference": "Capítulo 2: Hardware de Red > Estructuras de Cableado",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 82,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > Almacenamiento",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 83,
+            "original_reference": "Capítulo 8: Switches y VLANs > Modelos de Servicio",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 84,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > Tecnologías de Transición",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 85,
+            "original_reference": "Capítulo 9: Wireless > Sensores e IoT",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 86,
+            "original_reference": "Capítulo 6: Direccionamiento IPv4 > Diseño de Subredes",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 87,
+            "original_reference": "Capítulo 18: Defensa de la Red > Tecnologías VPN",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 88,
+            "original_reference": "Capítulo 11: Documentación > Documentación de Activos (Asset Management)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 89,
+            "original_reference": "Capítulo 14: Servicios de Red > RAID y Recuperación",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 90,
+            "original_reference": "Capítulo 11: Documentación > Diagramas de Red",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        }
+    ],
+    "examen2_final_integrated.json": [
+        {
+            "question_id": 1,
+            "original_reference": "Capítulo 9: Wireless > Resolución de Problemas Inalámbricos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 2,
+            "original_reference": "Capítulo 5: Medios y Topologías > DNS y Direccionamiento IPv6",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 3,
+            "original_reference": "Capítulo 2: Hardware de Red > Dispositivos de Capa 1",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 4,
+            "original_reference": "Capítulo 18: Defensa de la Red > Zonas de Seguridad (Networking)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 5,
+            "original_reference": "Capítulo 10: Instalaciones Físicas > Seguridad Física",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 6,
+            "original_reference": "Capítulo 9: Wireless > Estándares Wi-Fi",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 7,
+            "original_reference": "Capítulo 5: Medios y Topologías > NTP",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 8,
+            "original_reference": "Capítulo 8: Switches y VLANs > Enlaces Inalámbricos Terrestres",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 9,
+            "original_reference": "Capítulo 5: Medios y Topologías > Puertos de Voz sobre IP",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 10,
+            "original_reference": "Capítulo 10: Instalaciones Físicas > Control de Humedad",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 11,
+            "original_reference": "Capítulo 10: Instalaciones Físicas > Infraestructura de Energía",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 12,
+            "original_reference": "Capítulo 2: Hardware de Red > Terminaciones de Cobre",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 13,
+            "original_reference": "Capítulo 8: Switches y VLANs > Calidad de Servicio (QoS)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 14,
+            "original_reference": "Capítulo 18: Defensa de la Red > Listas de Control de Acceso",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 15,
+            "original_reference": "Capítulo 19: Troubleshooting > Estadísticas de Interfaz",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 16,
+            "original_reference": "Capítulo 9: Wireless > Tecnología Wireless",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 17,
+            "original_reference": "Capítulo 15: Acceso Remoto > Gestión de Parches",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 18,
+            "original_reference": "Capítulo 2: Hardware de Red > Herramientas de Cableado",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 19,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > TCP y Flags",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 20,
+            "original_reference": "Capítulo 18: Defensa de la Red > Tecnologías VPN",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 21,
+            "original_reference": "Capítulo 18: Defensa de la Red > Sistemas de Detección y Prevención",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 22,
+            "original_reference": "Capítulo 19: Troubleshooting > Problemas Comunes de DHCP e IP",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 23,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Detección de Intrusos y VPN",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 24,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > Comandos de Red",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 25,
+            "original_reference": "Capítulo 9: Wireless > Tecnologías de Antena",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 26,
+            "original_reference": "Capítulo 2: Hardware de Red > Cables de Fibra Óptica",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 27,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Seguridad de Acceso",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 28,
+            "original_reference": "Capítulo 2: Hardware de Red > Estándares de Cableado",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 29,
+            "original_reference": "Capítulo 11: Documentación > Problemas de Rendimiento y Configuración",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 30,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > Nmap y Escaneo de Puertos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 31,
+            "original_reference": "Capítulo 18: Defensa de la Red > Tecnologías DLP",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 32,
+            "original_reference": "Capítulo 2: Hardware de Red > Conectores Seriales",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 33,
+            "original_reference": "Capítulo 10: Instalaciones Físicas > Servidores DHCP No Autorizados",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 34,
+            "original_reference": "Capítulo 15: Acceso Remoto > Documentación de Políticas",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 35,
+            "original_reference": "Capítulo 2: Hardware de Red > Estándares de Fibra Óptica",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 36,
+            "original_reference": "Capítulo 1: El Modelo OSI > Estructuras de Red Comunes",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 37,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > Gestión de Configuración",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 38,
+            "original_reference": "Capítulo 2: Hardware de Red > Herramientas de Prueba",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 39,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Cifrado Inalámbrico",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 40,
+            "original_reference": "Capítulo 2: Hardware de Red > Medios de Cobre Especializados",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 41,
+            "original_reference": "Capítulo 14: Servicios de Red > Alta Disponibilidad de Energía",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 42,
+            "original_reference": "Capítulo 11: Documentación > Documentación de Red",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 43,
+            "original_reference": "Capítulo 5: Medios y Topologías > Jerarquía de DNS",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 44,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > Saludo de Tres Vías de TCP",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 45,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > Puertos Comunes",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 46,
+            "original_reference": "Capítulo 5: Medios y Topologías > Consultas DNS",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 47,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > Herramientas de Monitoreo Físico",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 48,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Seguridad Inalámbrica",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 49,
+            "original_reference": "Capítulo 5: Medios y Topologías > Tipos de Registros DNS",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 50,
+            "original_reference": "Capítulo 10: Instalaciones Físicas > Ataques de Capa 2",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 51,
+            "original_reference": "Capítulo 10: Instalaciones Físicas > Vulnerabilidades de DNS",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 52,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > Tipos de Transmisión de Datos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 53,
+            "original_reference": "Capítulo 2: Hardware de Red > Gestión de Infraestructura Física",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 54,
+            "original_reference": "Capítulo 3: La Nube > Switches Avanzados",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 55,
+            "original_reference": "Capítulo 3: La Nube > Protocolos de Switch",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 56,
+            "original_reference": "Capítulo 5: Medios y Topologías > Registros de Correo DNS",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 57,
+            "original_reference": "Capítulo 6: Direccionamiento IPv4 > Tipos de Enrutamiento",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 58,
+            "original_reference": "Capítulo 5: Medios y Topologías > Gestión de DHCP",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 59,
+            "original_reference": "Capítulo 18: Defensa de la Red > Gestión de Cambios",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 60,
+            "original_reference": "Capítulo 12: Monitoreo > Reglas de Firewall (ACL)",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 61,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > Capa 3: Red",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 62,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > Capa 6: Presentación",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 63,
+            "original_reference": "Capítulo 5: Medios y Topologías > Tipos de Registros DNS",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 64,
+            "original_reference": "Capítulo 5: Medios y Topologías > Tipos de Registros DNS",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 65,
+            "original_reference": "Capítulo 14: Servicios de Red > Protocolos Seguros",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 66,
+            "original_reference": "Capítulo 5: Medios y Topologías > Tipos de Registros DNS",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 67,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Seguridad de Endpoints",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 68,
+            "original_reference": "Capítulo 18: Defensa de la Red > Mantenimiento y Parches",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 69,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > show arp",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 70,
+            "original_reference": "Capítulo 12: Monitoreo > SASE y SSE",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 71,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Protocolos de Directorio",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 72,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Fundamentos de IAM",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 73,
+            "original_reference": "Capítulo 6: Direccionamiento IPv4 > Protocolos de Enrutamiento",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 74,
+            "original_reference": "Capítulo 13: BCDR > VLANs y QoS",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 75,
+            "original_reference": "Capítulo 6: Direccionamiento IPv4 > Comparación de Protocolos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 76,
+            "original_reference": "Capítulo 11: Documentación > NAS vs SAN",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 77,
+            "original_reference": "Capítulo 15: Acceso Remoto > Tipos de Túneles VPN",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 78,
+            "original_reference": "Capítulo 19: Troubleshooting > Verificación de Conectividad Física",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 79,
+            "original_reference": "Capítulo 7: Enrutamiento > Autoconfiguración SLAAC y EUI-64",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 80,
+            "original_reference": "Capítulo 13: BCDR > Segmentación y Redes de Invitados",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 81,
+            "original_reference": "Capítulo 9: Wireless > Tipos de Antenas y Colocación",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 82,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > Ataques Inalámbricos",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 83,
+            "original_reference": "Capítulo 20: Problemas Físicos > Problemas de Puertos de Switch",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 85,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Tecnologías VPN",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 86,
+            "original_reference": "Capítulo 16: Fundamentos de Seguridad > Conceptos de Seguridad",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 87,
+            "original_reference": "Capítulo 10: Instalaciones Físicas > Almacenamiento en Red",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 88,
+            "original_reference": "Capítulo 17: Amenazas y Ataques > Configuraciones VPN",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 89,
+            "original_reference": "Capítulo 20: Problemas Físicos > Problemas de Capa Física",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 90,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > IPv6",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        },
+        {
+            "question_id": 90,
+            "original_reference": "Capítulo 4: Puertos y Protocolos > IPv6",
+            "issue": "Invented Section",
+            "suggested_fix": null
+        }
+    ]
+}

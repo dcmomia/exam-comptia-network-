@@ -1,0 +1,844 @@
+/* CompTIA Network+ Study Guide EPUB Stylesheet */
+
+/* Reset and Base Styles */
+body {
+    font-family: "Noto Sans", "DejaVu Sans", Arial, sans-serif;
+    font-size: 100%;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    direction: ltr;
+    color: #333333;
+    background-color: #ffffff;
+}
+
+/* Chapter Structure */
+.chapter {
+    margin: 0;
+    padding: 0.5em;
+}
+
+.chapter-title {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #1a5f7a;
+    margin: 0 0 0.8em 0;
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid #1a5f7a;
+    text-align: center;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 1.5em 0 0.8em 0;
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid #bdc3c7;
+}
+
+.subsection-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #34495e;
+    margin: 1.2em 0 0.6em 0;
+}
+
+/* Paragraph Styles */
+p {
+    margin: 0 0 1em 0;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+.intro-text {
+    font-size: 1.1em;
+    color: #555555;
+    font-style: italic;
+    text-align: center;
+    margin: 1em 0 2em 0;
+}
+
+.important-note {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.warning-box {
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 0 4px 4px 0;
+}
+
+.tip-box {
+    background-color: #d4edda;
+    border-left: 4px solid #28a745;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 0 4px 4px 0;
+}
+
+/* Lists */
+ul,
+ol {
+    margin: 0.5em 0 1em 0;
+    padding-left: 2em;
+}
+
+li {
+    margin: 0.5em 0;
+    line-height: 1.5;
+}
+
+.sublist {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+/* Definition Lists for Glossary */
+.glossary-list {
+    margin: 1em 0;
+    padding: 0;
+}
+
+.glossary-list dt {
+    font-weight: bold;
+    color: #1a5f7a;
+    margin: 1em 0 0.3em 1em;
+    font-size: 1em;
+}
+
+.glossary-list dd {
+    margin: 0 0 0.5em 2em;
+    padding: 0;
+    line-height: 1.5;
+    color: #444444;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 0.95em;
+}
+
+th {
+    background-color: #1a5f7a;
+    color: #ffffff;
+    padding: 0.8em;
+    text-align: left;
+    font-weight: bold;
+}
+
+td {
+    padding: 0.6em 0.8em;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:hover {
+    background-color: #e8f4f8;
+}
+
+/* Code and Technical Terms */
+code {
+    font-family: "DejaVu Sans Mono", "Consolas", monospace;
+    font-size: 0.9em;
+    background-color: #f4f4f4;
+    padding: 0.1em 0.4em;
+    border-radius: 3px;
+    color: #d63384;
+}
+
+pre {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: "DejaVu Sans Mono", "Consolas", monospace;
+    font-size: 0.85em;
+    line-height: 1.4;
+}
+
+pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+}
+
+/* Bold and Italic */
+strong,
+b {
+    font-weight: bold;
+    color: #000000;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+/* Links */
+a {
+    color: #1a5f7a;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto;
+}
+
+.figure {
+    text-align: center;
+    margin: 1.5em 0;
+}
+
+.figure-caption {
+    font-size: 0.9em;
+    color: #666666;
+    font-style: italic;
+    margin-top: 0.5em;
+}
+
+/* Headers within chapters */
+.chapter h1:first-child {
+    margin-top: 0;
+}
+
+.chapter h2:first-child {
+    margin-top: 0;
+}
+
+/* Blockquotes */
+blockquote {
+    margin: 1em 0;
+    padding: 0.5em 1em;
+    border-left: 4px solid #1a5f7a;
+    background-color: #f8f9fa;
+    font-style: italic;
+}
+
+/* Horizontal Rule */
+hr {
+    border: none;
+    border-top: 1px solid #bdc3c7;
+    margin: 2em 0;
+}
+
+/* Key Terms styling */
+.key-term {
+    font-weight: bold;
+    color: #1a5f7a;
+}
+
+/* Step by step procedures */
+.procedure {
+    counter-reset: step-counter;
+    list-style-type: none;
+    padding: 0;
+}
+
+.procedure li {
+    counter-increment: step-counter;
+    padding-left: 2.5em;
+    position: relative;
+    margin: 1em 0;
+}
+
+.procedure li::before {
+    content: counter(step-counter) ".";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    color: #1a5f7a;
+}
+
+/* Review Questions */
+.review-question {
+    background-color: #e8f4f8;
+    border: 1px solid #1a5f7a;
+    border-radius: 4px;
+    padding: 1em;
+    margin: 1em 0;
+}
+
+.review-question strong {
+    color: #1a5f7a;
+}
+
+/* Answer Key styling */
+.answer {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Summary Box */
+.summary-box {
+    background-color: #e8f4f8;
+    border: 2px solid #1a5f7a;
+    border-radius: 8px;
+    padding: 1.5em;
+    margin: 1.5em 0;
+}
+
+.summary-box h3 {
+    margin-top: 0;
+    color: #1a5f7a;
+}
+
+/* Two Column Layout for Key Points */
+.key-points {
+    column-count: 1;
+    column-gap: 1.5em;
+}
+
+@media screen and (min-width: 600px) {
+    .key-points {
+        column-count: 2;
+    }
+}
+
+/* Comparison Tables */
+.comparison-table {
+    font-size: 0.9em;
+}
+
+.comparison-table th:first-child {
+    width: 30%;
+}
+
+/* Network Diagram placeholder */
+.diagram-placeholder {
+    background-color: #f0f0f0;
+    border: 2px dashed #bdc3c7;
+    border-radius: 8px;
+    padding: 2em;
+    text-align: center;
+    color: #666666;
+    margin: 1em 0;
+}
+
+/* Page break handling */
+@media print {
+    .chapter {
+        page-break-inside: avoid;
+    }
+
+    h1,
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+/* Accessibility */
+a:focus {
+    outline: 2px solid #1a5f7a;
+    outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+    background-color: #1a5f7a;
+    color: #ffffff;
+}
+
+/* Contenedor para asegurar que la imagen es un bloque separado */
+figure.kdp-image-wrapper {
+    display: block;
+    margin: 1em 0;
+    /* Espaciado vertical seguro */
+    text-align: center;
+    /* Centrado horizontal */
+    page-break-inside: avoid;
+    /* CRÍTICO: Evita que la imagen se corte entre páginas */
+}
+
+/* Clase para la imagen en sí */
+img.responsive-img {
+    display: block;
+    /* Comportamiento de bloque */
+    margin: 0 auto;
+    /* Centrado extra por seguridad */
+    max-width: 100%;
+    /* Se adapta al ancho de pantalla del Kindle */
+    height: auto;
+    /* Mantiene la proporción de aspecto */
+
+    /* PROPIEDAD CLAVE PARA KDP: 
+       Asegura que no se fuerce un tamaño pequeño que impida el zoom */
+    width: auto;
+}
+
+/* --- AGREGAR AL FINAL DE STYLES.CSS --- */
+
+/* Estilo para reglas mnemotécnicas */
+.mnemonica {
+    font-family: monospace;
+    background-color: #f0f0f0;
+    padding: 0.5em;
+    border-left: 4px solid #6c757d;
+    font-style: italic;
+    margin: 1em 0;
+    text-align: center;
+}
+
+/* Estilo para cajas de analogía */
+.analogia {
+    border: 1px solid #17a2b8;
+    background-color: #e0f7fa;
+    padding: 1em;
+    border-radius: 8px;
+    margin: 1.5em 0;
+}
+
+.analogia p {
+    margin: 0;
+    /* Elimina margen extra dentro de la caja */
+    text-align: left;
+}
+
+/* Ajustes específicos para tablas de resumen */
+.resumen-table {
+    margin-top: 1.5em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* --- ESTILOS PARA ACTUALIZACIONES Y SEGURIDAD (N10-009) --- */
+
+/* Contenedor para actualizaciones de contenido */
+.chapter-update {
+    border: 2px solid #1a5f7a;
+    /* Azul corporativo */
+    background-color: #f0f8ff;
+    /* Azul muy pálido */
+    padding: 1.5em;
+    margin: 2em 0;
+    border-radius: 8px;
+    page-break-inside: avoid;
+    /* Evita que la caja se parta entre páginas */
+}
+
+/* Títulos dentro de las actualizaciones */
+.chapter-update h2,
+.chapter-update h3 {
+    color: #0d47a1;
+    border-bottom: 1px dashed #1a5f7a;
+    padding-bottom: 0.5em;
+    margin-top: 0;
+}
+
+/* Contenedor específico para alertas de seguridad */
+.security-update {
+    border-left: 6px solid #d32f2f;
+    /* Rojo alerta */
+    background-color: #fff8f8;
+    /* Rojo muy pálido */
+    padding: 1em 1.5em;
+    margin: 2em 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.security-update h3,
+.security-update h4 {
+    color: #d32f2f;
+    text-transform: uppercase;
+    font-size: 0.95em;
+    letter-spacing: 0.05em;
+    margin-top: 0;
+}
+
+/* --- ESTILOS PARA FRONT MATTER (Diseño Elegante) --- */
+
+/* Contenedores de página */
+.full-page-container {
+    /* Padding aumentado para dar aire a los bordes en tablets */
+    padding: 3em 1.5em;
+    text-align: center;
+    page-break-after: always;
+    box-sizing: border-box;
+    height: 95%;
+}
+
+/* --- PORTADA --- */
+.title-main {
+    /* Mayor tamaño y color oscuro profesional (slate dark blue) */
+    font-size: 3.2em;
+    font-weight: 700;
+    color: #2c3e50;
+    line-height: 1.1;
+    margin-top: 8%;
+    margin-bottom: 0.2em;
+}
+
+.title-subtitle {
+    /* Menor peso visual para contraste */
+    font-size: 1.8em;
+    font-weight: 300;
+    color: #546e7a;
+    margin-top: 0;
+    margin-bottom: 2em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Contenedor para la versión con líneas sutiles */
+.version-container {
+    margin: 2.5em auto;
+    width: 70%;
+    /* No ocupa todo el ancho */
+    border-top: 1px solid #cfd8dc;
+    border-bottom: 1px solid #cfd8dc;
+    padding: 0.8em 0;
+}
+
+.title-version {
+    font-size: 1.3em;
+    color: #37474f;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    /* Espaciado elegante entre letras */
+    text-transform: uppercase;
+}
+
+.title-tagline {
+    font-size: 1.2em;
+    color: #455a64;
+    margin-top: 3em;
+    margin-bottom: 1.5em;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.title-features {
+    font-size: 0.9em;
+    color: #78909c;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 5em;
+    font-weight: bold;
+}
+
+.title-author {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-top: 2em;
+}
+
+/* --- PÁGINA LEGAL --- */
+.copyright-page {
+    font-size: 0.85em;
+    color: #333;
+    line-height: 1.7;
+    /* Mayor interlineado para legibilidad */
+    text-align: justify;
+    padding-top: 15%;
+}
+
+.copyright-header {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    color: #455a64;
+    margin-bottom: 2.5em;
+    /* Pequeña línea decorativa debajo del título */
+    border-bottom: 2px solid #eceff1;
+    display: inline-block;
+    padding-bottom: 0.5em;
+}
+
+/* --- DEDICATORIA --- */
+.dedication-page {
+    /* Centrado vertical aproximado usando padding */
+    padding-top: 30%;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+}
+
+.dedication-text {
+    font-style: italic;
+    font-size: 1.3em;
+    line-height: 1.8;
+    color: #546e7a;
+    margin-bottom: 1.5em;
+}
+
+/* --- ESTILOS PARA PÁGINA DE FEEDBACK / RESEÑAS --- */
+
+.feedback-container {
+    margin-top: 10%;
+    padding: 0 1em;
+    text-align: center;
+}
+
+.feedback-title {
+    font-size: 1.8em;
+    color: #1a5f7a;
+    margin-bottom: 1em;
+    border-bottom: none;
+    /* Quitamos la línea estándar de capítulos */
+}
+
+.feedback-intro {
+    font-size: 1.1em;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 2em;
+}
+
+/* Estrellas visuales */
+.stars {
+    font-size: 2em;
+    color: #f1c40f;
+    /* Color dorado/amarillo estándar */
+    margin: 0.5em 0;
+    letter-spacing: 0.2em;
+}
+
+/* Caja de Llamada a la Acción (CTA) */
+.cta-box {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 2em 1em;
+    margin: 2.5em 0;
+}
+
+.cta-text {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+/* Botón de Reseña */
+a.review-btn {
+    display: inline-block;
+    background-color: #1a5f7a;
+    color: #ffffff !important;
+    /* Forzar blanco en Kindle */
+    text-decoration: none;
+    padding: 1em 2em;
+    border-radius: 50px;
+    /* Bordes redondeados modernos */
+    font-weight: bold;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Firma */
+.signature {
+    margin-top: 3em;
+    font-size: 0.95em;
+    color: #666;
+}
+
+.author-name {
+    font-family: "Brush Script MT", cursive, serif;
+    /* Intento de estilo firma */
+    font-size: 1.5em;
+    color: #1a5f7a;
+    display: block;
+    margin-top: 0.5em;
+}
+
+/* --- AÑADIR/MODIFICAR EN STYLES.CSS --- */
+
+/* Mejora para Tablas Responsivas en Kindle */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 0.90em;
+    /* Ligeramente más pequeño para que quepa más */
+    display: block;
+    /* Permite scroll */
+    overflow-x: auto;
+    /* Scroll horizontal si es necesario */
+}
+
+/* Ajuste para celdas */
+th,
+td {
+    padding: 0.5em;
+    /* Reducir padding para ganar espacio */
+    border-bottom: 1px solid #e0e0e0;
+    min-width: 80px;
+    /* Evita que las columnas colapsen demasiado */
+}
+
+/* Estilo para Fórmulas Matemáticas */
+.formula-box {
+    background-color: #f8f9fa;
+    border: 1px dashed #2c3e50;
+    padding: 1em;
+    text-align: center;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    margin: 1.5em 0;
+}
+
+/* Corrección para imágenes en KDP */
+figure.kdp-image-wrapper {
+    margin: 1.5em 0;
+    text-align: center;
+    page-break-inside: avoid;
+}
+
+img.responsive-img {
+    max-width: 100%;
+    height: auto;
+    /* Importante: Evitar width fijos que rompan en tablets */
+}
+
+/* --- AÑADIR/MODIFICAR EN STYLES.CSS --- */
+
+/* Mejora para Tablas Responsivas en Kindle */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+    font-size: 0.90em;
+    /* Ligeramente más pequeño para que quepa más */
+    display: block;
+    /* Permite scroll */
+    overflow-x: auto;
+    /* Scroll horizontal si es necesario */
+}
+
+/* Ajuste para celdas */
+th,
+td {
+    padding: 0.5em;
+    /* Reducir padding para ganar espacio */
+    border-bottom: 1px solid #e0e0e0;
+    min-width: 80px;
+    /* Evita que las columnas colapsen demasiado */
+}
+
+/* Estilo para Fórmulas Matemáticas */
+.formula-box {
+    background-color: #f8f9fa;
+    border: 1px dashed #2c3e50;
+    padding: 1em;
+    text-align: center;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+    margin: 1.5em 0;
+}
+
+/* Corrección para imágenes en KDP */
+figure.kdp-image-wrapper {
+    margin: 1.5em 0;
+    text-align: center;
+    page-break-inside: avoid;
+}
+
+img.responsive-img {
+    max-width: 100%;
+    height: auto;
+    /* Importante: Evitar width fijos que rompan en tablets */
+}
+
+/* Clases de utilidad para evitar estilos en línea */
+.col-30 {
+    width: 30%;
+}
+
+.col-70 {
+    width: 70%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.full-viewport {
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+/* --- ESTILOS PARA LA TABLA DE CONTENIDOS (TOC) --- */
+#toc {
+    padding: 1em;
+}
+
+#toc ol {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#toc ol ol {
+    padding-left: 1.5em;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    border-left: 1px solid #1a5f7a;
+}
+
+#toc li {
+    margin: 0.8em 0;
+    line-height: 1.4;
+}
+
+#toc span {
+    display: block;
+    font-weight: bold;
+    color: #1a5f7a;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+#toc a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+#toc a:hover {
+    color: #1a5f7a;
+    text-decoration: underline;
+}
+
+#toc li>a {
+    font-weight: 500;
+}
+
+#toc ol ol li>a {
+    font-weight: normal;
+    font-size: 0.95em;
+}

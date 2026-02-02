@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="es">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Capítulo 15: Acceso y Gestión Remota</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 15: Acceso y Gestión Remota</h1>
+
+        <h2 class="section-title">Introducción: Administrando desde Cualquier Lugar</h2>
+        <p>Ya no es necesario estar físicamente en el cuarto de servidores para arreglar un problema. Gracias al acceso
+            remoto, puedes configurar un router en Tokio desde tu sofá en Buenos Aires.</p>
+        <p>Pero con este poder viene un gran riesgo: si tú puedes entrar remotamente, un hacker también podría
+            intentarlo. En este capítulo, cubriremos cómo abrir esas puertas de forma segura utilizando VPNs y
+            protocolos de gestión encriptados.</p>
+
+        <h2 class="section-title">Redes Privadas Virtuales (VPN)</h2>
+        <p>Una VPN crea un túnel seguro y encriptado a través de una red insegura (como Internet). Es como tener un
+            cable privado invisible que cruza el mundo.</p>
+
+        <h3 class="subsection-title">1. Site-to-Site VPN (Sitio a Sitio)</h3>
+        <ul>
+            <li><strong>Escenario:</strong> Tienes una oficina en Madrid y otra en Barcelona. Quieres que los servidores
+                de ambas oficinas se hablen entre sí como si estuvieran en el mismo edificio.</li>
+            <li><strong>Cómo funciona:</strong> Los routers (o firewalls) de ambas oficinas establecen el túnel
+                permanentemente. Los usuarios no tienen que hacer nada; para ellos es transparente.</li>
+            <li><strong>Protocolo común:</strong> IPSec (Internet Protocol Security).</li>
+        </ul>
+
+        <h3 class="subsection-title">2. Client-to-Site VPN (Cliente a Sitio / Remote Access)</h3>
+        <ul>
+            <li><strong>Escenario:</strong> Un empleado está trabajando desde una cafetería o su casa y necesita acceder
+                a los archivos del servidor de la empresa.</li>
+            <li><strong>Cómo funciona:</strong> El usuario instala un software (cliente VPN) en su laptop. Inicia
+                sesión, y se crea un túnel temporal hacia la oficina.</li>
+        </ul>
+
+        <div class="chapter-update">
+            <h3>⚡ Datos Críticos: Modos de Túnel VPN</h3>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Full Tunnel (Completo)</th>
+                        <th>Split Tunnel (Dividido)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Tráfico Cifrado</b></td>
+                        <td>Todo el tráfico (Internet y corp).</td>
+                        <td>Solo tráfico a la empresa.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Seguridad</b></td>
+                        <td>Máxima (Control centralizado).</td>
+                        <td>Menor (Riesgo de pivotaje).</td>
+                    </tr>
+                    <tr>
+                        <td><b>Rendimiento</b></td>
+                        <td>Más lento (Cuello de botella).</td>
+                        <td>Más rápido (Acceso directo nube).</td>
+                    </tr>
+                    <tr>
+                        <td><b>Uso Local</b></td>
+                        <td>Bloquea impresoras/red local.</td>
+                        <td>Permite recursos locales.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 class="subsection-title">Protocolos de VPN</h3>
+        <table class="resumen-table">
+            <thead>
+                <tr>
+                    <th>Protocolo</th>
+                    <th>Capa OSI</th>
+                    <th>Características Críticas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>IPSec</b></td>
+                    <td>Capa 3</td>
+                    <td>Estándar moderno. Autenticación y cifrado robusto.</td>
+                </tr>
+                <tr>
+                    <td><b>SSL / TLS</b></td>
+                    <td>Capas 5-7</td>
+                    <td>VPN sin cliente (HTTPS). Basado en TCP.</td>
+                </tr>
+                <tr>
+                    <td><b>DTLS</b></td>
+                    <td>Capas 5-7</td>
+                    <td>Versión TLS sobre UDP. Ideal para VoIP y Video.</td>
+                </tr>
+                <tr>
+                    <td><b>L2TP / L2F</b></td>
+                    <td>Capa 2</td>
+                    <td>Sin cifrado nativo. Se usa con IPSec.</td>
+                </tr>
+                <tr>
+                    <td><b>IKEv2</b></td>
+                    <td>Capa 3</td>
+                    <td>Basado en IPSec. Reconecta automáticamente tras pérdida de señal.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="important-note">
+            <h4>🛠️ Escenario de Configuración (Mejores Prácticas)</h4>
+            <p>Al configurar una VPN en un host remoto (ej. Windows):</p>
+            <ul>
+                <li><b>Proveedor:</b> Windows (integrado).</li>
+                <li><b>Protocolo:</b> Preferir <b>IKEv2</b> por su estabilidad en movilidad (roaming).</li>
+                <li><b>Autenticación:</b> Los certificados son más seguros que simples contraseñas.</li>
+                <li><b>Redes con Contador:</b> Gestionar con cuidado en roaming para evitar cargos excesivos de datos.
+                </li>
+            </ul>
+        </div>
+
+        <h3 class="subsection-title">3. Clientless VPN (VPN sin cliente)</h3>
+        <ul>
+            <li><strong>Escenario:</strong> Necesitas acceso rápido desde un ordenador prestado.</li>
+            <li><strong>Cómo funciona:</strong> Usas un navegador web (HTTPS/TLS) para acceder a un portal seguro. No
+                instalas nada. Es limitado a aplicaciones web o archivos.</li>
+        </ul>
+
+        <h2 class="section-title">Métodos de Acceso y Gestión</h2>
+        <p>Cuando necesitas configurar un dispositivo, ¿qué herramienta usas?</p>
+
+        <h3 class="subsection-title">SSH vs. Telnet</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Protocolo</th>
+                    <th>Puerto</th>
+                    <th>Seguridad</th>
+                    <th>Uso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Telnet</strong></td>
+                    <td>23</td>
+                    <td class="warning-box">INSEGURO - Texto plano</td>
+                    <td>¡Nunca usar en producción!</td>
+                </tr>
+                <tr>
+                    <td><strong>SSH</strong></td>
+                    <td>22</td>
+                    <td class="tip-box">ENCRIPTADO</td>
+                    <td>Estándar para servidores Linux y dispositivos de red</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subsection-title">RDP y VNC</h3>
+        <ul>
+            <li><strong>RDP (Remote Desktop Protocol - Puerto 3389):</strong> Propietario de Microsoft. Te permite ver
+                el escritorio de Windows de forma remota.</li>
+            <li><strong>VNC (Virtual Network Computing):</strong> Alternativa gráfica multiplataforma (Linux, Mac), pero
+                a menudo es más lenta y menos segura por defecto.</li>
+        </ul>
+
+        <h3 class="subsection-title">HTTPS (Web Management)</h3>
+        <p>Muchos dispositivos modernos (firewalls, puntos de acceso) se gestionan a través de una página web segura
+            (HTTPS - Puerto 443). Es fácil de usar (interfaz gráfica), pero asegúrate de cambiar la contraseña por
+            defecto.</p>
+
+        <h2 class="section-title">Gestión: In-Band vs. Out-of-Band</h2>
+        <p>¿Cómo llegas al router para arreglarlo si la red está caída?</p>
+
+        <h3 class="subsection-title">1. In-Band Management (Gestión en Banda)</h3>
+        <p>Te conectas al dispositivo a través de la misma red por la que viajan los datos de los usuarios (usando SSH o
+            HTTPS).</p>
+        <div class="warning-box">
+            <strong>⚠️ Problema:</strong> Si la red se cae o configuras mal una interfaz, pierdes el acceso y te quedas
+            fuera ("locked out").
+        </div>
+
+        <h3 class="subsection-title">2. Out-of-Band Management (Gestión Fuera de Banda)</h3>
+        <p>Usas un canal separado y dedicado solo para gestión.</p>
+        <ul>
+            <li><strong>Puerto de Consola:</strong> Conectas un cable físico (Rollover cable / USB) directamente al
+                dispositivo estando frente a él.</li>
+            <li><strong>Red de Gestión:</strong> Una red separada con sus propios switches y cables, conectada a los
+                puertos de gestión dedicados de los equipos.</li>
+            <li><strong>Módem/4G:</strong> Un router con una tarjeta SIM 4G que te permite entrar "por la puerta de
+                atrás" si la conexión principal de Internet falla.</li>
+        </ul>
+
+        <h3 class="subsection-title">Jump Box / Jump Host</h3>
+        <p>Es un servidor "trampolín".</p>
+        <ul>
+            <li>Para seguridad, no permites conexiones SSH directas desde Internet a tus servidores críticos.</li>
+            <li>En su lugar, expones solo un servidor muy seguro y endurecido (el Jump Box). Te conectas al Jump Box
+                primero, y desde allí "saltas" (te conectas) a los servidores internos.</li>
+        </ul>
+
+        <div class="summary-box">
+            <h3>📌 Resumen de Puntos Clave</h3>
+            <ul>
+                <li><strong>Site-to-Site:</strong> Conecta oficinas (siempre activo).</li>
+                <li><strong>Remote Access:</strong> Conecta usuarios (bajo demanda).</li>
+                <li><strong>Split Tunnel:</strong> Tráfico corporativo por VPN, tráfico personal por Internet local.
+                </li>
+                <li><strong>SSH (22):</strong> Seguro. <strong>Telnet (23):</strong> Inseguro (nunca usar).</li>
+                <li><strong>RDP (3389):</strong> Escritorio remoto de Windows.</li>
+                <li><strong>Out-of-Band:</strong> Gestión separada de la red de datos (salvavidas si la red cae).</li>
+                <li><strong>Jump Box:</strong> Servidor intermedio para acceso seguro.</li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <strong>💡 Consejo del Instructor:</strong> Si en el examen te preguntan por "la forma más segura de
+            configurar un switch remotamente", la respuesta es SSH. Si te preguntan "qué configurar para que los
+            empleados accedan a los archivos de la empresa desde casa", la respuesta es VPN de Acceso Remoto
+            (Client-to-Site).
+        </div>
+    </section>
+</body>
+</html>

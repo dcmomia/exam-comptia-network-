@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="es">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Capítulo 9: Despliegue de Redes Inalámbricas</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 9: Despliegue de Redes Inalámbricas</h1>
+
+        <h2>Introducción: Liberándose de los Cables</h2>
+        <p>Vivimos en un mundo sin ataduras donde la movilidad es fundamental para la productividad. Desde cafeterías y
+            espacios de coworking hasta almacenes industriales y hospitales, las redes inalámbricas (WLAN) son ahora tan
+            importantes como las redes cableadas, si no más. La libertad de trabajar desde cualquier lugar, con laptops,
+            tablets y smartphones, ha transformado cómo concebimos los espacios de trabajo y las aplicaciones
+            empresariales.</p>
+
+        <p>Pero la libertad tiene un precio: la complejidad. A diferencia de un cable Ethernet donde los datos viajan
+            protegidos por una vaina de plástico desde el punto A hasta el punto B de manera predecible, en el Wi-Fi los
+            datos viajan por el aire como ondas de radio que pueden ser interceptadas por cualquiera con el equipo
+            adecuado, que pueden rebotar en paredes y objetos causando interferencia, y que se degradan con la distancia
+            y los obstáculos físicos.</p>
+
+        <p>Para el examen CompTIA Network+ N10-009, debes dominar tres áreas clave de las redes inalámbricas: los
+            estándares técnicos (la «sopa de letras» de 802.11a/b/g/n/ac/ax), cómo diseñar y configurar la cobertura
+            inalámbrica (antenas, canales, potencia), y especialmente cómo asegurar las redes Wi-Fi para que tus vecinos
+            o, peor aún, atacantes maliciosos, no puedan acceder a tu red corporativa.</p>
+
+        <h2>Estándares 802.11: La Evolución del Wi-Fi</h2>
+        <p>El IEEE (Instituto de Ingenieros Eléctricos y Electrónicos) define los estándares de Wi-Fi bajo el paraguas
+            802.11, seguido de letras que indican diferentes versiones. Debes memorizar qué frecuencia y velocidad
+            corresponde a cada estándar, ya que es un tema frecuente en el examen.</p>
+
+        <table class="wifi-table">
+            <tbody>
+                <tr>
+                    <th>Estándar</th>
+                    <th>Frecuencia</th>
+                    <th>Velocidad Máxima</th>
+                    <th>Características</th>
+                </tr>
+                <tr>
+                    <td>802.11b</td>
+                    <td>2.4 GHz</td>
+                    <td>11 Mbps</td>
+                    <td>Viejo, obsoleto. Solo usar si es absolutamente necesario.</td>
+                </tr>
+                <tr>
+                    <td>802.11a</td>
+                    <td>5 GHz</td>
+                    <td>54 Mbps</td>
+                    <td>Viejo, obsoleto. Primer uso de 5 GHz.</td>
+                </tr>
+                <tr>
+                    <td>802.11g</td>
+                    <td>2.4 GHz</td>
+                    <td>54 Mbps</td>
+                    <td>Combina velocidad de a con compatibilidad b.</td>
+                </tr>
+                <tr>
+                    <td>802.11n (Wi-Fi 4)</td>
+                    <td>2.4/5 GHz</td>
+                    <td>600 Mbps</td>
+                    <td>MIMO, canales más anchos. Introduce 5 GHz viable.</td>
+                </tr>
+                <tr>
+                    <td>802.11ac (Wi-Fi 5)</td>
+                    <td>5 GHz</td>
+                    <td>3.5+ Gbps</td>
+                    <td>MU-MIMO, canales de 160 MHz. Solo 5 GHz.</td>
+                </tr>
+                <tr>
+                    <td>802.11ax (Wi-Fi 6)</td>
+                    <td>2.4/5/6 GHz</td>
+                    <td>9.6 Gbps</td>
+                    <td>OFDMA, mejor eficiencia. WPA3 obligatorio. +E para 6 GHz.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Frecuencias y Canales</h3>
+        <p>La banda de 2.4 GHz ofrece mejor alcance y mejor penetración a través de paredes y obstáculos físicos, pero
+            tiene solo 3 canales no superpuestos (1, 6 y 11). Además, está fuertemente congestionada: no solo los
+            routers Wi-Fi usan esta banda, sino también microondas, teléfonos inalámbricos, dispositivos Bluetooth,
+            cámaras de vigilancia, y muchos otros dispositivos, causando interferencia constante que degrada el
+            rendimiento.</p>
+
+        <p>La banda de 5 GHz ofrece velocidades significativamente mayores y muchos más canales disponibles (en Estados
+            Unidos hay 23 canales no superpuestos de 20 MHz), pero tiene menor alcance y las paredes y obstáculos la
+            bloquean más fácilmente. Es la banda preferida para aplicaciones de alto rendimiento donde la cobertura
+            densa con múltiples APs es posible.</p>
+
+        <p>La banda de 6 GHz, introducida con Wi-Fi 6E, es el «carril exprés» nuevo. No tiene interferencia de
+            dispositivos antiguos porque los equipos Wi-Fi 6E son los únicos que pueden usarla. Ofrece velocidades
+            extremadamente altas y canales de hasta 320 MHz de ancho. Sin embargo, requiere dispositivos cliente
+            compatibles con 6 GHz, que todavía no son universales.</p>
+
+        <h2>Configuración y Diseño de Redes Inalámbricas</h2>
+
+        <h3>SSID y ESSID</h3>
+        <p>El SSID (Service Set Identifier) es el nombre de la red Wi-Fi que ves cuando buscas redes disponibles, como
+            «WiFi_Oficina» o «MiCasa_WiFi». Es simplemente un identificador textual de hasta 32 caracteres que los
+            puntos de acceso transmiten para que los dispositivos puedan encontrarlos.</p>
+
+        <p>Por defecto, los APs transmiten (broadcast) su SSID constantemente, como un cartel luminoso que dice «¡Aquí
+            estoy!». Los dispositivos clientes pueden ver este nombre y conectarse fácilmente. Puedes deshabilitar el
+            broadcast del SSID para ocultar la red, pero esto es lo que llamamos «seguridad por oscuridad»: solo detiene
+            a usuarios sin conocimientos técnicos, ya que cualquier herramienta de escaneo puede detectar la red aunque
+            no transmita su nombre.</p>
+
+        <p>El ESSID (Extended SSID) se usa cuando tienes múltiples puntos de acceso por todo un edificio o campus que
+            comparten el mismo nombre de red. Esto permite el roaming transparente: cuando te mueves con tu laptop de
+            una zona de cobertura a otra, te desconectas de un AP y te conectas automáticamente al siguiente sin perder
+            la conexión. Para el usuario, es una sola red continua; internamente, está usando múltiples APs coordinados.
+        </p>
+
+        <h3>Antenas: Dirigiendo la Señal</h3>
+        <p>Las antenas determinan cómo se propaga la señal Wi-Fi en el espacio. Elegir la antena correcta es crucial
+            para proporcionar cobertura donde la necesitas y minimizarla donde no la quieres.</p>
+
+        <p><strong>Antenas Omnidireccionales:</strong> Irradian la señal en un patrón de 360 grados horizontalmente,
+            como una rosquilla o una bombilla que ilumina toda la habitación por igual. Son la antena típica de varilla
+            que viene con los routers domésticos y los APs de techo en oficinas. Son ideales para cobertura general en
+            áreas abiertas donde quieres cobertura en todas direcciones desde un punto central.</p>
+
+        <p><strong>Antenas Direccionales:</strong> Enfocan la señal en un haz estrecho, como una linterna que ilumina
+            solo lo que está frente a ella. Se usan para enlaces punto a punto entre edificios (por ejemplo, conectar un
+            edificio A con un edificio B a cientos de metros de distancia), para cubrir áreas específicas como una sala
+            de conferencias rectangular, o para minimizar la cobertura fuera de un área deseada (como evitar que la
+            señal de tu oficina cubra la calle donde podría ser captada por atacantes).</p>
+
+        <p><strong>Antenas Sectoriales:</strong> Son un punto medio: cubren un sector de 60 a 120 grados en lugar de los
+            360 grados completos. Se usan en exteriores para cobertura de áreas amplias como estacionamientos o campus
+            universitarios, donde un solo poste con múltiples antenas sectoriales puede cubrir toda la zona.</p>
+
+        <h2>Seguridad Wireless: Cerrando la Puerta</h2>
+        <p>Si no proteges tu red Wi-Fi, estás invitando al mundo a tu red corporativa. Un atacante sentado en el
+            estacionamiento con una antena direccional podría acceder a todos tus recursos internos si tu Wi-Fi no está
+            adecuadamente protegido. La seguridad wireless es absolutamente crítica y debe ser una prioridad absoluta en
+            cualquier despliegue.</p>
+
+        <h3>Protocolos de Encriptación: De Peor a Mejor</h3>
+        <p><strong>WEP (Wired Equivalent Privacy):</strong> Este fue el primer intento de proporcionar seguridad Wi-Fi
+            en los años 90, pero está completamente roto. Un hacker con herramientas gratuitas puede descifrar la clave
+            WEP en minutos, a veces en segundos. Jamás uses WEP en ninguna circunstancia, incluso en redes de invitados
+            o dispositivos IoT donde parezca «solo» información no sensible.</p>
+
+        <div class="chapter-update">
+            <h3>⚡ Datos Críticos: Anatomía de un Ataque WEP</h3>
+            <p>La debilidad de WEP reside en su <b>Vector de Inicialización (IV)</b> de solo 24 bits, que se envía en
+                texto plano. Debido a que es tan corto, los IVs se repiten rápidamente en redes con tráfico.</p>
+
+            <h4>La Suite Aircrack-ng (Herramientas Clave)</h4>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Herramienta</th>
+                        <th>Función en el Examen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>airodump-ng</b></td>
+                        <td>Escaneo y captura de paquetes (Sniffing). Crea el archivo de captura (.cap).</td>
+                    </tr>
+                    <tr>
+                        <td><b>aireplay-ng</b></td>
+                        <td>Inyección de paquetes. Fuerza al AP a generar tráfico (ARP Replay).</td>
+                    </tr>
+                    <tr>
+                        <td><b>aircrack-ng</b></td>
+                        <td>El descifrador (Cracker). Analiza los IVs capturados para hallar la clave.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Modo Monitor</b></td>
+                        <td>Configuración que permite "escuchar" todo el tráfico aéreo (wlan0mon).</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="tip-box">💡 <b>Nota de Examen:</b> Generalmente se necesitan entre <b>10,000 y 25,000 paquetes</b>
+                de datos (IVs) para romper matemáticamente una clave WEP.</p>
+        </div>
+
+        <p><strong>WPA (Wi-Fi Protected Access):</strong> Fue desarrollado como un parche temporal rápido para las
+            vulnerabilidades de WEP. Utiliza TKIP (Temporal Key Integrity Protocol) para encriptación. Aunque mejor que
+            WEP, WPA también tiene vulnerabilidades conocidas y está obsoleto. No debe usarse en producción.</p>
+
+        <p><strong>WPA2:</strong> Es el estándar mínimo actual. Utiliza CCMP y AES para encriptación de grado militar.
+            Es seguro cuando se configura correctamente con una contraseña fuerte. La mayoría de los dispositivos
+            modernos soportan WPA2, y es el mínimo absoluto que debes aceptar en tu red corporativa.</p>
+
+        <p><strong>WPA3:</strong> Es el nuevo estándar que mejora significativamente la seguridad. Utiliza SAE
+            (Simultaneous Authentication of Equals) que hace imposible el ataque de diccionario offline: un atacante que
+            capture el handshake no puede intentar miles de contraseñas por segundo offline porque el protocolo lo
+            previene. WPA3 es obligatorio para dispositivos Wi-Fi 6 certificados y debe usarse siempre que sea posible.
+        </p>
+
+        <h3>Métodos de Autenticación</h3>
+        <p>La encriptación protege los datos en tránsito, pero primero el dispositivo debe ser autorizado para
+            conectarse a la red.</p>
+
+        <p><strong>PSK (Pre-Shared Key) - «Personal Mode»:</strong> Todos los dispositivos usan la misma contraseña para
+            conectarse a la red. Es fácil de configurar: simplemente configuras la contraseña en el router y se la das a
+            todos los usuarios. Sin embargo, tiene problemas significativos en entornos empresariales: si un empleado se
+            va o si la contraseña se compromete, tienes que cambiarla en todos los dispositivos (celulares de todos los
+            empleados, laptops, tablets, etc.). Si un empleado malintencionado tiene la contraseña, puede capturar
+            tráfico y eventualmente crackearla offline.</p>
+
+        <p><strong>Enterprise (802.1X):</strong> Es el método profesional para redes empresariales. Cada usuario tiene
+            sus propias credenciales únicas (username y contraseña) o certificados digitales. Estas credenciales se
+            validan contra un servidor central RADIUS (Remote Authentication Dial-In User Service). Los beneficios son
+            enormes: si un empleado se va, simplemente desactivas su cuenta en el servidor RADIUS y pierde acceso
+            inmediatamente sin afectar a nadie más. Puedes ver exactamente quién se conectó, cuándo y a qué AP. Escale a
+            miles de usuarios sin problemas. Es el estándar para redes corporativas serias.</p>
+
+        <h3>Portal Cautivo (Captive Portal)</h3>
+        <p>Cuando te conectas al Wi-Fi de un hotel, restaurante o aeropuerto, probablemente has visto una página web que
+            aparece automáticamente pidiéndote aceptar los términos de uso, proporcionar tu número de habitación, o
+            iniciar sesión antes de permitirte navegar. Ese es un Portal Cautivo.</p>
+
+        <p>Se utiliza comúnmente para redes de invitados (Guest Networks), donde quieres proporcionar acceso a Internet
+            a visitantes sin otorgarles acceso a tu red corporativa interna. El portal cautivo puede mostrar un
+            formulario de aceptación de términos, solicitar credenciales de invitados, o limitar el acceso según
+            políticas. También puede utilizarse para autenticación adicional antes de permitir el acceso a la red.</p>
+
+        <h3>Tipos de Despliegue de Red Inalámbrica</h3>
+        <p><strong>Modo Infraestructura (BSS/ESS):</strong> Es el modo normal y más común. Los dispositivos clientes
+            (stations) se conectan a un Punto de Acceso (AP) que está conectado por cable a la red. El AP actúa como
+            puente entre el medio inalámbrico y la red cableada. Es el modo que usarás en prácticamente todos los
+            despliegues empresariales.</p>
+
+        <p><strong>Modo Ad-hoc (IBSS):</strong> Es una red peer-to-peer donde los dispositivos se conectan directamente
+            entre sí sin un AP central. Se usa para compartir archivos entre computadoras cercanas, para juegos
+            multiplayer locales, o para conexiones temporales. Es útil cuando no hay infraestructura disponible pero
+            tiene limitaciones de alcance y escalabilidad. AirDrop de Apple y Nintendo DS local son ejemplos de este
+            modo.</p>
+
+        <p><strong>Modo Mesh (BSS extendido):</strong> Múltiples nodos (APs o nodos dedicados) se conectan entre sí
+            inalámbricamente para extender la cobertura sin necesidad de cables Ethernet en cada punto. Son
+            autorreparables: si un nodo falla, la señal busca automáticamente otra ruta a través de los nodos restantes.
+            Es ideal para áreas extensas donde tender cables sería prohibitivamente costoso, como estadios, parques,
+            campus empresariales extensos, o zonas rurales.</p>
+
+        <div class="chapter-update">
+            <h3>⚡ Datos Críticos: Jerarquía de la Red de Malla (Mesh)</h3>
+            <p>En escenarios de recuperación ante desastres, se utiliza una jerarquía de alcance para conectar zonas
+                aisladas:</p>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Tecnología</th>
+                        <th>Alcance Aprox.</th>
+                        <th>Función en la Malla</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Wi-Fi</b></td>
+                        <td>30 - 60 metros</td>
+                        <td>Acceso local para usuarios finales (campamento base).</td>
+                    </tr>
+                    <tr>
+                        <td><b>Microondas</b></td>
+                        <td>~50 km (30 millas)</td>
+                        <td>Enlace de retorno (Backhaul) entre campamentos o torres.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Satélite</b></td>
+                        <td>Cientos/Miles de km</td>
+                        <td>Conexión global a internet o sede central.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary-box">
+            <h3>🛠️ Escenario: Fallo de Conectividad en Zona de Desastre</h3>
+            <p><b>Caso:</b> Un equipo de respuesta despliega una red Mesh. Los usuarios ven el Wi-Fi pero no tienen
+                internet.</p>
+            <ul>
+                <li><b>Diagnóstico:</b> El enlace local Wi-Fi funciona, pero el <b>Backhaul</b> (Microondas o Satélite)
+                    ha fallado.</li>
+                <li><b>Nota sobre Ad-hoc:</b> Si dos usuarios intentan transferir archivos en modo Ad-hoc y se corta,
+                    recuerda que al no haber AP central, la distancia debe ser mínima.</li>
+            </ul>
+        </div>
+
+        <h3>Conceptos Avanzados: MIMO, Beamforming y MU-MIMO</h3>
+        <p><strong>MIMO (Multiple-Input Multiple-Output):</strong> Utiliza múltiples antenas tanto en el transmisor como
+            en el receptor para enviar múltiples flujos de datos simultáneos. Wi-Fi 4 (802.11n) introdujo MIMO básico,
+            permitiendo velocidades significativamente mayores que los estándares anteriores. Wi-Fi 5 y 6 expandieron
+            MIMO a configuraciones masivas con muchos más flujos espaciales.</p>
+
+        <p><strong>Beamforming:</strong> Es una técnica donde el AP o el cliente detecta la ubicación del otro
+            dispositivo y «enfoca» la señal de radio direccionalmente hacia él en lugar de emitir en todas direcciones
+            por igual. Esto mejora la señal, reduce la interferencia con otras redes, y aumenta el alcance efectivo.
+            Funciona mejor cuando tanto el AP como el cliente soportan beamforming explícito.</p>
+
+        <p><strong>MU-MIMO (Multi-User MIMO):</strong> Permite que un AP con múltiples antenas sirva a múltiples
+            clientes simultáneamente en lugar de secuencialmente. En el Wi-Fi tradicional, el AP transmitía a un
+            cliente, luego a otro, etc. MU-MIMO permite transmisiones paralelas, mejorando significativamente el
+            rendimiento en entornos densos con muchos clientes.</p>
+
+        <div class="summary-box">
+            <h3>Resumen de Puntos Clave para el Examen</h3>
+
+            <ul>
+                <li><strong>Canales 2.4 GHz:</strong> Usa solo 1, 6 y 11 para evitar solapamiento (overlapping). Solo 3
+                    canales no superpuestos.</li>
+                <li><strong>5 GHz:</strong> Más canales disponibles, menos congestión, menor alcance. Mejor para
+                    aplicaciones de alto rendimiento.</li>
+                <li><strong>Wi-Fi 5 (802.11ac):</strong> Solo 5 GHz, velocidades muy altas, MU-MIMO.</li>
+                <li><strong>Wi-Fi 6 (802.11ax):</strong> 2.4/5/6 GHz, OFDMA, WPA3 obligatorio, mejor eficiencia.</li>
+                <li><strong>WPA2-AES:</strong> Estándar de seguridad «mínimo aceptable» para producción.</li>
+                <li><strong>WPA3:</strong> El mejor estándar actual. SAE previene ataques offline.</li>
+                <li><strong>WEP y WPA-TKIP:</strong> Vulnerables, no deben usarse bajo ninguna circunstancia.</li>
+                <li><strong>802.1X/Enterprise:</strong> Autenticación individual usando servidor RADIUS. Estándar para
+                    empresas.</li>
+                <li><strong>PSK:</strong> Contraseña compartida. Aceptable para redes domésticas, problemático para
+                    empresas.</li>
+                <li><strong>MIMO:</strong> Múltiples antenas para flujos de datos paralelos y mayor velocidad.</li>
+                <li><strong>Mesh:</strong> Extiende cobertura sin cables. Autorregenerativo si un nodo falla.</li>
+            </ul>
+
+            <p><strong>Consejo del Instructor:</strong> Si el examen presenta un escenario donde «la señal Wi-Fi es
+                fuerte pero la velocidad es terrible y se corta constantemente» en un edificio de oficinas densamente
+                poblado, la respuesta suele ser Saturación o Solapamiento de Canales (Channel Overlap), especialmente en
+                la banda de 2.4 GHz. La solución es moverse a la banda de 5 GHz o a un canal no saturado (1, 6, 11 en
+                2.4 GHz).</p>
+        </div>
+    </section>
+</body>
+</html>

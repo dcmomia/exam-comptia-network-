@@ -1,0 +1,184 @@
+[
+    {
+        "id": 46,
+        "has_context_image": false,
+        "question": "Cuando un resolvedor DNS no puede encontrar la respuesta en su caché, consulta a otro servidor que puede realizar los pasos necesarios para obtener la respuesta definitiva. ¿Cómo se llama este proceso?",
+        "options": [
+            "Búsqueda autoritativa (Authoritative lookup)",
+            "Búsqueda recursiva (Recursive lookup)",
+            "Búsqueda secundaria (Secondary lookup)",
+            "Búsqueda primaria (Primary lookup)"
+        ],
+        "answer": "Búsqueda recursiva (Recursive lookup)",
+        "explanation": "La búsqueda recursiva es el proceso mediante el cual un servidor DNS realiza todo el trabajo de seguimiento de una cadena de consultas hasta encontrar el servidor autoritativo que tiene la respuesta definitiva para el cliente.",
+        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Consultas DNS"
+    },
+    {
+        "id": 47,
+        "has_context_image": false,
+        "question": "Leon, un analista de seguridad de red, está investigando actividad sospechosa en una oficina corporativa grande. Necesita una herramienta que pueda interceptar el tráfico de red de forma fluida y monitorearlo discretamente sin interrumpir las operaciones. La red abarca varios pisos, con varios departamentos interconectados mediante cableado físico. ¿Qué herramienta debería usar Leon para monitorear el tráfico de red sin interrumpir las operaciones en la oficina corporativa de varios pisos?",
+        "options": [
+            "Probador de cables",
+            "Sniffer de red",
+            "Punto de acceso inalámbrico (WAP)",
+            "Punto de acceso de tráfico (TAP)"
+        ],
+        "answer": "Punto de acceso de tráfico (TAP)",
+        "explanation": "Un Network TAP (Test Access Point) es un dispositivo de hardware que permite monitorear el tráfico de red en un enlace físico de forma pasiva y sin interrumpir el flujo de datos. A diferencia de un puerto SPAN, no introduce carga adicional en el switch.",
+        "source_reference": "Capítulo 16: Comandos de Línea de Comandos > Herramientas de Monitoreo Físico"
+    },
+    {
+        "id": 48,
+        "has_context_image": false,
+        "question": "¿Cuál de los siguientes debería implementarse para permitir el acceso a la red inalámbrica a los clientes en el vestíbulo (lobby) utilizando una contraseña compartida como clave?",
+        "options": [
+            "WPA2",
+            "Firewall",
+            "IPsec",
+            "Geofencing"
+        ],
+        "answer": "WPA2",
+        "explanation": "WPA2 (en su modo Personal o Pre-Shared Key) se utiliza para autenticar usuarios en una red inalámbrica mediante una contraseña compartida. Es el estándar común para acceso inalámbrico seguro en entornos pequeños o públicos.",
+        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Seguridad Inalámbrica"
+    },
+    {
+        "id": 49,
+        "has_context_image": false,
+        "question": "Diana trabaja como desarrolladora web y tiene la tarea de mejorar la usabilidad del sitio web de su empresa proporcionando información descriptiva y legible por humanos sobre el dominio. Como parte de su tarea, necesita incluir información basada en texto que describa el propósito, el contenido o la propiedad del dominio. ¿Qué tipo de registro específico debería usar Diana para lograr este objetivo y proporcionar información legible por humanos sobre el dominio?",
+        "options": [
+            "PTR",
+            "AAAA",
+            "CNAME",
+            "TXT"
+        ],
+        "answer": "TXT",
+        "explanation": "Los registros TXT de DNS permiten a los administradores insertar texto arbitrario en los registros DNS. Esto se utiliza comúnmente para proporcionar información sobre el dominio, notas de propiedad o para servicios de verificación (como SPF o registros del sitio).",
+        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Tipos de Registros DNS"
+    },
+    {
+        "id": 50,
+        "has_context_image": false,
+        "question": "Su estación de trabajo ha sido víctima de un ataque 'on-path' (hombre en el medio). Tras la investigación, determina que el ataque está ocurriendo en la Capa 2 del modelo OSI y está redirigiendo el tráfico destinado a su estación de trabajo hacia la estación de trabajo del atacante en su lugar. ¿Qué tipo de ataque se realizó contra su estación de trabajo?",
+        "options": [
+            "Rogue DHCP",
+            "VLAN hopping",
+            "DNS poisoning",
+            "ARP spoofing"
+        ],
+        "answer": "ARP spoofing",
+        "explanation": "El ARP spoofing (o envenenamiento de caché ARP) es un ataque de Capa 2 donde un atacante envía mensajes ARP falsos a una LAN para asociar su dirección MAC con la dirección IP de otro host legítimo (como el gateway), permitiéndole interceptar su tráfico.",
+        "source_reference": "Capítulo 10: Ataques de Red > Ataques de Capa 2"
+    },
+    {
+        "id": 51,
+        "has_context_image": false,
+        "question": "Cozyco Investments ha experimentado un ciberataque destinado a interceptar el tráfico web para robar información sensible; involucró una técnica que corrompe la caché DNS de un servidor para redirigir a los usuarios a sitios web maliciosos. ¿Cuál de los siguientes es más probable que se haya utilizado?",
+        "options": [
+            "ARP spoofing",
+            "DNS poisoning",
+            "SSL stripping",
+            "DNS spoofing"
+        ],
+        "answer": "DNS poisoning",
+        "explanation": "El DNS poisoning (envenenamiento de DNS) consiste en introducir datos falsos en la caché de un servidor de nombres DNS, de modo que las consultas devuelvan una dirección IP incorrecta (la del atacante) y redirijan a los usuarios a sitios maliciosos.",
+        "source_reference": "Capítulo 10: Ataques de Red > Vulnerabilidades de DNS"
+    },
+    {
+        "id": 52,
+        "has_context_image": false,
+        "question": "Thomas tiene un servidor que transmite contenido multimedia (streaming) a la red local, y el dispositivo es actualmente visible en la red. Todas las estaciones de trabajo de la LAN pueden hacer ping al dispositivo, y todos los firewalls están actualmente desactivados. El objetivo es que el servidor multimedia permita que diferentes estaciones de trabajo vean la transmisión si deciden suscribirse a ella. El dispositivo de streaming parece funcionar correctamente, pero el contenido no se transmite cuando se solicita. ¿Cuál de las siguientes tecnologías TCP/IP es MÁS probable que no esté implementada correctamente?",
+        "options": [
+            "Unicast",
+            "Anycast",
+            "Multicast",
+            "Broadcast"
+        ],
+        "answer": "Multicast",
+        "explanation": "Multicast es la tecnología que permite enviar un flujo de datos único a múltiples suscriptores interesados (uno a muchos). Si el ping (unicast) funciona pero el streaming (que suele ser multicast para eficiencia) no, lo más probable es que IGMP o el enrutamiento multicast no estén configurados correctamente.",
+        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > Tipos de Transmisión de Datos"
+    },
+    {
+        "id": 53,
+        "has_context_image": false,
+        "question": "Angela tiene la tarea de mejorar la gestión del cableado y las capacidades de aislamiento de fallos en la sala de servidores de su empresa. Quiere asegurarse de que las conexiones entre los servidores y la infraestructura de red sean fácilmente accesibles e identificables para una resolución rápida de problemas. ¿Qué debería implementar Angela para cumplir con estos requisitos?",
+        "options": [
+            "Desplegar una VLAN para segmentar el tráfico de red.",
+            "Configurar una máscara de subred para dividir el espacio de direcciones IP.",
+            "Instalar un panel de parcheo (patch panel) para la gestión centralizada del cableado.",
+            "Usar cables codificados por colores para diferentes segmentos de red."
+        ],
+        "answer": "Instalar un panel de parcheo (patch panel) para la gestión centralizada del cableado.",
+        "explanation": "Un panel de parcheo (patch panel) permite organizar el cableado estructurado de forma centralizada. Facilita la identificación de conexiones y permite realizar cambios o pruebas (aislamiento de fallos) de forma rápida sin manipular directamente el cableado permanente o los puertos del switch.",
+        "source_reference": "Capítulo 2: Cables y Conectores de Red > Gestión de Infraestructura Física"
+    },
+    {
+        "id": 54,
+        "has_context_image": false,
+        "question": "La instalación de la red está fallando las pruebas de redundancia en el MDF. El tráfico transportado es una mezcla de señales multicast y unicast. ¿Cuál de los siguientes dispositivos manejaría MEJOR el reenvío causado por la interrupción del servicio?",
+        "options": [
+            "Smart hub",
+            "Servidor proxy",
+            "Switch de Capa 2",
+            "Switch de Capa 3"
+        ],
+        "answer": "Switch de Capa 3",
+        "explanation": "Un switch de Capa 3 puede realizar funciones de enrutamiento y es mejor para manejar redundancia a nivel de red (mediante protocolos de enrutamiento dinámico) y gestionar el tráfico multicast de forma más eficiente que un switch de Capa 2 básico.",
+        "source_reference": "Capítulo 3: Dispositivos de Red > Switches Avanzados"
+    },
+    {
+        "id": 55,
+        "has_context_image": false,
+        "question": "Un técnico está configurando una nueva red y quiere crear rutas redundantes a través de la red. ¿Cuál de los siguientes debería implementarse para prevenir la degradación del rendimiento dentro de la red debido a bucles?",
+        "options": [
+            "Spanning tree",
+            "VLAN",
+            "Inspección ARP",
+            "Port mirroring"
+        ],
+        "answer": "Spanning tree",
+        "explanation": "El protocolo Spanning Tree (STP) se utiliza para evitar bucles de conmutación en redes con rutas redundantes. Sin STP, los bucles causarían tormentas de broadcast que degradarían severamente el rendimiento de la red.",
+        "source_reference": "Capítulo 3: Dispositivos de Red > Protocolos de Switch"
+    },
+    {
+        "id": 56,
+        "has_context_image": false,
+        "question": "Se le ha pedido que añada una entrada a sus registros DNS para permitir que el tráfico SMTP se envíe utilizando su nombre de dominio. ¿Qué tipo de registro debería añadir a su registro DNS?",
+        "options": [
+            "MX",
+            "CNAME",
+            "A",
+            "AAAA"
+        ],
+        "answer": "MX",
+        "explanation": "El registro MX (Mail Exchanger) especifica el servidor de correo responsable de recibir mensajes de correo electrónico en nombre de un nombre de dominio.",
+        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Registros de Correo DNS"
+    },
+    {
+        "id": 57,
+        "has_context_image": false,
+        "question": "¿Cuándo sería más apropiado utilizar el enrutamiento estático en lugar del enrutamiento dinámico?",
+        "options": [
+            "En una red grande con algoritmos de enrutamiento complejos y múltiples protocolos de enrutamiento.",
+            "En una red que cambia rápidamente donde los ajustes de ruta son frecuentes.",
+            "En una red pequeña donde la ruta directa entre dispositivos no cambia con frecuencia.",
+            "Cuando la red requiere un reenvío automático basado en las condiciones de tráfico en tiempo real."
+        ],
+        "answer": "En una red pequeña donde la ruta directa entre dispositivos no cambia con frecuencia.",
+        "explanation": "El enrutamiento estático es ideal para redes pequeñas y simples con topologías fijas, ya que no introduce sobrecarga de procesamiento ni de ancho de banda como los protocolos dinámicos.",
+        "source_reference": "Capítulo 6: Enrutamiento IP > Tipos de Enrutamiento"
+    },
+    {
+        "id": 58,
+        "has_context_image": false,
+        "question": "Los usuarios comienzan a informar que no pueden conectarse a la red Wi-Fi. Al revisar el servidor DHCP, el administrador de red descubre que todas las direcciones IP en el ámbito (scope) DHCP están en uso. ¿Cuál sería la solución más inmediata para resolver el problema?",
+        "options": [
+            "Aumentar el tiempo de concesión (lease time) de DHCP.",
+            "Reiniciar el servidor DHCP.",
+            "Expandir el pool de direcciones DHCP.",
+            "Disminuir el tiempo de concesión (lease time) de DHCP."
+        ],
+        "answer": "Disminuir el tiempo de concesión (lease time) de DHCP.",
+        "explanation": "Si el pool está lleno (agotamiento de direcciones), disminuir el tiempo de concesión permitirá que las direcciones IP se liberen y vuelvan al pool más rápidamente, permitiendo que nuevos usuarios se conecten. (Expandir el pool también es una solución, pero a menudo requiere reconfiguración de subred o no es posible si no hay más IPs disponibles en el segmento).",
+        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Gestión de DHCP"
+    }
+]

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+    <title>Capítulo 21: Diagnóstico de Servicios y Rendimiento</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 21: Diagnóstico de Servicios y Rendimiento</h1>
+        
+        <h2 class="section-title">Introducción: ¿Por qué la red está lenta?</h2>
+        <p>"La red va lenta" es la queja más común y vaga que escucharás. Puede significar cualquier cosa, desde que el servidor está saturado hasta que el usuario tiene un virus. En este capítulo, aprenderemos a diferenciar entre problemas de <strong>rendimiento</strong> (lentitud) y problemas de <strong>servicio</strong> (no funciona nada), y cómo usar métricas clave para encontrar al culpable.</p>
+
+        <h2 class="section-title">Problemas de Rendimiento: Los Cuatro Jinetes</h2>
+        <p>Cuando la red es lenta, generalmente es culpa de uno de estos cuatro factores:</p>
+
+        <h3 class="subsection-title">1. Latencia (Latency)</h3>
+        <p>Es el tiempo que tarda un paquete en ir de un punto a otro.</p>
+        <ul>
+            <li><strong>Síntoma:</strong> Haces clic en un enlace y tarda 2 segundos en empezar a cargar.</li>
+            <li><strong>Causas:</strong> Congestión en la red, ruta demasiado larga (muchos saltos de router), o enlace satelital.</li>
+        </ul>
+
+        <h3 class="subsection-title">2. Jitter</h3>
+        <p>Es la variación en la latencia. Si un paquete tarda 20ms y el siguiente 100ms, tienes Jitter.</p>
+        <ul>
+            <li><strong>Síntoma:</strong> En una llamada VoIP, la voz suena robótica o entrecortada. En videojuegos, ves "teletransportes".</li>
+            <li><strong>Solución:</strong> Implementar QoS (Quality of Service) para priorizar el tráfico de voz/video.</li>
+        </ul>
+
+        <h3 class="subsection-title">3. Pérdida de Paquetes (Packet Loss)</h3>
+        <p>Los datos se pierden en el camino y deben retransmitirse (TCP) o se pierden para siempre (UDP).</p>
+        <ul>
+            <li><strong>Síntoma:</strong> Descargas lentas (por retransmisión) o video pixelado/con saltos.</li>
+            <li><strong>Causas:</strong> Cableado defectuoso (Capa 1), interfaz saturada (Bottleneck) o descarte por congestión.</li>
+        </ul>
+
+        <h3 class="subsection-title">4. Ancho de Banda y Throughput</h3>
+        <ul>
+            <li><strong>Ancho de Banda:</strong> La capacidad teórica de la tubería (ej: 1 Gbps).</li>
+            <li><strong>Throughput (Rendimiento):</strong> La cantidad real de agua que pasa por la tubería.</li>
+            <li><strong>Cuello de Botella (Bottleneck):</strong> Si tienes una red de 10 Gbps pero tu conexión a Internet es de 50 Mbps, tu rendimiento máximo hacia Internet será 50 Mbps.</li>
+        </ul>
+
+        <h2 class="section-title">Problemas Comunes de Servicios</h2>
+        <p>A veces la red está bien, pero los servicios fallan.</p>
+
+        <h3 class="subsection-title">Errores de DNS</h3>
+        <ul>
+            <li><strong>Síntoma:</strong> Puedes hacer ping a 8.8.8.8, pero no puedes abrir www.google.com.</li>
+            <li><strong>Diagnóstico:</strong> Usa <code>nslookup</code> o <code>dig</code>. Si fallan, tu servidor DNS está caído o mal configurado.</li>
+        </ul>
+
+        <h3 class="subsection-title">Errores de DHCP</h3>
+        <ul>
+            <li><strong>Síntoma:</strong> Tu computadora tiene una dirección IP 169.254.x.x (APIPA).</li>
+            <li><strong>Causa:</strong> No pudo contactar al servidor DHCP.</li>
+            <li><strong>Scope Exhaustion (Agotamiento del Ámbito):</strong> El servidor DHCP se quedó sin direcciones IP libres para repartir. (Solución: Reducir el tiempo de concesión o ampliar la subred).</li>
+        </ul>
+
+        <h3 class="subsection-title">Bucles de Red (Switching Loops)</h3>
+        <div class="warning-box">
+            <ul>
+                <li><strong>Síntoma:</strong> Toda la red se vuelve extremadamente lenta de repente y las luces de los switches parpadean furiosamente al unísono.</li>
+                <li><strong>Causa:</strong> Alguien conectó un cable entre dos puertos del mismo switch (o entre dos switches) creando un bucle.</li>
+                <li><strong>Solución:</strong> Spanning Tree Protocol (STP) debería prevenir esto. Si ocurre, es porque STP está desactivado o mal configurado.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Problemas de Wireless: El Enemigo Invisible</h2>
+
+        <h3 class="subsection-title">Interferencia y Solapamiento</h3>
+        <ul>
+            <li><strong>Co-Channel Interference:</strong> Demasiados APs (Puntos de Acceso) en el mismo canal (ej: Canal 6). Se pelean por el aire.</li>
+            <li><strong>Adjacent Channel Interference:</strong> APs en canales que se solapan parcialmente (ej: Canal 6 y Canal 7). Es peor que usar el mismo canal.</li>
+            <li><strong>Solución:</strong> Usa solo canales no solapados en 2.4 GHz (1, 6, 11).</li>
+        </ul>
+
+        <h3 class="subsection-title">Mala Señal (RSSI Bajo)</h3>
+        <ul>
+            <li><strong>Absorción:</strong> La señal atraviesa una pared de ladrillo o agua y pierde fuerza.</li>
+            <li><strong>Refracción:</strong> La señal atraviesa un vidrio y cambia de dirección.</li>
+            <li><strong>Reflexión:</strong> La señal rebota en metal.</li>
+        </ul>
+
+        <div class="summary-box">
+            <h3>📌 Resumen de Puntos Clave</h3>
+            <ul>
+                <li><strong>Latencia:</strong> Retardo.</li>
+                <li><strong>Jitter:</strong> Variación del retardo (Malo para VoIP).</li>
+                <li><strong>Packet Loss:</strong> Datos perdidos (Malo para todo).</li>
+                <li><strong>APIPA (169.254.x.x):</strong> Fallo de DHCP.</li>
+                <li><strong>Scope Exhaustion:</strong> DHCP sin IPs libres.</li>
+                <li><strong>Ping por IP OK, por Nombre Falla:</strong> Problema de DNS.</li>
+                <li><strong>STP:</strong> Previene bucles de Capa 2.</li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

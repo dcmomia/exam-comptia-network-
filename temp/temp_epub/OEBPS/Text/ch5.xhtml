@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="es">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Capítulo 5: Medios de Transmisión y Topologías</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 5: Medios de Transmisión y Topologías</h1>
+
+        <h2>Introducción: Los Caminos de la Red</h2>
+        <p>Si el Modelo OSI es el «alma» conceptual de la red y los protocolos y dispositivos son el «cuerpo» funcional,
+            entonces los medios de transmisión son el sistema circulatorio que permite que la sangre (los datos) fluya
+            por todo el organismo. No importa cuán avanzado sea tu router o cuán seguro sea tu firewall; si el cable es
+            incorrecto, está dañado o es demasiado largo para la aplicación deseada, los datos simplemente no llegarán a
+            su destino. Los problemas de Capa 1 (la capa física) son la causa raíz de una proporción significativa de
+            los problemas de red que enfrentarás en tu carrera profesional.</p>
+
+        <p>Para el examen CompTIA Network+ N10-009, debes ser capaz de mirar un cable y saber inmediatamente qué
+            velocidad puede soportar, examinar un diagrama de red y entender cómo fluye el tráfico según la topología
+            física, y decidir qué tipo de fibra óptica utilizar para conectar dos edificios según la distancia y los
+            requisitos de ancho de banda. Este conocimiento práctico de los medios físicos es fundamental tanto para el
+            examen como para tu trabajo diario diseñando, implementando y manteniendo infraestructuras de red.</p>
+
+        <p>A pesar del avance continuo de las tecnologías inalámbricas y la fibra óptica de alta velocidad, el cableado
+            de cobre sigue siendo el rey de la red de acceso local (LAN) en la mayoría de las instalaciones. Entender
+            las diferencias entre las categorías de cable, los estándares de conectores, y las limitaciones de distancia
+            es conocimiento esencial que usarás diariamente. Al mismo tiempo, la fibra óptica domina el transporte de
+            larga distancia y las conexiones de centro de datos, y su importancia solo continúa creciendo.</p>
+
+        <h2>Cableado de Par Trenzado (Twisted Pair)</h2>
+        <p>El cable de par trenzado consiste en pares de cables de cobre extremadamente finos, aislados individualmente
+            y trenzados entre sí en una configuración helicoidal. El trenzado no es meramente estético ni tradicional;
+            su propósito fundamental es cancelar la diafonía (crosstalk), que es la interferencia electromagnética que
+            salta de un par de cables a otro, y la interferencia electromagnética (EMI) que proviene de fuentes externas
+            como motores eléctricos, líneas de alta tensión, y equipos de oficina.</p>
+
+        <p>El trenzado hace que cualquier señal de interferencia que afecte a un cable del par también afecte al otro
+            cable del par, pero en polaridad opuesta. Cuando el receptor resta la señal de un cable del otro, la
+            interferencia cancela (se anula), mientras que la señal de datos, que se transmite en modo diferencial
+            (voltajes opuestos en cada cable del par), se amplifica. Esta técnica de transmisión diferencial es la razón
+            por la que los cables de par trenzado pueden operar de manera confiable en entornos con mucho ruido
+            eléctrico.</p>
+
+        <h3>UTP vs. STP</h3>
+        <p><strong>UTP (Unshielded Twisted Pair - Par Trenzado Sin Blindaje):</strong> Es el tipo de cable más común en
+            las instalaciones de red modernas. No tiene protección extra contra interferencias externas más allá del
+            propio trenzado. Es más barato, más flexible y más fácil de instalar que las alternativas blindadas. Se usa
+            en la gran mayoría de instalaciones de oficina, hogar y centros de datos para conexiones de acceso. Para la
+            mayoría de entornos de oficina típicos, UTP es perfectamente adecuado y representa la mejor relación
+            costo-beneficio.</p>
+
+        <p><strong>STP (Shielded Twisted Pair - Par Trenzado Blindado):</strong> Tiene una capa metálica adicional
+            (blindaje) que protege los cables de la interferencia electromagnética externa. Es más caro, más rígido
+            (menos flexible) y más difícil de instalar correctamente porque el blindaje debe conectarse a tierra
+            apropiadamente en ambos extremos. Se utiliza en entornos industriales con mucha interferencia eléctrica,
+            como fábricas, plantas de manufactura, o cerca de equipos pesados. El uso incorrecto del blindaje (no
+            conectarlo a tierra) puede empeorar el rendimiento en lugar de mejorarlo.</p>
+
+        <h3>Estándares de Categoría</h3>
+        <p>El examen te pide que elijas el cable correcto según la velocidad y la distancia requeridas. Memorizar esta
+            tabla es esencial:</p>
+
+        <table class="cable-table">
+            <tbody>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Velocidad Máxima</th>
+                    <th>Frecuencia Máxima</th>
+                    <th>Distancia Máxima</th>
+                    <th>Uso Típico</th>
+                </tr>
+                <tr>
+                    <td>Cat 5</td>
+                    <td>100 Mbps (Fast Ethernet)</td>
+                    <td>100 MHz</td>
+                    <td>100 metros</td>
+                    <td>Obsoleto, no usar</td>
+                </tr>
+                <tr>
+                    <td>Cat 5e</td>
+                    <td>1 Gbps (Gigabit)</td>
+                    <td>100 MHz</td>
+                    <td>100 metros</td>
+                    <td>Estándar mínimo actual</td>
+                </tr>
+                <tr>
+                    <td>Cat 6</td>
+                    <td>1 Gbps / 10 Gbps (hasta 55m)</td>
+                    <td>250 MHz</td>
+                    <td>100 metros (1 Gbps)</td>
+                    <td>Común en oficinas nuevas</td>
+                </tr>
+                <tr>
+                    <td>Cat 6a</td>
+                    <td>10 Gbps</td>
+                    <td>500 MHz</td>
+                    <td>100 metros</td>
+                    <td>Estándar para 10 Gigabit</td>
+                </tr>
+                <tr>
+                    <td>Cat 7</td>
+                    <td>10 Gbps</td>
+                    <td>600 MHz</td>
+                    <td>100 metros</td>
+                    <td>Shielded, entornos especiales</td>
+                </tr>
+                <tr>
+                    <td>Cat 8</td>
+                    <td>25-40 Gbps</td>
+                    <td>2000 MHz</td>
+                    <td>30 metros</td>
+                    <td>Centro de datos (switches a servidores)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Punto clave:</strong> El estándar mínimo que debes usar para nuevas instalaciones es Cat 5e (para
+            Gigabit Ethernet). Cat 6 o Cat 6a es preferible si anticipas necesidad de 10 Gigabit en el futuro. Cat 8
+            está reservado para conexiones muy cortas (máximo 30 metros) en centros de datos donde se requiere 25G o 40G
+            entre servidores y switches.</p>
+
+        <h3>Clasificación por Seguridad contra Incendios</h3>
+        <p>No todos los cables son iguales en cuanto a su comportamiento ante el fuego, y las regulaciones de
+            construcción requieren diferentes clasificaciones según dónde se instale el cable.</p>
+
+        <p><strong>Plenum:</strong> El «plenum» es el espacio entre el techo falso y el piso real de un edificio, por
+            donde circula el aire del sistema de aire acondicionado. Si decides instalar cables de red en este espacio
+            (típicamente para pasar cables entre pisos sin hacer rozas en paredes), esos cables DEBEN ser de tipo
+            Plenum-rated. Los cables Plenum tienen un revestimiento especial hecho de materiales que no emiten humos
+            tóxicos cuando se queman. En un incendio, un cable PVC normal liberaría gases de cloro extremadamente
+            tóxicos que podrían intoxicar a los ocupantes del edificio. Los cables Plenum son significativamente más
+            caros que los cables estándar, pero son obligatorios por ley en la mayoría de jurisdicciones para
+            instalaciones en espacios plenum.</p>
+
+        <p><strong>Riser (Non-Plenum):</strong> Los cables Riser están diseñados para correr verticalmente entre pisos
+            en los shafts o conductos de cables. No son tan resistentes al fuego como los cables Plenum, pero resisten
+            mejor la propagación de fuego que los cables estándar. Se pueden usar en conductos verticales entre pisos
+            pero NO en espacios plenum.</p>
+
+        <p><strong>PVC:</strong> El cable PVC estándar es el más barato pero el menos seguro. Si se quema, emite gas
+            cloro tóxico y genera humo denso. Solo se debe usar en instalaciones donde no haya riesgo para personas,
+            como conductos cerrados o exteriores. Nunca uses cable PVC en espacios plenum o en edificios comerciales
+            donde la seguridad contra incendios es regulada.</p>
+
+        <h2>Cable Coaxial</h2>
+        <p>Aunque el cable coaxial ya no se usa para redes LAN en oficinas modernas, sigue siendo relevante gracias a su
+            uso extendido en sistemas de televisión por cable e internet residencial. Entender sus características es
+            importante para el examen.</p>
+
+        <p><strong>RG-6:</strong> Es el estándar actual para módems de cable de Internet y televisión por satélite.
+            Tiene un conductor central más grueso y mejor blindaje que el RG-59, lo que resulta en mejor rendimiento
+            para frecuencias altas. Los conectores tipo F se enroscan firmemente en los puertos del módem o
+            decodificador.</p>
+
+        <p><strong>RG-59:</strong> Es un estándar antiguo que se usaba principalmente en sistemas de cámaras CCTV
+            analógicas. Tiene un conductor central más fino y menos blindaje, lo que lo hace inadecuado para las
+            frecuencias más altas utilizadas por los servicios de cable e Internet modernos. Está obsoleto para nuevas
+            instalaciones.</p>
+
+        <p>Los conectores BNC (Bayonet Neill-Concelman) se usaban tradicionalmente en equipos de video y mediciones
+            profesionales, aunque hoy han sido mayoritariamente reemplazados por conectores tipo F en aplicaciones de
+            entretenimiento y conectividad doméstica.</p>
+
+        <h2>Twinaxial y DAC</h2>
+        <p>En los centros de datos modernos, para conectar servidores a switches que están muy cerca física y
+            lógicamente (en el mismo rack o racks adyacentes), los cables de cobre Twinaxial (Twinax) son la solución
+            preferida sobre la fibra óptica para distancias muy cortas. Los cables DAC (Direct Attach Copper) son cables
+            Twinax pre-terminados que ya vienen con los transceptores (SFP, SFP+, QSFP) soldados en los extremos.</p>
+
+        <p>La principal ventaja del DAC sobre la fibra óptica para distancias cortas es el costo: son significativamente
+            más baratos para las mismas velocidades. Para distancias típicas de centro de datos (menos de 5-7 metros),
+            el DAC proporciona el mismo rendimiento que la fibra a una fracción del precio. Sin embargo, para distancias
+            mayores, la atenuación del cobre hace que la fibra sea la única opción viable.</p>
+
+
+        <div class="chapter-update">
+            <h3>⚡ Datos Críticos: Otros Estándares de Cobre</h3>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Velocidad</th>
+                        <th>Distancia</th>
+                        <th>Uso Principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Coaxial (RG-6)</strong></td>
+                        <td>Hasta 1 Gbps</td>
+                        <td>~300 m</td>
+                        <td>Módems de cable (ISP), TV.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Twinax (DAC Pasivo)</strong></td>
+                        <td>10/40/100 Gbps</td>
+                        <td>&lt; 7 m</td>
+                        <td>Mismo rack.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Twinax (DAC Activo)</strong></td>
+                        <td>10/40/100 Gbps</td>
+                        <td>&lt; 15 m</td>
+                        <td>Racks cercanos.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Variantes de DSL y Limitaciones de Distancia</h3>
+        <p>
+            Al utilizar infraestructura de cobre para WAN, la distancia física al proveedor (DSLAM) es el factor
+            limitante. Debes memorizar estos rangos:
+        </p>
+        <ul>
+            <li><strong>ADSL:</strong> Alcanza hasta <strong>18,000 pies (aprox. 5.5 km)</strong>. Ofrece velocidades
+                asimétricas (bajada rápida, subida lenta).</li>
+            <li><strong>VDSL (Very High Bitrate DSL):</strong> Ofrece velocidades muy superiores (50+ Mbps) pero
+                requiere estar extremadamente cerca del nodo, típicamente a menos de <strong>1,200 metros (4,000
+                    pies)</strong>.</li>
+        </ul>
+
+        <h2>Fibra Óptica: A la Velocidad de la Luz</h2>
+        <p>La fibra óptica transmite datos usando pulsos de luz en lugar de señales eléctricas, lo que le proporciona
+            ventajas fundamentales sobre el cobre: es completamente inmune a la interferencia electromagnética (EMI), es
+            extremadamente difícil de interceptar sin detección (proporcionando seguridad física intrínseca), y puede
+            alcanzar distancias de kilómetros o incluso decenas de kilómetros sin repetidores, mientras que el cobre
+            está limitado a 100 metros.</p>
+
+        <h3>Fibra Monomodo (Single-Mode Fiber - SMF)</h3>
+        <p>La fibra monomodo tiene un núcleo extremadamente pequeño, de aproximadamente 9 micrones de diámetro. Este
+            pequeño núcleo permite que la luz viaje en un solo «modo» o camino, eliminando la dispersión causada por
+            múltiples trayectorias que ocurre en fibras multimodo. Se utiliza una fuente de luz de láser, que puede
+            modularse a frecuencias muy altas, permitiendo velocidades de transmisión extremadamente altas y distancias
+            de decenas de kilómetros sin amplificación.</p>
+
+        <p>El cable de fibra monomodo típicamente se identifica por su color amarillo (aunque el color puede variar
+            según el fabricante). Es la elección obvia para conexiones entre edificios en un campus, conexiones de larga
+            distancia (WAN), y cualquier aplicación donde la distancia sea un factor crítico. El costo de los equipos
+            (láseres) y el cable monomodo es mayor que el de multimodo, pero el rendimiento justifica el costo en
+            aplicaciones de larga distancia.</p>
+
+        <h3>Fibra Multimodo (Multimode Fiber - MMF)</h3>
+        <p>La fibra multimodo tiene un núcleo más grande, típicamente de 50 o 62.5 micrones de diámetro. El mayor tamaño
+            del núcleo permite que la luz viaje en múltiples ángulos o «modos», lo que causa dispersión modal (los
+            diferentes caminos toman diferentes tiempos, dispersando el pulso de luz). Esta limitación de distancia es
+            la contrapartida del mayor tamaño del núcleo.</p>
+
+        <p>La fibra multimodo utiliza LEDs como fuentes de luz, que son más baratos que los láseres pero operan a
+            frecuencias más bajas. El cable de fibra multimodo se identifica típicamente por su color naranja (para
+            OM1/OM2 con núcleos de 62.5 micrones) o color aqua/verde azulado (para OM3/OM4 con núcleos de 50 micrones
+            optimizados para velocidades de 10G y superiores). Es la elección correcta para conexiones cortas dentro de
+            un edificio o centro de datos, donde las distancias raramente superan los 300-400 metros. El costo
+            significativamente menor tanto del cable como de los equipos de transmisión hace que MMF sea la opción
+            económica para estas distancias.</p>
+
+        <h2>Tipos de Conectores de Fibra</h2>
+        <p>Debes poder identificar estos conectores visualmente o por descripción en el examen.</p>
+
+        <p><strong>ST (Straight Tip):</strong> Es un conector redondo que usa un sistema de bayoneta (se gira y encaja)
+            para bloquearse en su lugar. Fue muy común en instalaciones de los años 90 y principios de los 2000, aunque
+            hoy está siendo reemplazado por conectores más modernos. Se reconoce fácilmente por su forma redonda y el
+            mecanismo de bloqueo giratorio.</p>
+
+        <p><strong>SC (Subscriber Connector):</strong> Es un conector cuadrado con un mecanismo push-pull simple (se
+            empuja para conectar y se tira para desconectar). Su nombre viene de «Stick and Click» (encajar y hacer
+            clic). Es uno de los conectores más populares para aplicaciones de datos debido a su facilidad de uso y
+            confiabilidad. Se usa comúnmente para terminar conexiones de fibra en paneles de parcheo y equipos de red.
+        </p>
+
+        <p><strong>LC (Lucent Connector):</strong> Es un conector pequeño con una pestaña similar a la de un cable de
+            teléfono RJ-45. Su nombre viene de «Little Connector» (conector pequeño), y su tamaño reducido lo hace ideal
+            para aplicaciones de alta densidad donde muchos conectores deben caber en un espacio pequeño. Es el conector
+            más común en switches y servidores modernos de centro de datos.</p>
+
+        <p>
+            <strong>MTRJ (Mechanical Transfer Registered Jack):</strong> Es un conector de factor de forma pequeño (SFF)
+            que se distingue por alojar <strong>dos fibras</strong> en una sola férula (ferrule). Su diseño se asemeja a
+            un conector RJ-45, lo que facilita su identificación, aunque es menos común en despliegues modernos que el
+            LC.
+        </p>
+
+        <p><strong>MPO (Multi-fiber Push On):</strong> Es un conector ancho que puede terminar 12 o 24 fibras
+            simultáneamente en un solo conector. Se usa en backbones de alta velocidad (40Gbps, 100Gbps) y en
+            aplicaciones de cableado estructurado de alta densidad. Permite conectar múltiples fibras con una sola
+            acción de conexión, simplificando significativamente la instalación y el mantenimiento.</p>
+
+        <h3>Transceptores: Los Traductores</h3>
+        <p>Los switches y routers de gama alta no tienen puertos de fibra fijos; tienen ranuras vacías (slots) donde se
+            insertan transceptores modulares que convierten la señal eléctrica del switch en luz para la fibra óptica y
+            viceversa. Los transceptores estándar son:</p>
+
+        <p><strong>SFP (Small Form-Factor Pluggable):</strong> Soporta velocidades hasta 1 Gbps. Se usa para conexiones
+            Gigabit Ethernet y algunas aplicaciones de almacenamiento (1G FC).</p>
+
+        <p><strong>SFP+:</strong> Del mismo tamaño físico que el SFP pero con electrónica actualizada para soportar
+            hasta 10 Gbps. Es el estándar de facto para conexiones 10 Gigabit en centros de datos.</p>
+
+        <p><strong>QSFP (Quad SFP):</strong> Más grande que el SFP+, combina 4 canales para soportar 40 Gbps. Se usa
+            para conexiones de alta velocidad entre switches y para conexiones a servidores que requieren más ancho de
+            banda.</p>
+
+        <p><strong>QSFP28:</strong> Una versión mejorada del QSFP que soporta 100 Gbps utilizando los 4 canales a 25
+            Gbps cada uno. Es el estándar actual para backbones de centro de datos de muy alta velocidad.</p>
+
+        <p><strong>Fibra Monomodo (Single-mode Fiber - SMF):</strong> Utiliza un núcleo extremadamente delgado (unos 9
+            micrones) que permite que solo un rayo de luz (un "modo") viaje a la vez. Al no haber múltiples rebotes, la
+            señal no se dispersa, lo que permite alcanzar distancias enormes, de hasta 100 kilómetros o más, sin
+            necesidad de repetidores. Es el estándar para el "backbone" de Internet, cables submarinos, y conexiones
+            entre ciudades. Típicamente, los cables monomodo tienen una vaina de color <strong>amarillo</strong> para
+            identificarlos fácilmente.</p>
+
+        <div class="chapter-update">
+            <h3>⚡ Datos Críticos: Conectores y Pulido de Fibra</h3>
+
+            <h4>1. Tipos de Pulido (Minimizar Reflexión)</h4>
+            <p>La forma en que se pule la punta del conector afecta cuánta luz rebota hacia el transmisor:</p>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Nombre</th>
+                        <th>Color Típico</th>
+                        <th>Característica / Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>PC</b></td>
+                        <td>Physical Contact</td>
+                        <td>Beige/Negro</td>
+                        <td>Extremo curvo. Tecnología antigua.</td>
+                    </tr>
+                    <tr>
+                        <td><b>UPC</b></td>
+                        <td>Ultra Physical Contact</td>
+                        <td>Azul</td>
+                        <td>Forma de cúpula. Estándar para datos y video.</td>
+                    </tr>
+                    <tr>
+                        <td><b>APC</b></td>
+                        <td>Angled Physical Contact</td>
+                        <td>Verde</td>
+                        <td>Ángulo de 8 grados. Mínima reflexión. Larga distancia.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="warning-box">⚠️ <b>IMPORTANTE:</b> Nunca mezcles APC (Verde) con UPC/PC (Azul/Beige). El ángulo de
+                8 grados dañará físicamente el otro conector y causará una gran pérdida de señal.</p>
+        </div>
+        <p><strong>Transceptores BiDi (Bidireccional):</strong> Utilizan una técnica especial que permite enviar y
+            recibir datos usando un solo hilo de fibra, utilizando diferentes longitudes de onda (colores) de luz para
+            cada dirección. Esto reduce a la mitad el número de fibras necesarias en una instalación, lo que puede
+            significar ahorros significativos en cableado de larga distancia.</p>
+
+        <p></p>
+        <ul>
+            <li><strong>PC (Physical Contact):</strong> Pulido con ligera curvatura. Típicamente de color <strong>Beige
+                    o Negro</strong>. Es una tecnología antigua con mayor pérdida de retorno.</li>
+            <li><strong>UPC (Ultra Physical Contact):</strong> Acabado más redondeado para mejor contacto. Se identifica
+                por el color <strong>Azul</strong>. Es el estándar para datos y video digital.</li>
+            <li><strong>APC (Angled Physical Contact):</strong> La punta tiene un corte en ángulo de 8 grados. Se
+                identifica por el color <strong>Verde</strong>. Ofrece la menor reflexión de señal, ideal para largas
+                distancias y video analógico. <em>Nota: Nunca conectes un UPC (Azul) con un APC (Verde) o dañarás la
+                    fibra.</em></li>
+        </ul>
+
+        <h2>Topologías de Red: El Mapa</h2>
+        <p>La topología de red describe la forma física o lógica en que se conectan los dispositivos. Entender las
+            diferentes topologías es fundamental para diseñar redes eficientes y diagnosticar problemas cuando ocurren.
+        </p>
+
+        <h3>Topologías Físicas</h3>
+        <p><strong>Topología de Estrella (Star):</strong> Todos los dispositivos se conectan a un punto central,
+            típicamente un switch o un hub. Es la topología más común en las redes LAN modernas. Si un cable falla, solo
+            el dispositivo conectado a ese cable se ve afectado; los demás continúan funcionando normalmente. El punto
+            central es un punto único de fallo potencial, por lo que los switches centrales deben ser confiables y, en
+            entornos críticos, redundantes.</p>
+        <img alt="estrella" src="../Images/estrella.png"/>
+        <p><strong>Topología de Bus (Bus):</strong> Todos los dispositivos están conectados a un solo cable central (el
+            bus). Era común en las primeras redes Ethernet de los años 80 y 90, pero está completamente obsoleta.
+            Cualquier ruptura en el cable principal afectaba a toda la red, y la detección de problemas era
+            extremadamente difícil. Si ves esta topología en el examen, es solo como ejemplo histórico o para
+            identificar por qué NO debería usarse.</p>
+        <img alt="bus" src="../Images/bus.png"/>
+        <p><strong>Topología de Anillo (Ring):</strong> Los dispositivos se conectan en un patrón circular, donde cada
+            dispositivo está conectado a exactamente otros dos dispositivos, y los datos fluyen en una dirección (o en
+            ambas direcciones en anillos dobles). Las redes Token Ring usaban esta topología, aunque hoy está obsoleta.
+            Sin embargo, los anillos lógicos se usan en algunas tecnologías modernas como SONET/SDH para transporte de
+            telecomunicaciones.</p>
+        <img alt="anillo" src="../Images/anillo.png"/>
+        <p><strong>Topología de Malla (Mesh):</strong> Cada dispositivo se conecta a todos los demás dispositivos (Full
+            Mesh) o a varios de los otros (Partial Mesh). Full Mesh proporciona redundancia máxima pero es
+            extremadamente costosa y poco práctica para redes grandes (n dispositivos requieren n(n-1)/2 conexiones).
+            Partial Mesh, donde cada dispositivo se conecta a varios vecinos pero no a todos, es común en WANs donde la
+            redundancia es crítica. Internet mismo es un ejemplo de mesh parcial: múltiples rutas existen entre
+            cualquier par de puntos.</p>
+        <img alt="malla" src="../Images/malla.png"/>
+
+        <div class="important-note">
+            <strong>⚡ Dato Crítico: Fórmula de Malla Completa</strong>
+
+            <p>Para calcular el número exacto de cables necesarios en una topología <em>Full Mesh</em> (Malla Completa),
+                se aplica la siguiente relación matemática:</p>
+
+            <div class="formula-box">
+                C = n(n - 1) / 2
+            </div>
+
+            <p>Donde:</p>
+            <ul>
+                <li><strong>C</strong> es el número total de conexiones (cables).</li>
+                <li><strong>n</strong> es el número de nodos (dispositivos).</li>
+            </ul>
+
+            <p><em>Ejemplo:</em> Para conectar 6 routers en malla completa, el cálculo sería: 6(5) / 2 = <strong>15
+                    cables</strong>.</p>
+        </div>
+
+        <p><strong>Topología Híbrida:</strong> Una mezcla de dos o más topologías básicas. El ejemplo más común es una
+            serie de switches en configuración de estrella, conectados entre sí para formar una «estrella extendida» o
+            incluso una estructura jerárquica que se asemeja a un árbol.</p>
+        <img alt="hibryd" src="../Images/hibryd.jpg"/>
+        <h3>Tipos de Redes por Geografía</h3>
+        <p>Las redes se clasifican también según su extensión geográfica:</p>
+        <p><strong>PAN (Personal Area Network):</strong> Tu red personal más cercana, típicamente unos pocos metros de
+            alcance. Incluye tu teléfono conectado a tu reloj inteligente, a los altavoces Bluetooth del coche, o a tus
+            auriculares inalámbricos. Utiliza tecnologías como Bluetooth o NFC.</p>
+
+        <p><strong>LAN (Local Area Network):</strong> Una oficina, una casa, un edificio. Típicamente abarca hasta 1 km
+            de extensión y sirve a un grupo de usuarios u organizaciones relacionadas. Es el tipo de red más común para
+            entornos empresariales y domésticos.</p>
+
+        <p><strong>CAN (Campus Area Network):</strong> Varios edificios conectados en una universidad o parque
+            empresarial. Combina múltiples LANs mediante conexiones de alta velocidad (típicamente fibra óptica) y sirve
+            a una comunidad geográfica limitada como un campus universitario o un complejo de oficinas.</p>
+
+        <p><strong>MAN (Metropolitan Area Network):</strong> Una red que cubre una ciudad entera o área metropolitana.
+            Típicamente conecta múltiples CANs y LANs para proporcionar conectividad de área amplia a nivel de ciudad.
+            Las redes MAN pueden ser operadas por gobiernos municipales, empresas de telecomunicaciones, o consorcios de
+            organizaciones.</p>
+
+        <p><strong>WAN (Wide Area Network):</strong> Una red que conecta ciudades, países o incluso continentes.
+            Internet es el ejemplo más grande de WAN. Las conexiones WAN tradicionalmente usaban líneas alquiladas de
+            operadores de telecomunicaciones, aunque hoy SD-WAN permite utilizar conexiones de menor costo como DSL o
+            cable junto con enlaces MPLS tradicionales.</p>
+
+        <p><strong>SAN (Storage Area Network):</strong> Aunque ya vimos SAN en el capítulo de almacenamiento, es
+            importante notar que también representa un tipo de red especializada por función, dedicada exclusivamente al
+            almacenamiento de datos de alta velocidad.</p>
+
+        <h2>Arquitectura de Centros de Datos</h2>
+        <p>El diseño de redes en centros de datos modernos ha evolucionado para soportar la virtualización intensiva,
+            las aplicaciones cloud nativas, y los patrones de tráfico este-oeste (entre servidores) que dominan los
+            centros de datos actuales.</p>
+
+        <h3>Modelo Jerárquico de Tres Capas (Tradicional)</h3>
+        <p>Este modelo ha sido el estándar durante décadas para el diseño de redes de centro de datos:</p>
+
+        <p><strong>Capa Core (Núcleo):</strong> Es la «autopista de alta velocidad» del centro de datos. Su única
+            función es mover datos lo más rápido posible entre las capas inferiores. No aplica políticas de seguridad ni
+            enrutamiento complejo; simplemente reenvía paquetes a máxima velocidad. Los switches de núcleo son equipos
+            extremadamente costosos y de alto rendimiento, con múltiples fuentes de alimentación redundantes y capacidad
+            de procesamiento masivo.</p>
+
+        <p><strong>Capa Distribution (Distribución):</strong> Aquí es donde se aplican las políticas. El enrutamiento
+            entre VLANs, las listas de control de acceso (ACLs), la calidad de servicio (QoS), y las políticas de
+            seguridad se implementan en esta capa. Actúa como el punto de agregación que conecta múltiples switches de
+            acceso al núcleo.</p>
+
+        <p><strong>Capa Access (Acceso):</strong> Es donde se conectan los usuarios finales, los servidores, y los
+            dispositivos de almacenamiento. Es la capa más cercana a los endpoints y típicamente incluye switches de
+            menor costo con puertos de alta densidad para conectar servidores y otros dispositivos.</p>
+
+        <p><strong>Collapsed Core:</strong> En redes más pequeñas, las capas Core y Distribution frecuentemente se
+            fusionan para ahorrar costos, creando una arquitectura de dos capas donde un solo nivel de switches
+            proporciona tanto la agregación como el núcleo de la red.</p>
+
+        <h3>Arquitectura Spine and Leaf (Moderna)</h3>
+        <p>Diseñada específicamente para centros de datos modernos que ejecutan cargas de trabajo virtualizadas y
+            aplicaciones cloud, la arquitectura Spine and Leaf ha reemplazado al modelo jerárquico tradicional en muchos
+            despliegues de alta densidad.</p>
+
+        <p><strong>Leaf Switches (Hojas):</strong> Se conectan directamente a los servidores, almacenamiento y otros
+            dispositivos. Cada servidor típicamente tiene dos conexiones a dos Leaf switches diferentes para
+            redundancia.</p>
+
+        <p><strong>Spine Switches (Columna):</strong> Se conectan a TODOS los switches Leaf. Cada Leaf switch tiene una
+            conexión a cada Spine switch, creando una estructura donde cualquier servidor está exactamente a dos saltos
+            (Leaf-Spine-Leaf) de cualquier otro servidor.</p>
+
+        <p>La ventaja fundamental es la latencia consistente: todos los pares de servidores tienen exactamente la misma
+            latencia máxima (dos saltos), independientemente de dónde estén ubicados físicamente en el centro de datos.
+            Esto es crucial para aplicaciones distribuidas que requieren comunicación rápida entre múltiples servidores.
+            La arquitectura Spine and Leaf también escala de manera más predecible: agregar más capacidad simplemente
+            significa agregar más Leaf switches o más Spine switches.</p>
+
+
+        <div class="security-update">
+            <h3>🛠️ Escenario de Solución de Problemas (Troubleshooting)</h3>
+            <p><strong>Escenario:</strong> Una aplicación interna es lenta. El servidor de DB y el servidor Web están en
+                racks diferentes.</p>
+            <p><strong>Diagnóstico de Arquitectura:</strong> En una jerarquía de 3 niveles, el tráfico sube al
+                <em>Core</em> y baja, aumentando latencia (tráfico Este-Oeste).
+            </p>
+            <p><strong>Solución:</strong> La arquitectura <strong>Spine-Leaf</strong> mitiga esto al ser una conexión
+                <em>Full Mesh</em> entre switches leaf, garantizando latencia mínima y predecible.
+            </p>
+        </div>
+
+        <h3>Flujos de Tráfico: North-South vs. East-West</h3>
+        <p>Entender estos patrones de tráfico es crítico para diseñar centros de datos modernos:</p>
+
+        <p><strong>North-South (Norte-Sur):</strong> Es el tráfico que entra o sale del centro de datos hacia el mundo
+            exterior. Ejemplos incluyen un usuario de Internet accediendo a una aplicación web alojada en el centro de
+            datos, o el centro de datos comunicándose con servicios cloud externos. En arquitecturas tradicionales, este
+            tráfico representa la mayor parte del volumen, y los firewalls perimetrales se ubicaban para inspeccionarlo.
+        </p>
+
+        <p><strong>East-West (Este-Oeste):</strong> Es el tráfico entre servidores dentro del centro de datos. Con la
+            proliferación de microservicios, bases de datos distribuidas, y arquitecturas de procesamiento paralelo,
+            este tráfico ha llegado a representar el 70-80% del tráfico total en muchos centros de datos modernos. Un
+            servidor web podría comunicarse con un servidor de aplicación, que a su vez consulta una base de datos y
+            llama a un servicio de caché, todo dentro del mismo centro de datos. Las arquitecturas modernas como Spine
+            and Leaf están optimizadas específicamente para este patrón de tráfico Este-Oeste.</p>
+
+        <div class="summary-box">
+            <h3>Resumen de Puntos Clave para el Examen</h3>
+
+            <h4>1. Medios de Transmisión (Transmission Media)</h4>
+            <p><strong>Inalámbricos (Wireless):</strong></p>
+            <ul>
+                <li><strong>802.11 (Wi-Fi):</strong> Estándar para redes de área local inalámbricas (WLAN).</li>
+                <li><strong>Cellular (Celular):</strong> Redes móviles (4G/5G/LTE) para cobertura amplia.</li>
+                <li><strong>Satellite (Satélite):</strong> Cobertura global pero con mayor latencia (retraso).</li>
+            </ul>
+            <p><strong>Cableados (Wired):</strong></p>
+            <ul>
+                <li><strong>Fiber (Fibra Óptica):</strong>
+                    <ul>
+                        <li><em>Monomodo (SMF):</em> Larga distancia, láser, cable amarillo.</li>
+                        <li><em>Multimodo (MMF):</em> Corta distancia, LED, cable naranja/aqua.</li>
+                    </ul>
+                </li>
+                <li><strong>Coaxial:</strong> Cable con núcleo de cobre y blindaje (ej. TV por cable, Internet DOCSIS).
+                </li>
+                <li><strong>DAC (Direct Attach Copper):</strong> Cables de cobre de alta velocidad pre-terminados para
+                    distancias cortas (dentro del rack).</li>
+            </ul>
+
+            <h4>2. Transceptores y Conectores</h4>
+            <table class="port-table">
+                <tbody>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Conector</th>
+                        <th>Uso / Característica Visual</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="4"><strong>Fibra Óptica</strong></td>
+                        <td><strong>SC</strong></td>
+                        <td>(Subscriber Connector) Cuadrado grande, "Stick and Click".</td>
+                    </tr>
+                    <tr>
+                        <td><strong>LC</strong></td>
+                        <td>(Lucent Connector) Pequeño, alta densidad, tiene clip.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ST</strong></td>
+                        <td>(Straight Tip) Redondo, mecanismo de giro (bayoneta).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MPO</strong></td>
+                        <td>(Multi-fiber Push On) Conector ancho para múltiples fibras (alta densidad).</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>Cobre (Par Trenzado)</strong></td>
+                        <td><strong>RJ11</strong></td>
+                        <td>Pequeño, usado para teléfonos analógicos/DSL.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RJ45</strong></td>
+                        <td>Estándar para redes Ethernet.</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>Coaxial</strong></td>
+                        <td><strong>F-Type</strong></td>
+                        <td>Conector de rosca (Módems de cable, TV).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>BNC</strong></td>
+                        <td>Conector de giro (Redes antiguas 10BASE2, CCTV).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>3. Topologías y Arquitecturas de Red</h4>
+            <ul>
+                <li><strong>Star / Hub-and-Spoke (Estrella):</strong> Todos los dispositivos conectan a un punto
+                    central. Si falla el cable, solo cae ese dispositivo. Si falla el central, cae todo.</li>
+                <li><strong>Mesh (Malla):</strong> Alta redundancia. <em>Full Mesh</em> conecta todos con todos;
+                    <em>Partial Mesh</em> conecta solo los críticos.
+                </li>
+                <li><strong>Point-to-Point (Punto a Punto):</strong> Conexión directa entre dos nodos (ej. dos routers).
+                </li>
+                <li><strong>Hybrid (Híbrida):</strong> Combinación de dos o más topologías (ej. Estrella + Malla).</li>
+            </ul>
+
+            <p><strong>Arquitecturas de Centro de Datos y Empresariales:</strong></p>
+            <ul>
+                <li><strong>Three-Tier (Tres Capas):</strong> Modelo tradicional. Core (Núcleo), Distribution
+                    (Distribución/Agregación), Access (Acceso).</li>
+                <li><strong>Collapsed Core (Núcleo Colapsado):</strong> Combina las capas de Core y Distribución en una
+                    sola (para redes más pequeñas).</li>
+                <li><strong>Spine and Leaf:</strong> Arquitectura moderna de Data Center. Cada switch "Leaf" conecta con
+                    cada "Spine". Optimiza el tráfico Este-Oeste y reduce la latencia.</li>
+            </ul>
+
+        </div>
+    </section>
+</body>
+</html>

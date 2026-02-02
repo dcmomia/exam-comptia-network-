@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="es">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Capítulo 1: El Modelo OSI y la Comunicación de Red</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 1: El Lenguaje de las Redes: El Modelo OSI</h1>
+
+        <h2>Introducción: ¿Por Qué Necesitamos un Modelo?</h2>
+        <p>Imagina que intentas construir una casa. No puedes simplemente empezar a poner ladrillos; necesitas un plano
+            arquitectónico que defina dónde van las tuberías de fontanería, dónde van los cables eléctricos y cómo se
+            decorará el interior de cada habitación. Cada uno de estos sistemas es independiente, pero todos deben
+            trabajar juntos de manera coordinada para que la casa sea habitable y funcional. En el mundo de las redes
+            informáticas ocurre exactamente lo mismo: para que tu computadora pueda enviar un correo electrónico a un
+            servidor ubicado en otro continente, deben ocurrir miles de procesos complejos que involucran hardware,
+            software, protocolos y estándares internacionales.</p>
+
+        <p>Para gestionar esta complejidad de manera efectiva, la industria de las tecnologías de la información
+            desarrolló lo que llamamos «modelos de referencia». Estos modelos proporcionan un marco conceptual que
+            divide las comunicaciones de red en capas o niveles, cada uno con funciones específicas y bien definidas. El
+            modelo más importante que debes dominar para el examen CompTIA Network+ N10-009, y que será la base de toda
+            tu carrera profesional en redes, es el Modelo de Interconexión de Sistemas Abiertos, conocido universalmente
+            como Modelo OSI (Open Systems Interconnection). Este modelo fue desarrollado por la ISO (Organización
+            Internacional de Normalización) en 1977 y sigue siendo relevante más de cuatro décadas después.</p>
+
+        <p>El dominio del Modelo OSI es vital para el examen porque te permite categorizar funciones de red, identificar
+            qué hace cada pieza de hardware o software, y lo más importante, aislar fallos de manera sistemática durante
+            la resolución de problemas. Cuando enfrentes un problema de conectividad, el modelo OSI te ayudará a
+            determinar si se trata de un problema físico como un cable desconectado o un pin roto en un conector RJ-45,
+            o si es un problema de aplicación como un navegador web mal configurado. A lo largo de este capítulo,
+            desglosaremos estas siete capas de manera detallada, aprendiendo a «hablar» el idioma del Modelo OSI con
+            fluidez y confianza.</p>
+
+        <h2>El Modelo OSI: Desglose Capa por Capa</h2>
+        <p>El modelo OSI divide las comunicaciones de red en siete capas distintas, cada una con responsabilidades
+            específicas y únicas. El modelo se numera del 1 al 7, comenzando desde abajo (lo más tangible y físico)
+            hasta arriba (lo más abstracto y cercano al usuario final). Es fundamental que memorices tanto el número
+            como el nombre de cada capa, así como las funciones principales que realizan.</p>
+
+        <p>Una regla mnemotécnica para recordar el orden de las capas de arriba hacia abajo (Aplicación, Presentación,
+            Sesión, Transporte, Red, Enlace, Física) es:</p>
+
+
+ 
+
+        <p class="mnemonica">"<b>A</b>lgo <b>P</b>arece <b>S</b>uceder, <b>T</b>res <b>R</b>atas <b>E</b>stán
+            <b>F</b>umando"
+        </p>
+        <figure class="kdp-image-wrapper">
+            <img alt="nemotec" src="../Images/nemotec.jpg" class="responsive-img"/>
+        </figure>
+
+       <div class="chapter-update">
+            <h3>⚡ Datos Críticos (Memorización Obligatoria)</h3>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Capa #</th>
+                        <th>Nombre</th>
+                        <th>Función General</th>
+                        <th>PDU</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7</td>
+                        <td>Aplicación</td>
+                        <td>Interfaz usuario/software</td>
+                        <td>Datos</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Presentación</td>
+                        <td>Formato, encriptación</td>
+                        <td>Datos</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Sesión</td>
+                        <td>Gestión comunicación apps</td>
+                        <td>Datos</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Transporte</td>
+                        <td>Entrega confiable/no confiable</td>
+                        <td>Segmento/Datagrama</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Red</td>
+                        <td>Enrutamiento lógico (IP)</td>
+                        <td>Paquete</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Enlace</td>
+                        <td>Direccionamiento físico (MAC)</td>
+                        <td>Trama (Frame)</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Física</td>
+                        <td>Señalización, cables</td>
+                        <td>Bits</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Capa 1: Física (Physical Layer)</h3>
+        <p>La Capa Física es la base fundamental de todo el modelo OSI. Aquí es donde los datos digitales que las
+            computadoras entienden se convierten en señales físicas capaces de viajar a través del medio de transmisión,
+            ya sea cobre, fibra óptica o el espacio aéreo en el caso de las comunicaciones inalámbricas. En esta capa,
+            no nos importa en absoluto «qué» información se está enviando, ya sea una fotografía de alta resolución, un
+            documento de texto o un mensaje de correo electrónico; solo nos importa mover bits (unos y ceros) de un
+            lugar a otro de manera confiable.</p>
+
+        <p>La Unidad de Datos de Protocolo (PDU) en esta capa es simplemente el bit, la unidad más pequeña de
+            información en computación. Las tecnologías y funciones de la Capa Física incluyen la conversión de datos a
+            señales eléctricas (voltajes), ópticas (luz) o electromagnéticas (ondas de radio), dependiendo del medio
+            utilizado. También abarca las características físicas de los conectores y puertos, las especificaciones
+            eléctricas de los dispositivos, y los estándares de cableado como los diferentes categorías de cables de
+            cobre o los tipos de conectores de fibra óptica.</p>
+
+        <p>Los dispositivos que operan exclusivamente en la Capa Física incluyen los concentradores o hubs, los
+            repetidores que regeneran la señal para extender el alcance de la red, los extensores de línea que
+            amplifican la señal en conexiones de larga distancia, y los módems que convierten señales digitales a
+            analógicas y viceversa para la transmisión a través de líneas telefónicas tradicionales. Un consejo crucial
+            para el examen: si el problema que describes involucra un cable desconectado, un pin roto en un conector
+            RJ-45, interferencia electromagnética que corrompe los datos, o un conector de fibra sucio que bloquea la
+            luz, estás tratando con un problema de la Capa 1 que requiere inspección física y reparación del medio de
+            transmisión.</p>
+
+        <h3>Capa 2: Enlace de Datos (Data Link Layer)</h3>
+        <p><strong>Capa 2 - Enlace de Datos (Data Link):</strong> El "direccionamiento físico". Aquí es donde viven las
+            direcciones MAC y los Switches. Su trabajo es empaquetar los datos en <strong>Tramas (Frames)</strong> y
+            asegurar que lleguen al dispositivo correcto en la misma red local. La Capa 2 se divide en dos subcapas: LLC
+            (Logical Link Control), que gestiona el flujo y errores, y MAC (Media Access Control), que gestiona el
+            acceso al medio físico.</p>
+
+        <div class="chapter-update">
+            <h4>⚡ Datos Críticos: Estructura de la Dirección MAC</h4>
+            <p>Una dirección MAC es un identificador único de 48 bits (6 bytes) expresado en hexadecimal.</p>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Sección</th>
+                        <th>Longitud</th>
+                        <th>Nombre / Función</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Primeros 24 bits</b></td>
+                        <td>3 Bytes</td>
+                        <td><b>OUI</b> (Identificador del Fabricante/Vendedor). Ej: Apple, Intel.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Últimos 24 bits</b></td>
+                        <td>3 Bytes</td>
+                        <td><b>NIC ID</b> (Identificador único del dispositivo).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Modos de Sincronización (Comunicación)</h4>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Modo</th>
+                        <th>Descripción</th>
+                        <th>Característica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Isócrono</b></td>
+                        <td>Reloj común.</td>
+                        <td>Usa franjas horarias reservadas. Mucha eficiencia.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Síncrono</b></td>
+                        <td>Reloj compartido.</td>
+                        <td>Usa tramas de inicio/fin (como el compás en música).</td>
+                    </tr>
+                    <tr>
+                        <td><b>Asíncrono</b></td>
+                        <td>Sin reloj común.</td>
+                        <td>Usa bits de inicio/parada (Start/Stop bits). Menos eficiente.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Una vez que los bits llegan a través del cable o el aire en forma de señales físicas, necesitamos organizar
+            esos bits en estructuras comprensibles y asegurar que lleguen al dispositivo correcto dentro de nuestra red
+            local. La Capa de Enlace de Datos se encarga de estas tareas críticas. Esta capa es única porque se
+            subdivide en dos subcapas funcionales distintas que trabajan en coordinación: la subcapa LLC (Logical Link
+            Control) que controla el flujo de datos y maneja la detección de errores, y la subcapa MAC (Media Access
+            Control) que se encarga del direccionamiento físico y el acceso al medio de transmisión.</p>
+
+        <p>La Unidad de Datos de Protocolo en la Capa 2 se llama trama o frame. A diferencia de los bits sin estructura
+            de la capa anterior, una trama tiene un formato bien definido con campos específicos: un preámbulo para
+            sincronización, una dirección MAC de origen, una dirección MAC de destino, un campo de datos que contiene la
+            información útil, y una secuencia de verificación de trama (FCS) para detectar errores en la transmisión. El
+            direccionamiento físico utilizado en esta capa es la famosa Dirección MAC (Media Access Control Address), un
+            identificador único de 48 bits que viene grabado de fábrica en cada tarjeta de red (NIC) y que teóricamente
+            es único a nivel global.</p>
+
+        <p>El dispositivo estrella de la Capa 2 es el switch o conmutador. A diferencia de su antecesor obsoleto, el hub
+            que simplemente replicaba los bits a todos los puertos ciegamente, el switch es inteligente y aprende las
+            direcciones MAC de los dispositivos conectados a cada uno de sus puertos. Mantiene una tabla llamada tabla
+            MAC o tabla CAM donde registra qué dirección MAC está conectada a qué puerto. Cuando llega una trama, el
+            switch examina la dirección de destino y la envía exclusivamente al puerto donde está conectado ese
+            dispositivo específico, mejorando drásticamente la eficiencia de la red y eliminando las colisiones que eran
+            frecuentes con los hubs.</p>
+
+        <h3>Capa 3: Red (Network Layer)</h3>
+        <p>Si la Capa 2 se ocupa de mover datos de manera eficiente dentro de tu oficina o edificio (tu red local o
+            LAN), la Capa de Red se ocupa de mover datos a través de múltiples redes conectadas, como cuando tu tráfico
+            atraviesa tu router doméstico, pasa por el proveedor de servicios de Internet, y continúa su viaje a través
+            de múltiples redes hasta llegar a su destino final en Internet. Su función principal es el enrutamiento
+            (routing), el proceso mediante el cual los paquetes de datos se dirigen desde su origen hasta su destino a
+            través de múltiples saltos entre diferentes redes.</p>
+
+        <p>La Unidad de Datos de Protocolo en la Capa 3 es el paquete. A diferencia de las direcciones MAC que son
+            físicas y permanentes, las direcciones IP que se utilizan en esta capa son direcciones lógicas que pueden
+            cambiar dependiendo de la red a la cual te conectes. Una dirección IPv4 es una serie de 32 bits escrita como
+            cuatro números decimales separados por puntos, como 192.168.1.50, mientras que las direcciones IPv6 utilizan
+            128 bits para resolver el agotamiento de direcciones que enfrenta IPv4. Las funciones clave de esta capa
+            incluyen el direccionamiento lógico, el enrutamiento de paquetes basado en tablas de enrutamiento, y la
+            fragmentación de paquetes cuando son demasiado grandes para el medio de transmisión.</p>
+
+        <p>Los protocolos comunes que operan en la Capa 3 incluyen el propio IP (Internet Protocol) en sus versiones
+            IPv4 e IPv6, el ICMP (Internet Control Message Protocol) que es el motor detrás de herramientas
+            fundamentales como ping y traceroute, el protocolo IPSec utilizado para crear túneles VPN seguros, y el
+            protocolo GRE (Generic Routing Encapsulation) que permite encapsular una amplia variedad de protocolos de
+            capa de red dentro de enlaces punto a punto virtuales. El router es el dispositivo principal que opera en
+            esta capa, tomando decisiones basadas en direcciones IP y utilizando su tabla de enrutamiento para
+            determinar la mejor ruta hacia cada destino.</p>
+
+        <h3>Capa 4: Transporte (Transport Layer)</h3>
+        <p>La Capa de Transporte actúa como el «cartero eficiente» del modelo OSI. Mientras que las capas inferiores se
+            encargan de mover datos de un dispositivo a otro, la Capa de Transporte se asegura de que esos datos lleguen
+            a la aplicación correcta dentro del dispositivo de destino. Es la línea divisoria fundamental entre las
+            capas inferiores que se ocupan de la transmisión de datos y las capas superiores que manejan los datos de
+            usuario y las aplicaciones específicas. Sin esta capa, tu navegador web no podría distinguir entre los datos
+            que vienen de un servidor web y los que llegan de un servidor de correo electrónico.</p>
+
+        <p>En esta capa encontramos los dos protocolos de transporte más importantes de Internet: TCP (Transmission
+            Control Protocol) y UDP (User Datagram Protocol). La Unidad de Datos de Protocolo se llama segmento cuando
+            se utiliza TCP (porque incluye mecanismos de conexión y fiabilidad) o datagrama cuando se utiliza UDP (un
+            formato más simple sin conexión).</p>
+
+        <p>TCP es orientado a la conexión y garantiza que los datos lleguen correctamente y en orden, estableciendo una
+            conexión mediante un «apretón de manos de tres vías» (SYN, SYN-ACK, ACK) antes de transmitir,
+            retransmitiendo paquetes perdidos, y reordenando paquetes que lleguen desordenados.</p>
+
+        <p>UDP, por otro lado, es sin conexión y no garantiza nada: simplemente envía los datos sin verificar si
+            llegaron ( filosofía de «dispara y olvida»), pero a cambio es mucho más rápido y tiene menos sobrecarga.</p>
+
+        <h2>La Capa de Transporte</h2>
+
+        <p>Piensa en la Capa de Transporte como el gerente de logística de un envío; se encarga de que todo salga bien
+            del punto A y llegue bien al punto B.</p>
+
+        <p>Sus 4 funciones principales son:</p>
+
+        <h3 class="section-title">1. Segmentación (Dividir para enviar)</h3>
+        <p>En lugar de enviar un archivo gigante de una sola vez (que podría atascar la red), la capa de transporte lo
+            corta en trozos pequeños y manejables llamados segmentos.</p>
+        <div class="analogia">
+            <p><strong>Analogía:</strong> Es como desmontar un mueble grande para que quepa en cajas pequeñas antes de
+                mudarte, en lugar de intentar meter el sofá entero por una ventana pequeña.</p>
+        </div>
+
+        <h3 class="section-title">2. Control de Flujo (Regular la velocidad)</h3>
+        <p>Gestiona la velocidad del envío. Si quien envía los datos va demasiado rápido y quien los recibe es lento, la
+            capa de transporte dice "¡Alto, espera un poco!" para evitar que el receptor se colapse.</p>
+        <div class="analogia">
+            <p><strong>Analogía:</strong> Es como una conversación. Si hablas demasiado rápido, la otra persona te dirá:
+                "Espera, ve más despacio que no te sigo".</p>
+        </div>
+
+        <h3 class="section-title">3. Multiplexación (Organizar el tráfico)</h3>
+        <p>Permite que uses muchas aplicaciones a la vez (Spotify, Chrome, Zoom) sin que los datos se mezclen. Lo hace
+            asignando un "número de puerto" a cada aplicación para saber a dónde pertenece cada paquete de datos.</p>
+        <div class="analogia">
+            <p><strong>Analogía:</strong> Imagina un edificio de oficinas (tu computadora). El correo llega a la misma
+                dirección principal (IP), pero el número de oficina (Puerto) asegura que la carta del banco vaya al
+                departamento de Finanzas y no al de Limpieza.</p>
+        </div>
+
+        <h3 class="section-title">4. Verificación de Errores (Control de calidad)</h3>
+        <p>Al llegar al destino, revisa que los datos estén completos y sin daños. Si falta algo o llegó roto, pide que
+            se envíe de nuevo.</p>
+        <div class="analogia">
+            <p><strong>Analogía:</strong> Es como recibir un pedido de Amazon y revisar la lista de empaquetado para
+                asegurarte de que está todo lo que pediste y que nada llegó roto.</p>
+        </div>
+
+        <hr/>
+
+        <h3>Resumen rápido</h3>
+
+        <table class="resumen-table">
+            <thead>
+                <tr>
+                    <th scope="col" class="col-30">Concepto Técnico</th>
+                    <th scope="col" class="col-70">Traducción sencilla</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Segmentación</strong></td>
+                    <td>Cortar datos grandes en trozos pequeños.</td>
+                </tr>
+                <tr>
+                    <td><strong>Control de Flujo</strong></td>
+                    <td>Evitar que el receptor se ahogue con tanta información.</td>
+                </tr>
+                <tr>
+                    <td><strong>Multiplexación</strong></td>
+                    <td>Asegurar que los datos de Spotify no acaben en tu Email.</td>
+                </tr>
+                <tr>
+                    <td><strong>Integridad</strong></td>
+                    <td>Revisar que el mensaje llegó perfecto.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><i>Un concepto vital para el examen es que los números de puerto identifican qué aplicación en el dispositivo
+                de destino debe recibir los datos: el puerto 80 se utiliza para HTTP web estándar, el 443 para HTTPS web
+                seguro, el 25 para SMTP correo saliente, y así sucesivamente</i>.</p>
+
+        <h3>Capa 5: Sesión (Session Layer)</h3>
+        <p>Imagina que estás hablando por teléfono con alguien. La Capa de Sesión es la encargada de establecer la
+            llamada inicialmente, mantenerla activa mientras la conversación continúa y asegurarse de que ambas partes
+            estén «conectadas» durante toda la comunicación, y finalmente colgar cuando la conversación termina
+            apropiadamente. En términos técnicos, esta capa gestiona la «conversación» o sesión entre dos dispositivos,
+            estableciendo, manteniendo y terminando las conexiones de comunicación entre aplicaciones.</p>
+
+        <p>La función principal de la Capa 5 es crear y coordinar el diálogo entre las aplicaciones en dispositivos
+            diferentes. Esto incluye decidir quién puede transmitir en un momento dado (control de diálogo), insertar
+            puntos de control en el flujo de datos para permitir la recuperación ante fallos (sincronización), y
+            gestionar el intercambio de datos de manera ordenada. Sin esta capa, si la conexión se interrumpiera en
+            medio de una transferencia de archivo, no habría forma de «reanudar» desde donde se quedó; la transferencia
+            tendría que empezar desde cero.</p>
+
+        <p>Aunque en el modelo OSI original esta capa estaba claramente definida, en las implementaciones modernas de
+            redes TCP/IP sus funciones a menudo se combinan con la Capa de Transporte o la Capa de Aplicación. Ejemplos
+            de protocolos que tienen responsabilidades de sesión incluyen NetBIOS que proporciona servicios de nombres y
+            sesiones para aplicaciones en redes Windows, el protocolo SIP (Session Initiation Protocol) utilizado para
+            establecer, modificar y terminar sesiones multimedia como llamadas de voz sobre IP y videoconferencias, y la
+            familia de protocolos H.323 que también se utilizan en comunicaciones de voz y video sobre redes IP.</p>
+
+        <h3>Capa 6: Presentación (Presentation Layer)</h3>
+        <p>La Capa de Presentación actúa como el traductor y formateador universal del modelo OSI. Su responsabilidad es
+            asegurarse de que los datos enviados desde el sistema de un usuario sean legibles para el sistema receptor,
+            independientemente de las diferencias en cómo cada sistema representa internamente la información. Piensa en
+            ella como un diplomático que traduce idiomas en tiempo real durante una cumbre internacional, permitiendo
+            que representantes de países con sistemas culturales completamente diferentes puedan comunicarse
+            efectivamente.</p>
+
+        <p>Las funciones clave de esta capa incluyen la traducción de formatos de datos entre sistemas heterogéneos, lo
+            que significa convertir datos del formato nativo del sistema emisor a un formato estándar de red y
+            viceversa. También se encarga de la encriptación y desencriptación de datos para la seguridad de las
+            comunicaciones, la compresión de datos para optimizar el uso del ancho de banda, y la normalización de
+            sintaxis para que aplicaciones desarrolladas en diferentes plataformas puedan intercambiar información. Por
+            ejemplo, si una aplicación Windows envía datos a una aplicación Linux, la Capa 6 se encarga de que los
+            caracteres especiales, los formatos de fecha y hora, y las representaciones numéricas sean correctamente
+            interpretados por ambos sistemas.</p>
+
+        <p>En el contexto de las redes modernas, los formatos como JPEG, GIF, PNG para imágenes, MP3 y AAC para audio, y
+            MPEG para video son manejados en esta capa. De manera similar, los formatos de documentos como PDF, HTML y
+            los lenguajes de marcado como XML se procesan a este nivel. Los protocolos TLS/SSL que proporcionan
+            seguridad en las comunicaciones web operan parcialmente en esta capa, realizando la encriptación de los
+            datos antes de que sean transmitidos y la desencriptación cuando llegan a su destino.</p>
+
+        <h3>Capa 7: Aplicación (Application Layer)</h3>
+        <p>La Capa de Aplicación es lo que los usuarios finales ven y tocan directamente. Es importante entender que
+            esta capa no se refiere a la aplicación en sí, como el programa Google Chrome o Microsoft Outlook, sino a
+            los protocolos de red que permiten que esas aplicaciones interactúen con la red y se comuniquen con otros
+            sistemas. Esta capa proporciona servicios de red directamente a las aplicaciones del usuario y es donde
+            residen los protocolos que hacen posible funciones como la navegación web, el correo electrónico, la
+            transferencia de archivos y la resolución de nombres de dominio.</p>
+
+        <p>La Unidad de Datos de Protocolo en esta capa es simplemente llamada «datos» o payload (carga útil), ya que
+            aquí los datos finalmente toman su significado completo para el usuario final. Los protocolos que viven en
+            esta capa incluyen HTTP y HTTPS para la World Wide Web, FTP y SFTP para transferencia de archivos, SMTP,
+            POP3 e IMAP para correo electrónico, DNS para resolución de nombres de dominio, y SNMP para administración
+            de red, entre muchos otros. Cada uno de estos protocolos define cómo las aplicaciones deben formatear sus
+            solicitudes y cómo deben interpretarse las respuestas.</p>
+
+        <p>Cuando abres tu navegador web y escribes una dirección como «www.ejemplo.com», la Capa 7 genera una solicitud
+            HTTP que será transmitida a través de las capas inferiores hasta llegar al servidor web. El servidor web,
+            también operando en la Capa 7, interpreta esa solicitud y genera una respuesta (típicamente una página HTML)
+            que viaja de vuelta a través de las capas. La belleza del modelo OSI es que cada capa funciona de manera
+            relativamente independiente, lo que permite que innovaciones en una capa no requieran cambios dramáticos en
+            las demás, facilitando la evolución y mejora continua de las redes.</p>
+
+        <section class="chapter">
+            <h2 id="section_4" class="hidden-title hidden">Diagrama OSI</h2>
+
+            <figure class="kdp-image-wrapper">
+                <img alt="Diagrama del modelo OSI" src="../Images/osi.png" class="responsive-img"/>
+            </figure>
+        </section>
+
+        <h2>Encapsulación y Desencapsulación: El Viaje de los Datos</h2>
+
+        <p>Entender las capas por separado es el primer paso, pero el verdadero poder del modelo OSI se manifiesta
+            cuando ves cómo trabajan juntas a través del proceso de encapsulación. Piensa en el proceso de enviar una
+            carta física por correo: primero escribes tu carta (los datos de usuario), luego la metes en un sobre
+            (agregando información de direccionamiento), el servicio postal la pone en un camión, luego quizás en un
+            avión, y finalmente es entregada al destinatario. En cada etapa del camino, se agrega información adicional
+            que es necesaria para que la carta llegue correctamente a su destino.</p>
+
+        <figure class="kdp-image-wrapper" id="section_1_1">
+            <img alt="Diagrama de encapsulación" src="../Images/encap.png" class="responsive-img"/>
+        </figure>
+
+        <p id="section_2">En el proceso de encapsulación, cuando envías datos desde tu computadora como emisor, la
+            información desciende desde la Capa 7 hasta la Capa 1, y en cada paso se le agrega información específica en
+            forma de encabezados o trailers. En la Capa 7, 6 y 5 tenemos simplemente los datos generados por la
+            aplicación. Cuando llegan a la Capa 4 (Transporte), se agrega un encabezado que incluye los números de
+            puerto origen y destino, y si es TCP, los números de secuencia y acuse de recibo. Ahora el paquete se llama
+            segmento. En la Capa 3 (Red), se agrega un encabezado con las direcciones IP origen y destino, y el paquete
+            ahora se llama paquete. En la Capa 2 (Enlace de Datos), se agrega un encabezado con las direcciones MAC
+            origen y destino, más un trailer con el FCS para detección de errores, y el resultado se llama trama.
+            Finalmente, en la Capa 1, la trama se convierte en señales eléctricas, ópticas o de radio para transmisión
+            física.</p>
+
+        <figure class="kdp-image-wrapper">
+            <img alt="Unidad de Datos de Protocolo (PDU)" src="../Images/pdu.png" class="responsive-img"/>
+        </figure>
+
+        <p>Cuando el receptor obtiene los bits a través del medio físico, el proceso se invierte completamente en lo que
+            llamamos desencapsulación. La señal se convierte de nuevo en bits, que se ensamblan en tramas (Capa 2), de
+            donde se extraen los paquetes (Capa 3), de donde se obtienen los segmentos (Capa 4), y finalmente los datos
+            originales llegan a la aplicación del usuario en la Capa 7. En cada capa, el receptor verifica que la
+            información de esa capa sea correcta (por ejemplo, verificando el FCS en la Capa 2) antes de pasar los datos
+            a la capa superior. Si algo falla en cualquier etapa, el proceso de resolución de problemas puede comenzar
+            identificando en qué capa se detectó el problema.</p>
+
+        <div class="summary-box">
+            <div class="security-update">
+                <h3>🛠️ Escenario de Solución de Problemas (Troubleshooting)</h3>
+                <p><strong>Problema:</strong> Un técnico nota que un enlace entre dos switches antiguos no funciona.
+                    Aunque hay cables conectados, no hay luces de actividad.</p>
+                <p><strong>Diagnóstico:</strong> Los dispositivos similares requieren un <em>Cable Cruzado</em> si no
+                    soportan Auto-MDIX (Capa 1).</p>
+                <p><strong>Solución:</strong> Reemplazar por un cable cruzado que conecte los pines de transmisión con
+                    los de recepción opuestos.</p>
+            </div>
+
+            <h3>Resumen de Puntos Clave para el Examen</h3>
+            <p>Para aprobar el CompTIA Network+ N10-009, es fundamental que memorices las siguientes asociaciones entre
+                capas y sus características:</p>
+
+            <ul>
+                <li><strong>Capa 7 - Aplicación:</strong> Protocolos de usuario final como HTTP, FTP, SMTP, DNS. PDU:
+                    Datos.</li>
+                <li><strong>Capa 6 - Presentación:</strong> Formatos, encriptación, compresión. Estandariza la sintaxis.
+                </li>
+                <li><strong>Capa 5 - Sesión:</strong> Control de diálogo, sincronización. Establece, mantiene y termina
+                    sesiones.</li>
+                <li><strong>Capa 4 - Transporte:</strong> TCP (confiable, orientado a conexión) y UDP (rápido, sin
+                    conexión). Puertos. PDU: Segmento/Datagrama.</li>
+                <li><strong>Capa 3 - Red:</strong> Enrutamiento, Direcciones IP. PDU: Paquete. Dispositivo: Router.</li>
+                <li><strong>Capa 2 - Enlace:</strong> Direcciones MAC, Tramas. PDU: Frame. Dispositivo: Switch.</li>
+                <li><strong>Capa 1 - Física:</strong> Bits, cables, conectores, voltajes. PDU: Bit. Dispositivo: Hub y
+                    Transceptores.</li>
+            </ul>
+
+            <p><strong>Regla mnemotécnica:</strong> «Some People Fear Birthdays» (Segmentos, Paquetes, Frames/Tramas,
+                Bits) te ayuda a recordar el orden de las PDUs bajando por el modelo.</p>
+            <div class="summary-box">
+                <h3>🧠 Quiz Rápido de Retención (Active Recall)</h3>
+                <p><strong>1. ¿Cómo se llama la PDU en la Capa 3?</strong></p>
+                <p><em>Respuesta:</em> Paquete.</p>
+                <p><strong>2. ¿Qué dispositivo inteligente opera en la Capa 2 basándose en direcciones MAC?</strong></p>
+                <p><em>Respuesta:</em> Switch.</p>
+                <p><strong>3. ¿Qué protocolo de Capa 4 es "orientado a la conexión"?</strong></p>
+                <p><em>Respuesta:</em> TCP.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
