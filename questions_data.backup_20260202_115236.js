@@ -1,5 +1,5 @@
 // Auto-generated from source JSON files
-// Generated: 2026-02-02T11:52:36.354034
+// Generated: 2026-02-02T11:43:39.726032
 
 var EXAMS_DATABASE = {
   "network_plus_exam_1": {
@@ -1680,8 +1680,7 @@ var EXAMS_DATABASE = {
         ],
         "answer": "AP2",
         "explanation": "Dado que los problemas comenzaron específicamente después de reemplazar el AP2, este es el punto de fallo más probable. Es probable que la configuración del nuevo AP2 (como el canal o la potencia de transmisión) no coincida con la del consultor original o esté causando interferencias con AP1 y AP3.",
-        "source_reference": "Capítulo 11: Documentación > Problemas de Rendimiento y Configuración",
-        "image_path": "assets/images/exam2/q29_wireless_troubleshooting.png"
+        "source_reference": "Capítulo 11: Documentación > Problemas de Rendimiento y Configuración"
       },
       {
         "id": 30,
@@ -1809,8 +1808,7 @@ var EXAMS_DATABASE = {
         ],
         "answer": "OTDR",
         "explanation": "Un reflectómetro de dominio de tiempo (TDR o OTDR para fibra) es la herramienta que puede detectar fallos (abiertos, cortos) y indicar la distancia exacta (en este caso 3 pies) a la que se encuentra el problema enviando pulsos de señal y midiendo su reflexión.",
-        "source_reference": "Capítulo 2: Hardware de Red > Herramientas de Prueba",
-        "image_path": "assets/images/exam2/q38_cable_tester.png"
+        "source_reference": "Capítulo 2: Hardware de Red > Herramientas de Prueba"
       },
       {
         "id": 39,
@@ -1825,8 +1823,7 @@ var EXAMS_DATABASE = {
         ],
         "answer": "WPA2-CCMP",
         "explanation": "WPA2 con CCMP (basado en el cifrado AES) es el estándar de seguridad más robusto de las opciones presentadas. TKIP es más antiguo y menos seguro, y WEP/WPA están obsoletos por ser vulnerables.",
-        "source_reference": "Capítulo 17: Amenazas y Ataques > Cifrado Inalámbrico",
-        "image_path": "assets/images/exam2/q39_encryption_layout.png"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Cifrado Inalámbrico"
       },
       {
         "id": 40,
@@ -2403,147 +2400,6 @@ var EXAMS_DATABASE = {
         "answer": "Guest network",
         "explanation": "Una red de invitados (Guest network) proporciona acceso a internet para visitantes mientras los mantiene aislados de la red interna corporativa. Es la solución estándar para este escenario. Una DMZ o screened subnet se usa para servidores públicos, no para acceso de invitados.",
         "source_reference": "Capítulo 13: BCDR > Segmentación y Redes de Invitados"
-      },
-      {
-        "id": 81,
-        "has_context_image": true,
-        "image_path": "assets/images/exam2/q81_antenna_selection.png",
-        "question": "Su empresa ha comprado un nuevo edificio en la misma calle para sus suites ejecutivas. Se le ha pedido que seleccione una antena para AP1, AP2 y AP3 para establecer una conexión inalámbrica dentro del edificio principal para que la usen los visitantes. ¿Cuál de las siguientes es la MEJOR configuración de antena para controlar la propagación de la señal y evitar que la señal inalámbrica se transmita fuera del edificio principal?",
-        "options": [
-          "5 dB Directional Right for AP1, 5 dB Directional Left for AP2, and 5 dB Omnidirectional for AP3",
-          "5 dB Directional Left for AP1, 5 dB Omnidirectional for AP2, and 5 dB Directional Right for AP3",
-          "5 dB Omnidirectional for AP1, 5 dB Directional Left for AP2, and 5 dB Directional Right for AP3",
-          "5 dB Directional Right for AP1, 5 dB Omnidirectional for AP2, and 5 dB Directional Left for AP3"
-        ],
-        "answer": "5 dB Directional Right for AP1, 5 dB Omnidirectional for AP2, and 5 dB Directional Left for AP3",
-        "explanation": "Mirando el plano, AP1 está en la pared izquierda, AP3 está en la pared derecha y AP2 está en el centro. Para mantener la señal DENTRO del edificio: AP1 debe transmitir hacia la derecha (Directional Right). AP3 debe transmitir hacia la izquierda (Directional Left). AP2, al estar en el centro y rodeado de oficinas, debe cubrir 360 grados (Omnidirectional).",
-        "source_reference": "Capítulo 9: Wireless > Tipos de Antenas y Colocación"
-      },
-      {
-        "id": 82,
-        "has_context_image": false,
-        "question": "Which attack utilizes a wireless access point made to look as if it belongs to the network by mimicking the corporate network's SSID in order to eavesdrop on the wireless traffic?",
-        "options": [
-          "Shoulder surfing",
-          "Rogue access point",
-          "WEP attack",
-          "Evil twin"
-        ],
-        "answer": "Evil twin",
-        "explanation": "Un ataque 'Evil Twin' implica configurar un punto de acceso falso que imita el SSID legítimo de la red corporativa para engañar a los usuarios y que se conecten a él, permitiendo al atacante interceptar el tráfico. Un 'Rogue AP' es un AP no autorizado, pero no necesariamente imita al legítimo para interceptación activa como el Evil Twin.",
-        "source_reference": "Capítulo 16: Fundamentos de Seguridad > Ataques Inalámbricos"
-      },
-      {
-        "id": 83,
-        "has_context_image": false,
-        "question": "Lorraine es la única administradora de red de su empresa. Tras investigar los informes de los usuarios del departamento de contabilidad, descubre que un puerto crucial del switch conectado al servidor del departamento no transmite datos. Tras la inspección, observa que el indicador LED del puerto del switch no está encendido. Esto le parece extraño, ya que ella no ha desactivado el puerto. ¿Cuál de las siguientes es la razón MÁS probable de este problema?",
-        "options": [
-          "El puerto está configurado con una asignación de VLAN incorrecta.",
-          "El puerto está suspendido debido a un problema de STP (Spanning Tree Protocol).",
-          "El puerto ha sido inhabilitado por error (error disabled) debido a una violación.",
-          "El puerto está administrativamente inactivo (administratively down)."
-        ],
-        "answer": "El puerto ha sido inhabilitado por error (error disabled) debido a una violación.",
-        "explanation": "Si el LED del puerto está apagado y el administrador no lo ha deshabilitado manualmente ('administratively down'), es probable que el puerto haya entrado en estado 'error-disabled' debido a una violación de seguridad (como Port Security). STP generalmente muestra un LED ámbar o parpadeante, no apagado.",
-        "source_reference": "Capítulo 20: Problemas Físicos > Problemas de Puertos de Switch"
-      },
-      {
-        "id": 85,
-        "has_context_image": false,
-        "question": "Which protocol is used to establish a secure and encrypted VPN tunnel that can be initiated through a web browser?",
-        "options": [
-          "PPTP",
-          "SSL",
-          "IPsec",
-          "PPP"
-        ],
-        "answer": "SSL",
-        "explanation": "Las VPNs basadas en SSL (Secure Sockets Layer) o TLS permiten establecer túneles seguros directamente desde un navegador web, a menudo conocidas como VPNs sin cliente (clientless) o portales WebVPN.",
-        "source_reference": "Capítulo 17: Amenazas y Ataques > Tecnologías VPN"
-      },
-      {
-        "id": 86,
-        "has_context_image": false,
-        "question": "What term refers to a malicious technique or software crafted to exploit vulnerabilities in computer systems, often leading to unauthorized access or system compromise?",
-        "options": [
-          "Vulnerability",
-          "Exploit",
-          "Hacker",
-          "Virus"
-        ],
-        "answer": "Exploit",
-        "explanation": "Un 'Exploit' es una pieza de software, un fragmento de datos o una secuencia de comandos diseñada para aprovechar una vulnerabilidad o fallo de seguridad específico en un sistema para causar un comportamiento no intencionado.",
-        "source_reference": "Capítulo 16: Fundamentos de Seguridad > Conceptos de Seguridad"
-      },
-      {
-        "id": 87,
-        "has_context_image": false,
-        "question": "Which storage network technology utilizes file-level storage to function properly?",
-        "options": [
-          "iSCSI",
-          "NAS",
-          "FCoE",
-          "SAN"
-        ],
-        "answer": "NAS",
-        "explanation": "NAS (Network Attached Storage) opera a nivel de archivo (file-level), permitiendo a los usuarios acceder a archivos a través de la red. SAN, iSCSI y FCoE operan a nivel de bloque (block-level).",
-        "source_reference": "Capítulo 10: Instalaciones Físicas > Almacenamiento en Red"
-      },
-      {
-        "id": 88,
-        "has_context_image": false,
-        "question": "En una configuración de VPN de cliente a sitio, ¿qué tipo de configuración de túnel enruta todo el tráfico, incluido el tráfico de la red corporativa y el tráfico destinado a Internet, a través del túnel VPN?",
-        "options": [
-          "Clientless (Sin cliente)",
-          "Split Tunnel (Túnel dividido)",
-          "Full Tunnel (Túnel completo)",
-          "Direct Tunnel (Túnel directo)"
-        ],
-        "answer": "Full Tunnel (Túnel completo)",
-        "explanation": "En una configuración 'Full Tunnel', TODO el tráfico del cliente (tanto el destinado a la red corporativa como el tráfico general de Internet) se enruta a través del túnel VPN. 'Split Tunnel' solo enruta el tráfico corporativo por la VPN.",
-        "source_reference": "Capítulo 17: Amenazas y Ataques > Configuraciones VPN"
-      },
-      {
-        "id": 89,
-        "has_context_image": false,
-        "question": "Acaba de reemplazar el switch de borde en el segundo piso de Dion Training. Al terminar, un usuario afirma que ya no puede acceder a la red, pero todo funcionaba bien ayer antes de que usted reemplazara el switch. Los compañeros del usuario afirman que sus ordenadores pueden acceder a la red sin problemas. Usted comprueba la parte posterior de la estación de trabajo del usuario y no ve ninguna luz LED encendida o parpadeando en su tarjeta de interfaz de red (NIC). ¿Cuál de los siguientes pasos debería comprobar a continuación para resolver este problema?",
-        "options": [
-          "Verificar que el switch esté conectado al router",
-          "Verificar que la tarjeta de interfaz de red funcione correctamente",
-          "Verificar que el cable de red esté conectado al nuevo switch",
-          "Verificar que el dispositivo esté utilizando el tipo de cable correcto"
-        ],
-        "answer": "Verificar que el cable de red esté conectado al nuevo switch",
-        "explanation": "Dado que se acaba de reemplazar el switch y el problema es aislado (solo un usuario) con la luz de enlace apagada, lo más probable es que el cable de red de ese usuario no se haya conectado correctamente al nuevo switch. Si fuera el router, fallaría toda la red. Si fuera la NIC, no habría funcionado ayer.",
-        "source_reference": "Capítulo 20: Problemas Físicos > Problemas de Capa Física"
-      },
-      {
-        "id": 90,
-        "has_context_image": false,
-        "question": "Which of the following is a method that is used to automatically configure IPv6 host addresses?",
-        "options": [
-          "EUI-64",
-          "APIPA",
-          "EIA-568B",
-          "EBCDIC"
-        ],
-        "answer": "EUI-64",
-        "explanation": "EUI-64 es un método utilizado en IPv6 para generar automáticamente la porción de interfaz (Host ID) de 64 bits de una dirección IPv6 a partir de la dirección MAC de 48 bits del dispositivo.",
-        "source_reference": "Capítulo 4: Puertos y Protocolos > IPv6"
-      },
-      {
-        "id": 90,
-        "has_context_image": false,
-        "question": "¿Cuál de los siguientes es un método utilizado para configurar automáticamente direcciones de host IPv6?",
-        "options": [
-          "EUI-64",
-          "APIPA",
-          "EIA-568B",
-          "EBCDIC"
-        ],
-        "answer": "EUI-64",
-        "explanation": "EUI-64 es un método utilizado en IPv6 para generar automáticamente la porción de interfaz (Host ID) de 64 bits de una dirección IPv6 a partir de la dirección MAC de 48 bits del dispositivo.",
-        "source_reference": "Capítulo 4: Puertos y Protocolos > IPv6"
       }
     ]
   }
