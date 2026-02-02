@@ -57,7 +57,7 @@ let isPaused = false;
 // Elementos UI
 let startScreen, quizScreen, resultsScreen, pauseOverlay, resumeExamBtn, examsCatalog;
 let nextBtn, prevBtn, skipBtn, finishBtn, restartBtn, pauseBtn;
-let questionText, optionsList, feedbackContainer, feedbackMessage, chapterRef, sourceText, explanationText;
+let questionText, optionsList, feedbackContainer, feedbackMessage, chapterRef, sourceText, explanationText, questionImage;
 let questionNumber, progressBarFill, timerDisplay, questionGrid, domainFilter;
 
 function isDataLoaded() { return filteredQuestions && filteredQuestions.length > 0; }
@@ -92,6 +92,7 @@ async function init() {
         restartBtn = document.getElementById('restart-btn');
         pauseBtn = document.getElementById('pause-btn');
         questionText = document.getElementById('question-text');
+        questionImage = document.getElementById('question-image');
         optionsList = document.getElementById('options-list');
         feedbackContainer = document.getElementById('feedback-container');
         feedbackMessage = document.getElementById('feedback-message');
@@ -300,6 +301,16 @@ function renderQuestion() {
     }
     const q = filteredQuestions[currentIndex];
     questionText.textContent = q.question;
+
+    // Render Image
+    if (q.has_context_image && q.image_path) {
+        questionImage.src = q.image_path;
+        questionImage.classList.remove('hidden');
+    } else {
+        questionImage.classList.add('hidden');
+        questionImage.src = '';
+    }
+
     optionsList.innerHTML = '';
     renderQuestionList();
     if (feedbackContainer) feedbackContainer.classList.add('hidden');
