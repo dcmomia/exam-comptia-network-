@@ -27,6 +27,12 @@
     - Source: `img_source/Examen2/` (90 PNG screenshots)
     - Output: `temp/examen2_batch[1-7].json` + `temp/examen2_completo.json`
 
+### v3.1.1 - Hotfix: Cache Busting
+- **Patch Description:** Solucionado problema de renderizado donde solo aparecía el Examen 1.
+- **Key Changes:**
+    - **Cache Busting:** Se añadió parámetro de versión (`?v=3.1`) a la carga de scripts en `index.html`.
+    - **Force Reload:** Garantiza que los navegadores carguen la última versión de `questions_data.js` con los datos del Examen 2.
+
 ### v2.2 - Advanced Filtering & Layout
 - **Patch Description:** Real-time domain filtering and structural UI correction.
 - **Key Changes:**
