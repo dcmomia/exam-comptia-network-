@@ -68,7 +68,7 @@ function updateFilteredQuestions(domain) {
         filteredQuestions = [...questions];
     } else {
         filteredQuestions = questions.filter(q => {
-            const qChapter = q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0";
+            const qChapter = q.chapter_name || "Capítulo 0";
             return getDomainForChapter(qChapter) === domain;
         });
     }
@@ -339,7 +339,7 @@ function renderQuestion() {
     if (userAnswers[originalIndex]) {
         nextBtn.classList.remove('hidden');
         skipBtn.classList.add('hidden');
-        if (!userAnswers[originalIndex].omitted) revealFeedback(userAnswers[originalIndex].isCorrect, q.explanation, q.source_reference);
+        if (!userAnswers[originalIndex].omitted) revealFeedback(userAnswers[originalIndex].isCorrect, q.explanation);
     }
 }
 
@@ -352,7 +352,7 @@ function selectOption(element, selectedText) {
         questionId: q.id,
         answer: selectedText,
         isCorrect: isCorrect,
-        domain: getDomainForChapter(q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0"),
+        domain: getDomainForChapter(q.chapter_name || "Capítulo 0"),
         omitted: false
     };
     optionsList.querySelectorAll('.option-item').forEach(item => {
@@ -360,26 +360,27 @@ function selectOption(element, selectedText) {
         if (item.textContent === q.answer) item.classList.add('correct-reveal');
         else if (item === element && !isCorrect) item.classList.add('incorrect-reveal');
     });
-    revealFeedback(isCorrect, q.explanation, q.source_reference);
+    revealFeedback(isCorrect, q.explanation);
     nextBtn.classList.remove('hidden');
     skipBtn.classList.add('hidden');
     saveProgress();
 }
 
-function revealFeedback(isCorrect, explanation, source) {
+function revealFeedback(isCorrect, explanation) {
     if (!feedbackContainer) return;
     feedbackContainer.classList.remove('hidden');
     feedbackContainer.className = `feedback-container ${isCorrect ? 'correct' : 'incorrect'}`;
     feedbackMessage.textContent = isCorrect ? '¡Correcto!' : 'Incorrecto';
-    chapterRef.textContent = source ? source.split('>')[0].split(':')[0].trim() : 'Ref';
-    sourceText.textContent = source || 'Sin referencia';
+    // Remove reference display
+    if (chapterRef) chapterRef.style.display = 'none';
+    if (sourceText) sourceText.style.display = 'none';
     explanationText.textContent = explanation;
 }
 
 function skipQuestion() {
     const q = filteredQuestions[currentIndex];
     const originalIndex = questions.indexOf(q);
-    userAnswers[originalIndex] = { questionId: q.id, omitted: true, isCorrect: false, domain: getDomainForChapter(q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0") };
+    userAnswers[originalIndex] = { questionId: q.id, omitted: true, isCorrect: false, domain: getDomainForChapter(q.chapter_name || "Capítulo 0") };
     saveProgress();
     currentIndex++;
     renderQuestion();
@@ -409,7 +410,7 @@ function showResults() {
     activeSet.forEach(q => {
         const idx = questions.indexOf(q);
         if (!userAnswers[idx]) {
-            userAnswers[idx] = { questionId: q.id, omitted: true, isCorrect: false, domain: getDomainForChapter(q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0") };
+            userAnswers[idx] = { questionId: q.id, omitted: true, isCorrect: false, domain: getDomainForChapter(q.chapter_name || "Capítulo 0") };
         }
     });
     const activeUA = activeSet.map(q => userAnswers[questions.indexOf(q)]);
