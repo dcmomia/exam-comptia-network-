@@ -15,7 +15,7 @@ import argparse
 PROJECT_ROOT = Path(r"C:\Users\DC\Documents\ANTIGRAVITY\CompTIA_Network_Plus_Exam_Book")
 MAPPING_FILE = PROJECT_ROOT / "reference_mapping.json"
 QUESTIONS_FILE = PROJECT_ROOT / "temp" / "questions.json"
-EXAM2_FILE = PROJECT_ROOT / "temp" / "examen2_completo.json"
+EXAM2_FILE = PROJECT_ROOT / "temp" / "examen2_final_integrated.json"
 QUESTIONS_DATA_JS = PROJECT_ROOT / "interactive_exam" / "questions_data.js"
 
 # TOC Mapping (from EPUB)
