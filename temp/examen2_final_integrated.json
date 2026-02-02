@@ -11,7 +11,7 @@
         ],
         "answer": "Desajuste en el protocolo de cifrado",
         "explanation": "Un desajuste en el protocolo de cifrado (Encryption protocol mismatch) ocurre cuando el cliente y el punto de acceso (AP) están configurados con diferentes estándares de seguridad (en este caso, AES frente a WEP). Esto impide que el cliente se asocie o autentique correctamente con la red, ya que no pueden establecer un túnel cifrado compatible.",
-        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Resolución de Problemas Inalámbricos"
+        "source_reference": "Capítulo 9: Wireless > Resolución de Problemas Inalámbricos"
     },
     {
         "id": 2,
@@ -25,7 +25,7 @@
         ],
         "answer": "AAAA",
         "explanation": "El registro AAAA (Quad-A) se utiliza en el sistema de nombres de dominio (DNS) para mapear un nombre de host a una dirección IPv6 de 128 bits. Es el equivalente al registro 'A' utilizado para IPv4.",
-        "source_reference": "Capítulo 5: Servicios y Protocolos de Red > DNS y Direccionamiento IPv6"
+        "source_reference": "Capítulo 5: Medios y Topologías > DNS y Direccionamiento IPv6"
     },
     {
         "id": 3,
@@ -39,7 +39,7 @@
         ],
         "answer": "Hub",
         "explanation": "Un Hub (concentrador) opera en la Capa 1 (Capa Física) del modelo OSI. Simplemente regenera y retransmite señales eléctricas a todos los puertos, sin capacidad de procesar direcciones MAC (Capa 2) ni direcciones IP (Capa 3).",
-        "source_reference": "Capítulo 2: Medios de Red y Dispositivos de Conexión > Dispositivos de Capa 1"
+        "source_reference": "Capítulo 2: Hardware de Red > Dispositivos de Capa 1"
     },
     {
         "id": 4,
@@ -53,7 +53,7 @@
         ],
         "answer": "DMZ",
         "explanation": "Una DMZ (Zona Desmilitarizada) es una subred aislada que contiene los servicios externos de una organización (como servidores web). Al colocar estos servidores en una DMZ, Alexander crea una capa de seguridad que evita que un atacante que comprometa un servidor web tenga acceso directo a la red interna (intranet).",
-        "source_reference": "Capítulo 18: Fortalecimiento y Defensa de la Red > Zonas de Seguridad y DMZ"
+        "source_reference": "Capítulo 18: Defensa de la Red > Seguridad de Zonas"
     },
     {
         "id": 5,
@@ -67,7 +67,7 @@
         ],
         "answer": "Panel de parcheo (Patch panel)",
         "explanation": "Aunque físicamente se pueden proteger los cables, los paneles de parcheo (Patch panels) suelen estar alojados en armarios o bastidores (racks) que cuentan con mecanismos de bloqueo. Además, existen cubiertas bloqueables específicas para paneles de parcheo que impiden la desconexión o conexión no autorizada de cables, protegiendo la integridad física de la red.",
-        "source_reference": "Capítulo 10: Instalaciones Físicas y Factores Ambientales > Seguridad Física"
+        "source_reference": "Capítulo 10: Instalaciones Físicas > Seguridad Física"
     },
     {
         "id": 6,
@@ -81,7 +81,7 @@
         ],
         "answer": "802.11ac",
         "explanation": "El estándar 802.11ac (también conocido como Wi-Fi 5) introdujo MU-MIMO (Multiple User - Multiple Input Multiple Output), que permite a un punto de acceso comunicarse con múltiples clientes simultáneamente. Además, opera exclusivamente en la banda de 5 GHz, aprovechando canales más anchos y no superpuestos para aumentar el rendimiento.",
-        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Estándares Wi-Fi"
+        "source_reference": "Capítulo 9: Wireless > Estándares Wi-Fi"
     },
     {
         "id": 7,
@@ -95,7 +95,7 @@
         ],
         "answer": "123",
         "explanation": "El puerto 123 (UDP) es utilizado por el protocolo NTP (Network Time Protocol) para sincronizar los relojes de los dispositivos en una red mediante una estructura jerárquica de estratos (stratum).",
-        "source_reference": "Capítulo 5: Servicios y Protocolos de Red > NTP"
+        "source_reference": "Capítulo 5: Medios y Topologías > NTP"
     },
     {
         "id": 8,
@@ -109,7 +109,7 @@
         ],
         "answer": "Conexión por microondas",
         "explanation": "Una conexión por microondas (Microwave link) de punto a punto ofrece una latencia significativamente menor en comparación con el satélite (cuyas señales deben viajar al espacio y volver). En regiones montañosas donde no se puede tender cable, los enlaces de microondas son una solución de alto rendimiento y baja latencia muy efectiva entre cimas o puntos con línea de visión.",
-        "source_reference": "Capítulo 8: Tecnologías de Red de Área Amplia (WAN) > Enlaces Inalámbricos Terrestres"
+        "source_reference": "Capítulo 8: Switches y VLANs > Enlaces Inalámbricos Terrestres"
     },
     {
         "id": 9,
@@ -123,7 +123,7 @@
         ],
         "answer": "5060/5061",
         "explanation": "SIP (Session Initiation Protocol), utilizado para la señalización en VoIP, utiliza por defecto el puerto 5060 para conexiones no cifradas y el puerto 5061 para SIP sobre TLS (cifrado).",
-        "source_reference": "Capítulo 5: Servicios y Protocolos de Aplicación IP > Puertos de Voz sobre IP"
+        "source_reference": "Capítulo 5: Medios y Topologías > Puertos de Voz sobre IP"
     },
     {
         "id": 10,
@@ -137,7 +137,7 @@
         ],
         "answer": "Control de humedad",
         "explanation": "El control de la humedad es crítico en los centros de datos: una humedad demasiado baja aumenta el riesgo de descargas electrostáticas (ESD/estática), mientras que una humedad demasiado alta puede provocar condensación y corrosión de los componentes electrónicos.",
-        "source_reference": "Capítulo 10: Instalaciones Físicas y Factores Ambientales > Control de Humedad"
+        "source_reference": "Capítulo 10: Instalaciones Físicas > Control de Humedad"
     },
     {
         "id": 11,
@@ -151,7 +151,7 @@
         ],
         "answer": "Para seleccionar la capacidad adecuada del UPS.",
         "explanation": "Calcular la carga de potencia total (power load) es esencial para dimensionar correctamente el Sistema de Alimentación Ininterrumpida (UPS). Si la carga de los dispositivos supera la capacidad del UPS, este no podrá mantener el equipo funcionando durante un corte de energía y podría sobrecargarse, fallando en su propósito crítico.",
-        "source_reference": "Capítulo 10: Instalaciones Físicas y Factores Ambientales > Infraestructura de Energía"
+        "source_reference": "Capítulo 10: Instalaciones Físicas > Infraestructura de Energía"
     },
     {
         "id": 12,
@@ -165,7 +165,7 @@
         ],
         "answer": "Bloque 110",
         "explanation": "El Bloque 110 es el estándar de terminación para el cableado de datos de Categoría 5e, 6 y superior en los marcos de distribución (MDF/IDF). A diferencia del bloque 66 (usado principalmente para voz analógica), el bloque 110 está diseñado para soportar mayores anchos de banda y reducir la diafonía.",
-        "source_reference": "Capítulo 2: Cables y Conectores de Red > Terminaciones de Cobre"
+        "source_reference": "Capítulo 2: Hardware de Red > Terminaciones de Cobre"
     },
     {
         "id": 13,
@@ -179,7 +179,7 @@
         ],
         "answer": "Configurar QoS",
         "explanation": "La Calidad de Servicio (QoS) permite priorizar el tráfico sensible a la latencia y al jitter, como la voz (VoIP) y el vídeo, sobre el tráfico de datos menos crítico. Al configurar QoS, Amanda asegura que durante periodos de congestión, los paquetes de aplicaciones en tiempo real se procesen primero, mitigando su pérdida y mejorando el rendimiento detectado por el usuario.",
-        "source_reference": "Capítulo 13: Optimización y Alta Disponibilidad de Red > Calidad de Servicio (QoS)"
+        "source_reference": "Capítulo 8: Switches y VLANs > Calidad de Servicio (QoS)"
     },
     {
         "id": 14,
@@ -193,7 +193,7 @@
         ],
         "answer": "ACL",
         "explanation": "Las Listas de Control de Acceso (ACL) son el mecanismo fundamental para filtrar el tráfico en routers y switches de capa 3. Permiten permitir o denegar paquetes basándose en información del encabezado, como la IP (Capa 3) y el puerto/protocolo (Capa 4).",
-        "source_reference": "Capítulo 18: Fortalecimiento y Defensa de la Red > Listas de Control de Acceso"
+        "source_reference": "Capítulo 18: Defensa de la Red > Listas de Control de Acceso"
     },
     {
         "id": 15,
@@ -207,7 +207,7 @@
         ],
         "answer": "Giants",
         "explanation": "En el contexto de Ethernet estándar, las tramas que superan el tamaño máximo de 1518 bytes se denominan 'Giants' (Gigantes). Dado que Glenn detecta tramas de 4600 bytes (muy por encima del límite estándar), estos 'Giants' están causando que el switch las descarte o procese incorrectamente, provocando fallos de conectividad.",
-        "source_reference": "Capítulo 19: Metodología de Resolución de Problemas > Estadísticas de Interfaz"
+        "source_reference": "Capítulo 19: Troubleshooting > Estadísticas de Interfaz"
     },
     {
         "id": 16,
@@ -221,7 +221,7 @@
         ],
         "answer": "El punto de acceso y la impresora inalámbrica tienen un desajuste de frecuencia",
         "explanation": "El estándar 802.11ac (Wi-Fi 5) opera exclusivamente en la banda de 5 GHz. Si la impresora tiene 7 años, es muy probable que solo soporte la banda de 2.4 GHz (802.11b/g/n). Aunque el SSID y la contraseña coincidan, la impresora no 've' la red de 5 GHz del nuevo AP, resultando en un desajuste de frecuencia (frequency mismatch).",
-        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Estándares y Frecuencias"
+        "source_reference": "Capítulo 9: Wireless > Estándares y Frecuencias"
     },
     {
         "id": 17,
@@ -235,7 +235,7 @@
         ],
         "answer": "Gestión de parches",
         "explanation": "Dado que la causa raíz son 'vulnerabilidades conocidas en el software', la solución directa y más eficaz es la Gestión de Parches (Patch management). Mantener el software actualizado con los últimos parches de seguridad cierra los agujeros que los virus aprovechan para infectar los sistemas.",
-        "source_reference": "Capítulo 15: Operaciones y Gestión de Red > Gestión de Parches"
+        "source_reference": "Capítulo 15: Acceso Remoto > Gestión de Parches"
     },
     {
         "id": 18,
@@ -249,7 +249,7 @@
         ],
         "answer": "Crimpadora de cable",
         "explanation": "Una crimpadora de cable (Cable crimper) es la herramienta utilizada para fijar mecánicamente un conector RJ-45 al extremo de un cable UTP, asegurando que los pines del conector hagan contacto con los hilos de cobre del cable.",
-        "source_reference": "Capítulo 2: Cables y Conectores de Red > Herramientas de Cableado"
+        "source_reference": "Capítulo 2: Hardware de Red > Herramientas de Cableado"
     },
     {
         "id": 19,
@@ -263,7 +263,7 @@
         ],
         "answer": "RST",
         "explanation": "El flag RST (Reset) se utiliza para abortar una conexión de forma inmediata cuando se detecta un error irrecuperable o cuando un host recibe un segmento que no esperaba para una conexión existente. A diferencia de FIN, que cierra la conexión de forma ordenada, RST la termina abruptamente.",
-        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > TCP y Flags"
+        "source_reference": "Capítulo 4: Puertos y Protocolos > TCP y Flags"
     },
     {
         "id": 20,
@@ -277,7 +277,7 @@
         ],
         "answer": "VPN",
         "explanation": "Una VPN (Red Privada Virtual) utiliza la tunelización y el cifrado para crear una conexión segura sobre una red pública (como Internet), permitiendo que los recursos locales y de la nube se comuniquen como si estuvieran en la misma red privada, protegiendo los datos en tránsito.",
-        "source_reference": "Capítulo 18: Fortalecimiento y Defensa de la Red > Tecnologías VPN"
+        "source_reference": "Capítulo 18: Defensa de la Red > Tecnologías VPN"
     },
     {
         "id": 21,
@@ -291,7 +291,7 @@
         ],
         "answer": "IPS",
         "explanation": "Un IPS (Sistema de Prevención de Intrusiones) es capaz de detectar y detener (bloquear) proactivamente el tráfico malicioso en tiempo real antes de que afecte a la red interna. A diferencia de un IDS, que solo detecta y alerta, el IPS toma medidas defensivas inmediatas.",
-        "source_reference": "Capítulo 18: Fortalecimiento y Defensa de la Red > Sistemas de Detección y Prevención"
+        "source_reference": "Capítulo 18: Defensa de la Red > Sistemas de Detección y Prevención"
     },
     {
         "id": 22,
@@ -305,7 +305,7 @@
         ],
         "answer": "Posibles direcciones IP duplicadas",
         "explanation": "En un segmento de red ampliado, las direcciones IP duplicadas son una causa muy común de conectividad intermitente. Cuando dos dispositivos tienen la misma IP, el tráfico se dirige a uno u otro de forma errática (basado en el último anuncio ARP), lo que provoca desconexiones aleatorias.",
-        "source_reference": "Capítulo 19: Metodología de Resolución de Problemas > Problemas Comunes de DHCP e IP"
+        "source_reference": "Capítulo 19: Troubleshooting > Problemas Comunes de DHCP e IP"
     },
     {
         "id": 23,
@@ -319,7 +319,7 @@
         ],
         "answer": "Servidor RADIUS",
         "explanation": "Un servidor RADIUS (Remote Authentication Dial-In User Service) proporciona autenticación, autorización y contabilidad (AAA) centralizada. Al usar RADIUS, el técnico puede gestionar las credenciales de todos los usuarios en un solo lugar en lugar de configurarlas individualmente en cada punto de acceso o switch, lo que reduce drásticamente el tiempo de administración.",
-        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Servicios RADIUS"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Servicios RADIUS"
     },
     {
         "id": 24,
@@ -333,7 +333,7 @@
         ],
         "answer": "show route",
         "explanation": "El comando 'show ip route' (o abreviado 'show route' en algunos entornos) es el comando estándar para visualizar la tabla de enrutamiento de un router, mostrando las redes conocidas, las métricas y el siguiente salto para cada destino.",
-        "source_reference": "Capítulo 16: Comandos de Línea de Comandos > Comandos de Diagnóstico de Red"
+        "source_reference": "Capítulo 16: Fundamentos de Seguridad > Comandos de Diagnóstico de Red"
     },
     {
         "id": 25,
@@ -347,7 +347,7 @@
         ],
         "answer": "MIMO",
         "explanation": "La tecnología MIMO (Multiple Input Multiple Output) utiliza múltiples antenas tanto en el transmisor como en el receptor para enviar y recibir múltiples flujos de datos simultáneamente sobre el mismo canal de frecuencia. Esto es lo que permite a los estándares 802.11n y 802.11ac superar con creces el límite de 54 Mbps de los estándares anteriores (802.11a/g).",
-        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Tecnologías de Antena"
+        "source_reference": "Capítulo 9: Wireless > Tecnologías de Antena"
     },
     {
         "id": 26,
@@ -361,7 +361,7 @@
         ],
         "answer": "Fibra monomodo",
         "explanation": "La fibra óptica monomodo (Single-mode fiber) es la opción ideal para conexiones de larga distancia (varios kilómetros) entre edificios, ya que ofrece un ancho de banda altísimo y una atenuación de señal mínima, además de ser inmune a las interferencias electromagnéticas.",
-        "source_reference": "Capítulo 2: Cables y Conectores de Red > Medios de Fibra Óptica"
+        "source_reference": "Capítulo 2: Hardware de Red > Medios de Fibra Óptica"
     },
     {
         "id": 27,
@@ -375,7 +375,7 @@
         ],
         "answer": "NAC",
         "explanation": "NAC (Network Access Control) es una tecnología que inspecciona los dispositivos cuando intentan conectarse a la red. Puede requerir autenticación y verificar el cumplimiento de políticas de seguridad antes de permitir el acceso. Si un usuario no autorizado conecta su portátil, el sistema NAC puede bloquear el puerto del switch o enviarlo a una VLAN de invitados aislada.",
-        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Control de Admisión a la Red"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Control de Admisión a la Red"
     },
     {
         "id": 28,
@@ -389,7 +389,7 @@
         ],
         "answer": "POTS",
         "explanation": "POTS (Plain Old Telephone Service), o servicio telefónico analógico, utiliza típicamente un solo par de hilos. En un conector RJ-45 o RJ-11, el par central (pines 4 y 5) se utiliza tradicionalmente para la primera línea telefónica. Ethernet (10BaseT/100BaseT) requiere los pares 1-2 y 3-6.",
-        "source_reference": "Capítulo 2: Cables y Conectores de Red > Estándares de Cableado"
+        "source_reference": "Capítulo 2: Hardware de Red > Estándares de Cableado"
     },
     {
         "id": 29,
@@ -403,7 +403,7 @@
         ],
         "answer": "AP2",
         "explanation": "Dado que los problemas comenzaron específicamente después de reemplazar el AP2, este es el punto de fallo más probable. Es probable que la configuración del nuevo AP2 (como el canal o la potencia de transmisión) no coincida con la del consultor original o esté causando interferencias con AP1 y AP3.",
-        "source_reference": "Capítulo 11: Resolución de Problemas Inalámbricos > Problemas de Rendimiento y Configuración",
+        "source_reference": "Capítulo 11: Documentación > Problemas de Rendimiento y Configuración",
         "image_path": "assets/images/exam2/q29_wireless_troubleshooting.png"
     },
     {
@@ -418,7 +418,7 @@
         ],
         "answer": "El servidor está detrás de un firewall y tiene bloqueada la recepción de tráfico",
         "explanation": "El estado 'FILTERED' en un escaneo de puertos (como Nmap) indica que un firewall, filtro o obstáculo en la red está impidiendo que las sondas lleguen al puerto, por lo que el escáner no puede determinar si está abierto o cerrado. Que la mayoría de los puertos estén filtrados sugiere fuertemente la presencia de un firewall.",
-        "source_reference": "Capítulo 16: Comandos de Línea de Comandos > Nmap y Escaneo de Puertos"
+        "source_reference": "Capítulo 16: Fundamentos de Seguridad > Nmap y Escaneo de Puertos"
     },
     {
         "id": 31,
@@ -432,7 +432,7 @@
         ],
         "answer": "Política de prevención de pérdida de datos (DLP)",
         "explanation": "Una política de DLP (Data Loss Prevention) se enfoca en identificar, monitorear y proteger los datos sensibles. Las herramientas de DLP pueden escanear correos electrónicos salientes y sus archivos adjuntos para evitar que información confidencial salga de la organización.",
-        "source_reference": "Capítulo 18: Fortalecimiento y Defensa de la Red > Tecnologías DLP"
+        "source_reference": "Capítulo 18: Defensa de la Red > Tecnologías DLP"
     },
     {
         "id": 32,
@@ -446,7 +446,7 @@
         ],
         "answer": "RS-232",
         "explanation": "El conector DB-9 se utiliza comúnmente para comunicaciones en serie siguiendo el estándar RS-232, a menudo utilizado para la gestión de dispositivos de red a través de un puerto de consola.",
-        "source_reference": "Capítulo 2: Cables y Conectores de Red > Conectores Seriales"
+        "source_reference": "Capítulo 2: Hardware de Red > Conectores Seriales"
     },
     {
         "id": 33,
@@ -460,7 +460,7 @@
         ],
         "answer": "Rogue DHCP",
         "explanation": "Al conectar un router doméstico a la red corporativa, Susan activó un 'Rogue DHCP server'. El router comenzó a asignar direcciones IP de su propio rango a los equipos de la red corporativa, lo que causó conflictos con el servidor DHCP oficial y errores de IP duplicadas.",
-        "source_reference": "Capítulo 10: Ataques de Red > Servidores DHCP No Autorizados"
+        "source_reference": "Capítulo 10: Instalaciones Físicas > Servidores DHCP No Autorizados"
     },
     {
         "id": 34,
@@ -474,7 +474,7 @@
         ],
         "answer": "Política de uso aceptable (AUP)",
         "explanation": "La Política de Uso Aceptable (Acceptable Use Policy) es un documento que define las reglas y responsabilidades que los usuarios deben aceptar para acceder a la red y recursos tecnológicos de la organización.",
-        "source_reference": "Capítulo 15: Políticas de Red y Seguridad > Documentación de Políticas"
+        "source_reference": "Capítulo 15: Acceso Remoto > Documentación de Políticas"
     },
     {
         "id": 35,
@@ -488,7 +488,7 @@
         ],
         "answer": "10GBase-LR",
         "explanation": "10GBase-LR (Long Range) está diseñado para su uso con fibra monomodo, permitiendo distancias de hasta 10 km. Los estándares que terminan en -SR (Short Range) suelen ser para fibra multimodo, y los que terminan en -T son para par trenzado (cobre).",
-        "source_reference": "Capítulo 2: Cables y Conectores de Red > Estándares de Fibra Óptica"
+        "source_reference": "Capítulo 2: Hardware de Red > Estándares de Fibra Óptica"
     },
     {
         "id": 36,
@@ -502,7 +502,7 @@
         ],
         "answer": "Topología de estrella",
         "explanation": "En una topología de estrella, todos los dispositivos se conectan a un nodo central (como un switch). Esto permite gestionar la red de forma centralizada y, si un cable o dispositivo falla, solo ese nodo se ve afectado, facilitando el aislamiento de problemas.",
-        "source_reference": "Capítulo 1: Topologías de Red > Estructuras de Red Comunes"
+        "source_reference": "Capítulo 1: El Modelo OSI > Estructuras de Red Comunes"
     },
     {
         "id": 37,
@@ -516,7 +516,7 @@
         ],
         "answer": "show config",
         "explanation": "El comando 'show running-config' (a menudo abreviado como 'show run' o 'show config' dependiendo del sistema) muestra la configuración que está actualmente activa en la RAM del dispositivo.",
-        "source_reference": "Capítulo 16: Comandos de Línea de Comandos > Gestión de Configuración"
+        "source_reference": "Capítulo 16: Fundamentos de Seguridad > Gestión de Configuración"
     },
     {
         "id": 38,
@@ -532,7 +532,7 @@
         ],
         "answer": "OTDR",
         "explanation": "Un reflectómetro de dominio de tiempo (TDR o OTDR para fibra) es la herramienta que puede detectar fallos (abiertos, cortos) y indicar la distancia exacta (en este caso 3 pies) a la que se encuentra el problema enviando pulsos de señal y midiendo su reflexión.",
-        "source_reference": "Capítulo 2: Cables y Conectores de Red > Herramientas de Prueba",
+        "source_reference": "Capítulo 2: Hardware de Red > Herramientas de Prueba",
         "image_path": "assets/images/exam2/q38_cable_tester.png"
     },
     {
@@ -548,7 +548,7 @@
         ],
         "answer": "WPA2-CCMP",
         "explanation": "WPA2 con CCMP (basado en el cifrado AES) es el estándar de seguridad más robusto de las opciones presentadas. TKIP es más antiguo y menos seguro, y WEP/WPA están obsoletos por ser vulnerables.",
-        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Cifrado Inalámbrico",
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Cifrado Inalámbrico",
         "image_path": "assets/images/exam2/q39_encryption_layout.png"
     },
     {
@@ -563,7 +563,7 @@
         ],
         "answer": "Los cables triaxiales se utilizan principalmente en redes de fibra óptica para conectividad de larga distancia",
         "explanation": "Esta afirmación es INCORRECTA. Los cables Twinaxial (Dac) son de cobre, no de fibra, y se utilizan exclusivamente para distancias muy cortas (típicamente dentro de un rack o entre racks adyacentes) debido a sus limitaciones físicas.",
-        "source_reference": "Capítulo 2: Cables y Conectores de Red > Medios de Cobre Especializados"
+        "source_reference": "Capítulo 2: Hardware de Red > Medios de Cobre Especializados"
     },
     {
         "id": 41,
@@ -577,7 +577,7 @@
         ],
         "answer": "UPS",
         "explanation": "Un UPS (Uninterruptible Power Supply) proporciona energía inmediata mediante baterías durante cortes breves o hasta que se puede realizar un apagado ordenado o se activa un generador a largo plazo.",
-        "source_reference": "Capítulo 14: Gestión de Riesgos y Recuperación ante Desastres > Alta Disponibilidad de Energía"
+        "source_reference": "Capítulo 14: Servicios de Red > Alta Disponibilidad de Energía"
     },
     {
         "id": 42,
@@ -593,7 +593,7 @@
         ],
         "answer": "CDP, LLDP",
         "explanation": "CDP (Cisco Discovery Protocol) y LLDP (Link Layer Discovery Protocol) son protocolos de Capa 2 diseñados específicamente para el descubrimiento de vecinos e identidad en la red. LLDP es el estándar abierto, mientras que CDP es propietario de Cisco.",
-        "source_reference": "Capítulo 11: Resolución de Problemas de Red > Protocolos de Descubrimiento"
+        "source_reference": "Capítulo 11: Documentación > Protocolos de Descubrimiento"
     },
     {
         "id": 43,
@@ -607,7 +607,7 @@
         ],
         "answer": "Servidor DNS no autoritativo",
         "explanation": "Un servidor DNS no autoritativo obtiene la información de otros servidores y la almacena en su caché. Cuando responde a un cliente, lo hace basándose en su caché, lo que es eficiente, pero no es la fuente original (autoritativa) de los datos.",
-        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Jerarquía de DNS"
+        "source_reference": "Capítulo 5: Medios y Topologías > Jerarquía de DNS"
     },
     {
         "id": 44,
@@ -621,7 +621,7 @@
         ],
         "answer": "SYN",
         "explanation": "El proceso de conexión TCP comienza con el flag SYN (Synchronize) enviado por el host que desea iniciar la conexión.",
-        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > Saludo de Tres Vías de TCP"
+        "source_reference": "Capítulo 4: Puertos y Protocolos > Saludo de Tres Vías de TCP"
     },
     {
         "id": 45,
@@ -635,7 +635,7 @@
         ],
         "answer": "3306",
         "explanation": "MySQL utiliza por defecto el puerto TCP 3306. (1433 es para MSSQL, 1521 para Oracle y 3389 para RDP).",
-        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > Puertos Comunes"
+        "source_reference": "Capítulo 4: Puertos y Protocolos > Puertos Comunes"
     },
     {
         "id": 46,
@@ -649,7 +649,7 @@
         ],
         "answer": "Búsqueda recursiva (Recursive lookup)",
         "explanation": "La búsqueda recursiva es el proceso mediante el cual un servidor DNS realiza todo el trabajo de seguimiento de una cadena de consultas hasta encontrar el servidor autoritativo que tiene la respuesta definitiva para el cliente.",
-        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Consultas DNS"
+        "source_reference": "Capítulo 5: Medios y Topologías > Consultas DNS"
     },
     {
         "id": 47,
@@ -663,7 +663,7 @@
         ],
         "answer": "Punto de acceso de tráfico (TAP)",
         "explanation": "Un Network TAP (Test Access Point) es un dispositivo de hardware que permite monitorear el tráfico de red en un enlace físico de forma pasiva y sin interrumpir el flujo de datos. A diferencia de un puerto SPAN, no introduce carga adicional en el switch.",
-        "source_reference": "Capítulo 16: Comandos de Línea de Comandos > Herramientas de Monitoreo Físico"
+        "source_reference": "Capítulo 16: Fundamentos de Seguridad > Herramientas de Monitoreo Físico"
     },
     {
         "id": 48,
@@ -677,7 +677,7 @@
         ],
         "answer": "WPA2",
         "explanation": "WPA2 (en su modo Personal o Pre-Shared Key) se utiliza para autenticar usuarios en una red inalámbrica mediante una contraseña compartida. Es el estándar común para acceso inalámbrico seguro en entornos pequeños o públicos.",
-        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Seguridad Inalámbrica"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Seguridad Inalámbrica"
     },
     {
         "id": 49,
@@ -691,7 +691,7 @@
         ],
         "answer": "TXT",
         "explanation": "Los registros TXT de DNS permiten a los administradores insertar texto arbitrario en los registros DNS. Esto se utiliza comúnmente para proporcionar información sobre el dominio, notas de propiedad o para servicios de verificación (como SPF o registros del sitio).",
-        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Tipos de Registros DNS"
+        "source_reference": "Capítulo 5: Medios y Topologías > Tipos de Registros DNS"
     },
     {
         "id": 50,
@@ -705,7 +705,7 @@
         ],
         "answer": "ARP spoofing",
         "explanation": "El ARP spoofing (o envenenamiento de caché ARP) es un ataque de Capa 2 donde un atacante envía mensajes ARP falsos a una LAN para asociar su dirección MAC con la dirección IP de otro host legítimo (como el gateway), permitiéndole interceptar su tráfico.",
-        "source_reference": "Capítulo 10: Ataques de Red > Ataques de Capa 2"
+        "source_reference": "Capítulo 10: Instalaciones Físicas > Ataques de Capa 2"
     },
     {
         "id": 51,
@@ -719,7 +719,7 @@
         ],
         "answer": "DNS poisoning",
         "explanation": "El DNS poisoning (envenenamiento de DNS) consiste en introducir datos falsos en la caché de un servidor de nombres DNS, de modo que las consultas devuelvan una dirección IP incorrecta (la del atacante) y redirijan a los usuarios a sitios maliciosos.",
-        "source_reference": "Capítulo 10: Ataques de Red > Vulnerabilidades de DNS"
+        "source_reference": "Capítulo 10: Instalaciones Físicas > Vulnerabilidades de DNS"
     },
     {
         "id": 52,
@@ -733,7 +733,7 @@
         ],
         "answer": "Multicast",
         "explanation": "Multicast es la tecnología que permite enviar un flujo de datos único a múltiples suscriptores interesados (uno a muchos). Si el ping (unicast) funciona pero el streaming (que suele ser multicast para eficiencia) no, lo más probable es que IGMP o el enrutamiento multicast no estén configurados correctamente.",
-        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > Tipos de Transmisión de Datos"
+        "source_reference": "Capítulo 4: Puertos y Protocolos > Tipos de Transmisión de Datos"
     },
     {
         "id": 53,
@@ -747,7 +747,7 @@
         ],
         "answer": "Instalar un panel de parcheo (patch panel) para la gestión centralizada del cableado.",
         "explanation": "Un panel de parcheo (patch panel) permite organizar el cableado estructurado de forma centralizada. Facilita la identificación de conexiones y permite realizar cambios o pruebas (aislamiento de fallos) de forma rápida sin manipular directamente el cableado permanente o los puertos del switch.",
-        "source_reference": "Capítulo 2: Cables y Conectores de Red > Gestión de Infraestructura Física"
+        "source_reference": "Capítulo 2: Hardware de Red > Gestión de Infraestructura Física"
     },
     {
         "id": 54,
@@ -761,7 +761,7 @@
         ],
         "answer": "Switch de Capa 3",
         "explanation": "Un switch de Capa 3 puede realizar funciones de enrutamiento y es mejor para manejar redundancia a nivel de red (mediante protocolos de enrutamiento dinámico) y gestionar el tráfico multicast de forma más eficiente que un switch de Capa 2 básico.",
-        "source_reference": "Capítulo 3: Dispositivos de Red > Switches Avanzados"
+        "source_reference": "Capítulo 3: La Nube > Switches Avanzados"
     },
     {
         "id": 55,
@@ -775,7 +775,7 @@
         ],
         "answer": "Spanning tree",
         "explanation": "El protocolo Spanning Tree (STP) se utiliza para evitar bucles de conmutación en redes con rutas redundantes. Sin STP, los bucles causarían tormentas de broadcast que degradarían severamente el rendimiento de la red.",
-        "source_reference": "Capítulo 3: Dispositivos de Red > Protocolos de Switch"
+        "source_reference": "Capítulo 3: La Nube > Protocolos de Switch"
     },
     {
         "id": 56,
@@ -789,7 +789,7 @@
         ],
         "answer": "MX",
         "explanation": "El registro MX (Mail Exchanger) especifica el servidor de correo responsable de recibir mensajes de correo electrónico en nombre de un nombre de dominio.",
-        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Registros de Correo DNS"
+        "source_reference": "Capítulo 5: Medios y Topologías > Registros de Correo DNS"
     },
     {
         "id": 57,
@@ -803,7 +803,7 @@
         ],
         "answer": "En una red pequeña donde la ruta directa entre dispositivos no cambia con frecuencia.",
         "explanation": "El enrutamiento estático es ideal para redes pequeñas y simples con topologías fijas, ya que no introduce sobrecarga de procesamiento ni de ancho de banda como los protocolos dinámicos.",
-        "source_reference": "Capítulo 6: Enrutamiento IP > Tipos de Enrutamiento"
+        "source_reference": "Capítulo 6: Direccionamiento IPv4 > Tipos de Enrutamiento"
     },
     {
         "id": 58,
@@ -817,7 +817,7 @@
         ],
         "answer": "Disminuir el tiempo de concesión (lease time) de DHCP.",
         "explanation": "Si el pool está lleno (agotamiento de direcciones), disminuir el tiempo de concesión permitirá que las direcciones IP se liberen y vuelvan al pool más rápidamente, permitiendo que nuevos usuarios se conecten. (Expandir el pool también es una solución, pero a menudo requiere reconfiguración de subred o no es posible si no hay más IPs disponibles en el segmento).",
-        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Gestión de DHCP"
+        "source_reference": "Capítulo 5: Medios y Topologías > Gestión de DHCP"
     },
     {
         "id": 59,
@@ -831,7 +831,7 @@
         ],
         "answer": "Documentación de gestión de cambios (Change management)",
         "explanation": "La documentación de gestión de cambios registra todas las modificaciones realizadas en la infraestructura de TI. Dado que el problema comenzó después de una actualización, este documento proporcionará detalles sobre qué se cambió exactamente, ayudando a identificar la causa potencial del problema.",
-        "source_reference": "Capítulo 18: Políticas y Procedimientos > Gestión de Cambios"
+        "source_reference": "Capítulo 18: Defensa de la Red > Gestión de Cambios"
     },
     {
         "id": 60,
@@ -845,7 +845,7 @@
         ],
         "answer": "Que esté habilitado un denegar implícito (implicit deny)",
         "explanation": "El 'denegar implícito' es un principio de seguridad donde todo lo que no está explícitamente permitido se prohíbe. Al verificar que exista una regla de denegación implícita al final de la lista de control de acceso (ACL), el técnico asegura que solo se permita el tráfico específicamente autorizado.",
-        "source_reference": "Capítulo 12: Firewalls y Gateways > Reglas de Firewall (ACL)"
+        "source_reference": "Capítulo 12: Monitoreo > Reglas de Firewall (ACL)"
     },
     {
         "id": 61,
@@ -859,7 +859,7 @@
         ],
         "answer": "Capa 3",
         "explanation": "En el modelo OSI, los datos se encapsulan en 'paquetes' en la Capa de Red (Capa 3). En la Capa 4 se llaman segmentos o datagramas, y en la Capa 2 se llaman tramas.",
-        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > Capa 3: Red"
+        "source_reference": "Capítulo 4: Puertos y Protocolos > Capa 3: Red"
     },
     {
         "id": 62,
@@ -873,7 +873,7 @@
         ],
         "answer": "Capa 6",
         "explanation": "La Capa de Presentación (Capa 6) se encarga de la entrega y el formato de la información, lo que incluye el cifrado, la compresión y la traducción de conjuntos de caracteres.",
-        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > Capa 6: Presentación"
+        "source_reference": "Capítulo 4: Puertos y Protocolos > Capa 6: Presentación"
     },
     {
         "id": 63,
@@ -887,7 +887,7 @@
         ],
         "answer": "PTR",
         "explanation": "Un registro de puntero (PTR) se utiliza para búsquedas DNS inversas, permitiendo resolver una dirección IP en un nombre de dominio.",
-        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Tipos de Registros DNS"
+        "source_reference": "Capítulo 5: Medios y Topologías > Tipos de Registros DNS"
     },
     {
         "id": 64,
@@ -901,7 +901,7 @@
         ],
         "answer": "AAAA",
         "explanation": "Un registro AAAA mapea un nombre de dominio a una dirección IPv6 (a diferencia del registro A, que mapea a IPv4).",
-        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Tipos de Registros DNS"
+        "source_reference": "Capítulo 5: Medios y Topologías > Tipos de Registros DNS"
     },
     {
         "id": 65,
@@ -915,7 +915,7 @@
         ],
         "answer": "SMTPS",
         "explanation": "SMTPS (Simple Mail Transfer Protocol Secure) es una extensión de SMTP que utiliza SSL/TLS para proporcionar cifrado y autenticación en la transferencia de correos.",
-        "source_reference": "Capítulo 14: Fortalecimiento de Red > Protocolos Seguros"
+        "source_reference": "Capítulo 14: Servicios de Red > Protocolos Seguros"
     },
     {
         "id": 66,
@@ -929,7 +929,7 @@
         ],
         "answer": "CNAME",
         "explanation": "Un registro de nombre canónico (CNAME) se utiliza para crear un alias de un nombre de dominio, apuntándolo hacia otro nombre de dominio (el nombre canónico).",
-        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Tipos de Registros DNS"
+        "source_reference": "Capítulo 5: Medios y Topologías > Tipos de Registros DNS"
     },
     {
         "id": 67,
@@ -943,7 +943,7 @@
         ],
         "answer": "Requerir el cifrado de datos en reposo en todos los endpoints",
         "explanation": "El cifrado de datos en reposo (como el cifrado de disco completo) habría protegido los datos en la laptop incluso si esta fuera perdida o robada, ya que los archivos serían ilegibles sin la clave de descifrado.",
-        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Seguridad de Endpoints"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Seguridad de Endpoints"
     },
     {
         "id": 68,
@@ -957,7 +957,7 @@
         ],
         "answer": "Una actualización de versión menor de un router de producción",
         "explanation": "Cualquier cambio o actualización en un dispositivo de producción (como un router) que pueda causar una interrupción del servicio o afectar la red operativa requiere una ventana de mantenimiento programada y comunicada.",
-        "source_reference": "Capítulo 18: Políticas y Procedimientos > Mantenimiento y Parches"
+        "source_reference": "Capítulo 18: Defensa de la Red > Mantenimiento y Parches"
     },
     {
         "id": 69,
@@ -971,7 +971,7 @@
         ],
         "answer": "Una tabla que mapea direcciones IP y direcciones MAC actualmente reconocidas por el dispositivo.",
         "explanation": "El comando 'show arp' muestra la tabla ARP, que contiene el mapeo entre las direcciones de Capa 3 (IP) y las direcciones de Capa 2 (MAC) para los dispositivos locales.",
-        "source_reference": "Capítulo 16: Comandos de Línea de Comandos > show arp"
+        "source_reference": "Capítulo 16: Fundamentos de Seguridad > show arp"
     },
     {
         "id": 70,
@@ -985,7 +985,7 @@
         ],
         "answer": "SSE integra inteligencia de amenazas para detectar y responder a incidentes de seguridad.",
         "explanation": "SSE es un componente de SASE que ofrece servicios de seguridad desde la nube (como SWG, CASB y ZTNA) de forma unificada. Al estar basado en la nube, permite una integración mucho más profunda de inteligencia de amenazas global y una respuesta ágil, a diferencia de los firewalls perimetrales tradicionales que a menudo actúan de forma aislada.",
-        "source_reference": "Capítulo 12: Firewalls y Gateways > SASE y SSE"
+        "source_reference": "Capítulo 12: Monitoreo > SASE y SSE"
     },
     {
         "id": 71,
@@ -999,7 +999,7 @@
         ],
         "answer": "389",
         "explanation": "LDAP (Lightweight Directory Access Protocol) utiliza el puerto 389. El puerto 636 se utiliza para LDAPS (LDAP sobre SSL/TLS).",
-        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Protocolos de Directorio"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Protocolos de Directorio"
     },
     {
         "id": 72,
@@ -1013,7 +1013,7 @@
         ],
         "answer": "IAM",
         "explanation": "IAM (Identity and Access Management) es el marco de políticas y tecnologías que asegura que las personas adecuadas dentro de un ecosistema tengan el acceso correcto a los recursos tecnológicos.",
-        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Fundamentos de IAM"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Fundamentos de IAM"
     },
     {
         "id": 73,
@@ -1027,7 +1027,7 @@
         ],
         "answer": "OSPF",
         "explanation": "OSPF (Open Shortest Path First) es un protocolo de enrutamiento sin clase, lo que significa que incluye la máscara de subred en sus actualizaciones, permitiendo el uso de VLSM y CIDR. RIPv1 e IGRP son protocolos con clase que no soportan estas funciones.",
-        "source_reference": "Capítulo 6: Enrutamiento IP > Protocolos de Enrutamiento"
+        "source_reference": "Capítulo 6: Direccionamiento IPv4 > Protocolos de Enrutamiento"
     },
     {
         "id": 74,
@@ -1041,7 +1041,7 @@
         ],
         "answer": "Segregar y priorizar el tráfico de voz para garantizar la calidad del servicio (QoS).",
         "explanation": "Una Voice VLAN permite separar el tráfico de voz del tráfico de datos general, lo que facilita la aplicación de políticas de Calidad de Servicio (QoS) para dar prioridad a los paquetes de voz y reducir la latencia y el jitter.",
-        "source_reference": "Capítulo 13: Conceptos Avanzados de Red > VLANs y QoS"
+        "source_reference": "Capítulo 13: BCDR > VLANs y QoS"
     },
     {
         "id": 75,
@@ -1055,7 +1055,7 @@
         ],
         "answer": "RIP como protocolo de enrutamiento; conectar los dispositivos con un switch de Capa 2 Gigabit",
         "explanation": "Para una oficina pequeña con 50 dispositivos, RIP es una solución simple y de baja sobrecarga. Un switch de Capa 2 Gigabit proporciona el alto rendimiento requerido (1000 Mbps) para la conectividad por cable de forma rentable.",
-        "source_reference": "Capítulo 6: Enrutamiento IP > Comparación de Protocolos"
+        "source_reference": "Capítulo 6: Direccionamiento IPv4 > Comparación de Protocolos"
     },
     {
         "id": 76,
@@ -1069,7 +1069,7 @@
         ],
         "answer": "NAS",
         "explanation": "NAS (Network Attached Storage) opera a nivel de archivo y proporciona almacenamiento compartido a través de protocolos de red como NFS o SMB/CIFS. Por el contrario, SAN, iSCSI y FCoE operan a nivel de bloque.",
-        "source_reference": "Capítulo 11: Tecnologías de Almacenamiento en Red > NAS vs SAN"
+        "source_reference": "Capítulo 11: Documentación > NAS vs SAN"
     },
     {
         "id": 77,
@@ -1083,7 +1083,7 @@
         ],
         "answer": "Full Tunnel",
         "explanation": "Un Full Tunnel enruta todo el tráfico del cliente a través del túnel VPN, incluyendo tanto el acceso a recursos corporativos como el tráfico de internet. Un Split Tunnel, en cambio, solo envía el tráfico dirigido a la red corporativa a través del VPN, mientras que el tráfico de internet va directamente.",
-        "source_reference": "Capítulo 15: Conectividad Remota y VPN > Tipos de Túneles VPN"
+        "source_reference": "Capítulo 15: Acceso Remoto > Tipos de Túneles VPN"
     },
     {
         "id": 78,
@@ -1097,7 +1097,7 @@
         ],
         "answer": "Verificar que el cable de red esté conectado al nuevo switch",
         "explanation": "Como la NIC no muestra luces LED y solo este usuario tiene problemas después del reemplazo del switch, lo más probable es que el cable de red de ese usuario no se haya reconectado correctamente al nuevo switch. Esto es común durante el reemplazo de equipos.",
-        "source_reference": "Capítulo 19: Metodología de Resolución de Problemas > Verificación de Conectividad Física"
+        "source_reference": "Capítulo 19: Troubleshooting > Verificación de Conectividad Física"
     },
     {
         "id": 79,
@@ -1111,7 +1111,7 @@
         ],
         "answer": "EUI-64",
         "explanation": "EUI-64 (Extended Unique Identifier) es un método que se utiliza en IPv6 para generar automáticamente la porción de identificador de interfaz de una dirección IPv6 basándose en la dirección MAC del dispositivo. APIPA (Automatic Private IP Addressing) es para IPv4, no IPv6.",
-        "source_reference": "Capítulo 7: Direccionamiento IPv6 > Autoconfiguración SLAAC y EUI-64"
+        "source_reference": "Capítulo 7: Enrutamiento > Autoconfiguración SLAAC y EUI-64"
     },
     {
         "id": 80,
@@ -1125,7 +1125,7 @@
         ],
         "answer": "Guest network",
         "explanation": "Una red de invitados (Guest network) proporciona acceso a internet para visitantes mientras los mantiene aislados de la red interna corporativa. Es la solución estándar para este escenario. Una DMZ o screened subnet se usa para servidores públicos, no para acceso de invitados.",
-        "source_reference": "Capítulo 13: Conceptos Avanzados de Red > Segmentación y Redes de Invitados"
+        "source_reference": "Capítulo 13: BCDR > Segmentación y Redes de Invitados"
     },
     {
         "id": 81,
@@ -1140,7 +1140,7 @@
         ],
         "answer": "5 dB Directional Right for AP1, 5 dB Omnidirectional for AP2, and 5 dB Directional Left for AP3",
         "explanation": "Mirando el plano, AP1 está en la pared izquierda, AP3 está en la pared derecha y AP2 está en el centro. Para mantener la señal DENTRO del edificio: AP1 debe transmitir hacia la derecha (Directional Right). AP3 debe transmitir hacia la izquierda (Directional Left). AP2, al estar en el centro y rodeado de oficinas, debe cubrir 360 grados (Omnidirectional).",
-        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Tipos de Antenas y Colocación"
+        "source_reference": "Capítulo 9: Wireless > Tipos de Antenas y Colocación"
     },
     {
         "id": 82,
@@ -1154,7 +1154,7 @@
         ],
         "answer": "Evil twin",
         "explanation": "Un ataque 'Evil Twin' implica configurar un punto de acceso falso que imita el SSID legítimo de la red corporativa para engañar a los usuarios y que se conecten a él, permitiendo al atacante interceptar el tráfico. Un 'Rogue AP' es un AP no autorizado, pero no necesariamente imita al legítimo para interceptación activa como el Evil Twin.",
-        "source_reference": "Capítulo 16: Ataques de Red > Ataques Inalámbricos"
+        "source_reference": "Capítulo 16: Fundamentos de Seguridad > Ataques Inalámbricos"
     },
     {
         "id": 83,
@@ -1168,7 +1168,7 @@
         ],
         "answer": "El puerto ha sido inhabilitado por error (error disabled) debido a una violación.",
         "explanation": "Si el LED del puerto está apagado y el administrador no lo ha deshabilitado manualmente ('administratively down'), es probable que el puerto haya entrado en estado 'error-disabled' debido a una violación de seguridad (como Port Security). STP generalmente muestra un LED ámbar o parpadeante, no apagado.",
-        "source_reference": "Capítulo 20: Solución de Problemas de Red > Problemas de Puertos de Switch"
+        "source_reference": "Capítulo 20: Problemas Físicos > Problemas de Puertos de Switch"
     },
     {
         "id": 85,
@@ -1182,7 +1182,7 @@
         ],
         "answer": "SSL",
         "explanation": "Las VPNs basadas en SSL (Secure Sockets Layer) o TLS permiten establecer túneles seguros directamente desde un navegador web, a menudo conocidas como VPNs sin cliente (clientless) o portales WebVPN.",
-        "source_reference": "Capítulo 17: Autenticación y Control de Acceso > Tecnologías VPN"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Tecnologías VPN"
     },
     {
         "id": 86,
@@ -1196,7 +1196,7 @@
         ],
         "answer": "Exploit",
         "explanation": "Un 'Exploit' es una pieza de software, un fragmento de datos o una secuencia de comandos diseñada para aprovechar una vulnerabilidad o fallo de seguridad específico en un sistema para causar un comportamiento no intencionado.",
-        "source_reference": "Capítulo 16: Ataques de Red > Conceptos de Seguridad"
+        "source_reference": "Capítulo 16: Fundamentos de Seguridad > Conceptos de Seguridad"
     },
     {
         "id": 87,
@@ -1210,7 +1210,7 @@
         ],
         "answer": "NAS",
         "explanation": "NAS (Network Attached Storage) opera a nivel de archivo (file-level), permitiendo a los usuarios acceder a archivos a través de la red. SAN, iSCSI y FCoE operan a nivel de bloque (block-level).",
-        "source_reference": "Capítulo 10: Tecnologías WAN y Centros de Datos > Almacenamiento en Red"
+        "source_reference": "Capítulo 10: Instalaciones Físicas > Almacenamiento en Red"
     },
     {
         "id": 88,
@@ -1224,7 +1224,7 @@
         ],
         "answer": "Full Tunnel (Túnel completo)",
         "explanation": "En una configuración 'Full Tunnel', TODO el tráfico del cliente (tanto el destinado a la red corporativa como el tráfico general de Internet) se enruta a través del túnel VPN. 'Split Tunnel' solo enruta el tráfico corporativo por la VPN.",
-        "source_reference": "Capítulo 17: Autenticación y Control de Acceso > Configuraciones VPN"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Configuraciones VPN"
     },
     {
         "id": 89,
@@ -1238,7 +1238,7 @@
         ],
         "answer": "Verificar que el cable de red esté conectado al nuevo switch",
         "explanation": "Dado que se acaba de reemplazar el switch y el problema es aislado (solo un usuario) con la luz de enlace apagada, lo más probable es que el cable de red de ese usuario no se haya conectado correctamente al nuevo switch. Si fuera el router, fallaría toda la red. Si fuera la NIC, no habría funcionado ayer.",
-        "source_reference": "Capítulo 20: Solución de Problemas de Red > Problemas de Capa Física"
+        "source_reference": "Capítulo 20: Problemas Físicos > Problemas de Capa Física"
     },
     {
         "id": 90,
@@ -1252,7 +1252,7 @@
         ],
         "answer": "EUI-64",
         "explanation": "EUI-64 es un método utilizado en IPv6 para generar automáticamente la porción de interfaz (Host ID) de 64 bits de una dirección IPv6 a partir de la dirección MAC de 48 bits del dispositivo.",
-        "source_reference": "Capítulo 4: Direccionamiento IP > IPv6"
+        "source_reference": "Capítulo 4: Puertos y Protocolos > IPv6"
     },
     {
         "id": 90,
@@ -1266,6 +1266,6 @@
         ],
         "answer": "EUI-64",
         "explanation": "EUI-64 es un método utilizado en IPv6 para generar automáticamente la porción de interfaz (Host ID) de 64 bits de una dirección IPv6 a partir de la dirección MAC de 48 bits del dispositivo.",
-        "source_reference": "Capítulo 4: Direccionamiento IP > IPv6"
+        "source_reference": "Capítulo 4: Puertos y Protocolos > IPv6"
     }
 ]
