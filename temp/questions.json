@@ -11,7 +11,7 @@
         ],
         "answer": "Establecer un plan de acción para resolver el problema e identificar efectos potenciales.",
         "explanation": "De acuerdo con la metodología de resolución de problemas de CompTIA (7 pasos), una vez que se ha probado y confirmado la teoría (Paso 3), el siguiente paso es el Paso 4: Establecer un plan de acción para resolver el problema e identificar los efectos potenciales. Esto asegura que la solución se aplique de manera estructurada y se consideren las repercusiones en el resto de la red.",
-        "source_reference": "Capítulo 19: Troubleshooting > Metodología de 7 Pasos"
+        "source_reference": "Capítulo 19: Troubleshooting > Metodología de Resolución de Problemas (7 Pasos)"
     },
     {
         "id": 2,
@@ -25,7 +25,7 @@
         ],
         "answer": "Emergencia (Emergency)",
         "explanation": "El estándar Syslog define ocho niveles de severidad (0-7). El nivel 0 es 'Emergencia' (Emergency), indicando que el sistema es inestable o inutilizable. Es el nivel más crítico de todos los mensajes de registro.",
-        "source_reference": "Capítulo 12: Monitoreo > Syslog (Niveles de Gravedad)"
+        "source_reference": "Capítulo 12: Monitoreo > Monitoreo y Syslog"
     },
     {
         "id": 3,
@@ -39,7 +39,7 @@
         ],
         "answer": "La capacidad de carga (peso) del rack para asegurar que pueda soportar el equipo.",
         "explanation": "La capacidad de carga es el factor de seguridad y estructural más crítico al alojar equipos pesados como servidores en un centro de datos o armario de cableado. Un fallo en la integridad estructural del rack puede comprometer todo el hardware y la seguridad física del personal.",
-        "source_reference": "Capítulo 10: Instalaciones Físicas > Gestión de Racks"
+        "source_reference": "Capítulo 10: Instalaciones Físicas > Organización de Racks"
     },
     {
         "id": 4,
@@ -53,7 +53,7 @@
         ],
         "answer": "Una representación gráfica que indica áreas de alta y baja actividad o rendimiento de la red (intensidad de señal).",
         "explanation": "Un Mapa de Calor (Heat-Map) inalámbrico es una herramienta de visualización que muestra la cobertura y la intensidad de la señal de radiofrecuencia (RF) en un área geográfica. Se utiliza comúnmente durante los 'site surveys' para identificar zonas muertas e interferencias.",
-        "source_reference": "Capítulo 9: Wireless > Diseño Inalámbrico"
+        "source_reference": "Capítulo 9: Wireless > Arquitectura Wireless"
     },
     {
         "id": 5,
@@ -67,7 +67,7 @@
         ],
         "answer": "Denegar todo el tráfico de eth2 a eth0",
         "explanation": "Para evitar que la zona de estudiantes (eth2) acceda a la red pública/Internet (eth0), se debe configurar una regla de firewall que bloquee explícitamente el tráfico saliente desde eth2 hacia la interfaz conectada al ISP (eth0). El tráfico interno entre estudiantes en eth2 no se ve afectado ya que no pasa por el firewall para comunicarse dentro de la misma subred.",
-        "source_reference": "Capítulo 18: Defensa de la Red > Seguridad de Zonas"
+        "source_reference": "Capítulo 18: Defensa de la Red > Zonas de Seguridad (Networking)"
     },
     {
         "id": 6,
@@ -81,7 +81,7 @@
         ],
         "answer": "A",
         "explanation": "El registro A (Address) se utiliza para mapear un nombre de dominio (FQDN) a una dirección IPv4 específica. Es el registro fundamental para dirigir el tráfico web a un servidor.",
-        "source_reference": "Capítulo 5: Medios y Topologías > DNS"
+        "source_reference": "Capítulo 5: Medios y Topologías > Servicios de Nombres (DNS)"
     },
     {
         "id": 7,
@@ -95,7 +95,7 @@
         ],
         "answer": "RTO",
         "explanation": "El RTO (Recovery Time Objective) es el objetivo de tiempo de recuperación, que define el periodo de tiempo máximo tolerable que un servicio puede estar inactivo tras un desastre.",
-        "source_reference": "Capítulo 20: Problemas Físicos > RTO y RPO"
+        "source_reference": "Capítulo 20: Problemas Físicos > Métricas de Resiliencia (RTO/RPO)"
     },
     {
         "id": 8,
@@ -109,7 +109,7 @@
         ],
         "answer": "Asegurar el uso legal del software y evitar sanciones por incumplimiento.",
         "explanation": "La gestión de licencias asegura que el software se use de acuerdo con los términos legales, evitando riesgos financieros y legales por auditorías o uso no autorizado.",
-        "source_reference": "Capítulo 15: Acceso Remoto > Gestión de Activos"
+        "source_reference": "Capítulo 15: Acceso Remoto > Documentación y Gestión de Activos"
     },
     {
         "id": 9,
@@ -123,7 +123,7 @@
         ],
         "answer": "Híbrida (Hybrid)",
         "explanation": "Una nube híbrida combina infraestructura propia (on-premise) con servicios de terceros o nubes públicas/comunitarias. En este escenario, la conexión entre el servidor local y el servicio externo de Syslog define un modelo híbrido.",
-        "source_reference": "Capítulo 8: Switches y VLANs > Modelos de Nube"
+        "source_reference": "Capítulo 8: Switches y VLANs > Entornos Cloud"
     },
     {
         "id": 10,
@@ -153,7 +153,7 @@
         ],
         "answer": "/26",
         "explanation": "Para 32 dispositivos, necesitamos una subred que pueda alojar al menos 34 direcciones (32 dispositivos + ID de red + Broadcast). Una máscara /27 ofrece 30 direcciones útiles (insuficiente), mientras que una /26 ofrece 62 direcciones útiles, siendo la opción mínima viable.",
-        "source_reference": "Capítulo 4: Puertos y Protocolos > CIDR y Subnetting"
+        "source_reference": "Capítulo 4: Puertos y Protocolos > Direccionamiento IP y Subnetting"
     },
     {
         "id": 12,
@@ -167,7 +167,7 @@
         ],
         "answer": "Distribuir el tráfico de red de manera uniforme entre múltiples servidores.",
         "explanation": "El balanceo de carga optimiza el uso de recursos, maximiza el rendimiento y evita la sobrecarga de un solo servidor al distribuir las peticiones entre varios nodos.",
-        "source_reference": "Capítulo 8: Switches y VLANs > Balanceo de Carga"
+        "source_reference": "Capítulo 8: Switches y VLANs > Tecnologías de Disponibilidad"
     },
     {
         "id": 13,
@@ -181,7 +181,7 @@
         ],
         "answer": "El IDS enviará una alerta, dejará de verificar el resto de las reglas y permitirá que el paquete continúe su viaje.",
         "explanation": "En un IDS (Sistema de Detección de Intrusiones), a diferencia de un IPS, la acción de 'alerta' simplemente notifica la coincidencia sin bloquear el tráfico. En Snort, una vez que una regla coincide y genera una alerta, el procesamiento de ese paquete suele detenerse para esa cadena de reglas y se permite el paso del tráfico.",
-        "source_reference": "Capítulo 17: Amenazas y Ataques > IDS/IPS"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Sistemas de Seguridad de Red"
     },
     {
         "id": 14,
@@ -195,7 +195,7 @@
         ],
         "answer": "Tiempo de Distribución (Lease Time)",
         "explanation": "El Lease Time o Tiempo de Concesión define cuánto tiempo un cliente puede usar una dirección IP antes de tener que renovarla o devolverla al pool.",
-        "source_reference": "Capítulo 4: Puertos y Protocolos > Configuración de DHCP"
+        "source_reference": "Capítulo 4: Puertos y Protocolos > Implementación de DHCP"
     },
     {
         "id": 15,
@@ -209,7 +209,7 @@
         ],
         "answer": "NAT Gateway",
         "explanation": "Una NAT Gateway permite que instancias en una subred privada se conecten a Internet (para actualizaciones, etc.) pero evita que Internet inicie conexiones directas con esas instancias.",
-        "source_reference": "Capítulo 8: Switches y VLANs > Conectividad Cloud"
+        "source_reference": "Capítulo 8: Switches y VLANs > Servicios Cloud"
     },
     {
         "id": 16,
@@ -223,7 +223,7 @@
         ],
         "answer": "Cobertura inalámbrica insuficiente",
         "explanation": "La pérdida frecuente de conexión en áreas específicas suele ser síntoma de 'zonas muertas' o cobertura insuficiente debido a la distancia de los puntos de acceso o interferencias físicas.",
-        "source_reference": "Capítulo 9: Wireless > Señal Inalámbrica"
+        "source_reference": "Capítulo 9: Wireless > Instalación de Wireless"
     },
     {
         "id": 17,
@@ -237,7 +237,7 @@
         ],
         "answer": "ST, SC, LC(single), LC(duplex), FC",
         "explanation": "La imagen muestra secuencialmente el conector ST (redondo con bayoneta), SC (cuadrado 'push-pull'), LC Simple, LC Dúplex y FC (roscado).",
-        "source_reference": "Capítulo 2: Hardware de Red > Conectores de Fibra Óptica"
+        "source_reference": "Capítulo 2: Hardware de Red > Cables y Conectores de Fibra"
     },
     {
         "id": 18,
@@ -251,7 +251,7 @@
         ],
         "answer": "DMZ",
         "explanation": "En una configuración de firewall triple-homed, las tres interfaces suelen ser: 1. Internet (Ext), 2. Red Privada (Int) y 3. DMZ (Zona Desmilitarizada) para servicios públicos aislados.",
-        "source_reference": "Capítulo 18: Defensa de la Red > Seguridad de Zonas"
+        "source_reference": "Capítulo 18: Defensa de la Red > Zonas de Seguridad (Networking)"
     },
     {
         "id": 19,
@@ -265,7 +265,7 @@
         ],
         "answer": "Configurar la VLAN de voz en los puertos del switch donde se conectan los teléfonos VoIP.",
         "explanation": "La configuración de una 'Voice VLAN' permite al switch identificar el tráfico de voz y aplicarle automáticamente etiquetas de prioridad (802.1Q/p) sobre el tráfico de datos en el mismo puerto.",
-        "source_reference": "Capítulo 7: Enrutamiento > VLANs"
+        "source_reference": "Capítulo 7: Enrutamiento > Configuración de VLANs"
     },
     {
         "id": 20,
@@ -279,7 +279,7 @@
         ],
         "answer": "Optimizar las rutas de enrutamiento",
         "explanation": "La latencia en servicios en la nube a menudo depende del camino que toman los paquetes. Optimizar el enrutamiento (ej: usando CloudFront, Global Accelerator o Direct Connect) reduce los saltos y la demora geográfica.",
-        "source_reference": "Capítulo 8: Switches y VLANs > Optimización de Latencia"
+        "source_reference": "Capítulo 8: Switches y VLANs > Métricas de Desempeño"
     },
     {
         "id": 21,
@@ -307,7 +307,7 @@
         ],
         "answer": "Fuerza bruta (Brute-force)",
         "explanation": "El protocolo WPS es vulnerable a ataques de fuerza bruta debido a que el PIN de 8 dígitos se divide en dos mitades de 4 dígitos, lo que reduce drásticamente las combinaciones posibles a probar.",
-        "source_reference": "Capítulo 16: Fundamentos de Seguridad > WPS"
+        "source_reference": "Capítulo 16: Fundamentos de Seguridad > Vulnerabilidades de Seguridad"
     },
     {
         "id": 23,
@@ -335,7 +335,7 @@
         ],
         "answer": "Crosstalk (Diafonía)",
         "explanation": "El trenzado de los cables existe específicamente para cancelar la interferencia electromagnética entre pares. Si se deshace el trenzado (untwisting) cerca del conector, se produce diafonía o crosstalk, degradando la señal.",
-        "source_reference": "Capítulo 2: Hardware de Red > Estándares de Trenzado"
+        "source_reference": "Capítulo 2: Hardware de Red > Categorías de Cable de Cobre"
     },
     {
         "id": 25,
@@ -349,7 +349,7 @@
         ],
         "answer": "HVAC",
         "explanation": "Los sistemas HVAC (Calefacción, Ventilación y Aire Acondicionado) son los responsables de mantener la temperatura y humedad adecuadas en el centro de datos mediante la extracción de calor.",
-        "source_reference": "Capítulo 10: Instalaciones Físicas > Sistemas de Control Ambiental"
+        "source_reference": "Capítulo 10: Instalaciones Físicas > Instalaciones Físicas"
     },
     {
         "id": 26,
@@ -363,7 +363,7 @@
         ],
         "answer": "Twinaxial",
         "explanation": "El cable Twinaxial (o DAC - Direct Attach Copper) es ideal para distancias muy cortas (generalmente menos de 7-10 metros) en centros de datos para conectar switches y servidores a alta velocidad de forma económica.",
-        "source_reference": "Capítulo 2: Hardware de Red > Cables de Cobre Especializados"
+        "source_reference": "Capítulo 2: Hardware de Red > Cables de Cobre Directos y Cruzados"
     },
     {
         "id": 27,
@@ -405,7 +405,7 @@
         ],
         "answer": "Cable de fibra óptica",
         "explanation": "Aunque el cobre (Cat 6A/7) puede manejar 10 Gbps, la fibra óptica es el medio preferido y más confiable para interconectar switches (uplinks) a estas velocidades, especialmente en distancias largas o entornos con interferencias.",
-        "source_reference": "Capítulo 2: Hardware de Red > Medios de Fibra Óptica"
+        "source_reference": "Capítulo 2: Hardware de Red > Cables de Fibra Óptica"
     },
     {
         "id": 30,
@@ -419,7 +419,7 @@
         ],
         "answer": "Crear un único enlace lógico con más ancho de banda combinando múltiples enlaces físicos.",
         "explanation": "La agregación de enlaces (LACP/EtherChannel) combina varios puertos físicos en una sola interfaz lógica, proporcionando mayor ancho de banda total y redundancia.",
-        "source_reference": "Capítulo 8: Switches y VLANs > Agregación de Enlaces"
+        "source_reference": "Capítulo 8: Switches y VLANs > EtherChannel y Agregación"
     },
     {
         "id": 31,
@@ -433,7 +433,7 @@
         ],
         "answer": "Ubicación del WAP (Placement)",
         "explanation": "En una instalación nueva, la ubicación física es el factor más crítico. Obstáculos, interferencias de otros dispositivos o una mala planificación de celdas suelen ser la causa principal de conexiones inestables.",
-        "source_reference": "Capítulo 9: Wireless > Placement de APs"
+        "source_reference": "Capítulo 9: Wireless > Despliegue de APs"
     },
     {
         "id": 32,
@@ -447,7 +447,7 @@
         ],
         "answer": "802.1q",
         "explanation": "El estándar IEEE 802.1Q es el protocolo de 'tagging' utilizado para permitir que múltiples VLANs viajen a través de un mismo enlace troncal entre switches.",
-        "source_reference": "Capítulo 7: Enrutamiento > Trunking"
+        "source_reference": "Capítulo 7: Enrutamiento > Enlaces Troncales"
     },
     {
         "id": 33,
@@ -461,7 +461,7 @@
         ],
         "answer": "Crosstalk (Diafonía)",
         "explanation": "El Crosstalk ocurre cuando la señal de un cable interfiere con otro cable adyacente debido a la proximidad física, especialmente si no están adecuadamente blindados o trenzados.",
-        "source_reference": "Capítulo 2: Hardware de Red > Problemas en el Cableado de Cobre"
+        "source_reference": "Capítulo 2: Hardware de Red > Solución de Problemas de Cobre"
     },
     {
         "id": 34,
@@ -475,7 +475,7 @@
         ],
         "answer": "Escáner de IP (IP scanner)",
         "explanation": "Un escáner de IP recorre un rango de direcciones y utiliza ICMP (ping) o ARP para descubrir qué dispositivos están activos y respondiendo en la red en un momento dado.",
-        "source_reference": "Capítulo 12: Monitoreo > Herramientas de Escaneo y Descubrimiento"
+        "source_reference": "Capítulo 12: Monitoreo > Detección de Red"
     },
     {
         "id": 35,
@@ -489,7 +489,7 @@
         ],
         "answer": "SNMP",
         "explanation": "SNMP (Simple Network Management Protocol) utiliza 'traps' o notificaciones proactivas para informar al administrador sobre fallos o eventos específicos en los dispositivos de red de forma automática.",
-        "source_reference": "Capítulo 12: Monitoreo > Protocolo de Gestión de Red (SNMP)"
+        "source_reference": "Capítulo 12: Monitoreo > Protocolos de Monitoreo"
     },
     {
         "id": 36,
@@ -503,7 +503,7 @@
         ],
         "answer": "Packet sniffer (Analizador de paquetes)",
         "explanation": "Un packet sniffer (o analizador de protocolos como Wireshark) permite capturar y ver el contenido detallado del tráfico de red, incluyendo las URLs y las direcciones IP de origen, lo que facilita identificar al usuario y el sitio visitado.",
-        "source_reference": "Capítulo 12: Monitoreo > Analizadores de Paquetes y Protocolos"
+        "source_reference": "Capítulo 12: Monitoreo > Captura de Paquetes"
     },
     {
         "id": 37,
@@ -517,7 +517,7 @@
         ],
         "answer": "La PC del usuario está recibiendo datos a 99.79 Mbps y enviando datos al servidor a 116.61 Mbps.",
         "explanation": "La prueba de rendimiento muestra la velocidad instantánea de transferencia. 'Download' es la recepción de datos (99.79 Mbps) y 'Upload' es el envío de datos al servidor (116.61 Mbps). Es notable que en este caso la velocidad de carga es ligeramente superior a la de descarga.",
-        "source_reference": "Capítulo 8: Switches y VLANs > Métricas de Rendimiento"
+        "source_reference": "Capítulo 8: Switches y VLANs > Métricas de Salud de Red"
     },
     {
         "id": 38,
@@ -531,7 +531,7 @@
         ],
         "answer": "Videovigilancia (Video surveillance)",
         "explanation": "Mientras que las tarjetas y la biometría sirven para 'prevenir' o 'controlar' el acceso, la videovigilancia es la herramienta principal para 'detectar' y auditar visualmente quién ha entrado realmente, incluso si se ha burlado el control de acceso (ej: tailgating).",
-        "source_reference": "Capítulo 10: Instalaciones Físicas > Seguridad Física y Monitoreo"
+        "source_reference": "Capítulo 10: Instalaciones Físicas > Monitoreo Físico"
     },
     {
         "id": 39,
@@ -545,7 +545,7 @@
         ],
         "answer": "WPA personal",
         "explanation": "WPA2 Personal (usando AES/CCMP) ofrece el cifrado más fuerte sin necesidad de un servidor RADIUS (que sí requiere la versión Enterprise). Aunque la versión 'Personal' es más débil ante ataques de diccionario que Enterprise, es el nivel máximo autónomo.",
-        "source_reference": "Capítulo 17: Amenazas y Ataques > Estándares de Seguridad Inalámbrica"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Defensa Inalámbrica"
     },
     {
         "id": 40,
@@ -559,7 +559,7 @@
         ],
         "answer": "LACP",
         "explanation": "LACP (Link Aggregation Control Protocol, 802.3ad) es el estándar que permite agrupar múltiples interfaces físicas en una sola interfaz lógica, proporcionando tanto redundancia como mayor ancho de banda agregado.",
-        "source_reference": "Capítulo 7: Enrutamiento > LACP"
+        "source_reference": "Capítulo 7: Enrutamiento > EtherChannel (LACP)"
     },
     {
         "id": 41,
@@ -573,7 +573,7 @@
         ],
         "answer": "SAML",
         "explanation": "SAML (Security Assertion Markup Language) es un estándar basado en XML para intercambiar datos de autenticación y autorización entre un proveedor de identidad y un proveedor de servicios, permitiendo Single Sign-On (SSO).",
-        "source_reference": "Capítulo 18: Defensa de la Red > Gestión de Identidad y Acceso"
+        "source_reference": "Capítulo 18: Defensa de la Red > AAA e Identidad"
     },
     {
         "id": 42,
@@ -601,7 +601,7 @@
         ],
         "answer": "Analizador de Wi-Fi",
         "explanation": "Un analizador de Wi-Fi permite ver los canales ocupados, la intensidad de la señal (RSSI) de los APs cercanos y el ruido, facilitando la elección de canales menos congestionados para evitar interferencias.",
-        "source_reference": "Capítulo 9: Wireless > Análisis Wi-Fi"
+        "source_reference": "Capítulo 9: Wireless > Solución de Problemas Wireless"
     },
     {
         "id": 44,
@@ -643,7 +643,7 @@
         ],
         "answer": "Control de Potencia de Transmisión (Transmit Power Control)",
         "explanation": "El estándar IEEE 802.11h aborda la gestión de espectro y potencia en redes inalámbricas. Su característica de Control de Potencia de Transmisión (TPC) permite ajustar dinámicamente la potencia de salida para reducir la interferencia con otros sistemas (como radares) y cumplir con las regulaciones locales, lo cual es crítico en áreas con alta densidad y supervisión.",
-        "source_reference": "Capítulo 9: Wireless > Cumplimiento 802.11"
+        "source_reference": "Capítulo 9: Wireless > Estándares Inalámbricos"
     },
     {
         "id": 47,
@@ -657,7 +657,7 @@
         ],
         "answer": "Permite que se usen subredes de múltiples tamaños dentro de una red más grande.",
         "explanation": "VLSM (Variable Length Subnet Masking) es la técnica que permite dividir un espacio de direcciones IP en subredes de diferentes tamaños según las necesidades específicas de cada segmento (ej: una /24 para usuarios y una /30 para enlaces WAN), optimizando el uso del direccionamiento.",
-        "source_reference": "Capítulo 4: Puertos y Protocolos > VLSM"
+        "source_reference": "Capítulo 4: Puertos y Protocolos > Direccionamiento VLSM"
     },
     {
         "id": 48,
@@ -685,7 +685,7 @@
         ],
         "answer": "Las velocidades de datos son insuficientes con solo una barra de señal",
         "explanation": "Con una señal 3G de solo una barra, el ancho de banda efectivo y la estabilidad de la conexión de datos suelen ser insuficientes para cargar aplicaciones de contenido rico como redes sociales, aunque la señal básica pueda ser suficiente para mantener una llamada de voz (que requiere menos ancho de banda).",
-        "source_reference": "Capítulo 11: Documentación > Redes Celulares"
+        "source_reference": "Capítulo 11: Documentación > Conectividad WAN"
     },
     {
         "id": 50,
@@ -713,7 +713,7 @@
         ],
         "answer": "Se utiliza para diferenciar entre diferentes redes superpuestas (overlay) de VXLAN.",
         "explanation": "El VNI (VXLAN Network Identifier) es un identificador de 24 bits (que permite hasta 16 millones de redes) utilizado para segmentar y distinguir diferentes redes virtuales de capa 2 que se transportan sobre una red de capa 3 (overlay).",
-        "source_reference": "Capítulo 8: Switches y VLANs > Segmentación con VXLAN"
+        "source_reference": "Capítulo 8: Switches y VLANs > Virtualización de Red"
     },
     {
         "id": 52,
@@ -741,7 +741,7 @@
         ],
         "answer": "Poner el servidor en la zona DMZ con una regla entrante de eth0 a eth1 que permita el tráfico del puerto 80 a la IP del servidor",
         "explanation": "Los servidores públicos deben ubicarse en la DMZ (zona desmilitarizada) para aislarlos de la red interna (PRIVATE). La interfaz conectada a Internet es eth0 (PUBLIC) y la DMZ es eth1. Por lo tanto, la regla de firewall debe permitir el tráfico entrante desde la interfaz pública (eth0) hacia la interfaz de la DMZ (eth1) en el puerto 80.",
-        "source_reference": "Capítulo 18: Defensa de la Red > Seguridad de Zonas"
+        "source_reference": "Capítulo 18: Defensa de la Red > Zonas de Seguridad (Networking)"
     },
     {
         "id": 54,
@@ -755,7 +755,7 @@
         ],
         "answer": "Establecer una teoría de causa probable y probarla.",
         "explanation": "Según la metodología de CompTIA, después de identificar el problema (Paso 1) y reunir síntomas, el siguiente paso lógico es Establecer una teoría de causa probable (Paso 2) y posteriormente probar la teoría para determinar la causa (Paso 3). Escalar o reiniciar sin probar son acciones prematuras.",
-        "source_reference": "Capítulo 19: Troubleshooting > Metodología de 7 Pasos"
+        "source_reference": "Capítulo 19: Troubleshooting > Metodología de Resolución de Problemas (7 Pasos)"
     },
     {
         "id": 55,
@@ -839,7 +839,7 @@
         ],
         "answer": "TACACS+",
         "explanation": "TACACS+ (Terminal Access Controller Access-Control System Plus) es un protocolo de seguridad AAA que centraliza la autenticación, autorización y contabilidad. A diferencia de RADIUS, cifra todo el cuerpo del paquete y separa las tres funciones AAA, siendo común en la administración de dispositivos de red.",
-        "source_reference": "Capítulo 18: Defensa de la Red > Protocolos AAA"
+        "source_reference": "Capítulo 18: Defensa de la Red > Servicios AAA"
     },
     {
         "id": 61,
@@ -867,7 +867,7 @@
         ],
         "answer": "SIEM",
         "explanation": "Un sistema SIEM (Security Information and Event Management) recolecta datos de registros de múltiples dispositivos y aplicaciones, permitiendo a los analistas identificar patrones de ataque, realizar correlación de eventos y generar alertas centralizadas.",
-        "source_reference": "Capítulo 12: Monitoreo > SIEM"
+        "source_reference": "Capítulo 12: Monitoreo > Monitoreo y Gestión de Eventos"
     },
     {
         "id": 63,
@@ -965,7 +965,7 @@
         ],
         "answer": "Supresión de incendios con agente limpio",
         "explanation": "Los sistemas de agentes limpios (como FM-200 o Novec 1230) utilizan gases químicos o inertes que extinguen el fuego sin dejar residuos ni dañar los equipos electrónicos sensibles, y son mucho más respetuosos con el medio ambiente y la salud humana que los antiguos sistemas de Halón.",
-        "source_reference": "Capítulo 15: Acceso Remoto > Control de Incendios"
+        "source_reference": "Capítulo 10: Instalaciones Físicas > Control de Incendios"
     },
     {
         "id": 70,

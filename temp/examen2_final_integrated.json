@@ -53,7 +53,7 @@
         ],
         "answer": "DMZ",
         "explanation": "Una DMZ (Zona Desmilitarizada) es una subred aislada que contiene los servicios externos de una organización (como servidores web). Al colocar estos servidores en una DMZ, Alexander crea una capa de seguridad que evita que un atacante que comprometa un servidor web tenga acceso directo a la red interna (intranet).",
-        "source_reference": "Capítulo 18: Defensa de la Red > Seguridad de Zonas"
+        "source_reference": "Capítulo 18: Defensa de la Red > Zonas de Seguridad (Networking)"
     },
     {
         "id": 5,
@@ -221,7 +221,7 @@
         ],
         "answer": "El punto de acceso y la impresora inalámbrica tienen un desajuste de frecuencia",
         "explanation": "El estándar 802.11ac (Wi-Fi 5) opera exclusivamente en la banda de 5 GHz. Si la impresora tiene 7 años, es muy probable que solo soporte la banda de 2.4 GHz (802.11b/g/n). Aunque el SSID y la contraseña coincidan, la impresora no 've' la red de 5 GHz del nuevo AP, resultando en un desajuste de frecuencia (frequency mismatch).",
-        "source_reference": "Capítulo 9: Wireless > Estándares y Frecuencias"
+        "source_reference": "Capítulo 9: Wireless > Tecnología Wireless"
     },
     {
         "id": 17,
@@ -319,7 +319,7 @@
         ],
         "answer": "Servidor RADIUS",
         "explanation": "Un servidor RADIUS (Remote Authentication Dial-In User Service) proporciona autenticación, autorización y contabilidad (AAA) centralizada. Al usar RADIUS, el técnico puede gestionar las credenciales de todos los usuarios en un solo lugar en lugar de configurarlas individualmente en cada punto de acceso o switch, lo que reduce drásticamente el tiempo de administración.",
-        "source_reference": "Capítulo 17: Amenazas y Ataques > Servicios RADIUS"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Detección de Intrusos y VPN"
     },
     {
         "id": 24,
@@ -333,7 +333,7 @@
         ],
         "answer": "show route",
         "explanation": "El comando 'show ip route' (o abreviado 'show route' en algunos entornos) es el comando estándar para visualizar la tabla de enrutamiento de un router, mostrando las redes conocidas, las métricas y el siguiente salto para cada destino.",
-        "source_reference": "Capítulo 16: Fundamentos de Seguridad > Comandos de Diagnóstico de Red"
+        "source_reference": "Capítulo 16: Fundamentos de Seguridad > Herramientas de Línea de Comandos"
     },
     {
         "id": 25,
@@ -361,7 +361,7 @@
         ],
         "answer": "Fibra monomodo",
         "explanation": "La fibra óptica monomodo (Single-mode fiber) es la opción ideal para conexiones de larga distancia (varios kilómetros) entre edificios, ya que ofrece un ancho de banda altísimo y una atenuación de señal mínima, además de ser inmune a las interferencias electromagnéticas.",
-        "source_reference": "Capítulo 2: Hardware de Red > Medios de Fibra Óptica"
+        "source_reference": "Capítulo 2: Hardware de Red > Cables de Fibra Óptica"
     },
     {
         "id": 27,
@@ -375,7 +375,7 @@
         ],
         "answer": "NAC",
         "explanation": "NAC (Network Access Control) es una tecnología que inspecciona los dispositivos cuando intentan conectarse a la red. Puede requerir autenticación y verificar el cumplimiento de políticas de seguridad antes de permitir el acceso. Si un usuario no autorizado conecta su portátil, el sistema NAC puede bloquear el puerto del switch o enviarlo a una VLAN de invitados aislada.",
-        "source_reference": "Capítulo 17: Amenazas y Ataques > Control de Admisión a la Red"
+        "source_reference": "Capítulo 17: Amenazas y Ataques > Seguridad de Acceso"
     },
     {
         "id": 28,
@@ -593,7 +593,7 @@
         ],
         "answer": "CDP, LLDP",
         "explanation": "CDP (Cisco Discovery Protocol) y LLDP (Link Layer Discovery Protocol) son protocolos de Capa 2 diseñados específicamente para el descubrimiento de vecinos e identidad en la red. LLDP es el estándar abierto, mientras que CDP es propietario de Cisco.",
-        "source_reference": "Capítulo 11: Documentación > Protocolos de Descubrimiento"
+        "source_reference": "Capítulo 11: Documentación > Documentación de Red"
     },
     {
         "id": 43,
