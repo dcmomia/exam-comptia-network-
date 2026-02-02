@@ -91,9 +91,20 @@
 - [ ] **Question Metadata:** Add difficulty ratings and topic tags for better filtering
 - [ ] **Study Mode:** Implement spaced repetition algorithm for optimal learning
 
+### v3.1.3 - Translation & Restoration (Final)
+- **Patch Description:** Restauración y traducción de preguntas para objetivo de 90 items.
+- **Key Changes:**
+    - **Data Integrity:** Restauradas 3 preguntas eliminadas (IDs 83, 89, 90) y traducidas al español.
+    - **Cleanup:** Eliminado duplicado exacto (ID 91 -> ID 80) para mantener recuento preciso.
+    - **Total Count:** 90 Preguntas verificadas.
+
+### v3.1.2 - Hotfix: Clean Duplicate English Questions
+
+[...]
+
 ### Data Quality
 - **Exam 1:** 90 questions (fully integrated)
-- **Exam 2:** 88 questions (cleaned & verified)
-- **Total Available:** 178 questions
+- **Exam 2:** 90 questions (fully translated & verified)
+- **Total Available:** 180 questions (Complete Set)
 - **Target:** 180+ questions for comprehensive certification preparation
 
