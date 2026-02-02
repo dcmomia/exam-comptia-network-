@@ -3,9 +3,14 @@ import re
 import os
 
 # Paths
-QUESTIONS_JS = r"c:\Users\DC\Documents\ANTIGRAVITY\CompTIA_Network_Plus_Exam_Book\interactive_exam\questions_data.js"
-STRUCTURE_JSON = r"c:\Users\DC\Documents\ANTIGRAVITY\scripts\book_v5_structure.json"
-BACKUP_JS = r"c:\Users\DC\Documents\ANTIGRAVITY\CompTIA_Network_Plus_Exam_Book\interactive_exam\questions_data.v5_backup.js"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+QUESTIONS_JS = os.path.join(BASE_DIR, "interactive_exam", "questions_data.js")
+BACKUP_JS = os.path.join(BASE_DIR, "interactive_exam", "questions_data.v5_backup.js")
+# Note: This assumes the structure file is in a parallel directory or configured via env
+# For now, we keep it relatable or comment it out for the public repo, 
+# but effectively we want to remove the specific C:\Users\DC reference.
+# Assuming standard relative path if checking out whole workspace, or just placeholder.
+STRUCTURE_JSON = os.path.join(BASE_DIR, "..", "scripts", "book_v5_structure.json")
 
 def load_structure():
     with open(STRUCTURE_JSON, 'r', encoding='utf-8') as f:
