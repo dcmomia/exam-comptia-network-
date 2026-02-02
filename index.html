@@ -39,15 +39,19 @@
             </p>
 
             <button id="start-btn" class="btn btn-primary">Comenzar Examen</button>
+            <button id="resume-exam-btn" class="btn btn-outline hidden">Reanudar Examen</button>
         </section>
 
         <!-- Quiz Screen -->
         <section id="quiz-screen" class="screen">
             <header class="header-stats">
                 <span id="question-number">Pregunta 1/90</span>
-                <div class="timer-box">
-                    <span>⏱️</span>
-                    <span id="timer">00:00</span>
+                <div class="header-controls">
+                    <button id="pause-btn" class="btn-icon" title="Pausar Examen">⏸️</button>
+                    <div class="timer-box">
+                        <span>⏱️</span>
+                        <span id="timer">00:00</span>
+                    </div>
                 </div>
             </header>
 
@@ -126,6 +130,16 @@
 
             <button id="restart-btn" class="btn btn-secondary">Volver al Inicio</button>
         </section>
+
+        <!-- Pause Overlay -->
+        <div id="pause-overlay" class="overlay hidden">
+            <div class="overlay-content">
+                <div class="pause-icon">⏸️</div>
+                <h2>Examen Pausado</h2>
+                <p>Tu progreso está a salvo. Tómate un respiro.</p>
+                <button id="resume-btn" class="btn btn-primary">Continuar Examen</button>
+            </div>
+        </div>
     </div>
 
     <!-- Data & Logic -->

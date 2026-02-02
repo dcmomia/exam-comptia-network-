@@ -37,9 +37,11 @@ function getDomainForChapter(chapterName) {
 let questions = [];
 let currentIndex = 0;
 let userAnswers = [];
-let startTime;
+let sessionStartTime;
+let totalElapsedTime = 0; // Tiempo acumulado en ms
 let timerInterval;
 let resultsChartInstance = null;
+let isPaused = false;
 
 // Selectores DOM
 const startScreen = document.getElementById('start-screen');
@@ -51,6 +53,10 @@ const prevBtn = document.getElementById('prev-btn');
 const skipBtn = document.getElementById('skip-btn');
 const finishBtn = document.getElementById('finish-btn');
 const restartBtn = document.getElementById('restart-btn');
+const pauseBtn = document.getElementById('pause-btn');
+const resumeBtn = document.getElementById('resume-btn');
+const resumeExamBtn = document.getElementById('resume-exam-btn');
+const pauseOverlay = document.getElementById('pause-overlay');
 
 const questionText = document.getElementById('question-text');
 const optionsList = document.getElementById('options-list');
@@ -69,6 +75,7 @@ async function init() {
         if (typeof QUESTIONS_DATA !== 'undefined') {
             questions = QUESTIONS_DATA;
             console.log('Preguntas cargadas:', questions.length);
+            checkPreviousSession();
         } else {
             console.error('No se encontró QUESTIONS_DATA.');
             alert('Error: No se pudieron cargar las preguntas.');
@@ -78,18 +85,51 @@ async function init() {
     }
 }
 
+function checkPreviousSession() {
+    const savedState = localStorage.getItem('network_plus_exam_state');
+    if (savedState) {
+        resumeExamBtn.classList.remove('hidden');
+    }
+}
+
 // Iniciar Examen
 function startQuiz() {
     currentIndex = 0;
     userAnswers = [];
+    totalElapsedTime = 0;
+    isPaused = false;
     localStorage.removeItem('network_plus_exam_state'); // Limpiar progreso anterior al iniciar nuevo
     startScreen.classList.remove('active');
     resultsScreen.classList.remove('active');
     quizScreen.classList.add('active');
     if (timerInterval) clearInterval(timerInterval);
-    startTime = Date.now();
+    sessionStartTime = Date.now();
     startTimer();
     renderQuestion();
+}
+
+function loadExamSession() {
+    const savedState = localStorage.getItem('network_plus_exam_state');
+    if (savedState) {
+        const state = JSON.parse(savedState);
+        currentIndex = state.currentIndex || 0;
+        userAnswers = state.userAnswers || [];
+        totalElapsedTime = state.totalElapsedTime || 0;
+        isPaused = state.isPaused || false;
+
+        startScreen.classList.remove('active');
+        resultsScreen.classList.remove('active');
+        quizScreen.classList.add('active');
+
+        if (isPaused) {
+            pauseOverlay.classList.remove('hidden');
+            renderTime(totalElapsedTime);
+        } else {
+            sessionStartTime = Date.now();
+            startTimer();
+        }
+        renderQuestion();
+    }
 }
 
 // Cargar Progreso (Opcional, pero implementamos guardado persistente)
@@ -97,20 +137,43 @@ function saveProgress() {
     const state = {
         currentIndex,
         userAnswers,
-        startTime
+        totalElapsedTime: totalElapsedTime + (isPaused ? 0 : (Date.now() - sessionStartTime)),
+        isPaused
     };
     localStorage.setItem('network_plus_exam_state', JSON.stringify(state));
 }
 
 // Timer
 function startTimer() {
-    timerDisplay.textContent = "00:00";
+    if (timerInterval) clearInterval(timerInterval);
     timerInterval = setInterval(() => {
-        const diff = Date.now() - startTime;
-        const minutes = Math.floor(diff / 60000);
-        const seconds = Math.floor((diff % 60000) / 1000);
-        timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        const currentSessionDist = Date.now() - sessionStartTime;
+        renderTime(totalElapsedTime + currentSessionDist);
     }, 1000);
+}
+
+function renderTime(ms) {
+    const minutes = Math.floor(ms / 60000);
+    const seconds = Math.floor((ms % 60000) / 1000);
+    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function pauseExam() {
+    if (isPaused) return;
+    isPaused = true;
+    clearInterval(timerInterval);
+    totalElapsedTime += (Date.now() - sessionStartTime);
+    pauseOverlay.classList.remove('hidden');
+    saveProgress();
+}
+
+function resumeExam() {
+    if (!isPaused) return;
+    isPaused = false;
+    sessionStartTime = Date.now();
+    pauseOverlay.classList.add('hidden');
+    startTimer();
+    saveProgress();
 }
 
 // Renderizar Pregunta
@@ -259,9 +322,14 @@ finishBtn.onclick = finishExamEarly;
 
 // Mostrar Resultados
 function showResults() {
+    if (!isPaused) {
+        totalElapsedTime += (Date.now() - sessionStartTime);
+    }
     clearInterval(timerInterval);
+    isPaused = false;
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
+    localStorage.removeItem('network_plus_exam_state'); // Limpiar al terminar
 
     const total = questions.length;
 
@@ -290,8 +358,8 @@ function showResults() {
     document.getElementById('correct-count').textContent = `(${correct}/${total})`;
     document.getElementById('correct-val').textContent = correct;
     document.getElementById('omitted-val').textContent = omitted;
-    const timeTaken = Math.floor((Date.now() - startTime) / 60000);
-    document.getElementById('time-taken').textContent = `${timeTaken} min`;
+    const minutesTaken = Math.floor(totalElapsedTime / 60000);
+    document.getElementById('time-taken').textContent = `${minutesTaken} min`;
 
     renderChart(correct, answered.length - correct, omitted);
     renderDomainProgress();
@@ -369,10 +437,15 @@ function renderDomainProgress() {
 }
 
 startBtn.onclick = startQuiz;
+resumeExamBtn.onclick = loadExamSession;
+pauseBtn.onclick = pauseExam;
+resumeBtn.onclick = resumeExam;
+
 restartBtn.onclick = () => {
     localStorage.removeItem('network_plus_exam_state');
     resultsScreen.classList.remove('active');
     startScreen.classList.add('active');
+    resumeExamBtn.classList.add('hidden');
 };
 
 init();
