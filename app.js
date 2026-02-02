@@ -608,7 +608,7 @@ function renderDomainProgress() {
     });
 }
 
-startBtn.onclick = startQuiz;
+// startBtn ya no existe en v3.0, se maneja vía catálogo
 resumeExamBtn.onclick = loadExamSession;
 pauseBtn.onclick = togglePause;
 

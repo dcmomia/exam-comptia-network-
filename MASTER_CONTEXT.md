@@ -9,13 +9,14 @@
 
 ## 2. Version History & Patch Notes
 
-### v3.0 - Platform Genesis (Current)
-- **Feature Description:** Evolution from a single exam app to a multi-exam platform.
+### v3.0.1 - Hotfix: Bootstrap & Encoding (Current)
+- **Patch Description:** Emergency fix for app initialization and data corruption.
 - **Key Changes:**
-    - **Multi-Exam Architecture:** Questions migrated to `EXAMS_DATABASE` to support multiple simulacrums.
-    - **Premium UI/UX Catalog:** New start screen with glassmorphism-style exam cards and micro-animations.
-    - **Dynamic Loading:** The engine now loads sets dynamically based on selection.
-    - **Isolated Discovery:** Specific persistence for each exam session via `activeExamId`.
+    - **Bootstrap Fix:** Removed obsolete `startBtn` references in `app.js` that caused script crashes.
+    - **Encoding Restoration:** Repaired `questions_data.js` encoding (UTF-8 double-encoding issue).
+    - **Pause Logic:** Unified `pauseExam`/`resumeExam` into a bidirectional `togglePause`.
+
+### v3.0 - Platform Genesis
 
 ### v2.3 - Random Order Patch
 
