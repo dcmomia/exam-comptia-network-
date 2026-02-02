@@ -54,9 +54,11 @@ const skipBtn = document.getElementById('skip-btn');
 const finishBtn = document.getElementById('finish-btn');
 const restartBtn = document.getElementById('restart-btn');
 const pauseBtn = document.getElementById('pause-btn');
-const resumeBtn = document.getElementById('resume-btn');
-const resumeExamBtn = document.getElementById('resume-exam-btn');
 const pauseOverlay = document.getElementById('pause-overlay');
+const resumeExamBtn = document.getElementById('resume-exam-btn');
+
+// Protecciones de Inicialización
+const isDataLoaded = () => questions && questions.length > 0;
 
 const questionText = document.getElementById('question-text');
 const optionsList = document.getElementById('options-list');
@@ -94,11 +96,15 @@ function checkPreviousSession() {
 
 // Iniciar Examen
 function startQuiz() {
+    if (!isDataLoaded()) {
+        console.error('No hay preguntas cargadas.');
+        return;
+    }
     currentIndex = 0;
     userAnswers = [];
     totalElapsedTime = 0;
     isPaused = false;
-    localStorage.removeItem('network_plus_exam_state'); // Limpiar progreso anterior al iniciar nuevo
+    localStorage.removeItem('network_plus_exam_state');
     startScreen.classList.remove('active');
     resultsScreen.classList.remove('active');
     quizScreen.classList.add('active');
@@ -186,6 +192,10 @@ function togglePause() {
 
 // Renderizar Pregunta
 function renderQuestion() {
+    if (!isDataLoaded()) {
+        console.error('Render abortado: No hay preguntas.');
+        return;
+    }
     if (currentIndex >= questions.length) {
         showResults();
         return;
@@ -330,16 +340,21 @@ finishBtn.onclick = finishExamEarly;
 
 // Mostrar Resultados
 function showResults() {
-    if (!isPaused) {
+    if (!isPaused && sessionStartTime) {
         totalElapsedTime += (Date.now() - sessionStartTime);
     }
     clearInterval(timerInterval);
     isPaused = false;
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
-    localStorage.removeItem('network_plus_exam_state'); // Limpiar al terminar
+    localStorage.removeItem('network_plus_exam_state');
 
     const total = questions.length;
+    if (total === 0) {
+        console.error("Error: Intentando mostrar resultados sin preguntas.");
+        document.getElementById('final-percentage').textContent = "0%";
+        return;
+    }
 
     // Rellenamos los huecos en userAnswers para preguntas no llegadas aún
     for (let i = 0; i < total; i++) {
