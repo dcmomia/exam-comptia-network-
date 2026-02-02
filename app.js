@@ -35,6 +35,8 @@ function getDomainForChapter(chapterName) {
 
 // Variables de estado
 let questions = [];
+let filteredQuestions = [];
+let currentFilter = 'all';
 let currentIndex = 0;
 let userAnswers = [];
 let sessionStartTime;
@@ -58,7 +60,19 @@ const pauseOverlay = document.getElementById('pause-overlay');
 const resumeExamBtn = document.getElementById('resume-exam-btn');
 
 // Protecciones de Inicialización
-const isDataLoaded = () => questions && questions.length > 0;
+const isDataLoaded = () => filteredQuestions && filteredQuestions.length > 0;
+
+function updateFilteredQuestions(domain) {
+    currentFilter = domain;
+    if (domain === 'all') {
+        filteredQuestions = [...questions];
+    } else {
+        filteredQuestions = questions.filter(q => {
+            const qChapter = q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0";
+            return getDomainForChapter(qChapter) === domain;
+        });
+    }
+}
 
 const questionText = document.getElementById('question-text');
 const optionsList = document.getElementById('options-list');
@@ -78,6 +92,7 @@ async function init() {
     try {
         if (typeof QUESTIONS_DATA !== 'undefined') {
             questions = QUESTIONS_DATA;
+            updateFilteredQuestions('all'); // Inicialmente todas
             console.log('Preguntas cargadas:', questions.length);
             checkPreviousSession();
         } else {
@@ -91,9 +106,23 @@ async function init() {
     // Listener para el filtro de dominios
     if (domainFilter) {
         domainFilter.addEventListener('change', (e) => {
-            const selectedDomain = e.target.value;
-            filterSidebarByDomain(selectedDomain);
+            applyDomainFilter(e.target.value);
         });
+    }
+}
+
+function applyDomainFilter(domain) {
+    // Si estamos en medio de un examen, guardar progreso antes de filtrar
+    if (quizScreen.classList.contains('active')) {
+        saveProgress();
+    }
+
+    updateFilteredQuestions(domain);
+    currentIndex = 0; // Reiniciar al inicio del nuevo subset
+
+    if (quizScreen.classList.contains('active')) {
+        renderQuestion();
+        renderQuestionList();
     }
 }
 
@@ -128,10 +157,16 @@ function loadExamSession() {
     const savedState = localStorage.getItem('network_plus_exam_state');
     if (savedState) {
         const state = JSON.parse(savedState);
-        currentIndex = state.currentIndex || 0;
         userAnswers = state.userAnswers || [];
         totalElapsedTime = state.totalElapsedTime || 0;
         isPaused = state.isPaused || false;
+
+        // Restaurar filtro antes de renderizar
+        const savedFilter = state.currentFilter || 'all';
+        if (domainFilter) domainFilter.value = savedFilter;
+        updateFilteredQuestions(savedFilter);
+
+        currentIndex = state.currentIndex || 0;
 
         startScreen.classList.remove('active');
         resultsScreen.classList.remove('active');
@@ -154,8 +189,9 @@ function loadExamSession() {
 function saveProgress() {
     const state = {
         currentIndex,
+        currentFilter,
         userAnswers,
-        totalElapsedTime: totalElapsedTime + (isPaused ? 0 : (Date.now() - sessionStartTime)),
+        totalElapsedTime: totalElapsedTime + (isPaused ? 0 : (sessionStartTime ? (Date.now() - sessionStartTime) : 0)),
         isPaused
     };
     localStorage.setItem('network_plus_exam_state', JSON.stringify(state));
@@ -206,29 +242,23 @@ function renderQuestionList() {
     if (!questionGrid) return;
     questionGrid.innerHTML = '';
 
-    questions.forEach((q, index) => {
+    filteredQuestions.forEach((q, index) => {
         const chip = document.createElement('div');
         chip.className = 'q-chip';
-        chip.textContent = index + 1;
+
+        // Mantenemos el número original para referencia, pero el flujo es del subset
+        const originalIndex = questions.indexOf(q);
+        chip.textContent = originalIndex + 1;
 
         // Determinar estado visual
         if (index === currentIndex) {
             chip.classList.add('current');
-        } else if (userAnswers[index]) {
-            if (userAnswers[index].isCorrect) {
+        } else if (userAnswers[originalIndex]) {
+            if (userAnswers[originalIndex].isCorrect) {
                 chip.classList.add('correct');
-            } else if (!userAnswers[index].omitted) {
+            } else if (!userAnswers[originalIndex].omitted) {
                 chip.classList.add('incorrect');
             }
-        }
-
-        // Aplicar filtro si existe
-        const selectedDomain = domainFilter ? domainFilter.value : 'all';
-        const qChapter = q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0";
-        const qDomain = getDomainForChapter(qChapter);
-
-        if (selectedDomain !== 'all' && qDomain !== selectedDomain) {
-            chip.classList.add('filtered-out');
         }
 
         chip.onclick = () => jumpToQuestion(index);
@@ -254,12 +284,12 @@ function renderQuestion() {
         console.error('Render abortado: No hay preguntas.');
         return;
     }
-    if (currentIndex >= questions.length) {
+    if (currentIndex >= filteredQuestions.length) {
         showResults();
         return;
     }
 
-    const q = questions[currentIndex];
+    const q = filteredQuestions[currentIndex];
     questionText.textContent = q.question;
     optionsList.innerHTML = '';
 
@@ -271,8 +301,11 @@ function renderQuestion() {
 
     prevBtn.style.visibility = currentIndex > 0 ? 'visible' : 'hidden';
 
-    questionNumber.textContent = `Pregunta ${currentIndex + 1}/${questions.length}`;
-    progressBarFill.style.width = `${((currentIndex + 1) / questions.length) * 100}%`;
+    const originalIndex = questions.indexOf(q);
+    const totalSelected = filteredQuestions.length;
+    const filterText = currentFilter !== 'all' ? ` [${currentFilter}]` : '';
+    questionNumber.textContent = `Pregunta ${currentIndex + 1}/${totalSelected}${filterText}`;
+    progressBarFill.style.width = `${((currentIndex + 1) / totalSelected) * 100}%`;
 
     q.options.forEach((opt, index) => {
         const letter = String.fromCharCode(97 + index);
@@ -281,7 +314,7 @@ function renderQuestion() {
         div.setAttribute('data-letter', letter);
         div.textContent = opt;
 
-        const existingAns = userAnswers[currentIndex];
+        const existingAns = userAnswers[originalIndex];
         if (existingAns && !existingAns.omitted) {
             if (opt === q.answer) div.classList.add('correct-reveal');
             else if (opt === existingAns.answer) div.classList.add('incorrect-reveal');
@@ -293,9 +326,9 @@ function renderQuestion() {
         optionsList.appendChild(div);
     });
 
-    if (userAnswers[currentIndex]) {
-        if (!userAnswers[currentIndex].omitted) {
-            revealFeedback(userAnswers[currentIndex].isCorrect, q.explanation, q.source_reference);
+    if (userAnswers[originalIndex]) {
+        if (!userAnswers[originalIndex].omitted) {
+            revealFeedback(userAnswers[originalIndex].isCorrect, q.explanation, q.source_reference);
             nextBtn.classList.remove('hidden');
             skipBtn.classList.add('hidden');
         } else {
@@ -310,14 +343,15 @@ function renderQuestion() {
 function selectOption(element, selectedText) {
     if (!feedbackContainer.classList.contains('hidden')) return;
 
-    const q = questions[currentIndex];
+    const q = filteredQuestions[currentIndex];
+    const originalIndex = questions.indexOf(q);
     const isCorrect = selectedText === q.answer;
 
     // Asignar dominio dinámicamente
     const chapterMatch = q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0";
     const domainName = getDomainForChapter(chapterMatch);
 
-    userAnswers[currentIndex] = {
+    userAnswers[originalIndex] = {
         questionId: q.id,
         answer: selectedText,
         isCorrect: isCorrect,
@@ -355,11 +389,12 @@ function revealFeedback(isCorrect, explanation, source) {
 
 // Saltar Pregunta
 function skipQuestion() {
-    const q = questions[currentIndex];
+    const q = filteredQuestions[currentIndex];
+    const originalIndex = questions.indexOf(q);
     const chapterMatch = q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0";
     const domainName = getDomainForChapter(chapterMatch);
 
-    userAnswers[currentIndex] = {
+    userAnswers[originalIndex] = {
         questionId: q.id,
         omitted: true,
         isCorrect: false,
@@ -374,6 +409,7 @@ function skipQuestion() {
 // Navegación
 nextBtn.onclick = () => {
     currentIndex++;
+    // Si llegamos al final de filtradas, se llamará a showResults en el siguiente render
     saveProgress();
     renderQuestion();
 };
@@ -410,33 +446,39 @@ function showResults() {
     resultsScreen.classList.add('active');
     localStorage.removeItem('network_plus_exam_state');
 
-    const total = questions.length;
+    const isFilterActive = currentFilter !== 'all';
+    const activeSet = isFilterActive ? filteredQuestions : questions;
+    const total = activeSet.length;
+
     if (total === 0) {
         console.error("Error: Intentando mostrar resultados sin preguntas.");
         document.getElementById('final-percentage').textContent = "0%";
         return;
     }
 
-    // Rellenamos los huecos en userAnswers para preguntas no llegadas aún
-    for (let i = 0; i < total; i++) {
-        if (!userAnswers[i]) {
-            const q = questions[i];
-            const chapterMatch = q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0";
-            const domainName = getDomainForChapter(chapterMatch);
-            userAnswers[i] = {
+    // Rellenamos los huecos en userAnswers para preguntas del set activo
+    activeSet.forEach(q => {
+        const originalIdx = questions.indexOf(q);
+        if (!userAnswers[originalIdx]) {
+            const domainName = getDomainForChapter(q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0");
+            userAnswers[originalIdx] = {
                 questionId: q.id,
                 omitted: true,
                 isCorrect: false,
                 domain: domainName
             };
         }
-    }
+    });
 
-    const answered = userAnswers.filter(a => a && !a.omitted);
+    const activeUserAnswers = activeSet.map(q => userAnswers[questions.indexOf(q)]);
+    const answered = activeUserAnswers.filter(a => a && !a.omitted);
     const correct = answered.filter(a => a.isCorrect).length;
     const omitted = total - answered.length;
 
     const percentage = Math.round((correct / total) * 100);
+
+    const resultTitle = isFilterActive ? `Resultados: ${currentFilter}` : "Resultados Finales";
+    document.querySelector('#results-screen h2').textContent = resultTitle;
 
     document.getElementById('final-percentage').textContent = `${percentage}%`;
     document.getElementById('correct-count').textContent = `(${correct}/${total})`;
