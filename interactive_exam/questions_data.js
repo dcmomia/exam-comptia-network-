@@ -66,13 +66,7 @@ var EXAMS_DATABASE = {
       {
         "id": 5,
         "has_context_image": false,
-        "question": "Un técnico está configurando un laboratorio de computación para estudiantes. Las computadoras deben poder comunicarse entre sí en la red interna, pero los estudiantes no deben poder acceder a Internet. La arquitectura de red está segmentada usando un firewall de tres patas (triple-homed) con las siguientes zonas:
-
-- PUBLIC (Público), eth0, 66.13.24.16/30
-- INSTRUCTORS (Instructores), eth1, 172.16.1.1/24
-- STUDENTS (Estudiantes), eth2, 192.168.1.1/24
-
-¿Qué regla en el firewall debería configurar el técnico para evitar que los estudiantes accedan a Internet?",
+        "question": "Un técnico está configurando un laboratorio de computación para estudiantes. Las computadoras deben poder comunicarse entre sí en la red interna, pero los estudiantes no deben poder acceder a Internet. La arquitectura de red está segmentada usando un firewall de tres patas (triple-homed) con las siguientes zonas:\n\n- PUBLIC (Público), eth0, 66.13.24.16/30\n- INSTRUCTORS (Instructores), eth1, 172.16.1.1/24\n- STUDENTS (Estudiantes), eth2, 192.168.1.1/24\n\n¿Qué regla en el firewall debería configurar el técnico para evitar que los estudiantes accedan a Internet?",
         "options": [
           "Denegar todo el tráfico de eth1 a eth0",
           "Denegar todo el tráfico de eth0 a eth2",
@@ -746,13 +740,7 @@ var EXAMS_DATABASE = {
       {
         "id": 53,
         "has_context_image": false,
-        "question": "Su empresa acaba de instalar un nuevo servidor web que permitirá conexiones entrantes a través del puerto 80 desde Internet, mientras que no aceptará ninguna conexión desde la red interna. Se le ha pedido que ubique el servidor web en la arquitectura de red y configure la regla ACL para soportar los requisitos. La arquitectura de red está segmentada usando un firewall de tres patas (triple-homed) con las siguientes zonas:
-
-1. PUBLIC, eth0, 66.13.24.16/30
-2. DMZ, eth1, 172.16.1.1/24
-3. PRIVATE, eth2, 192.168.1.1/24
-
-¿Dónde debería instalar el servidor web y cómo debería configurarlo?",
+        "question": "Su empresa acaba de instalar un nuevo servidor web que permitirá conexiones entrantes a través del puerto 80 desde Internet, mientras que no aceptará ninguna conexión desde la red interna. Se le ha pedido que ubique el servidor web en la arquitectura de red y configure la regla ACL para soportar los requisitos. La arquitectura de red está segmentada usando un firewall de tres patas (triple-homed) con las siguientes zonas: 1. PUBLIC, eth0, 66.13.24.16/30 2. DMZ, eth1, 172.16.1.1/24 3. PRIVATE, eth2, 192.168.1.1/24 ¿Dónde debería instalar el servidor web y cómo debería configurarlo ? ",
         "options": [
           "Poner el servidor en la zona PUBLIC con una regla entrante de eth0 a eth1 que permita el tráfico del puerto 80 a la IP del servidor",
           "Poner el servidor en la zona PRIVATE con una regla entrante de eth0 a eth1 que permita el tráfico del puerto 80 a la IP del servidor",
@@ -1810,12 +1798,7 @@ var EXAMS_DATABASE = {
       {
         "id": 38,
         "has_context_image": true,
-        "question": "Se le ha encomendado la tarea de probar un cable de red CAT 5e. Tras realizar la prueba, obtiene los siguientes resultados:
-1, 2: Open, 3 ft
-3, 6: Short, 3 ft
-4, 5: Open, 3 ft
-7, 8: Open, 3 ft
-¿Qué herramienta utilizó para probar el cable y obtener estos resultados?",
+        "question": "Se le ha encomendado la tarea de probar un cable de red CAT 5e. Tras realizar la prueba, obtiene los siguientes resultados:\n1, 2: Open, 3 ft\n3, 6: Short, 3 ft\n4, 5: Open, 3 ft\n7, 8: Open, 3 ft\n¿Qué herramienta utilizó para probar el cable y obtener estos resultados?",
         "options": [
           "Certificador de cables",
           "Analizador de protocolos",
