@@ -9,7 +9,15 @@
 
 ## 2. Version History & Patch Notes
 
-### v3.0 - Exam 2 Integration (Current)
+### v3.1.4 - Exam Data Restoration & Exam 2 Integration (Current)
+- **Patch Description:** Fixed major loading error and integrated complete Exam 2 dataset.
+- **Key Changes:**
+    - **Data Structure:** Restored `EXAMS_DATABASE` object in `questions_data.js` to match frontend expectations.
+    - **Exam 2 Integration:** merged 90 new questions from `temp/examen2_completo.json`.
+    - **Automation:** Updated `reference_correction_script.py` to ensure future data generations maintain the correct structure and multi-exam support.
+- **Total Questions:** 180 (90 from Exam 1 + 90 from Exam 2).
+
+### v3.0 - Exam 2 Processing
 - **Patch Description:** Complete extraction and processing of CompTIA Network+ Exam 2.
 - **Key Achievements:**
     - **Image Processing:** Extracted 80 questions from 90 source images in `img_source/Examen2/`
