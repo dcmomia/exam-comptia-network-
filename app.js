@@ -123,6 +123,7 @@ function loadExamSession() {
 
         if (isPaused) {
             pauseOverlay.classList.remove('hidden');
+            pauseBtn.textContent = '▶️';
             renderTime(totalElapsedTime);
         } else {
             sessionStartTime = Date.now();
@@ -164,6 +165,7 @@ function pauseExam() {
     clearInterval(timerInterval);
     totalElapsedTime += (Date.now() - sessionStartTime);
     pauseOverlay.classList.remove('hidden');
+    pauseBtn.textContent = '▶️';
     saveProgress();
 }
 
@@ -172,8 +174,14 @@ function resumeExam() {
     isPaused = false;
     sessionStartTime = Date.now();
     pauseOverlay.classList.add('hidden');
+    pauseBtn.textContent = '⏸️';
     startTimer();
     saveProgress();
+}
+
+function togglePause() {
+    if (isPaused) resumeExam();
+    else pauseExam();
 }
 
 // Renderizar Pregunta
@@ -438,8 +446,7 @@ function renderDomainProgress() {
 
 startBtn.onclick = startQuiz;
 resumeExamBtn.onclick = loadExamSession;
-pauseBtn.onclick = pauseExam;
-resumeBtn.onclick = resumeExam;
+pauseBtn.onclick = togglePause;
 
 restartBtn.onclick = () => {
     localStorage.removeItem('network_plus_exam_state');
