@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+    <title>Capítulo 16: Fundamentos de Seguridad</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 16: Fundamentos de Seguridad</h1>
+        
+        <h2 class="section-title">Introducción: La Tríada CIA y la Mentalidad Defensiva</h2>
+        <p>Hasta ahora hemos construido redes para que los datos fluyan libremente. Ahora, vamos a poner barreras. La seguridad de red no es un producto que compras, es un proceso. Y ese proceso se basa en tres pilares fundamentales, conocidos como la <strong>Tríada CIA</strong>:</p>
+        
+        <div class="summary-box">
+            <ul>
+                <li><strong>Confidencialidad:</strong> Solo las personas autorizadas pueden ver los datos. (Herramienta principal: Encriptación).</li>
+                <li><strong>Integridad:</strong> Los datos no han sido modificados en el camino. (Herramienta principal: Hashing).</li>
+                <li><strong>Disponibilidad (Availability):</strong> Los datos están accesibles cuando se necesitan. (Herramienta principal: Redundancia y Backups).</li>
+            </ul>
+        </div>
+        
+        <p>Si un atacante roba tus contraseñas, rompe la <em>Confidencialidad</em>. Si altera un archivo, rompe la <em>Integridad</em>. Si corta el cable de fibra, rompe la <em>Disponibilidad</em>. Tu trabajo es proteger los tres.</p>
+
+        <h2 class="section-title">Seguridad Física y Lógica: Dos Caras de la Moneda</h2>
+        <p>No puedes tener una sin la otra.</p>
+
+        <h3 class="subsection-title">Seguridad Física</h3>
+        <p>Si alguien puede tocar tu servidor físicamente, "Game Over". Pueden robar el disco duro o resetear la contraseña con un botón.</p>
+        <p><strong>Controles:</strong> Cámaras CCTV, cerraduras biométricas, guardias de seguridad, jaulas para servidores y "trampas de hombre" (Mantraps - puertas dobles donde una no abre hasta que la otra cierra).</p>
+
+        <h3 class="subsection-title">Seguridad Lógica</h3>
+        <p>Son los controles de software.</p>
+        <ul>
+            <li><strong>Encriptación:</strong> Convierte datos legibles (texto plano) en basura ilegible (texto cifrado) usando una clave matemática.</li>
+            <li><strong>Hashing:</strong> Toma un archivo y genera una huella digital única (Hash). Si cambias una sola coma del archivo, el Hash cambia completamente. Esto prueba que el archivo no ha sido alterado. (Algoritmos comunes: SHA-256, MD5).</li>
+        </ul>
+
+        <h2 class="section-title">AAA: El Portero de la Red</h2>
+        <p>Cualquier sistema seguro debe seguir el marco AAA:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Componente</th>
+                    <th>Pregunta</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Autenticación</strong></td>
+                    <td>¿Quién eres?</td>
+                    <td>Verificar identidad (usuario/contraseña, certificado, biométrico)</td>
+                </tr>
+                <tr>
+                    <td><strong>Autorización</strong></td>
+                    <td>¿Qué puedes hacer?</td>
+                    <td>Definir permisos (lectura, escritura, ejecución)</td>
+                </tr>
+                <tr>
+                    <td><strong>Contabilidad</strong></td>
+                    <td>¿Qué hiciste?</td>
+                    <td>Registrar acciones en logs de auditoría</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subsection-title">Autenticación Multifactor (MFA)</h3>
+        <p>Combina dos o más de estos factores:</p>
+        <ul>
+            <li><strong>Algo que sabes:</strong> Contraseña, PIN</li>
+            <li><strong>Algo que tienes:</strong> Tarjeta inteligente, token, teléfono</li>
+            <li><strong>Algo que eres:</strong> Huella dactilar, reconocimiento facial</li>
+        </ul>
+
+        <h3 class="subsection-title">Protocolos AAA (RADIUS y TACACS+)</h3>
+        <p>Si tienes 50 routers, no vas a crear 50 usuarios locales en cada uno. Usas un servidor central AAA.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Protocolo</th>
+                    <th>Tipo</th>
+                    <th>Encriptación</th>
+                    <th>Uso Común</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>RADIUS</strong></td>
+                    <td>Estándar abierto</td>
+                    <td>Solo contraseña</td>
+                    <td>Acceso de usuarios (Wi-Fi, VPN)</td>
+                </tr>
+                <tr>
+                    <td><strong>TACACS+</strong></td>
+                    <td>Propietario Cisco</td>
+                    <td>Todo el paquete</td>
+                    <td>Administradores de dispositivos</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="section-title">Conceptos Modernos de Seguridad</h2>
+
+        <h3 class="subsection-title">Zero Trust (Confianza Cero)</h3>
+        <p>El modelo antiguo era "castillo y foso": duro por fuera, blando por dentro. Una vez pasabas el firewall, eras confiable.</p>
+        <div class="important-note">
+            <strong>Zero Trust dice:</strong> "No confío en nadie, ni dentro ni fuera". Cada solicitud de acceso debe ser verificada, autenticada y encriptada, aunque venga del escritorio del CEO.
+        </div>
+
+        <h3 class="subsection-title">Segmentación de Red</h3>
+        <p>No pongas todos los huevos en la misma cesta.</p>
+        <ul>
+            <li><strong>DMZ (Zona Desmilitarizada):</strong> Una subred especial para servidores públicos (Web, Correo). Si hackean el servidor web, están "atrapados" en la DMZ y no pueden saltar fácilmente a tu red interna privada.</li>
+            <li><strong>IoT y SCADA:</strong> Las neveras inteligentes y los robots industriales suelen ser muy inseguros. Aíslalos en su propia VLAN. Nunca dejes que compartan red con tus servidores financieros.</li>
+        </ul>
+
+        <div class="summary-box">
+            <h3>📌 Resumen de Puntos Clave</h3>
+            <ul>
+                <li><strong>CIA:</strong> Confidencialidad, Integridad, Disponibilidad.</li>
+                <li><strong>MFA:</strong> Algo que sabes + Algo que tienes + Algo que eres.</li>
+                <li><strong>AAA:</strong> Autenticación, Autorización, Contabilidad.</li>
+                <li><strong>RADIUS:</strong> AAA estándar. <strong>TACACS+:</strong> AAA Cisco (más seguro).</li>
+                <li><strong>Zero Trust:</strong> Nunca confiar, siempre verificar.</li>
+                <li><strong>Hashing:</strong> Verifica integridad (no confidencialidad).</li>
+                <li><strong>DMZ:</strong> Zona de amortiguación para servidores públicos.</li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

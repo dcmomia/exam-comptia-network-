@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Capítulo 6: Direccionamiento IPv4 y Subredes</title>
+  <link rel="stylesheet" type="text/css" href="../Styles/styles.css" />
+</head>
+<body>
+<div class="chapter"><h1 class="chapter-title">Capítulo 6: Direccionamiento IPv4 y Subredes</h1><div class="review-question" id="q73"><p><strong>Pregunta 73:</strong> ¿Cuál es el ID de red asociado con el host ubicado en 10.10.10.200/25?</p><ul class="options"><li>10.10.10.64</li><li>10.10.10.192</li><li>10.10.10.128</li><li>10.10.10.0</li></ul><p class="answer">Respuesta: 10.10.10.128</p><p class="explanation"><strong>Explicación:</strong> Una máscara /25 significa que el último octeto se divide en dos subredes de 128 direcciones cada una (0-127 y 128-255). La dirección 10.10.10.200 se encuentra en el rango de la segunda subred, que comienza en el ID de red 10.10.10.128.</p><p class="source-ref"><em>Referencia: Capítulo 6: Direccionamiento IPv4 y Subredes > Subneteado</em></p></div><hr/><div class="review-question" id="q86"><p><strong>Pregunta 86:</strong> Dion Training está añadiendo una pequeña sucursal en Filipinas y desea asignarles una parte de su espacio de direcciones IPv4 públicas de Clase C. A Dion Training se le ha asignado un alcance de Clase C de 187.15.3.0/24. La nueva oficina en Filipinas tendrá 8 usuarios que necesitan direcciones IP asignadas. ¿Cuál es la notación CIDR correcta para la sucursal de Filipinas con el fin de acomodar a los 8 usuarios asignando el número mínimo de direcciones?</p><ul class="options"><li>/27</li><li>/29</li><li>/26</li><li>/28</li></ul><p class="answer">Respuesta: /28</p><p class="explanation"><strong>Explicación:</strong> Para 8 usuarios, necesitamos un mínimo de 10 direcciones (8 para hosts + ID de red + Broadcast). Una máscara /29 proporciona solo 8 direcciones totales (6 útiles), lo cual es insuficiente. La siguiente opción es /28, que proporciona 16 direcciones totales (14 útiles), siendo el mínimo necesario para acomodar a los 8 usuarios.</p><p class="source-ref"><em>Referencia: Capítulo 6: Direccionamiento IPv4 y Subredes > Diseño de Subredes</em></p></div><hr/></div>
+</body>
+</html>

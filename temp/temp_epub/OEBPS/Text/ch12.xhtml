@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+    <title>Capítulo 12: Ojos en la Red: Monitoreo y Análisis</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 12: Ojos en la Red: Monitoreo y Análisis</h1>
+        
+        <h2>Introducción: Saber Qué Pasa en Tu Red</h2>
+        <p>Un administrador de red que espera pasivamente a que un usuario llame para reportar que «Internet no funciona» es un administrador reactivo y, francamente, mediocre. Tu trabajo como profesional de redes es saber que algo va a fallar antes de que el usuario lo note, identificar tendencias de degradación antes de que se conviertan en interrupciones, y tener visibilidad completa del comportamiento de tu infraestructura en todo momento.</p>
+        
+        <p>Para lograr esto, necesitamos «ojos y oídos» en cada dispositivo: sistemas que monitorizan constantemente el estado de la infraestructura, que registran eventos y métricas, y que alertan cuando algo está fuera de los parámetros normales. Sin estos sistemas de monitoreo, estás volando ciego, sin datos objetivos para diagnosticar problemas ni historial para analizar tendencias.</p>
+        
+        <p>En este capítulo, cubriremos las herramientas estándar de la industria (Dominio 3.2) para vigilar la salud de tu red: desde protocolos básicos como SNMP y Syslog hasta sistemas avanzados de correlación de eventos y análisis de tráfico.</p>
+
+        <h2>Métodos de Monitoreo: Las Herramientas Estándar</h2>
+        
+        <h3>SNMP (Simple Network Management Protocol)</h3>
+        <p>SNMP es el estándar de oro para monitorear dispositivos de red. Permite que un sistema de gestión centralizado consulte a routers, switches, servidores, impresoras, y cualquier otro dispositivo SNMP sobre su estado, rendimiento, y configuración.</p>
+        
+        <p>La arquitectura SNMP tiene dos componentes principales:</p>
+        
+        <p><strong>Agente:</strong> Un pequeño software que corre en el dispositivo monitoreado (router, switch, servidor). El agente recopila y almacena información sobre el dispositivo y responde a consultas del sistema de gestión.</p>
+        
+        <p><strong>Gestor (Manager):</strong> El sistema central que recopila información de los agentes. Software como PRTG, SolarWinds, Nagios, o Zabbix actúa como manager, consultando periódicamente a todos los dispositivos y almacenando las métricas en una base de datos histórica.</p>
+        
+        <p><strong>MIB (Management Information Base):</strong> Es una base de datos jerárquica en el dispositivo que define qué información puede ser consultada. La MIB organiza la información en una estructura de árbol con OIDs (Object Identifiers) únicos. Por ejemplo, el OID 1.3.6.1.2.1.1.5 podría ser el nombre del sistema, mientras que 1.3.6.1.2.1.2.2.1.10 podría ser el contador de bytes recibidos en una interfaz específica.</p>
+        
+        <p><strong>Traps:</strong> Son alertas proactivas que el agente envía al gestor cuando ocurre algo significativo, como un puerto que se cae, un disco que se llena, o una temperatura que excede el umbral. A diferencia de las consultas periódicas donde el manager «pregunta», los traps son «notificaciones» iniciadas por el agente.</p>
+
+        <h3>Versiones de SNMP: Seguridad Primero</h3>
+        <p><strong>SNMPv1:</strong> La versión original.Envía toda la información, incluyendo strings de comunidad y datos monitoreados, en texto plano sin encriptación. Es completamente inseguro y no debe usarse en producción bajo ninguna circunstancia.</p>
+        
+        <p><strong>SNMPv2c:</strong> Mejora la eficiencia de las operaciones pero mantiene la seguridad de texto plano de v1. Sigue siendo inseguro. Algunos dispositivos legacy solo soportan v2c, pero si tienes opción, usa v3.</p>
+        
+        <p><strong>SNMPv3:</strong> La única versión segura. Proporciona tres niveles de seguridad:</p>
+        
+        <ul>
+            <li><strong>NoAuthNoPriv:</strong> Sin autenticación, sin privacidad. (No usar)</li>
+            <li><strong>AuthNoPriv:</strong> Autenticación (verificar quién pregunta), sin encriptación.</li>
+            <li><strong>AuthPriv:</strong> Autenticación + Encriptación. El nivel más seguro, que protege tanto la identidad del solicitante como los datos transmitidos.</li>
+        </ul>
+        
+        <p>Para el examen: SNMPv3 es la respuesta correcta para cualquier escenario que mencione seguridad en el contexto de SNMP.</p>
+
+        <h3>Syslog</h3>
+        <p>Si SNMP pregunta «¿cómo estás?» y obtiene una respuesta numérica, Syslog es el «diario» del dispositivo donde se registran todos los eventos significativos: inicios de sesión (exitosos y fallidos), cambios de configuración, errores de hardware, alertas de seguridad, y cualquier otro mensaje que el dispositivo considere digno de registrarse.</p>
+        
+        <p>Los dispositivos Syslog envían estos mensajes a un Servidor Syslog centralizado donde se almacenan, indexan, y pueden ser analizados. Esto es invaluable para diagnóstico de problemas, auditoría de seguridad, y cumplimiento normativo.</p>
+        
+        <p><strong>Niveles de Gravedad (0-7):</strong> Cada mensaje Syslog tiene un nivel de severidad que indica su importancia:</p>
+        
+        <table class="syslog-table">
+            <tbody><tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>Emergency</td>
+                <td>Sistema inutilizable. Alerta máxima.</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Alert</td>
+                <td>Acción inmediata requerida.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Critical</td>
+                <td>Condición crítica. Funcionamiento comprometido.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Error</td>
+                <td>Condición de error.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Warning</td>
+                <td>Advertencia de condición potencialmente problemática.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Notice</td>
+                <td>Evento significativo pero normal.</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Informational</td>
+                <td>Mensaje informativo normal.</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>Debug</td>
+                <td>Información detallada para depuración.</td>
+            </tr>
+        </tbody>
+</table>
+
+        <h3>SIEM (Security Information and Event Management)</h3>
+        <p>SIEM es Syslog con esteroides y cerebro. Recibe logs de todas partes de tu infraestructura: firewalls, servidores, sistemas de detección de intrusiones, antivirus, controladores de dominio, y cualquier otro dispositivo que genere logs. No solo los almacena, sino que los analiza en conjunto buscando patrones que indiquen amenazas o problemas.</p>
+        
+        <p><strong>Correlación de eventos:</strong> Un evento aislado puede parecer insignificante, pero múltiples eventos relacionados pueden indicar un ataque en progreso. SIEM correlaciona estos eventos: si el mismo usuario intenta iniciar sesión sin éxito en 10 servidores diferentes en 2 minutos, eso es claramente un ataque de fuerza bruta que debe alertar.</p>
+        
+        <p><strong>Análisis de comportamiento:</strong> SIEM puede establecer líneas base de comportamiento normal y alertar cuando detecta desviaciones significativas: un servidor que de repente genera 10 veces más tráfico de lo normal, un usuario que inicia sesión a las 3 AM cuando normalmente nunca lo hace, o un patrón de acceso a archivos que sugiere exfiltración de datos.</p>
+
+        <h2>Análisis de Tráfico: Ver lo Invisible</h2>
+        <p>A veces los logs y métricas no son suficientes. Necesitas ver los datos reales, packet by packet, para diagnosticar problemas complejos o investigar incidentes de seguridad.</p>
+
+        <h3>Análisis de Flujo (NetFlow/sFlow/IPFIX)</h3>
+        <p>El análisis de flujo es como ver la factura detallada de tu teléfono: no te dice exactamente qué dijiste en cada llamada, pero te dice a quién llamaste, cuándo, cuánto duró, y cuántos datos se enviaron. NetFlow y sus variantes (sFlow, IPFIX) proporcionan esta metainformación sobre el tráfico de red.</p>
+        
+        <p>Un registro de flujo incluye típicamente: direcciones IP origen y destino, puertos origen y destino, protocolo utilizado, timestamp de inicio y fin, y contador de bytes y paquetes. Es excelente para:</p>
+        
+        <ul>
+            <li>Detectar cuellos de botella: «¿Quién está consumiendo todo el ancho de banda viendo Netflix?»</li>
+            <li>Identificar tráfico anómalo: comunicaciones con direcciones IP sospechosas o en horarios inusuales.</li>
+            <li>Planificación de capacidad: entender qué aplicaciones consumen más ancho de banda.</li>
+            <li>Cumplimiento: generar reportes de quién accedió a qué recursos y cuándo.</li>
+        </ul>
+
+        <h3>Captura de Paquetes (Packet Capture / Packet Sniffing)</h3>
+        <p>Esto es «escuchar la llamada completa». Usando herramientas como Wireshark o tcpdump, puedes capturar una copia de cada paquete que atraviesa una interfaz de red. A diferencia del análisis de flujo que solo ve metadatos, la captura de paquetes ve el contenido real (sujeto a encriptación).</p>
+        
+        <p>Puedes ver el contenido exacto de las conversaciones no encriptadas, diagnosticar problemas de aplicación específicos, y analizar en detalle ataques de red. Es la herramienta definitiva para troubleshooting complejo y forense de seguridad, pero genera enormes cantidades de datos y no es práctico usarlo como monitoreo constante de toda la red.</p>
+
+        <h2>Métricas Clave de Rendimiento</h2>
+        <p>¿Qué debes vigilar en tu tablero de control? Estas son las métricas fundamentales que indican la salud de tu red:</p>
+        
+        <p><strong>Ancho de Banda (Bandwidth):</strong> La capacidad máxima teórica de un enlace, expresada en bits por segundo (Mbps, Gbps). Es como la velocidad máxima permitida en una autopista.</p>
+        
+        <p><strong>Throughput (Rendimiento):</strong> La cantidad real de datos que pasan por el enlace, expresada también en bits por segundo. Es como la velocidad real del tráfico en la autopista en un momento dado, que puede ser menor que el límite máximo debido a congestión.</p>
+        
+        <p><strong>Latencia (Latency):</strong> El tiempo que tarda un paquete en ir desde el origen hasta el destino, típicamente medido como RTT (Round Trip Time), el tiempo de ida y vuelta. Se mide en milisegundos. Alta latencia degrada aplicaciones interactivas como VoIP y videoconferencia.</p>
+        
+        <p><strong>Jitter:</strong> La variación en la latencia entre paquetes consecutivos. Si un paquete tarda 20ms y el siguiente 100ms, tienes alto jitter. Es especialmente mortal para VoIP y video en tiempo real, causando voz robótica o video entrecortado.</p>
+        
+        <p><strong>Tasa de Error (Error Rate):</strong> El porcentaje de paquetes perdidos o corruptos. Errores altos indican problemas físicos (cables dañados, conectores malos) o congestión severa. Los paquetes corruptos deben ser retransmitidos, reduciendo el throughput efectivo.</p>
+        
+        <p><strong>Uptime (Tiempo de actividad):</strong> El porcentaje del tiempo que un sistema o servicio ha estado funcionando correctamente. «Five nines» (99.999%) de uptime significa menos de 5 minutos de downtime por año.</p>
+
+        <div class="summary-box">
+            <h3>Resumen de Puntos Clave para el Examen</h3>
+            
+            <ul>
+                <li><strong>SNMPv3:</strong> La única versión segura. Proporciona autenticación y encriptación.</li>
+                <li><strong>Trap:</strong> Alerta proactiva enviada por un dispositivo SNMP cuando ocurre un evento significativo.</li>
+                <li><strong>Syslog:</strong> Envía logs de eventos a un servidor central para almacenamiento y análisis.</li>
+                <li><strong>Niveles Syslog:</strong> 0 (Emergency) a 7 (Debug). Números más bajos = más severo.</li>
+                <li><strong>SIEM:</strong> Agrega logs de múltiples fuentes y los correlaciona para detección de amenazas.</li>
+                <li><strong>NetFlow:</strong> Metadatos del tráfico (quién, cuánto, cuándo). Ideal para análisis de tendencias y detección de anomalías.</li>
+                <li><strong>Packet Capture (Wireshark):</strong> Ver el contenido real de los paquetes. Para troubleshooting profundo y forense.</li>
+                <li><strong>Jitter:</strong> Variación en latencia. Malo para VoIP y video en tiempo real.</li>
+                <li><strong>Throughput vs. Ancho de Banda:</strong> Capacidad teórica vs. uso real.</li>
+            </ul>
+            
+            <p><strong>Consejo del Instructor:</strong> Si necesitas «analizar tendencias de tráfico a largo plazo sin capturar el contenido de los paquetes», la respuesta es NetFlow. Si necesitas «ver el contenido específico de un error de aplicación para diagnosticarlo», la respuesta es Packet Capture (Wireshark).</p>
+        </div>
+    </section>
+</body>
+</html>

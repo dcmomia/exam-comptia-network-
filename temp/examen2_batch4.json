@@ -1,0 +1,245 @@
+[
+    {
+        "id": 29,
+        "has_context_image": true,
+        "question": "Los usuarios de la red inalámbrica comenzaron a experimentar recientemente problemas de velocidad y rendimiento después de que el Punto de Acceso 2 (AP2) fuera reemplazado debido a un fallo de hardware. La red inalámbrica original se instaló según las especificaciones de un consultor y siempre había funcionado correctamente. Se le ha pedido que evalúe la situación y resuelva los problemas ajustando la menor cantidad de configuraciones posible. Basándose en el plano de planta, ¿en qué dispositivo de red iniciaría sesión PRIMERO para sus esfuerzos de resolución de problemas?",
+        "options": [
+            "SW1",
+            "AP2",
+            "AP1",
+            "AP3"
+        ],
+        "answer": "AP2",
+        "explanation": "Dado que los problemas comenzaron específicamente después de reemplazar el AP2, este es el punto de fallo más probable. Es probable que la configuración del nuevo AP2 (como el canal o la potencia de transmisión) no coincida con la del consultor original o esté causando interferencias con AP1 y AP3.",
+        "source_reference": "Capítulo 11: Resolución de Problemas Inalámbricos > Problemas de Rendimiento y Configuración"
+    },
+    {
+        "id": 30,
+        "has_context_image": false,
+        "question": "Usted está realizando un escaneo de puertos de un servidor antiguo en su red para determinar qué servicios se están ejecutando. Encuentra que los puertos 80 y 443 están abiertos, pero los puertos 20 y 21 aparecen como cerrados. El resto de los puertos aparecen como FILTRADOS (FILTERED). Basándose en este informe, ¿qué puede determinar sobre el servidor?",
+        "options": [
+            "El servidor funciona como servidor web y deniega cualquier otra solicitud de servicio",
+            "El servidor está fuera de línea y no responde",
+            "El servicio está ejecutando un servidor FTP y deniega cualquier otra solicitud de servicio",
+            "El servidor está detrás de un firewall y tiene bloqueada la recepción de tráfico"
+        ],
+        "answer": "El servidor está detrás de un firewall y tiene bloqueada la recepción de tráfico",
+        "explanation": "El estado 'FILTERED' en un escaneo de puertos (como Nmap) indica que un firewall, filtro o obstáculo en la red está impidiendo que las sondas lleguen al puerto, por lo que el escáner no puede determinar si está abierto o cerrado. Que la mayoría de los puertos estén filtrados sugiere fuertemente la presencia de un firewall.",
+        "source_reference": "Capítulo 16: Comandos de Línea de Comandos > Nmap y Escaneo de Puertos"
+    },
+    {
+        "id": 31,
+        "has_context_image": false,
+        "question": "¿Cuál de las siguientes políticas o planes dictaría qué tipos de archivos serán inspeccionados automáticamente antes de ser enviados por el servidor de correo electrónico de una organización?",
+        "options": [
+            "Política de prevención de pérdida de datos (DLP)",
+            "Política de uso aceptable (AUP)",
+            "Política de acceso remoto",
+            "Política de contraseñas"
+        ],
+        "answer": "Política de prevención de pérdida de datos (DLP)",
+        "explanation": "Una política de DLP (Data Loss Prevention) se enfoca en identificar, monitorear y proteger los datos sensibles. Las herramientas de DLP pueden escanear correos electrónicos salientes y sus archivos adjuntos para evitar que información confidencial salga de la organización.",
+        "source_reference": "Capítulo 18: Fortalecimiento y Defensa de la Red > Tecnologías DLP"
+    },
+    {
+        "id": 32,
+        "has_context_image": false,
+        "question": "Un administrador nota un cable sin usar detrás de un armario que termina con un conector DB-9. ¿Qué protocolo es probable que se utilice con este cable?",
+        "options": [
+            "Token Ring",
+            "ATM",
+            "802.3",
+            "RS-232"
+        ],
+        "answer": "RS-232",
+        "explanation": "El conector DB-9 se utiliza comúnmente para comunicaciones en serie siguiendo el estándar RS-232, a menudo utilizado para la gestión de dispositivos de red a través de un puerto de consola.",
+        "source_reference": "Capítulo 2: Cables y Conectores de Red > Conectores Seriales"
+    },
+    {
+        "id": 33,
+        "has_context_image": false,
+        "question": "Susan quiere usar su iPad en la red corporativa, pero no hay red inalámbrica disponible en su oficina. Decide comprar un router inalámbrico y conectarlo a la toma de red de su oficina. Horas después, sus compañeros se quejan de 'errores de dirección IP duplicada'. ¿Qué tipo de ataque realizó Susan inadvertidamente?",
+        "options": [
+            "VLAN hopping",
+            "Rogue DHCP",
+            "DNS poisoning",
+            "ARP spoofing"
+        ],
+        "answer": "Rogue DHCP",
+        "explanation": "Al conectar un router doméstico a la red corporativa, Susan activó un 'Rogue DHCP server'. El router comenzó a asignar direcciones IP de su propio rango a los equipos de la red corporativa, lo que causó conflictos con el servidor DHCP oficial y errores de IP duplicadas.",
+        "source_reference": "Capítulo 10: Ataques de Red > Servidores DHCP No Autorizados"
+    },
+    {
+        "id": 34,
+        "has_context_image": false,
+        "question": "¿Cuál de los siguientes dicta lo que un empleado puede y no puede hacer cuando utiliza los ordenadores de la organización y la red empresarial?",
+        "options": [
+            "Defensa en profundidad",
+            "Mínimo privilegio",
+            "Zero Trust",
+            "Política de uso aceptable (AUP)"
+        ],
+        "answer": "Política de uso aceptable (AUP)",
+        "explanation": "La Política de Uso Aceptable (Acceptable Use Policy) es un documento que define las reglas y responsabilidades que los usuarios deben aceptar para acceder a la red y recursos tecnológicos de la organización.",
+        "source_reference": "Capítulo 15: Políticas de Red y Seguridad > Documentación de Políticas"
+    },
+    {
+        "id": 35,
+        "has_context_image": false,
+        "question": "¿Cuál de los siguientes estándares Ethernet se utiliza con cable de fibra óptica monomodo?",
+        "options": [
+            "10GBase-LR",
+            "40GBase-T",
+            "1000Base-T",
+            "10GBase-SR"
+        ],
+        "answer": "10GBase-LR",
+        "explanation": "10GBase-LR (Long Range) está diseñado para su uso con fibra monomodo, permitiendo distancias de hasta 10 km. Los estándares que terminan en -SR (Short Range) suelen ser para fibra multimodo, y los que terminan en -T son para par trenzado (cobre).",
+        "source_reference": "Capítulo 2: Cables y Conectores de Red > Estándares de Fibra Óptica"
+    },
+    {
+        "id": 36,
+        "has_context_image": false,
+        "question": "¿Qué topología de red cableada se utiliza comúnmente o debería considerarse por su control centralizado, facilidad de gestión y capacidad para aislar problemas de red a un dispositivo individual?",
+        "options": [
+            "Topología de anillo",
+            "Topología de malla",
+            "Topología de estrella",
+            "Topología de bus"
+        ],
+        "answer": "Topología de estrella",
+        "explanation": "En una topología de estrella, todos los dispositivos se conectan a un nodo central (como un switch). Esto permite gestionar la red de forma centralizada y, si un cable o dispositivo falla, solo ese nodo se ve afectado, facilitando el aislamiento de problemas.",
+        "source_reference": "Capítulo 1: Topologías de Red > Estructuras de Red Comunes"
+    },
+    {
+        "id": 37,
+        "has_context_image": false,
+        "question": "Rachael, administradora de red, necesita revisar los ajustes de configuración actuales en un dispositivo de red. ¿Qué comando debería usar Rachael para mostrar la configuración en ejecución (running configuration) del dispositivo?",
+        "options": [
+            "show interface",
+            "show power",
+            "show config",
+            "show vlan"
+        ],
+        "answer": "show config",
+        "explanation": "El comando 'show running-config' (a menudo abreviado como 'show run' o 'show config' dependiendo del sistema) muestra la configuración que está actualmente activa en la RAM del dispositivo.",
+        "source_reference": "Capítulo 16: Comandos de Línea de Comandos > Gestión de Configuración"
+    },
+    {
+        "id": 38,
+        "has_context_image": true,
+        "question": "Se le ha encomendado la tarea de probar un cable de red CAT 5e. Tras realizar la prueba, obtiene los siguientes resultados:\n1, 2: Open, 3 ft\n3, 6: Short, 3 ft\n4, 5: Open, 3 ft\n7, 8: Open, 3 ft\n¿Qué herramienta utilizó para probar el cable y obtener estos resultados?",
+        "options": [
+            "Certificador de cables",
+            "Analizador de protocolos",
+            "Multímetro",
+            "Herramienta de impacto",
+            "OTDR",
+            "Crimpadora"
+        ],
+        "answer": "OTDR",
+        "explanation": "Un reflectómetro de dominio de tiempo (TDR o OTDR para fibra) es la herramienta que puede detectar fallos (abiertos, cortos) y indicar la distancia exacta (en este caso 3 pies) a la que se encuentra el problema enviando pulsos de señal y midiendo su reflexión.",
+        "source_reference": "Capítulo 2: Cables y Conectores de Red > Herramientas de Prueba"
+    },
+    {
+        "id": 39,
+        "has_context_image": true,
+        "question": "Su empresa ha comprado un nuevo edificio para sus suites ejecutivas. Se le ha pedido que elija el mejor cifrado para AP4 y AP5 con el fin de establecer una conexión inalámbrica segura entre el edificio principal y las suites ejecutivas. ¿Cuál es el MEJOR cifrado de las opciones siguientes para maximizar la seguridad de la red entre AP4 y AP5?",
+        "options": [
+            "WPA2-TKIP",
+            "WPA2-CCMP",
+            "Open",
+            "WEP",
+            "WPA"
+        ],
+        "answer": "WPA2-CCMP",
+        "explanation": "WPA2 con CCMP (basado en el cifrado AES) es el estándar de seguridad más robusto de las opciones presentadas. TKIP es más antiguo y menos seguro, y WEP/WPA están obsoletos por ser vulnerables.",
+        "source_reference": "Capítulo 17: Gestión de Identidad y Acceso > Cifrado Inalámbrico"
+    },
+    {
+        "id": 40,
+        "has_context_image": false,
+        "question": "¿Cuál de los siguientes enunciados sobre los cables triaxiales (Twinaxial) es incorrecto?",
+        "options": [
+            "Los cables triaxiales se utilizan principalmente en redes de fibra óptica para conectividad de larga distancia",
+            "Los cables triaxiales se utilizan comúnmente para la transmisión de datos a alta velocidad y corta distancia",
+            "Los cables triaxiales consisten en dos conductores internos rodeados por material aislante y un blindaje exterior",
+            "Los cables triaxiales son alternativas rentables a los cables coaxiales para ciertas aplicaciones"
+        ],
+        "answer": "Los cables triaxiales se utilizan principalmente en redes de fibra óptica para conectividad de larga distancia",
+        "explanation": "Esta afirmación es INCORRECTA. Los cables Twinaxial (Dac) son de cobre, no de fibra, y se utilizan exclusivamente para distancias muy cortas (típicamente dentro de un rack o entre racks adyacentes) debido a sus limitaciones físicas.",
+        "source_reference": "Capítulo 2: Cables y Conectores de Red > Medios de Cobre Especializados"
+    },
+    {
+        "id": 41,
+        "has_context_image": false,
+        "question": "¿Cuál de los siguientes se utiliza para proporcionar energía eléctrica de emergencia durante un corte corto o hasta que una solución a largo plazo pueda entrar en funcionamiento?",
+        "options": [
+            "UPS",
+            "Generador",
+            "HVAC",
+            "PDU"
+        ],
+        "answer": "UPS",
+        "explanation": "Un UPS (Uninterruptible Power Supply) proporciona energía inmediata mediante baterías durante cortes breves o hasta que se puede realizar un apagado ordenado o se activa un generador a largo plazo.",
+        "source_reference": "Capítulo 14: Gestión de Riesgos y Recuperación ante Desastres > Alta Disponibilidad de Energía"
+    },
+    {
+        "id": 42,
+        "has_context_image": false,
+        "question": "¿Qué protocolo de descubrimiento de red permite a los dispositivos anunciar su identidad, capacidades y dispositivos vecinos, facilitando la gestión de la red y la resolución de problemas? (Elija todos los que correspondan)",
+        "options": [
+            "CDP",
+            "LLDP",
+            "SNMP",
+            "FTP",
+            "OSPF",
+            "VLANs"
+        ],
+        "answer": "CDP, LLDP",
+        "explanation": "CDP (Cisco Discovery Protocol) y LLDP (Link Layer Discovery Protocol) son protocolos de Capa 2 diseñados específicamente para el descubrimiento de vecinos e identidad en la red. LLDP es el estándar abierto, mientras que CDP es propietario de Cisco.",
+        "source_reference": "Capítulo 11: Resolución de Problemas de Red > Protocolos de Descubrimiento"
+    },
+    {
+        "id": 43,
+        "has_context_image": false,
+        "question": "¿Qué tipo de servidor DNS mejora la eficiencia de la resolución de nombres almacenando en caché la respuesta a una consulta que ha reenviado previamente a otro servidor, pero no contiene los datos originales?",
+        "options": [
+            "Servidor DNS recursivo",
+            "Servidor DNS primario",
+            "Servidor DNS no autoritativo",
+            "Servidor DNS autoritativo"
+        ],
+        "answer": "Servidor DNS no autoritativo",
+        "explanation": "Un servidor DNS no autoritativo obtiene la información de otros servidores y la almacena en su caché. Cuando responde a un cliente, lo hace basándose en su caché, lo que es eficiente, pero no es la fuente original (autoritativa) de los datos.",
+        "source_reference": "Capítulo 5: Servicios de Red de Capa de Aplicación > Jerarquía de DNS"
+    },
+    {
+        "id": 44,
+        "has_context_image": false,
+        "question": "¿Cuál es el primer flag utilizado en el establecimiento de una conexión TCP o durante el inicio de un saludo de tres vías (three-way handshake) entre dos hosts?",
+        "options": [
+            "SYN",
+            "FIN",
+            "RST",
+            "ACK"
+        ],
+        "answer": "SYN",
+        "explanation": "El proceso de conexión TCP comienza con el flag SYN (Synchronize) enviado por el host que desea iniciar la conexión.",
+        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > Saludo de Tres Vías de TCP"
+    },
+    {
+        "id": 45,
+        "has_context_image": false,
+        "question": "Acaba de terminar de instalar una nueva aplicación web y necesita conectarla a su servidor de base de datos MySQL. ¿Qué puerto debe estar permitido para habilitar las comunicaciones a través de su firewall entre la aplicación web y su servidor de base de datos?",
+        "options": [
+            "1433",
+            "3306",
+            "1521",
+            "3389"
+        ],
+        "answer": "3306",
+        "explanation": "MySQL utiliza por defecto el puerto TCP 3306. (1433 es para MSSQL, 1521 para Oracle y 3389 para RDP).",
+        "source_reference": "Capítulo 4: El Modelo OSI y Protocolos de Red > Puertos Comunes"
+    }
+]

@@ -1,0 +1,72 @@
+[
+    {
+        "id": 76,
+        "has_context_image": false,
+        "question": "¿Qué tecnología de red de almacenamiento utiliza almacenamiento a nivel de archivo para funcionar correctamente?",
+        "options": [
+            "iSCSI",
+            "NAS",
+            "FCoE",
+            "SAN"
+        ],
+        "answer": "NAS",
+        "explanation": "NAS (Network Attached Storage) opera a nivel de archivo y proporciona almacenamiento compartido a través de protocolos de red como NFS o SMB/CIFS. Por el contrario, SAN, iSCSI y FCoE operan a nivel de bloque.",
+        "source_reference": "Capítulo 11: Tecnologías de Almacenamiento en Red > NAS vs SAN"
+    },
+    {
+        "id": 77,
+        "has_context_image": false,
+        "question": "En una configuración de VPN de cliente a sitio, ¿qué tipo de configuración de túnel enruta todo el tráfico, incluido tanto el tráfico de la red corporativa como el tráfico destinado a internet, a través del túnel VPN?",
+        "options": [
+            "Clientless",
+            "Split Tunnel",
+            "Full Tunnel",
+            "Direct Tunnel"
+        ],
+        "answer": "Full Tunnel",
+        "explanation": "Un Full Tunnel enruta todo el tráfico del cliente a través del túnel VPN, incluyendo tanto el acceso a recursos corporativos como el tráfico de internet. Un Split Tunnel, en cambio, solo envía el tráfico dirigido a la red corporativa a través del VPN, mientras que el tráfico de internet va directamente.",
+        "source_reference": "Capítulo 15: Conectividad Remota y VPN > Tipos de Túneles VPN"
+    },
+    {
+        "id": 78,
+        "has_context_image": false,
+        "question": "Acabas de reemplazar el switch perimetral en el segundo piso de Dion Training. Después de terminar, un usuario afirma que ya no puede acceder a la red, pero todo funcionaba bien ayer antes de que reemplazaras el switch. Los compañeros de trabajo del usuario afirman que sus computadoras pueden acceder a la red sin ningún problema. Verificas la parte posterior de la estación de trabajo del usuario y no ves ninguna luz LED encendida o parpadeando en su tarjeta de interfaz de red. ¿Cuál de las siguientes opciones deberías verificar a continuación para resolver este problema?",
+        "options": [
+            "Verificar que el switch esté conectado al router",
+            "Verificar que la tarjeta de interfaz de red esté funcionando correctamente",
+            "Verificar que el cable de red esté conectado al nuevo switch",
+            "Verificar que el dispositivo esté usando el tipo de cable correcto"
+        ],
+        "answer": "Verificar que el cable de red esté conectado al nuevo switch",
+        "explanation": "Como la NIC no muestra luces LED y solo este usuario tiene problemas después del reemplazo del switch, lo más probable es que el cable de red de ese usuario no se haya reconectado correctamente al nuevo switch. Esto es común durante el reemplazo de equipos.",
+        "source_reference": "Capítulo 19: Metodología de Resolución de Problemas > Verificación de Conectividad Física"
+    },
+    {
+        "id": 79,
+        "has_context_image": false,
+        "question": "¿Cuál de los siguientes métodos se utiliza para configurar automáticamente las direcciones de host IPv6?",
+        "options": [
+            "EUI-64",
+            "APIPA",
+            "EIA-568B",
+            "EBCDIC"
+        ],
+        "answer": "EUI-64",
+        "explanation": "EUI-64 (Extended Unique Identifier) es un método que se utiliza en IPv6 para generar automáticamente la porción de identificador de interfaz de una dirección IPv6 basándose en la dirección MAC del dispositivo. APIPA (Automatic Private IP Addressing) es para IPv4, no IPv6.",
+        "source_reference": "Capítulo 7: Direccionamiento IPv6 > Autoconfiguración SLAAC y EUI-64"
+    },
+    {
+        "id": 80,
+        "has_context_image": false,
+        "question": "Te han pedido crear una red donde los visitantes puedan acceder a internet sin interrumpir la intranet propia de la oficina. ¿Cuál de los siguientes tipos de redes deberías crear?",
+        "options": [
+            "Guest network",
+            "MU-MIMO",
+            "Demilitarized zone",
+            "Screened subnet"
+        ],
+        "answer": "Guest network",
+        "explanation": "Una red de invitados (Guest network) proporciona acceso a internet para visitantes mientras los mantiene aislados de la red interna corporativa. Es la solución estándar para este escenario. Una DMZ o screened subnet se usa para servidores públicos, no para acceso de invitados.",
+        "source_reference": "Capítulo 13: Conceptos Avanzados de Red > Segmentación y Redes de Invitados"
+    }
+]

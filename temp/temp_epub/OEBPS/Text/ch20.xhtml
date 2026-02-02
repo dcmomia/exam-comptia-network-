@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="es">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Capítulo 20: Solucionando Problemas Físicos y de Cableado</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 20: Solucionando Problemas Físicos y de Cableado</h1>
+
+        <h2 class="section-title">Introducción: Cuando la Capa 1 Falla</h2>
+        <p>La mayoría de los problemas de red son físicos. Alguien pateó un cable, un ratón mordió la fibra o un
+            conector se oxidó. Antes de culpar al firewall, siempre verifica la Capa 1.</p>
+        <p>En este capítulo, aprenderemos a diagnosticar cables en mal estado, entender qué significan las luces de
+            error en el switch y cómo descifrar las estadísticas de la interfaz.</p>
+
+        <h2 class="section-title">Problemas de Cableado: Los Enemigos Invisibles</h2>
+
+        <h3 class="subsection-title">1. Cables Incorrectos y Estándares de Terminación</h3>
+        <p>El error humano al crimpar cables es una causa frecuente de fallos. Para el examen, debes memorizar el
+            estándar <strong>T568B</strong>, que es el más utilizado comercialmente.</p>
+
+        <div class="important-note">
+            <strong>⚡ Dato Crítico: El Pinout T568B (Memorizar Orden)</strong>
+            <p>Se cuenta del Pin 1 al 8 (de izquierda a derecha, con el clip del conector hacia abajo):</p>
+            <ol>
+                <li>Blanco-Naranja</li>
+                <li>Naranja</li>
+                <li>Blanco-Verde</li>
+                <li>Azul</li>
+                <li>Blanco-Azul</li>
+                <li>Verde</li>
+                <li>Blanco-Marrón</li>
+                <li>Marrón</li>
+            </ol>
+            <p><strong>Regla de Oro:</strong> Si ambos extremos son T568B, es un cable <strong>Directo</strong>
+                (Straight-through). Si un extremo es A y el otro es B, es un cable <strong>Cruzado</strong> (Crossover).
+            </p>
+        </div>
+
+        <ul>
+            <li><strong>Cruzado vs. Directo:</strong> Aunque la mayoría de los switches modernos tienen Auto-MDIX
+                (ajuste automático), conectar dos PCs directamente sin un cable cruzado (Crossover) en equipos viejos
+                hará que no haya enlace.</li>
+            <li><strong>Categoría Incorrecta:</strong> Usar un cable Cat 5 viejo para una conexión de 10 Gbps resultará
+                en una velocidad degradada o enlace caído.</li>
+        </ul>
+
+        <h3 class="subsection-title">2. Daños y Fallos Físicos (Matriz de Diagnóstico)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Problema Sospechado</th>
+                    <th>Descripción Técnica</th>
+                    <th>Herramienta a Usar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Abierto (Open)</strong></td>
+                    <td>El cable está cortado en algún punto. La señal no llega.</td>
+                    <td>Comprobador de cables / TDR</td>
+                </tr>
+                <tr>
+                    <td><strong>Cortocircuito (Short)</strong></td>
+                    <td>Dos hilos de cobre dentro del cable se están tocando. La señal se corrompe.</td>
+                    <td>Comprobador de cables</td>
+                </tr>
+                <tr>
+                    <td><strong>Pinout Incorrecto (Miswire)</strong></td>
+                    <td>Los cables están conectados en el orden incorrecto (ej: el pin 1 va al 3).</td>
+                    <td>Wire Map / Comprobador</td>
+                </tr>
+                <tr>
+                    <td><strong>Transpuesto</strong></td>
+                    <td>Pares cruzados involuntariamente.</td>
+                    <td>Comprobador de cables</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subsection-title">3. Degradación de Señal y Crosstalk</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Problema</th>
+                    <th>Causa</th>
+                    <th>Solución / Herramienta</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Atenuación</b></td>
+                    <td>El cable es demasiado largo (&gt; 100m). La señal se debilita.</td>
+                    <td>Usar repetidores o fibra óptica.</td>
+                </tr>
+                <tr>
+                    <td><b>EMI / RFI</b></td>
+                    <td>Interferencia de motores o luces.</td>
+                    <td>Usar cable blindado (STP).</td>
+                </tr>
+                <tr>
+                    <td><b>Par Dividido (Split Pair)</b></td>
+                    <td>Los hilos de diferentes pares están mezclados. Funciona para datos pero causa errores masivos.
+                    </td>
+                    <td>Mapeador de hilos (Wire Mapper).</td>
+                </tr>
+                <tr>
+                    <td><b>NEXT / FEXT</b></td>
+                    <td>Diafonía en el extremo cercano/lejano. Cables mal trenzados en el conector.</td>
+                    <td>Certificador de cables (Fluke).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="summary-box">
+            <h3>🛠️ Escenario: El Misterio del Cable que "Parece" Estar Bien</h3>
+            <p><b>Caso:</b> Un técnico usa un comprobador de leds barato ($20) y todas las luces (1-8) encienden en
+                orden. Sin embargo, el usuario tiene una conexión intermitente y lenta.</p>
+            <p><b>Diagnóstico:</b> Se trata de un <b>Par Dividido (Split Pair)</b>. El comprobador de leds solo verifica
+                continuidad eléctrica, pero no detecta si se rompió el trenzado de los pares. El trenzado es lo que
+                cancela la interferencia.</p>
+            <p><b>Solución:</b> Recrimpar siguiendo el estándar T568B exacto y verificar con un certificador que mida
+                <b>NEXT (Near-End Crosstalk)</b>.
+            </p>
+        </div>
+
+        <h2 class="section-title">Problemas de Interfaz: Leyendo las Señales</h2>
+        <p>Cuando entras a la consola del switch y escribes <code>show interfaces</code>, verás contadores de errores.
+            Esto es lo que significan:</p>
+
+        <h3 class="subsection-title">1. Errores de Trama</h3>
+        <ul>
+            <li><strong>CRC (Cyclic Redundancy Check):</strong> El paquete llegó, pero corrupto. Indica cable dañado o
+                alta interferencia electromagnética.</li>
+            <li><strong>Runts (Enanos):</strong> Tramas demasiado pequeñas (&lt; 64 bytes). Suelen ser causadas por
+                colisiones excesivas.</li>
+            <li><strong>Giants (Gigantes):</strong> Tramas demasiado grandes (&gt; 1518 bytes). Causado por
+                configuración incorrecta de Jumbo Frames o tarjeta de red defectuosa.</li>
+        </ul>
+
+        <h3 class="subsection-title">2. Estado del Puerto</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Estado</th>
+                    <th>Significado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Up/Up</strong></td>
+                    <td>Todo bien. Capa 1 y 2 funcionando.</td>
+                </tr>
+                <tr>
+                    <td><strong>Up/Down</strong></td>
+                    <td>Capa 1 bien (cable conectado), pero Capa 2 falla (error de protocolo, encapsulación incorrecta).
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Down/Down</strong></td>
+                    <td>Cable desconectado o puerto apagado.</td>
+                </tr>
+                <tr>
+                    <td><strong>Administratively Down</strong></td>
+                    <td>Alguien apagó el puerto manualmente (shutdown).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subsection-title">3. Duplex Mismatch (Desajuste de Dúplex)</h3>
+        <div class="warning-box">
+            <p><strong>⚠️ El error más común y frustrante.</strong></p>
+            <ul>
+                <li><strong>Síntoma:</strong> La conexión funciona, pero es terriblemente lenta. Ves muchos errores de
+                    Colisiones Tardías (Late Collisions) o CRC.</li>
+                <li><strong>Causa:</strong> Un lado está en Full Duplex y el otro en Half Duplex (o Auto fallido).</li>
+                <li><strong>Solución:</strong> Configura ambos lados en "Auto" o ambos lados fijos (ej: 1000/Full).</li>
+            </ul>
+        </div>
+
+        <div class="troubleshooting-update">
+            <h3>Presupuesto de Enlace Óptico (Optical Link Budget)</h3>
+            <p>
+                Para enlaces de fibra óptica, no basta con conectar el cable. Debes calcular si la luz llegará con
+                suficiente fuerza. La fórmula básica es:
+            </p>
+            <p>
+                <em>Potencia de Transmisión (Tx) - Pérdida del Cable - Pérdida de Conectores/Empalmes = Potencia de
+                    Recepción (Rx).</em>
+            </p>
+            <p>
+                Si la señal recibida es demasiado débil (alta atenuación), tendrás pérdida de paquetes. Si es demasiado
+                fuerte (sin atenuadores en distancias cortas), puedes quemar el receptor óptico. El instrumento para
+                medir esto es el <strong>Medidor de Potencia de Luz (Light Meter)</strong>.
+            </p>
+        </div>
+
+        <h2 class="section-title">Problemas de Hardware: Transceptores y Módulos</h2>
+        <p>En fibra óptica, el culpable suele ser el transceptor (SFP/SFP+).</p>
+        <ul>
+            <li><strong>TX/RX Reverse:</strong> Conectaste el hilo de transmisión (TX) al puerto de transmisión del otro
+                lado. (TX debe ir a RX).</li>
+            <li><strong>Dirty Connectors:</strong> Una mota de polvo en la fibra es como una roca en la carretera.
+                Limpia siempre las puntas de fibra.</li>
+            <li><strong>Distancia:</strong> Usar un cable multimodo para una distancia de 2km (requiere monomodo)
+                resultará en pérdida total de señal.</li>
+        </ul>
+
+        <div class="summary-box">
+            <h3>📌 Resumen de Puntos Clave</h3>
+            <ul>
+                <li><strong>Atenuación:</strong> Cable muy largo.</li>
+                <li><strong>EMI:</strong> Cable cerca de fuentes eléctricas.</li>
+                <li><strong>CRC Errors:</strong> Ruido o cable dañado.</li>
+                <li><strong>Duplex Mismatch:</strong> Lentitud extrema y colisiones.</li>
+                <li><strong>Open:</strong> Cable cortado.</li>
+                <li><strong>Short:</strong> Hilos tocándose.</li>
+                <li><strong>Runts/Giants:</strong> Tramas de tamaño ilegal.</li>
+                <li><strong>Pinout T568B:</strong> Blanco-Naranja empieza el par 2.</li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

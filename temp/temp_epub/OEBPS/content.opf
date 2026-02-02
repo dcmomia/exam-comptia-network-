@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package version="3.0" unique-identifier="BookId" xmlns="http://www.idpf.org/2007/opf">
+  <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <dc:identifier id="BookId">urn:uuid:9bf255b0-f2e7-466a-9c1c-d9c6c2dc2301</dc:identifier>
+    <dc:language>es</dc:language>
+    <dc:title>CompTIA Network+ (N10-009) - Guía Completa de Certificación</dc:title>
+    <meta property="dcterms:modified">2026-01-31T09:25:00Z</meta>
+    <meta name="cover" content="PORTADA.jpg"/>
+    <meta name="Sigil version" content="2.7.0"/>
+  </metadata>
+  <manifest>
+    <item id="Section0001.xhtml" href="Text/Section0001.xhtml" media-type="application/xhtml+xml"/>
+    <item id="nav.xhtml" href="Text/nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
+    <item id="anillo.png" href="Images/anillo.png" media-type="image/png"/>
+    <item id="bus.png" href="Images/bus.png" media-type="image/png"/>
+    <item id="encap.png" href="Images/encap.png" media-type="image/png"/>
+    <item id="estrella.png" href="Images/estrella.png" media-type="image/png"/>
+    <item id="Hanshake.png" href="Images/Hanshake.png" media-type="image/png"/>
+    <item id="hibryd.jpg" href="Images/hibryd.jpg" media-type="image/jpeg"/>
+    <item id="hub.png" href="Images/hub.png" media-type="image/png"/>
+    <item id="ids.png" href="Images/ids.png" media-type="image/png"/>
+    <item id="malla.png" href="Images/malla.png" media-type="image/png"/>
+    <item id="nemotec.jpg" href="Images/nemotec.jpg" media-type="image/jpeg"/>
+    <item id="osi.png" href="Images/osi.png" media-type="image/png"/>
+    <item id="pdu.png" href="Images/pdu.png" media-type="image/png"/>
+    <item id="pizza.png" href="Images/pizza.png" media-type="image/png"/>
+    <item id="PORTADA.jpg" href="Images/PORTADA.jpg" media-type="image/jpeg" properties="cover-image"/>
+    <item id="vpn.png" href="Images/vpn.png" media-type="image/png"/>
+    <item id="styles.css" href="Styles/styles.css" media-type="text/css"/>
+    <item id="apendice.xhtml" href="Text/apendice.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch1.xhtml" href="Text/ch1.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch2.xhtml" href="Text/ch2.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch3.xhtml" href="Text/ch3.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch4.xhtml" href="Text/ch4.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch5.xhtml" href="Text/ch5.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch6.xhtml" href="Text/ch6.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch7.xhtml" href="Text/ch7.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch8.xhtml" href="Text/ch8.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch9.xhtml" href="Text/ch9.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch10.xhtml" href="Text/ch10.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch11.xhtml" href="Text/ch11.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch12.xhtml" href="Text/ch12.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch13.xhtml" href="Text/ch13.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch14.xhtml" href="Text/ch14.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch15.xhtml" href="Text/ch15.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch16.xhtml" href="Text/ch16.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch17.xhtml" href="Text/ch17.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch18.xhtml" href="Text/ch18.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch19.xhtml" href="Text/ch19.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch20.xhtml" href="Text/ch20.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch21.xhtml" href="Text/ch21.xhtml" media-type="application/xhtml+xml"/>
+    <item id="ch22.xhtml" href="Text/ch22.xhtml" media-type="application/xhtml+xml"/>
+    <item id="cover.xhtml" href="Text/cover.xhtml" media-type="application/xhtml+xml"/>
+    <item id="feedback.xhtml" href="Text/feedback.xhtml" media-type="application/xhtml+xml"/>
+    <item id="glosario.xhtml" href="Text/glosario.xhtml" media-type="application/xhtml+xml"/>
+    <item id="intro.xhtml" href="Text/intro.xhtml" media-type="application/xhtml+xml"/>
+  </manifest>
+  <spine>
+    <itemref idref="Section0001.xhtml"/>
+    <itemref idref="cover.xhtml"/>
+    <itemref idref="nav.xhtml" linear="no"/>
+    <itemref idref="intro.xhtml"/>
+    <itemref idref="ch1.xhtml"/>
+    <itemref idref="ch2.xhtml"/>
+    <itemref idref="ch3.xhtml"/>
+    <itemref idref="ch4.xhtml"/>
+    <itemref idref="ch5.xhtml"/>
+    <itemref idref="ch6.xhtml"/>
+    <itemref idref="ch7.xhtml"/>
+    <itemref idref="ch8.xhtml"/>
+    <itemref idref="ch9.xhtml"/>
+    <itemref idref="ch10.xhtml"/>
+    <itemref idref="ch11.xhtml"/>
+    <itemref idref="ch12.xhtml"/>
+    <itemref idref="ch13.xhtml"/>
+    <itemref idref="ch14.xhtml"/>
+    <itemref idref="ch15.xhtml"/>
+    <itemref idref="ch16.xhtml"/>
+    <itemref idref="ch17.xhtml"/>
+    <itemref idref="ch18.xhtml"/>
+    <itemref idref="ch19.xhtml"/>
+    <itemref idref="ch20.xhtml"/>
+    <itemref idref="ch21.xhtml"/>
+    <itemref idref="ch22.xhtml"/>
+    <itemref idref="feedback.xhtml"/>
+    <itemref idref="glosario.xhtml"/>
+    <itemref idref="apendice.xhtml"/>
+  </spine>
+</package>

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" xml:lang="es" lang="es">
+<head>
+    
+    <title>Capítulo 6: Dominando el Direccionamiento IPv4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 6: Dominando el Direccionamiento IPv4</h1>
+
+        <h2>Introducción: El Sistema de Identificación</h2>
+        <p>Hasta ahora hemos hablado de cables, switches y routers como los componentes físicos que permiten que los
+            datos viajen de un lugar a otro. Pero si conectas todo ese hardware, los dispositivos no podrán comunicarse
+            entre sí sin un sistema de identificación único. En la Capa 3 del modelo OSI, ese sistema de identificación
+            es la Dirección IP (Internet Protocol). La dirección IP es como la dirección postal de tu dispositivo: le
+            indica a la red dónde está ubicado y cómo alcanzarlo para entregarle los datos destinados a él.</p>
+
+        <p>Aunque el mundo de las redes está migrando gradualmente hacia IPv6 (que abordaremos más adelante), IPv4 sigue
+            siendo el rey indiscutible de las redes corporativas, domésticas y de Internet en general. Una dirección
+            IPv4 es una serie de 32 bits que los humanos escribimos como cuatro números decimales separados por puntos,
+            como por ejemplo 192.168.1.50. Cada uno de estos cuatro números, llamados octetos porque representan 8 bits
+            cada uno, puede variar desde 0 hasta 255, lo que da un espacio de direcciones total de aproximadamente 4.300
+            millones de direcciones únicas.</p>
+
+        <p>En este capítulo, aprenderás a distinguir una dirección pública de una privada, a identificar a qué «clase»
+            pertenece una IP según su valor, y dominarás el arte del subnetting: la habilidad de dividir redes grandes
+            en subredes más pequeñas y manejables. El subnetting es probablemente el tema más temido por muchos
+            estudiantes de redes, pero con la práctica adecuada y las técnicas correctas, puede convertirse en tu
+            herramienta más poderosa tanto para el examen como para tu carrera profesional.</p>
+
+        <h2>Direcciones Públicas vs. Privadas</h2>
+        <p>No todas las direcciones IP pueden navegar libremente por Internet. El diseño de IPv4 incluye una distinción
+            fundamental entre direcciones que son globalmente únicas y enrutables en Internet, y direcciones reservadas
+            para uso interno que no pueden salir a la red pública sin traducción.</p>
+
+        <h3>Direcciones Públicas</h3>
+        <p>Las direcciones públicas son como tu número de teléfono real: son únicas en todo el mundo y te permiten
+            comunicarte directamente con cualquier persona en Internet que también tenga una dirección pública. Estas
+            direcciones son asignadas por tu Proveedor de Servicios de Internet (ISP) y cuestan dinero, ya que el
+            espacio de direcciones IPv4 es un recurso finito y preciado que actualmente está prácticamente agotado. Cada
+            servidor web que visitas, cada servicio online que utilizas, tiene una dirección IP pública que lo
+            identifica en el mundo.</p>
+
+        <h3>Direcciones Privadas (RFC 1918)</h3>
+        <p>Las direcciones privadas son como los números de extensión internos de una oficina: funcionan perfectamente
+            para comunicarte con otros dentro de tu organización, pero no pueden usarse para llamar directamente a
+            alguien fuera de tu edificio. El estándar RFC 1918 define tres rangos de direcciones reservadas
+            exclusivamente para uso en redes privadas internas. Estas direcciones no son enrutables en Internet, lo que
+            significa que si un paquete tiene una dirección IP privada como origen o destino, los routers de Internet lo
+            descartarán automáticamente.</p>
+
+        <p>Debes memorizar estos tres rangos porque son absolutamente fundamentales para cualquier diseño de red:</p>
+
+        <ul>
+            <li><strong>Clase A (Grandes organizaciones):</strong> El rango 10.0.0.0 a 10.255.255.255 proporciona más de
+                16 millones de direcciones privadas. Es ideal para organizaciones grandes, universidades, o cualquier
+                red que anticipe crecimiento significativo.</li>
+            <li><strong>Clase B (Organizaciones medianas):</strong> El rango 172.16.0.0 a 172.31.255.255 proporciona
+                aproximadamente un millón de direcciones. A diferencia de la Clase A que usa el primer octeto, aquí el
+                segundo octeto también varía, creando 16 redes de tamaño /16 cada una.</li>
+            <li><strong>Clase C (Pequeñas oficinas y hogares):</strong> El rango 192.168.0.0 a 192.168.255.255
+                proporciona 256 redes de 254 hosts cada una (tamaño /24). Es el rango más común en hogares y pequeñas
+                oficinas donde típicamente se usa 192.168.1.0/24 o 192.168.0.0/24.</li>
+        </ul>
+
+        <h3>La Pregunta del Millón: ¿Cómo Navegamos con IPs Privadas?</h3>
+        <p>Si tus dispositivos tienen direcciones privadas que no son enrutables en Internet, ¿cómo puedes navegar por
+            la web o usar aplicaciones online? La respuesta está en NAT (Network Address Translation), que explicaremos
+            en detalle en el capítulo de enrutamiento. Simplificando, tu router tiene una dirección IP pública asignada
+            por tu ISP. Cuando tu computadora quiere acceder a un sitio web, el router toma la petición, reemplaza la IP
+            privada de origen con su propia IP pública, y registra esta traducción. Cuando la respuesta vuelve, el
+            router invierte la traducción y entrega los datos a tu computadora. Desde la perspectiva del servidor web,
+            está hablando con tu router, no con tu computadora directamente.</p>
+
+        <h3>Direcciones Especiales</h3>
+        <p>Además de las direcciones públicas y privadas, existen direcciones con significados específicos que debes
+            conocer:</p>
+
+        <ul>
+            <li><strong>Loopback (127.0.0.0/8):</strong> La dirección 127.0.0.1 es la dirección de «yo mismo»
+                (localhost). Cuando haces ping a 127.0.0.1, estás probando la pila de red de tu propia máquina. El rango
+                completo 127.0.0.0/8 está reservado para loopback; cualquier dirección en este rango apunta al
+                dispositivo local. Es utilizada para pruebas y para comunicaciones entre aplicaciones en el mismo
+                servidor.</li>
+            <li><strong>APIPA (Automatic Private IP Addressing - 169.254.0.0/16):</strong> Si tu computadora no puede
+                contactar a un servidor DHCP para obtener una dirección IP, Windows se asigna automáticamente una
+                dirección de este rango. Ver una dirección como 169.254.10.55 significa que hay un problema: tu
+                computadora no pudo obtener configuración IP automáticamente. Las direcciones APIPA solo permiten
+                comunicación con otros dispositivos que también tienen direcciones APIPA, lo que es inútil para acceder
+                a Internet o a la mayoría de recursos de red. Este es un «regalo» del examen: si ves 169.254.x.x, el
+                problema es fallo de DHCP.</li>
+            <li><strong>Direcciones Link-Local (169.254.0.0/16):</strong> Aunque técnicamente diferentes de APIPA, el
+                rango 169.254.0.0/16 también se usa para direcciones link-local en algunos sistemas cuando no hay DHCP
+                disponible. El resultado es el mismo: comunicación local limitada pero sin acceso a la red más amplia.
+            </li>
+        </ul>
+
+        <h2>Clases de Direcciones IPv4</h2>
+        <p>Históricamente, las direcciones IPv4 se dividían en «clases» rígidas según el tamaño de la red. Aunque el
+            sistema moderno de CIDR (que explicaremos pronto) ha hecho que estas clases sean menos relevantes para el
+            direccionamiento diario, el examen CompTIA Network+ todavía espera que conozcas las clases A, B, C, D y E.
+        </p>
+
+        <p>La clase se determina mirando el primer octeto de la dirección:</p>
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Clase</th>
+                    <th scope="col">Rango del Primer Octeto</th>
+                    <th scope="col">Máscara por Defecto</th>
+                    <th scope="col">Bits de Red/Host</th>
+                    <th scope="col">Uso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A</td>
+                    <td>1 - 126</td>
+                    <td>255.0.0.0 (/8)</td>
+                    <td>8 / 24</td>
+                    <td>Redes muy grandes</td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>128 - 191</td>
+                    <td>255.255.0.0 (/16)</td>
+                    <td>16 / 16</td>
+                    <td>Redes medianas</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>192 - 223</td>
+                    <td>255.255.255.0 (/24)</td>
+                    <td>24 / 8</td>
+                    <td>Redes pequeñas</td>
+                </tr>
+                <tr>
+                    <td>D (Multicast)</td>
+                    <td>224 - 239</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>Comunicación de grupo</td>
+                </tr>
+                <tr>
+                    <td>E (Experimental)</td>
+                    <td>240 - 255</td>
+                    <td>N/A</td>
+                    <td>N/A</td>
+                    <td>Reservado para experimentación</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="important-note">
+            <p><strong>Nota importante:</strong> El rango 127 está reservado para loopback, por lo que no existe la
+                «Clase A» 127.x.x.x. Esto es frecuentemente una pregunta de examen.</p>
+        </div>
+
+        <h3>Direcciones de Red y Broadcast</h3>
+        <p>Dentro de cada red, hay dos direcciones especiales que no pueden asignarse a dispositivos individuales. La
+            primera es la dirección de red, que tiene todos los bits de host en 0 y representa a la red misma. La
+            segunda es la dirección de broadcast, que tiene todos los bits de host en 1 y se usa para enviar datos a
+            todos los dispositivos de la red simultáneamente. Por ejemplo, en la red 192.168.1.0/24, la dirección de red
+            es 192.168.1.0 y la dirección de broadcast es 192.168.1.255. Ninguna puede asignarse a un host.</p>
+
+        <h2>El Arte del Subnetting (Subredes)</h2>
+        <p>Aquí es donde muchos estudiantes se bloquean. Respira hondo: el subnetting no es magia ni matemática
+            avanzada; es simplemente tomar una red grande y cortarla en trozos más pequeños y manejables. Al igual que
+            una ciudad grande se divide en barrios con nombres y límites claros, las grandes redes IP se subdividen en
+            subredes con propósitos específicos.</p>
+
+        <h3>¿Por Qué Hacemos Subnetting?</h3>
+        <p>La división en subredes proporciona múltiples beneficios críticos para el diseño y administración de redes:
+        </p>
+
+        <ul>
+            <li><strong>Seguridad:</strong> Las subredes permiten aislar departamentos o funciones. Los usuarios de
+                Recursos Humanos no pueden ver ni comunicarse directamente con los de Ventas, lo que protege información
+                sensible y limita el movimiento lateral de un atacante que comprometiera un dispositivo.</li>
+            <li><strong>Rendimiento:</strong> El tráfico de broadcast (mensajes destinados a todos los dispositivos de
+                la red) está contenido dentro de cada subred. Si tienes 1000 dispositivos en una sola red /16, cada
+                broadcast llega a todos los 1000. Si los divides en 4 subredes /18 de 250 dispositivos cada una, un
+                broadcast solo llega a 250 dispositivos, reduciendo dramáticamente el ruido de red.</li>
+            <li><strong>Eficiencia en el uso de direcciones:</strong> Sin subnetting, si una empresa necesita 50
+                direcciones para el departamento de Contabilidad, tendría que asignar una red completa de 254
+                direcciones (/24), desperdiciando más de 200 direcciones. Con subnetting, puedes asignar exactamente la
+                cantidad necesaria.</li>
+        </ul>
+
+        <h3>La Máscara de Subred</h3>
+        <p>La máscara de subred es un número de 32 bits que le dice al router dónde termina la parte de «red» de una
+            dirección IP y dónde empieza la parte de «host». En una máscara, los bits de red son 1s y los bits de host
+            son 0s. Por ejemplo, la máscara 255.255.255.0 significa que los primeros tres octetos (24 bits) son la red y
+            el último octeto (8 bits) es el host.</p>
+
+        <p>Cuando un router recibe un paquete con destino 192.168.1.50 y una máscara 255.255.255.0, aplica la máscara
+            (hace una operación AND lógica) para obtener la dirección de red: 192.168.1.0. El router consulta su tabla
+            de enrutamiento para ver si sabe cómo llegar a la red 192.168.1.0, y si la tiene como una red directamente
+            conectada, envía el paquete al dispositivo específico dentro de esa red.</p>
+
+        <h3>CIDR (Classless Inter-Domain Routing)</h3>
+        <p>Escribir máscaras como 255.255.255.0 es largo e inconveniente. CIDR nos permite usar una notación abreviada
+            llamada «notación de barra» donde escribimos una barra seguida del número de bits que corresponden a la
+            parte de red.</p>
+
+        <p>Así, las equivalencias fundamentales son:</p>
+        <ul>
+            <li>255.0.0.0 = /8 (8 bits de red, 24 bits de host)</li>
+            <li>255.255.0.0 = /16 (16 bits de red, 16 bits de host)</li>
+            <li>255.255.255.0 = /24 (24 bits de red, 8 bits de host)</li>
+        </ul>
+
+        <p>Cada vez que agregas un 1 a la máscara (aumentas el prefijo), reduces el número de bits de host disponibles y
+            por tanto reduces el número de hosts que pueden existir en esa red.</p>
+
+        <h3>La Regla de Oro del Subnetting</h3>
+        <p>Cada vez que pides prestado 1 bit para crear subredes adicionales, ocurren dos cosas:</p>
+        <ul>
+            <li>Duplicas el número de subredes disponibles.</li>
+            <li>Reduces a la mitad el número de hosts (dispositivos) por subred.</li>
+        </ul>
+
+        <p>Esto es binomial: si pides 1 bit, obtienes 2 subredes (2¹). Si pides 2 bits, obtienes 4 subredes (2²). Si
+            pides 3 bits, obtienes 8 subredes (2³). Simultáneamente, si tienes 8 bits de host (/24) y pides 1 bit para
+            subnetting, te quedan 7 bits de host, lo que permite 2⁷-2 = 126 hosts en lugar de 254.</p>
+
+
+        <h3>Tabla de Referencia Rápida de Subnetting</h3>
+        <p>Basado en una red Clase C original (/24 con 256 IPs totales):</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Prefijo</th>
+                    <th scope="col">Máscara</th>
+                    <th scope="col">Subredes</th>
+                    <th scope="col">Hosts por Subred</th>
+                    <th scope="col">Uso Típico</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>/25</td>
+                    <td>255.255.255.128</td>
+                    <td>2</td>
+                    <td>126</td>
+                    <td>Subred grande</td>
+                </tr>
+                <tr>
+                    <td>/26</td>
+                    <td>255.255.255.192</td>
+                    <td>4</td>
+                    <td>62</td>
+                    <td>Subred mediana</td>
+                </tr>
+                <tr>
+                    <td>/27</td>
+                    <td>255.255.255.224</td>
+                    <td>8</td>
+                    <td>30</td>
+                    <td>Grupo de trabajo pequeño</td>
+                </tr>
+                <tr>
+                    <td>/28</td>
+                    <td>255.255.255.240</td>
+                    <td>16</td>
+                    <td>14</td>
+                    <td>Grupo muy pequeño</td>
+                </tr>
+                <tr>
+                    <td>/29</td>
+                    <td>255.255.255.248</td>
+                    <td>32</td>
+                    <td>6</td>
+                    <td>Enlace punto a punto</td>
+                </tr>
+                <tr>
+                    <td>/30</td>
+                    <td>255.255.255.252</td>
+                    <td>64</td>
+                    <td>2</td>
+                    <td>Solo 2 hosts (enlace entre routers)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="important-note">
+            <p><strong>Nota importante:</strong> Siempre restamos 2 direcciones: la primera (dirección de red) y la
+                última (dirección de broadcast). Por eso, una red /30 es perfecta para conectar dos routers: solo
+                necesitas 2 IPs utilizables, y /30 proporciona exactamente eso.</p>
+        </div>
+
+        <h3>Fórmula de Hosts Usables</h3>
+        <p>La fórmula general para calcular cuántos hosts (dispositivos) pueden tener una dirección IP válida en una red
+            es:</p>
+
+        <p class="text-center"><code>Hosts usables = 2^(número de bits de host) - 2</code></p>
+
+        <p>Donde el «-2» representa la dirección de red y la dirección de broadcast que no pueden asignarse a hosts. Por
+            ejemplo, en una red /24:</p>
+        <p class="text-center"><code>2^8 - 2 = 256 - 2 = 254 hosts usables</code></p>
+
+        <p>En una red /26:</p>
+        <p class="text-center"><code>2^(32-26) - 2 = 2^6 - 2 = 64 - 2 = 62 hosts usables</code></p>
+
+        <h3>VLSM (Variable Length Subnet Mask)</h3>
+        <p>Antiguamente, todas las subredes dentro de una organización tenían que ser del mismo tamaño. Si necesitabas
+            redes de 50 hosts y redes de 10 hosts, tenías que asignar a ambas el tamaño /26 (62 hosts), desperdiciando
+            direcciones en las redes pequeñas. VLSM permite crear subredes de diferentes tamaños dentro del mismo
+            espacio de direcciones, optimizando el uso de direcciones IP.</p>
+
+        <p>Imagina un edificio con 50 personas en Ventas y solo 2 personas en IT. Sin VLSM, tendrías que asignar a ambos
+            departamentos una red /26 (62 hosts), desperdiciando 60 direcciones en IT. Con VLSM, le das una red /26 a
+            Ventas (62 hosts disponibles) y una /30 a IT (2 hosts utilizables), que es exactamente lo que necesitan. Es
+            «subnetting a medida» que maximiza la eficiencia del espacio de direcciones.</p>
+        <div class="summary-box">
+            <h3>Resumen de Puntos Clave para el Examen</h3>
+
+            <h4>1. Clases de Direcciones IPv4 (Address Classes)</h4>
+            <table class="port-table">
+                <tbody>
+                    <tr>
+                        <th>Clase</th>
+                        <th>Rango (1er Octeto)</th>
+                        <th>Uso / Notas</th>
+                    </tr>
+                    <tr>
+                        <td><strong>A</strong></td>
+                        <td>1 - 126</td>
+                        <td>Redes muy grandes (/8 por defecto).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B</strong></td>
+                        <td>128 - 191</td>
+                        <td>Redes medianas (/16 por defecto).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C</strong></td>
+                        <td>192 - 223</td>
+                        <td>Redes pequeñas (/24 por defecto).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>D</strong></td>
+                        <td>224 - 239</td>
+                        <td><strong>Multicast</strong> (Uno a un grupo).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>E</strong></td>
+                        <td>240 - 255</td>
+                        <td><strong>Experimental</strong> / I+D.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><em>Nota: El 127.x.x.x se salta porque está reservado para Loopback.</em></p>
+
+            <h4>2. Tipos de Direcciones Especiales</h4>
+            <ul>
+                <li><strong>Pública vs. Privada:</strong> Las Públicas son enrutables en Internet. Las Privadas
+                    <strong>(RFC 1918)</strong> son para uso interno (LAN) y requieren NAT para salir a Internet.
+                    <ul>
+                        <li>Clase A Privada: <code>10.0.0.0 - 10.255.255.255</code></li>
+                        <li>Clase B Privada: <code>172.16.0.0 - 172.31.255.255</code></li>
+                        <li>Clase C Privada: <code>192.168.0.0 - 192.168.255.255</code></li>
+                    </ul>
+                </li>
+                <li><strong>Loopback:</strong> <code>127.0.0.1</code>. Se usa para probar la pila TCP/IP de la propia
+                    máquina (localhost).</li>
+                <li><strong>APIPA (Link-Local):</strong> <code>169.254.x.x</code>. Se asigna automáticamente cuando el
+                    cliente <strong>no puede contactar al servidor DHCP</strong>. Permite comunicación solo en la red
+                    local.</li>
+            </ul>
+
+            <h4>3. Subnetting (CIDR y VLSM)</h4>
+            <ul>
+                <li><strong>CIDR:</strong> (Classless Inter-Domain Routing). Usa la notación de barra (ej: /24) en lugar
+                    de clases rígidas para definir la máscara.</li>
+                <li><strong>VLSM:</strong> (Variable Length Subnet Masking). Permite usar diferentes máscaras para
+                    subredes de distintos tamaños dentro de la misma red (optimiza el espacio IP).</li>
+                <li><strong>Fórmula de Hosts Usables:</strong> <code>2^h - 2</code> (donde 'h' son los bits de host; se
+                    restan 2 por la ID de Red y el Broadcast).</li>
+            </ul>
+
+            <table class="port-table">
+                <tbody>
+                    <tr>
+                        <th>CIDR</th>
+                        <th>Hosts Totales</th>
+                        <th>Hosts Usables (-2)</th>
+                        <th>Uso Típico</th>
+                    </tr>
+                    <tr>
+                        <td><strong>/24</strong></td>
+                        <td>256</td>
+                        <td><strong>254</strong></td>
+                        <td>LAN Estándar.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>/25</strong></td>
+                        <td>128</td>
+                        <td><strong>126</strong></td>
+                        <td>Dividir LAN en 2.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>/26</strong></td>
+                        <td>64</td>
+                        <td><strong>62</strong></td>
+                        <td>Departamentos medianos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>/27</strong></td>
+                        <td>32</td>
+                        <td><strong>30</strong></td>
+                        <td>Oficinas pequeñas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>/28</strong></td>
+                        <td>16</td>
+                        <td><strong>14</strong></td>
+                        <td>Grupos pequeños.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>/29</strong></td>
+                        <td>8</td>
+                        <td><strong>6</strong></td>
+                        <td>Subredes muy pequeñas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>/30</strong></td>
+                        <td>4</td>
+                        <td><strong>2</strong></td>
+                        <td>Enlaces punto a punto (Router a Router).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Consejo del Instructor:</strong> En el examen, si te presentan un escenario donde «la computadora
+                tiene la dirección IP <strong>169.254.x.x</strong> y no puede acceder a Internet», la respuesta correcta
+                será siempre relacionada con un <strong>Fallo del servidor DHCP</strong> o problemas de conectividad con
+                este.</p>
+        </div>
+    </section>
+</body>
+</html>

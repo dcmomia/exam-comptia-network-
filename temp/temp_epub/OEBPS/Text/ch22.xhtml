@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+    <title>Capítulo 22: Herramientas del Oficio: Hardware y Software</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 22: Herramientas del Oficio: Hardware y Software</h1>
+        
+        <h2 class="section-title">Introducción: El Kit Esencial del Administrador</h2>
+        <p>Un buen mecánico no arregla un motor con las manos vacías; necesita llaves y destornilladores. Un administrador de red necesita su propio kit de herramientas.</p>
+        <p>Para el examen N10-009, debes saber exactamente qué herramienta usar para cada situación. Usar un multímetro para probar un problema de DNS es tan inútil como usar un martillo para cortar papel.</p>
+
+        <h2 class="section-title">Herramientas de Software (Comandos): La Navaja Suiza</h2>
+        <p>Estos comandos deben estar grabados en tu memoria muscular. El examen no solo te preguntará qué hace el comando, sino qué <strong>bandera (flag)</strong> específica necesitas para una tarea concreta.</p>
+
+        <h3 class="subsection-title">Diagnóstico Básico y Conectividad</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Comando</th>
+                    <th>Banderas Clave (Windows / Linux)</th>
+                    <th>Escenario de Uso</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>ping</code></td>
+                    <td>
+                        <strong>-t</strong> (Win): Ping infinito.<br/>
+                        <strong>-n [num]</strong> (Win) / <strong>-c [num]</strong> (Linux): Número fijo de pings.<br/>
+                        <strong>-6</strong>: Forzar IPv6.
+                    </td>
+                    <td>Verificar conectividad básica y latencia (RTT). <br/><em>Orden lógico:</em> 1. Loopback (127.0.0.1) -&gt; 2. IP Local -&gt; 3. Gateway -&gt; 4. IP Externa (8.8.8.8) -&gt; 5. Nombre DNS.</td>
+                </tr>
+                <tr>
+                    <td><code>tracert</code> (Win)<br/><code>traceroute</code> (Linux)</td>
+                    <td><strong>-d</strong> (Win) / <strong>-n</strong> (Linux): No resolver nombres (más rápido).</td>
+                    <td>Muestra cada salto (router). Si ves asteriscos (<code>* * *</code>), indica un firewall bloqueando ICMP o un fallo en ese punto de la ruta.</td>
+                </tr>
+                <tr>
+                    <td><code>ipconfig</code> (Win)<br/><code>ip a</code> o <code>ifconfig</code> (Linux)</td>
+                    <td>
+                        <strong>/all</strong>: Muestra MAC, DNS y DHCP.<br/>
+                        <strong>/release</strong> y <strong>/renew</strong>: Renovar IP.<br/>
+                        <strong>/flushdns</strong>: Borrar caché DNS.
+                    </td>
+                    <td>Verificar configuración IP local. Si ves una IP que empieza por <strong>169.254.x.x</strong>, es una dirección APIPA (Fallo de DHCP).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subsection-title">Análisis de Conexiones: Netstat</h3>
+        <p>El comando <code>netstat</code> es vital para la seguridad del host. Permite auditar qué conexiones están establecidas y qué puertos están "escuchando".</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bandera</th>
+                    <th>Función</th>
+                    <th>Importancia para el Examen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>-a</code></td>
+                    <td><strong>All:</strong> Muestra todas las conexiones y puertos de escucha.</td>
+                    <td>Para ver qué puertos están abiertos.</td>
+                </tr>
+                <tr>
+                    <td><code>-n</code></td>
+                    <td><strong>Numerical:</strong> Muestra IPs y puertos numéricos (no resuelve nombres).</td>
+                    <td>Mucho más rápido que el estándar.</td>
+                </tr>
+                <tr>
+                    <td><code>-o</code></td>
+                    <td><strong>Owner:</strong> Muestra el PID (Process ID) dueño de la conexión.</td>
+                    <td><strong>Crítico</strong> para detectar malware.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="scenario-box">
+            <h4>🛡️ Escenario de Seguridad: Detectando Malware con Netstat</h4>
+            <p><strong>Problema:</strong> El ordenador va lento y sospechas que un malware está enviando datos, pero no tienes un antivirus a mano.</p>
+            <p><strong>Solución Manual:</strong></p>
+            <ol>
+                <li>Ejecuta <code>netstat -ano</code>. Busca conexiones en estado <em>ESTABLISHED</em> hacia IPs extrañas.</li>
+                <li>Identifica el <strong>PID</strong> (ej. 4022) asociado a esa conexión sospechosa.</li>
+                <li>Ejecuta <code>tasklist</code> (en Windows) o <code>ps</code> (en Linux) para ver qué nombre de programa corresponde al PID 4022.</li>
+                <li>Si el nombre es sospechoso (ej. <em>juego_crack.exe</em>), finaliza el proceso (<code>taskkill</code> o <code>kill</code>).</li>
+            </ol>
+        </div>
+
+        <h3 class="subsection-title">Escaneo y Análisis Avanzado (Nmap y Sniffers)</h3>
+        <p>Estas herramientas se utilizan para auditoría de seguridad y diagnósticos profundos.</p>
+        
+        <h4>Nmap (Network Mapper) - Banderas Esenciales</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Bandera</th>
+                    <th>Nombre Técnico</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>-sn</code></td>
+                    <td>Ping Scan</td>
+                    <td>Solo descubre qué hosts están vivos (sin escanear puertos).</td>
+                </tr>
+                <tr>
+                    <td><code>-sS</code></td>
+                    <td>SYN Scan (Stealth)</td>
+                    <td><strong>El más usado.</strong> Envía un paquete SYN y no completa la conexión (evita logs simples). Requiere permisos de root/admin.</td>
+                </tr>
+                <tr>
+                    <td><code>-O</code></td>
+                    <td>OS Detection</td>
+                    <td>Intenta adivinar el Sistema Operativo del objetivo (ej. "Linux Kernel 4.0").</td>
+                </tr>
+                <tr>
+                    <td><code>-p</code></td>
+                    <td>Port Specification</td>
+                    <td>Escanea puertos específicos (ej. <code>-p 80,443</code>).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h4>Captura de Paquetes (Packet Sniffing)</h4>
+        <ul>
+            <li><strong>Wireshark:</strong> Herramienta gráfica para análisis profundo. Ideal para ver el contenido del paquete (si no está cifrado) y diagnosticar problemas de aplicación.</li>
+            <li><strong>Tcpdump:</strong> Herramienta de línea de comandos (Linux). Ideal para servidores sin interfaz gráfica.
+                <ul>
+                    <li><code>tcpdump -i eth0</code>: Escuchar en la interfaz eth0.</li>
+                    <li><code>tcpdump -w captura.pcap</code>: <strong>Write</strong>. Guarda el tráfico en un archivo para analizarlo luego en Wireshark.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2 class="section-title">Herramientas de Hardware: El Maletín Físico</h2>
+        <p>Cuando el problema es físico (Capa 1), el software no te ayudará. Debes elegir la herramienta correcta según el medio (cobre o fibra).</p>
+
+        <h3 class="subsection-title">Diagnóstico de Cobre</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Herramienta</th>
+                    <th>Función Principal</th>
+                    <th>Palabra Clave en Examen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Probador de Cables (Cable Tester)</strong></td>
+                    <td>Verifica continuidad básica (mapa de cableado).</td>
+                    <td>"Open", "Short", "Crossed pair", "Wiremap".</td>
+                </tr>
+                <tr>
+                    <td><strong>TDR (Time Domain Reflectometer)</strong></td>
+                    <td>Localiza la distancia exacta hasta una rotura en el cable.</td>
+                    <td>"Metros hasta el fallo", "Cable cortado en la pared".</td>
+                </tr>
+                <tr>
+                    <td><strong>Certificador</strong></td>
+                    <td>Valida la velocidad y categoría (Cat 5e/6/6a). Mide diafonía y atenuación.</td>
+                    <td>"Validar ancho de banda", "Informe de certificación".</td>
+                </tr>
+                <tr>
+                    <td><strong>Generador de Tonos (Fox and Hound)</strong></td>
+                    <td>Localiza un cable físico en un mazo desordenado mediante sonido.</td>
+                    <td>"Sonda", "Cable perdido", "Sin etiqueta".</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subsection-title">Diagnóstico de Fibra Óptica</h3>
+        <div class="important-note">
+            <strong>⚠️ Diferencia Crítica:</strong> No confundas el OTDR con el Medidor de Luz.
+            <ul>
+                <li><strong>OTDR (Optical TDR):</strong> Te dice <em>dónde</em> está el fallo (distancia). Encuentra roturas o empalmes malos.</li>
+                <li><strong>Medidor de Luz (Optical Power Meter):</strong> Te dice <em>cuánta</em> señal se pierde (dB). Mide la atenuación total del enlace.</li>
+            </ul>
+        </div>
+
+        <h3 class="subsection-title">Otras Herramientas Esenciales</h3>
+        <ul>
+            <li><strong>Loopback Plug:</strong> Un conector "falso" que devuelve la señal a la tarjeta de red. Sirve para probar si el <strong>puerto físico (NIC)</strong> está dañado cuando el sistema operativo dice "Cable desconectado" pero el cable está bien.</li>
+            <li><strong>Analizador de Espectro Wi-Fi:</strong> Detecta interferencias no-WiFi (microondas, bluetooth) y mide la relación Señal/Ruido (SNR).</li>
+            <li><strong>Empalmadora de Fusión (Fusion Splicer):</strong> Une permanentemente dos hilos de fibra rota fundiendo el vidrio. Es la reparación de mayor calidad para cortes de fibra.</li>
+        </ul>
+
+        <div class="summary-box">
+            <h3>📌 Resumen de Puntos Clave</h3>
+            <ul>
+                <li><strong>Ping:</strong> Conectividad básica.</li>
+                <li><strong>Tracert:</strong> Identificar el router donde se corta el tráfico.</li>
+                <li><strong>Ipconfig:</strong> Verificar IP, Gateway y detectar APIPA.</li>
+                <li><strong>Nslookup/Dig:</strong> Problemas de resolución de nombres (DNS).</li>
+                <li><strong>Netstat -ano:</strong> Detectar conexiones sospechosas y malware.</li>
+                <li><strong>Nmap:</strong> Inventario de red y auditoría de puertos abiertos.</li>
+                <li><strong>TDR/OTDR:</strong> Encontrar la ubicación física (distancia) de una rotura.</li>
+            </ul>
+        </div>
+
+    </section>
+</body>
+</html>

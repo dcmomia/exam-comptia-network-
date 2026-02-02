@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+    <title>Capítulo 8: Configuración de Switches y VLANs</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 8: Configuración de Switches y VLANs</h1>
+        
+        <h2>Introducción: Segmentación y Eficiencia en la Capa 2</h2>
+        <p>Un switch recién sacado de la caja y conectado a múltiples dispositivos es como un salón de clases donde todos los estudiantes gritan al mismo tiempo intentando comunicarse con todos los demás simultáneamente. Este escenario crea un único y gran dominio de difusión (broadcast domain) donde los mensajes de broadcast, diseñados para llegar a todos los dispositivos de la red, saturan cada puerto con tráfico que a la mayoría de dispositivos no les interesa. Si tienes 500 computadoras conectadas así, la red será lenta, ineficiente e insegura.</p>
+        
+        <p>La solución a este problema es la segmentación lógica mediante VLANs (Virtual Local Area Networks). Las VLANs te permiten tomar un switch físico de 24, 48 o más puertos y dividirlo en múltiples «salones de clases» privados e insonorizados, donde los estudiantes de un grupo no pueden escuchar ni interferir con las comunicaciones de otros grupos. En redes, esto se llama VLAN y es una de las herramientas más poderosas para crear redes seguras, eficientes y bien organizadas.</p>
+        
+        <p>En este capítulo, aprenderás cómo configurar un switch para segmentar la red en VLANs, cómo hacer que switches en diferentes pisos o edificios se «entiendan» entre sí para que los usuarios de la misma VLAN puedan comunicarse aunque estén físicamente separados, y cómo evitar el desastre más común y temido en Capa 2: el bucle de conmutación que puede paralizar una red en segundos.</p>
+
+        <h2>VLANs: Divide y Vencerás</h2>
+        <p>Una VLAN es una separación lógica implementada dentro del software del switch. Tomas un switch físico y le dices: «Los puertos 1-12 son para el departamento de Ventas y pertenecen a la VLAN 10», mientras que «Los puertos 13-24 son para Ingeniería y pertenecen a la VLAN 20». Aunque todos esos puertos están en el mismo switch físico y conectados a la misma red eléctrica, las personas de Ventas NO pueden ver ni comunicarse directamente con las de Ingeniería. Para el switch, son redes completamente separadas, como si hubiera un firewall invisible entre ellas.</p>
+
+        <h3>Beneficios Clave de las VLANs</h3>
+        <p><strong>Seguridad:</strong> Las VLANs permiten aislar datos sensibles del resto de la red. Puedes colocar los servidores de Recursos Humanos, que contienen información confidencial de empleados, en una VLAN separada que solo los PCs autorizados de RH pueden alcanzar. Un atacante que comprometa una computadora en la VLAN de Ventas no puede acceder directamente a los servidores de RH.</p>
+        
+        <p><strong>Rendimiento:</strong> El tráfico de broadcast está contenido dentro de cada VLAN. Si una computadora en la VLAN 10 envía un mensaje de broadcast, solo lo escuchan los dispositivos que también están en la VLAN 10. Las VLANs en otras subredes no reciben ni procesan ese tráfico, reduciendo significativamente la carga en cada segmento de red.</p>
+        
+        <p><strong>Organización:</strong> Las VLANs permiten agrupar usuarios por función, departamento o nivel de seguridad, independientemente de su ubicación física. Un empleado que trabaja en el tercer piso pero pertenece al departamento de Contabilidad puede estar en la misma VLAN que sus colegas del primer piso, simplificando la administración y mejorando la colaboración.</p>
+
+        <h3>Cómo Funciona el Etiquetado (Tagging) con 802.1Q</h3>
+        <p>¿Qué sucede cuando tienes usuarios de Ventas en el primer piso (Switch A) y otros en el quinto piso (Switch B), y quieres que estén en la misma VLAN aunque estén en diferentes switches físicos? Necesitas conectar los dos switches mediante un enlace que transporta el tráfico de todas las VLANs simultáneamente.</p>
+        
+        <p>A este enlace se le llama Trunk (enlace troncal). Por este cable viajan datos de múltiples VLANs mezclados, y para que los switches puedan distinguir qué trama pertenece a qué VLAN, utilizamos el estándar 802.1Q. El proceso funciona así: cuando Switch A tiene una trama de la VLAN 10 que necesita enviar a Switch B, Switch A toma esa trama y le «pega» una etiqueta digital que dice «Esta trama es de la VLAN 10» antes de enviarla por el enlace Trunk.</p>
+        
+        <p>Switch B recibe la trama etiquetada, lee la etiqueta «VLAN 10», la elimina (desetiquetado) y entrega los datos solo a los puertos que están configurados para la VLAN 10. Los dispositivos conectados a esos puertos nunca ven la etiqueta 802.1Q; para ellos, la comunicación es exactamente igual que si estuvieran conectados al mismo switch físico.</p>
+
+        <h3>VLAN Nativa (Native VLAN)</h3>
+        <p>Es una excepción especial en el funcionamiento de los trunks 802.1Q. Por razones de compatibilidad con equipamiento antiguo y con ciertos protocolos, el estándar 802.1Q define una VLAN llamada «nativa» cuyo tráfico NO lleva etiqueta al pasar por un trunk. Por defecto, la VLAN nativa es la VLAN 1, que existe en todos los switches desde fábrica.</p>
+        
+        <p>Esto presenta un riesgo de seguridad: un atacante podría enviar tráfico sin etiquetar que sería interpretado por el switch como tráfico de la VLAN nativa, potencialmente obteniendo acceso a recursos que no deberían ser accesibles. Por esta razón, una práctica de seguridad fundamental es cambiar la VLAN nativa a un ID no utilizado (por ejemplo, VLAN 999) que no contenga ningún usuario ni recurso crítico.</p>
+
+        <h3>Voice VLAN (VLAN de Voz)</h3>
+        <p>Los teléfonos VoIP (Voz sobre IP) merecen tratamiento especial en las redes empresariales. Típicamente, el teléfono se conecta al switch, y la computadora del empleado se conecta al teléfono (conectándolos en cadena). El puerto del switch debe manejar simultáneamente el tráfico de voz del teléfono y el tráfico de datos de la computadora.</p>
+        
+        <p>La configuración típica asigna una VLAN específica (la Voice VLAN) para el tráfico del teléfono, que tiene prioridad alta en la transmisión para garantizar calidad de voz, y una VLAN de datos diferente para la computadora. El teléfono también puede pasar el tráfico de la computadora taggeado o sin taggear según la configuración. Esto permite que la voz y los datos coexistan en el mismo enlace físico mientras permanecen lógicamente separados para seguridad y QoS.</p>
+
+        <h2>Spanning Tree Protocol (STP): Evitando los Bucles Mortales</h2>
+        <p>La redundancia es buena en redes: si un cable falla, tener otro cable alternativo puede salvar la conectividad. Sin embargo, en Capa 2, la redundancia sin control es peligrosa. Si conectas dos cables entre los mismos dos switches (por ejemplo, dos cables de parcheo en el rack), creas un bucle. Las tramas de broadcast que entran por un cable salen por el otro, vuelven al switch original, y son retransmitidas indefinidamente en un círculo vicioso que satura toda la capacidad de la red en segundos.</p>
+        
+        <p>Este fenómeno, llamado Broadcast Storm o tormenta de broadcast, puede paralizar completamente una red en cuestión de segundos. Es uno de los problemas más temidos por los administradores de red porque ocurre repentinamente y puede ser difícil de diagnosticar sin las herramientas y conocimientos adecuados.</p>
+        
+        <p>STP es el salvavidas que previene estos bucles. Su funcionamiento básico sigue estos pasos: primero, STP detecta que hay un bucle potencial en la topología. Segundo, analiza toda la red (el proceso llamado elección del bridge raíz) y elige el mejor camino hacia cada segmento. Tercero, bloquea lógicamente los puertos que formarían bucles, poniéndolos en estado de «bloqueo» donde no reenvían datos pero siguen escuchando para detectar cambios. Si el camino principal falla, STP desbloquea automáticamente el puerto de respaldo en segundos, restaurando la conectividad.</p>
+        
+        <p><strong>RSTP (Rapid Spanning Tree - 802.1w):</strong> Es la versión moderna y mejorada de STP. Proporciona la misma funcionalidad pero converge (reacciona a cambios) mucho más rápido, típicamente en segundos en lugar de los 30-50 segundos que podía tomar STP original. RSTP es el estándar actual y debería usarse en lugar del STP original legacy.</p>
+
+        <h3>Conceptos Clave de STP</h3>
+        <p><strong>Bridge ID:</strong> Cada switch tiene un Bridge ID único que consiste en una prioridad (valor configurable) más la dirección MAC del switch. El switch con el Bridge ID más bajo se convierte en el root bridge (puente raíz), que es el centro de la topología STP desde el cual se calculan todos los caminos.</p>
+        
+        <p><strong>Root Port (Puerto Raíz):</strong> En cada switch que no es el root bridge, el puerto que ofrece el mejor camino hacia el root bridge. Este puerto es el único que puede recibir tráfico BPDU (Bridge Protocol Data Units, los mensajes que intercambian los switches para calcular STP) del root.</p>
+        
+        <p><strong>Designated Port (Puerto Designado):</strong> En cada segmento de red, el puerto que ofrece el mejor camino hacia el root bridge. Solo un puerto por segmento puede ser designado; los demás en ese segmento serán bloqueados.</p>
+        
+        <p><strong>Puertos de Bloqueo:</strong> Los puertos que STP determina que crearían bucles si estuvieran activos. Permanecen en estado de «blocking» (o «discarding» en RSTP), escuchando tráfico pero sin reenviar datos. Si la topología cambia y se necesitan, pueden activarse automáticamente.</p>
+
+        <h2>Agregación de Enlaces (Link Aggregation)</h2>
+        <p>A veces, un solo cable de 1 Gbps entre dos switches no es suficiente ancho de banda para el tráfico que necesita fluir. Quieres más velocidad, pero tirar cables adicionales no es eficiente porque cada cable adicional requiere su propio puerto en cada switch y su propio puerto en el presupuesto.</p>
+        
+        <p>La agregación de enlaces (también llamada EtherChannel, Port Channel, o Bonding) resuelve este problema permitiendo combinar 2, 4 u 8 cables físicos en una sola conexión lógica que aparece como un único «enlace» de mayor ancho de banda. Si agregas 4 cables de 1 Gbps, obtienes un enlace lógico de 4 Gbps. Si uno de los cables falla, los demás continúan funcionando y el enlace continúa operando a velocidad reducida, proporcionando redundancia además de ancho de banda adicional.</p>
+        
+        <p><strong>LACP (Link Aggregation Control Protocol - 802.3ad):</strong> Es el protocolo estándar para negociar y gestionar automáticamente los grupos de enlaces agregados. Cuando configuras LACP en ambos extremos del enlace, los switches negocian automáticamente qué puertos participan en el grupo, detectan fallos de enlaces individuales, y redistribuyen el tráfico entre los enlaces restantes cuando ocurre un fallo. LACP es el método preferido porque es interoperable entre fabricantes y proporciona gestión dinámica del grupo de puertos.</p>
+
+        <h2>Configuración de Interfaces y MTU</h2>
+        <p>Como administrador de red, debes verificar y configurar correctamente las interfaces de los switches para evitar problemas de rendimiento y conectividad.</p>
+
+        <h3>Velocidad y Dúplex</h3>
+        <p>Los puertos Ethernet pueden operar a diferentes velocidades (10 Mbps, 100 Mbps, 1 Gbps, 10 Gbps) y en diferentes modos de dúplex (half-duplex, donde solo se puede transmitir o recibir pero no simultáneamente, o full-duplex, donde se puede transmitir y recibir al mismo tiempo).</p>
+        
+        <p>La regla fundamental es que ambos extremos del enlace deben estar configurados de la misma manera. Si un lado está en «Auto» (negociación automática) y el otro está fijo en «Full Duplex», la negociación frecuentemente falla resultando en un «Duplex Mismatch», donde un lado opera en full-duplex y el otro en half-duplex. Los síntomas de duplex mismatch incluyen errores de colisión (collisions), colisiones tardías (late collisions), y rendimiento extremadamente degradado que puede hacer que la red parezca «lenta» incluso cuando el ancho de banda teórico es suficiente.</p>
+        
+        <p>La mejor práctica moderna es configurar ambos extremos en «Auto» para velocidad y dúplex, permitiendo que negocien automáticamente la mejor configuración común. En algunos casos especiales (como enlaces a equipos legacy), puede ser necesario configurar velocidades y dúplex fijos en ambos extremos.</p>
+
+        <h3>MDI-X y Auto-MDIX</h3>
+        <p>Históricamente, conectar dos PCs directamente requería un cable cruzado (crossover), mientras que conectar un PC a un switch requería un cable directo (straight-through). Los cables cruzados intercambian los pares de transmisión y recepción, permitiendo que los dos dispositivos se «hablen» correctamente.</p>
+        
+        <p>La mayoría de los switches modernos tienen Auto-MDIX, una característica que detecta automáticamente si el cable es cruzado o directo y ajusta su cableado/conexión interna apropiadamente. Esto significa que puedes usar cualquier tipo de cable para cualquier conexión, simplificando la instalación y eliminando la necesidad de mantener ambos tipos de cables.</p>
+
+        <h3>MTU y Jumbo Frames</h3>
+        <p>El tamaño estándar de una trama Ethernet es de 1500 bytes de payload, lo que se conoce como MTU (Maximum Transmission Unit). Este tamaño está bien para la mayoría de aplicaciones de red, pero en redes de almacenamiento (SAN) o centros de datos con tráfico Este-Oeste intensivo entre servidores, la sobrecarga de encabezados de 1500 bytes puede ser significativa.</p>
+        
+        <p>Los Jumbo Frames aumentan el MTU a 9000 bytes, permitiendo que se transmita más datos con menos encabezados y por tanto mayor eficiencia. Sin embargo, la regla de oro es que todos los dispositivos en el camino deben soportar y tener configurados los Jumbo Frames. Si un servidor está enviando Jumbo Frames pero el switch del medio solo entiende tramas de 1500 bytes, los paquetes serán descartados y la comunicación fallará.</p>
+
+        <div class="summary-box">
+            <h3>Resumen de Puntos Clave para el Examen</h3>
+            
+            <ul>
+                <li><strong>VLAN:</strong> Separa dominios de broadcast lógicamente. Mejora seguridad, rendimiento y organización.</li>
+                <li><strong>Trunk:</strong> Puerto que transporta múltiples VLANs entre switches. Usa etiquetado 802.1Q.</li>
+                <li><strong>802.1Q:</strong> El estándar para etiquetar tramas VLAN en un trunk. Añade un tag de 4 bytes.</li>
+                <li><strong>VLAN Nativa:</strong> Tráfico sin etiqueta en un trunk. Por defecto es VLAN 1. Cambiar a VLAN no utilizada por seguridad.</li>
+                <li><strong>STP (802.1d):</strong> Evita bucles de Capa 2 bloqueando puertos redundantes. Converge lentamente.</li>
+                <li><strong>RSTP (802.1w):</strong> Versión moderna de STP. Convergencia rápida en segundos.</li>
+                <li><strong>LACP (802.3ad):</strong> Protocolo estándar para agrupar múltiples cables físicos en un enlace lógico de mayor ancho de banda.</li>
+                <li><strong>Jumbo Frames (MTU 9000):</strong> Mejora rendimiento en grandes transferencias (almacenamiento, centros de datos). Requiere configuración end-to-end.</li>
+                <li><strong>Duplex Mismatch:</strong> Configuración incompatible entre extremos. Causa colisiones, errores, rendimiento degradado.</li>
+            </ul>
+            
+            <p><strong>Escenario de examen común:</strong> «Conectaste un nuevo switch redundante y toda la red se cayó. Las luces de los switches parpadean furiosamente.» La respuesta es un Bucle de Conmutación (Switching Loop) o un problema con STP que no está funcionando correctamente.</p>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+    <title>Capítulo 19: Metodología de Resolución de Problemas</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 19: Metodología de Resolución de Problemas</h1>
+        
+        <h2 class="section-title">Introducción: Pensar como un Experto</h2>
+        <p>Cuando la red se cae, el pánico es tu enemigo. Un técnico novato empieza a cambiar cables y reiniciar routers al azar. Un profesional certificado en Network+ sigue un proceso lógico, paso a paso, para encontrar la causa raíz y solucionarla sin romper nada más en el camino.</p>
+        <p>CompTIA define una <strong>metodología de 7 pasos</strong> que debes memorizar en orden. En el examen, te presentarán escenarios y te preguntarán "¿Cuál es el siguiente paso que debe tomar el administrador?". Si te saltas un paso, fallarás la pregunta.</p>
+
+        <h2 class="section-title">Los 7 Pasos de la Metodología CompTIA</h2>
+
+        <div class="summary-box">
+            <h3>📋 Los 7 Pasos en Orden</h3>
+            <ol>
+                <li><strong>Identificar</strong> el problema</li>
+                <li><strong>Establecer</strong> una teoría de causa probable</li>
+                <li><strong>Probar</strong> la teoría</li>
+                <li><strong>Establecer</strong> un plan de acción</li>
+                <li><strong>Implementar</strong> la solución</li>
+                <li><strong>Verificar</strong> la funcionalidad total</li>
+                <li><strong>Documentar</strong> los hallazgos</li>
+            </ol>
+        </div>
+
+        <h3 class="subsection-title">Paso 1: Identificar el Problema</h3>
+        <p>Antes de tocar nada, debes entender qué pasa.</p>
+        <ul>
+            <li><strong>Recopila información:</strong> Pregunta al usuario. "¿Qué estabas haciendo cuando falló?", "¿Funciona para otros usuarios?".</li>
+            <li><strong>Identifica síntomas:</strong> ¿Hay luces de error? ¿Mensajes en pantalla?</li>
+            <li><strong>Pregunta sobre cambios:</strong> "¿Alguien instaló algo nuevo ayer?".</li>
+            <li><strong>Haz un backup:</strong> Si vas a tocar un sistema crítico, asegúrate de tener una copia de seguridad antes de empezar.</li>
+        </ul>
+
+        <h3 class="subsection-title">Paso 2: Establecer una Teoría de Causa Probable</h3>
+        <p>Haz una lista de posibles culpables.</p>
+        <ul>
+            <li><strong>Cuestiona lo obvio:</strong> ¿Está enchufado? ¿Está encendido el monitor?</li>
+            <li><strong>Divide y vencerás:</strong> Usa el modelo OSI. Si puedes hacer ping a 8.8.8.8 (Capa 3 OK), pero no puedes abrir google.com, sabes que el problema está arriba (probablemente DNS, Capa 7), no abajo (cables).</li>
+        </ul>
+
+        <h3 class="subsection-title">Paso 3: Poner a Prueba la Teoría</h3>
+        <p>Ahora intenta confirmar tu sospecha.</p>
+        <ul>
+            <li>Si crees que es el cable, cámbialo por uno bueno.</li>
+            <li>Si la teoría se confirma: Pasa al Paso 4.</li>
+            <li>Si la teoría falla: Vuelve al Paso 2 y crea una nueva teoría.</li>
+            <li>Si no puedes resolverlo: <strong>Escala el problema</strong> (llama a un nivel superior de soporte o a un especialista).</li>
+        </ul>
+
+        <h3 class="subsection-title">Paso 4: Establecer un Plan de Acción</h3>
+        <p>No improvises. Planifica.</p>
+        <ul>
+            <li>Si necesitas reiniciar el servidor central, no lo hagas a las 10 AM un lunes. Planifica una ventana de mantenimiento.</li>
+            <li>Identifica el impacto potencial. ¿A quién afectará mi solución?</li>
+            <li>Prepara un "Plan B" por si tu solución falla.</li>
+        </ul>
+
+        <h3 class="subsection-title">Paso 5: Implementar la Solución</h3>
+        <p>Ejecuta tu plan.</p>
+        <ul>
+            <li>Si el problema es complejo, <strong>haz un cambio a la vez</strong>. Si cambias 5 cosas y se arregla, no sabrás cuál fue la solución (o si rompiste algo más).</li>
+            <li>Si necesitas ayuda, pídela.</li>
+        </ul>
+
+        <h3 class="subsection-title">Paso 6: Verificar la Funcionalidad Total</h3>
+        <p>No asumas que está arreglado solo porque se encendió la luz verde.</p>
+        <ul>
+            <li><strong>Prueba todo.</strong> Si arreglaste el correo, ¿sigue funcionando la web?</li>
+            <li><strong>Pregunta al usuario:</strong> "¿Ya funciona bien para ti?".</li>
+            <li><strong>Medidas preventivas:</strong> ¿Qué puedes hacer para que esto no vuelva a pasar? (Ej: Configurar actualizaciones automáticas).</li>
+        </ul>
+
+        <h3 class="subsection-title">Paso 7: Documentar los Hallazgos</h3>
+        <p>El paso más olvidado, pero vital.</p>
+        <ul>
+            <li>Escribe qué falló, por qué falló y cómo lo arreglaste.</li>
+            <li>Añade esto a la <strong>Base de Conocimientos (Knowledge Base)</strong>. La próxima vez que ocurra, tú o tus compañeros lo resolverán en la mitad de tiempo.</li>
+        </ul>
+
+        <div class="summary-box">
+            <h3>📌 Resumen de Puntos Clave</h3>
+            <ol>
+                <li><strong>Identificar</strong> (Preguntar, síntomas, cambios, backup).</li>
+                <li><strong>Teoría</strong> (Cuestionar lo obvio, OSI, divide y vencerás).</li>
+                <li><strong>Probar</strong> (Confirmar causa o escalar).</li>
+                <li><strong>Planificar</strong> (Impacto, horario, Plan B).</li>
+                <li><strong>Implementar</strong> (Ejecutar, un cambio a la vez).</li>
+                <li><strong>Verificar</strong> (Prueba total, prevención).</li>
+                <li><strong>Documentar</strong> (Lecciones aprendidas).</li>
+            </ol>
+        </div>
+
+        <div class="important-note">
+            <strong>💡 Consejo del Instructor:</strong> Si en una pregunta de examen dice "el técnico sospecha que el fallo se debe a un controlador defectuoso", ya está en el Paso 2. La pregunta será "¿Qué debe hacer a continuación?". La respuesta correcta será algo del Paso 3, como "Probar la teoría instalando un controlador conocido bueno" o "Verificar la teoría en un entorno de laboratorio". ¡Sigue el orden!
+        </div>
+    </section>
+</body>
+</html>

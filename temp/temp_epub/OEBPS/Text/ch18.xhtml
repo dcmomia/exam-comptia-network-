@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="es">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Capítulo 18: Fortalecimiento y Defensa de la Red</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 18: Fortalecimiento y Defensa de la Red</h1>
+
+        <h2 class="section-title">Introducción: Construyendo Murallas Digitales</h2>
+        <p>Saber cómo te atacan es la mitad de la batalla; saber cómo defenderte es la otra mitad. En la seguridad de
+            redes, no existe una "bala de plata". Usamos una estrategia llamada <strong>Defensa en Profundidad</strong>:
+            múltiples capas de seguridad superpuestas. Si el atacante cruza el firewall, se encuentra con el IPS. Si
+            pasa el IPS, se choca con la autenticación del switch.</p>
+        <p>En este capítulo, aprenderemos a endurecer (harden) nuestros dispositivos, controlar quién entra en la red y
+            usar herramientas avanzadas de filtrado.</p>
+
+        <h2 class="section-title">Hardening de Dispositivos: Cerrando las Ventanas</h2>
+        <p>Los dispositivos recién salidos de la caja son inseguros. El Hardening (Endurecimiento) es el proceso de
+            asegurar un sistema reduciendo su "superficie de ataque".</p>
+
+        <h3 class="subsection-title">Lista de Verificación de Hardening</h3>
+        <ol>
+            <li><strong>Contraseñas por defecto:</strong> Cámbialas INMEDIATAMENTE. "admin/admin" es lo primero que
+                prueba un hacker.</li>
+            <li><strong>Servicios innecesarios:</strong> Si un servidor es solo para web, apaga el servicio de
+                impresión, FTP y Telnet. Cuantos menos puertos abiertos, mejor.</li>
+            <li><strong>Actualizaciones y Parches:</strong> Mantén el firmware y el sistema operativo al día. Los
+                parches cierran agujeros de seguridad conocidos (CVEs).</li>
+            <li><strong>Hashing de contraseñas:</strong> Nunca guardes contraseñas en texto plano. Usa algoritmos de
+                hash fuertes (SHA-256).</li>
+        </ol>
+
+        <h2 class="section-title">Control de Acceso a la Red (NAC)</h2>
+        <p>El NAC (Network Access Control) es el portero de discoteca de tu red. Decide quién entra y quién se queda
+            fuera.</p>
+
+        <h3 class="subsection-title">802.1X</h3>
+        <p>Es el estándar de oro para el control de acceso en puertos cableados e inalámbricos.</p>
+        <div class="tip-box">
+            <strong>Cómo funciona:</strong> Cuando conectas tu laptop a un puerto de pared, el puerto está "bloqueado".
+            No pasa tráfico. Tu PC debe enviar credenciales (usuario/contraseña o certificado) a un servidor RADIUS. Si
+            son válidas, el switch desbloquea el puerto.
+        </div>
+
+        <h3 class="subsection-title">Seguridad de Puertos (Port Security)</h3>
+        <p>Es una función básica en switches de Capa 2 para evitar que dispositivos no autorizados se conecten.</p>
+        <ul>
+            <li><strong>MAC Filtering:</strong> Le dices al switch: "En el puerto 1, solo permito la MAC de la impresora
+                de recepción". Si alguien desconecta la impresora y conecta su laptop, el switch detecta una MAC
+                diferente y apaga el puerto automáticamente.</li>
+            <li><strong>Sticky MAC:</strong> El switch aprende la primera MAC que se conecta y la guarda como la única
+                permitida. Ahorra tiempo de configuración.</li>
+        </ul>
+
+        <div class="protocol-update">
+            <h3>Privacidad en DNS: DoH y DoT</h3>
+            <p>
+                El DNS tradicional envía tus consultas en texto plano, permitiendo que cualquiera espíe qué sitios
+                visitas. Para mitigar esto, existen dos estándares modernos:
+            </p>
+            <ul>
+                <li><strong>DoH (DNS over HTTPS):</strong> Oculta las consultas DNS dentro del tráfico web normal
+                    (Puerto 443). Es excelente para la privacidad del usuario pero difícil de monitorear para los
+                    administradores de red corporativos.</li>
+                <li><strong>DoT (DNS over TLS):</strong> Encapsula el DNS en un túnel TLS dedicado (Puerto 853). Ofrece
+                    seguridad similar pero separa el tráfico DNS del tráfico web, facilitando su gestión.</li>
+            </ul>
+
+            <h3>Defensa Avanzada de Capa 2</h3>
+            <p>
+                Además de <em>Port Security</em>, el switch debe protegerse contra ataques de manipulación específicos:
+            </p>
+            <ul>
+                <li><strong>DHCP Snooping:</strong> Una función de seguridad que evita que servidores DHCP "canallas"
+                    (rogue) entreguen direcciones IP falsas. El switch solo permite respuestas DHCP desde puertos
+                    designados como "confiables" (trust).</li>
+                <li><strong>DAI (Dynamic ARP Inspection):</strong> Trabaja junto con DHCP Snooping. Inspecciona los
+                    paquetes ARP y bloquea aquellos que intentan suplantar la identidad de otro dispositivo (ARP
+                    Poisoning), comparándolos con la base de datos de DHCP legítima.</li>
+            </ul>
+        </div>
+
+        <h3 class="subsection-title">Posture Assessment (Evaluación de Postura)</h3>
+        <p>El NAC es inteligente. Antes de dejarte entrar, chequea la "salud" de tu dispositivo:</p>
+        <ul>
+            <li>¿Tienes antivirus instalado?</li>
+            <li>¿Está el firewall encendido?</li>
+            <li>¿Tienes los últimos parches de Windows?</li>
+        </ul>
+        <p>Si fallas, te envía a una <strong>VLAN de Cuarentena</strong> donde solo puedes descargar las actualizaciones
+            para arreglarte.</p>
+
+        <h2 class="section-title">Defensa en Profundidad: Filtrado Avanzado</h2>
+
+        <h3 class="subsection-title">Listas de Control de Acceso (ACL)</h3>
+        <p>Es la forma más básica de firewall en un router o switch.</p>
+
+        <div class="chapter-update">
+            <h3>⚡ Datos Críticos: El Orden de las Reglas (ACL Logic)</h3>
+            <p>El error más común en seguridad no es un fallo técnico, sino un error de lógica en el orden de las
+                reglas. Los firewalls procesan las listas de <b>arriba hacia abajo (Top-Down)</b>:</p>
+            <ul>
+                <li><b>First Match Wins:</b> En cuanto un paquete coincide con una regla, el firewall aplica la acción y
+                    deja de leer el resto de la lista.</li>
+                <li><b>De lo Específico a lo Genérico:</b> Siempre coloca las reglas de "Permitir" específicas (ej: IP
+                    de un servidor a un puerto concreto) al principio, y las reglas de "Denegar" genéricas (ej: Denegar
+                    todo el resto del tráfico) al final.</li>
+                <li><b>Implicit Deny:</b> Si un paquete llega al final de la lista sin coincidir con ninguna regla, se
+                    descarta por defecto.</li>
+            </ul>
+        </div>
+
+        <div class="summary-box">
+            <h3>🛠️ Escenario de Troubleshooting: "¿Por qué no funciona mi regla?"</h3>
+            <p><b>Caso:</b> Has creado una regla para permitir tráfico HTTP (puerto 80), pero los usuarios no pueden
+                navegar. Al revisar la ACL ves esto:</p>
+            <ol>
+                <li><code>Line 10: DENY TCP ANY ANY</code></li>
+                <li><code>Line 20: PERMIT TCP ANY ANY EQ 80</code></li>
+            </ol>
+            <p><b>Solución:</b> El tráfico es bloqueado por la línea 10 porque HTTP usa TCP. El firewall nunca llega a
+                leer la línea 20. La solución es <b>intercambiar las líneas</b>.</p>
+        </div>
+
+        <h3 class="subsection-title">Filtrado de Contenido</h3>
+        <p>No basta con bloquear puertos. A veces necesitas bloquear el contenido.</p>
+        <ul>
+            <li><strong>Filtrado URL:</strong> Bloquear "facebook.com" o categorías como "Juegos" o "Violencia".</li>
+            <li><strong>Filtrado por Palabras Clave:</strong> Escanear correos salientes buscando palabras como
+                "Confidencial" o números de tarjetas de crédito (DLP - Data Loss Prevention).</li>
+        </ul>
+
+        <h3 class="subsection-title">Zonas de Seguridad y DMZ</h3>
+        <p>Como vimos antes, la DMZ (Zona Desmilitarizada) es tierra de nadie.</p>
+        <ul>
+            <li>Coloca aquí tus servidores que deben ser accesibles desde Internet (Web, SMTP).</li>
+            <li>Configura el firewall para que Internet pueda entrar a la DMZ, pero la DMZ NUNCA pueda iniciar
+                conexiones hacia tu red interna (LAN).</li>
+        </ul>
+
+        <div class="summary-box">
+            <h3>📌 Resumen de Puntos Clave</h3>
+            <ul>
+                <li><strong>Hardening:</strong> Cambiar defaults, cerrar puertos, parchear.</li>
+                <li><strong>802.1X:</strong> Autenticación de puertos usando RADIUS.</li>
+                <li><strong>Port Security:</strong> Limitar acceso por dirección MAC física.</li>
+                <li><strong>VLAN de Cuarentena:</strong> Donde van los dispositivos que no cumplen las políticas de
+                    salud (NAC).</li>
+                <li><strong>ACL:</strong> Reglas de tráfico. Recuerda el Implicit Deny al final.</li>
+                <li><strong>DMZ:</strong> Zona de amortiguación para servidores públicos.</li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <strong>💡 Consejo del Instructor:</strong> Si en el examen te preguntan "¿Qué medida de seguridad habría
+            prevenido que un empleado conectara su propio punto de acceso Wi-Fi doméstico a la red corporativa?", la
+            respuesta es <strong>Port Security</strong> (configurado para bloquear nuevas direcciones MAC o limitar la
+            cantidad de MACs en un puerto).
+        </div>
+    </section>
+</body>
+</html>

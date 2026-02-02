@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="es">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Capítulo 7: Enrutamiento Dinámico y Estático</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 7: Enrutamiento Dinámico y Estático</h1>
+
+        <h2>Introducción: El GPS de la Red</h2>
+        <p>Imagina que quieres conducir desde Madrid hasta París. No basta simplemente con subir al coche y acelerar en
+            cualquier dirección; necesitas saber qué carreteras tomar para llegar a tu destino. Si hay un accidente en
+            la carretera principal, necesitas conocer una ruta alternativa que te permita continuar tu viaje sin tener
+            que descubrir el camino por tu cuenta. En una red de computadoras, los routers son los conductores
+            inteligentes que toman estas decisiones de navegación. Su trabajo fundamental en la Capa 3 es conectar redes
+            diferentes, ya sea tu LAN local con Internet o tu sucursal en Barcelona con la sede central en Madrid.</p>
+
+        <p>Para tomar estas decisiones sobre el mejor camino para cada paquete de datos, el router consulta su «mapa»
+            interno llamado tabla de enrutamiento. Esta tabla contiene información sobre las redes que el router conoce
+            y las rutas disponibles para alcanzarlas. En este capítulo, aprenderás cómo se llena esa tabla, ya sea de
+            manera manual (enrutamiento estático) o automáticamente mediante protocolos de enrutamiento dinámico.
+            También aprenderás los protocolos más importantes que los routers utilizan para comunicarse entre sí y
+            compartir información sobre la topología de la red.</p>
+
+        <p>El dominio del enrutamiento es esencial tanto para el examen CompTIA Network+ como para tu carrera
+            profesional. Cuando implementes una red corporativa, necesitarás decidir si usar enrutamiento estático para
+            conexiones simples y críticas, o enrutamiento dinámico para redes más grandes que requieren automatización y
+            resiliencia ante fallos.</p>
+
+        <h2>Tecnologías de Enrutamiento: ¿Manual o Automático?</h2>
+        <p>Existen dos formas fundamentalmente diferentes de enseñar a un router cómo llegar a un destino. Cada una
+            tiene sus ventajas, desventajas y casos de uso específicos que determinan cuándo es apropiado utilizar una u
+            otra.</p>
+
+        <h3>Enrutamiento Estático</h3>
+        <p>El enrutamiento estático consiste en definir manualmente las rutas en la tabla de enrutamiento de cada
+            router. Tú, como administrador de red, le dices al router: «Para llegar a la red 10.0.0.0/8, envía el
+            tráfico a través de la interfaz X o hacia el router Y». El router no discute ni investiga; simplemente
+            acepta estas rutas y las usa para tomar decisiones de reenvío.</p>
+
+        <p>Las ventajas del enrutamiento estático son significativas en ciertos contextos. Primero, es extremadamente
+            seguro porque el router no «escucha» ni aprende de otros routers que podrían proporcionarle información
+            falsa o maliciosa. No existe la posibilidad de que un router mal configurado o comprometido «intoxique» la
+            tabla de enrutamiento con rutas falsas. Segundo, no consume CPU ni ancho de banda de la red para
+            intercambiar información de enrutamiento, ya que no hay conversaciones periódicas entre routers. Tercero, es
+            simple de configurar para redes pequeñas con pocas rutas.</p>
+
+        <p>Sin embargo, las desventajas son igualmente importantes. El enrutamiento estático no escala bien. Si tienes
+            50 routers y cambia la topología de la red, tienes que reconfigurar manualmente las rutas en todos los
+            routers afectados, un proceso lento y propenso a errores humanos. Además, si un enlace falla y no tienes una
+            ruta estática alternativa configurada, el router seguirá intentando enviar tráfico por el enlace caído hasta
+            que tú lo descubras y lo soluciones manualmente. Para redes grandes o dinámicas, el enrutamiento estático es
+            simplemente impracticable.</p>
+
+        <h3>La Ruta por Defecto (Default Route)</h3>
+        <p>La ruta por defecto es una forma especial de enrutamiento estático que actúa como el «camino de último
+            recurso». Se escribe como 0.0.0.0/0 (o ::/0 para IPv6) y le dice al router: «Si no tienes idea de cómo
+            llegar al destino especificado en tus otras rutas, envía el paquete por aquí». Generalmente, esta ruta
+            apunta hacia el router de tu ISP y es la que permite que el tráfico de tu red local pueda llegar a cualquier
+            lugar de Internet que no esté en tus rutas conocidas.</p>
+
+        <h3>Enrutamiento Dinámico</h3>
+        <p>Los protocolos de enrutamiento dinámico permiten que los routers utilicen software especializado para hablar
+            entre sí, compartir información sobre las redes que conocen, y actualizar automáticamente sus tablas de
+            enrutamiento cuando la topología de la red cambia. Es como si cada conductor en la carretera pudiera
+            escuchar las actualizaciones de tráfico de la policía y otros conductores, ajustando instantáneamente su
+            ruta para evitar accidentes o atascos.</p>
+
+        <p>Las ventajas del enrutamiento dinámico son impresionantes para redes de cualquier tamaño significativo.
+            Primero, es altamente escalable: puedes agregar routers y redes sin tener que reconfigurar manualmente cada
+            router de la red. Segundo, es resiliente: si un cable se rompe o un router falla, los routers vecinos
+            detectan el cambio en segundos o minutos y calculan una ruta alternativa automáticamente, sin intervención
+            humana. Tercero, reduce drásticamente el riesgo de errores de configuración, ya que la información de
+            enrutamiento se intercambia y verifica automáticamente.</p>
+
+        <p>Las desventajas incluyen el consumo de recursos: los protocolos dinámicos requieren CPU para los cálculos de
+            enrutamiento y ancho de banda para intercambiar información con otros routers. También requieren que los
+            administradores entiendan profundamente cómo funcionan los protocolos para configurarlos correctamente y
+            diagnosticar problemas cuando surgen. Finalmente, existe un pequeño riesgo de que información de
+            enrutamiento incorrecta se propague rápidamente por toda la red si algo sale mal, aunque los mecanismos de
+            seguridad de los protocolos modernos mitigan este riesgo.</p>
+
+        <div class="important-note">
+            <h3 class="subsection-title">Prevención de Bucles en Enrutamiento Dinámico</h3>
+            <p>Para evitar que los paquetes den vueltas infinitamente cuando una red falla, los protocolos dinámicos
+                usan mecanismos de seguridad:</p>
+            <ul>
+                <li><b>Split Horizon (Horizonte Dividido):</b> Un router nunca envía información de una red por la misma
+                    interfaz por la que la aprendió. "No me cuentes mi propia historia".</li>
+                <li><b>Poison Reverse (Envenenamiento de Ruta):</b> Cuando una red cae, el router la anuncia con una
+                    métrica infinita (ej. 16 saltos en RIP) para avisar a todos que ya no es válida.</li>
+                <li><b>Hold-down Timers:</b> El router espera un tiempo antes de aceptar cambios en una ruta sospechosa,
+                    evitando que la tabla "oscile" (flapping).</li>
+            </ul>
+        </div>
+
+        <h2>Los Protocolos de Enrutamiento Dinámico</h2>
+        <p>Para el examen N10-009, debes conocer las características clave de los principales protocolos de
+            enrutamiento. No necesitas saber configurarlos en profundidad, pero sí debes entender cuándo usar cada uno y
+            qué características los distinguen.</p>
+
+        <h3>OSPF (Open Shortest Path First)</h3>
+        <p>OSPF es un protocolo de enrutamiento de estado de enlace (link-state) que ha convertido en el IGP (Interior
+            Gateway Protocol) más utilizado en redes empresariales. «Interior» significa que se usa dentro de una sola
+            organización, no entre organizaciones diferentes. OSPF es un estándar abierto, lo que significa que puede
+            implementarse en equipos de cualquier fabricante, no solo en una marca específica.</p>
+
+        <p>La métrica de OSPF es el «costo», que se calcula típicamente basado en el ancho de banda del enlace. Un
+            enlace de fibra de 10 Gbps tiene un costo bajo (preferido), mientras que un enlace de cobre de 100 Mbps
+            tiene un costo más alto (menos preferido). Esta lógica refleja la realidad: preferimos las rutas más
+            rápidas. OSPF también es extremadamente rápido para converger (ajustarse a cambios en la red) comparado con
+            protocolos más antiguos.</p>
+
+        <p>OSPF divide las redes grandes en áreas para mejorar la escalabilidad. El área 0 (cero) es el área troncal
+            (backbone) y todas las demás áreas deben conectarse directamente a ella. Esta jerarquía reduce la cantidad
+            de información de enrutamiento que cada router debe procesar y almacenar.</p>
+
+        <h3>EIGRP (Enhanced Interior Gateway Routing Protocol)</h3>
+        <p>EIGRP es un protocolo híbrido (también llamado vector distancia avanzado) desarrollado originalmente por
+            Cisco, aunque ahora es un estándar abierto. Era exclusivo de Cisco durante muchos años, pero Cisco ha
+            publicado sus especificaciones permitiendo implementaciones en otros fabricantes.</p>
+
+        <p>La métrica de EIGRP es compuesta, utilizando por defecto el ancho de banda y el retardo de los enlaces,
+            aunque puede considerar también la confiabilidad y la carga. EIGRP es conocido por su eficiencia: no envía
+            actualizaciones periódicas completas como OSPF, sino que solo envía actualizaciones cuando hay cambios en la
+            topología, reduciendo el tráfico de red. También converge extremadamente rápido y tiene mecanismos
+            sofisticados para prevenir bucles de enrutamiento.</p>
+
+        <p>Una característica única de EIGRP es que mantiene rutas de respaldo en la tabla de enrutamiento. Si la mejor
+            ruta falla, EIGRP puede conmutar instantáneamente a la ruta de respaldo sin necesidad de recalcular. Esto
+            proporciona convergencia casi instantánea en comparación con otros protocolos.</p>
+
+        <h3>BGP (Border Gateway Protocol)</h3>
+        <p>BGP es el protocolo de enrutamiento que gobierna Internet. Mientras que OSPF y EIGRP son IGPs (para uso
+            interior de una organización), BGP es un EGP (Exterior Gateway Protocol) diseñado específicamente para el
+            enrutamiento entre organizaciones diferentes. Cuando tu ISP intercambia información de enrutamiento con otro
+            ISP para permitir que el tráfico fluya entre sus redes, utilizan BGP.</p>
+
+        <p>A diferencia de los protocolos de estado de enlace o vector distancia que optimizan para el camino más corto
+            o más rápido, BGP es un protocolo de vector de ruta que optimiza basándose en políticas. Los operadores de
+            red pueden configurar BGP para preferir ciertas rutas sobre otras basándose en consideraciones comerciales,
+            de costo, o de relaciones de peering, no solo en métricas técnicas de rendimiento.</p>
+
+        <p>BGP es deliberadamente conservador y lento para cambiar: los routers BGP solo aceptan nuevas rutas después de
+            verificarlas cuidadosamente, y los cambios se propagan gradualmente por toda la Internet. Esta cautela es
+            intencional: un error de configuración en BGP puede afectar a millones de usuarios de Internet, por lo que
+            la estabilidad es más importante que la velocidad de convergencia.</p>
+
+        <div class="chapter-update">
+            <h2 class="section-title">Anatomía de una Tabla de Enrutamiento</h2>
+            <p>Antes de entender cómo el router elige un camino, debemos entender qué información guarda en su "mapa"
+                interno. Cada entrada en la tabla de enrutamiento (conocida como <b>Ruta</b>) contiene componentes
+                específicos que el router utiliza para redirigir el tráfico.</p>
+
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Descripción Técnica</th>
+                        <th>Propósito para el Router</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Prefijo (Network ID)</b></td>
+                        <td>La red de destino y su máscara (ej. 10.1.1.0/24).</td>
+                        <td>Identificar a qué red pertenece el paquete.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Siguiente Salto (Next Hop)</b></td>
+                        <td>La dirección IP del próximo router en el camino.</td>
+                        <td>Saber a quién entregarle el paquete físicamente.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Interfaz de Salida</b></td>
+                        <td>El puerto físico (ej. GigabitEthernet0/1).</td>
+                        <td>Determinar por qué "puerta" debe salir el bit.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Métrica</b></td>
+                        <td>El "costo" calculado por el protocolo (Saltos, Ancho de Banda).</td>
+                        <td>Comparar rutas del MISMO protocolo.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Distancia Adm. (AD)</b></td>
+                        <td>Valor de confiabilidad de la fuente (0-255).</td>
+                        <td>Comparar rutas de DIFERENTES protocolos.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="chapter-update">
+            <h2 class="section-title">Visualización Práctica: Ejemplo de Tabla de Rutas</h2>
+            <p>En el mundo real, si entras en la consola de un router (CLI) y escribes el comando
+                <code>show ip route</code>, verás algo similar a esto. Hemos optimizado este ejemplo para que sea
+                legible en cualquier dispositivo, incluso en <b>Kindle</b>.</p>
+
+            <div class="mnemonica">
+                <h4>Leyenda de Códigos (Protocolos):</h4>
+                <ul>
+                    <li><b>L:</b> Local (IP propia del router)</li>
+                    <li><b>C:</b> Conectada (Red física directa)</li>
+                    <li><b>S:</b> Estática (Configurada a mano)</li>
+                    <li><b>O:</b> OSPF (Aprendida dinámicamente)</li>
+                </ul>
+            </div>
+
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Red de Destino</th>
+                        <th>Vía (Next Hop) / Interfaz</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>C</b></td>
+                        <td>192.168.1.0/24</td>
+                        <td>Directamente conectada, Gi0/0</td>
+                    </tr>
+                    <tr>
+                        <td><b>S</b></td>
+                        <td>0.0.0.0/0</td>
+                        <td>vía 203.0.113.1 (Ruta por Defecto)</td>
+                    </tr>
+                    <tr>
+                        <td><b>O</b></td>
+                        <td>10.10.1.0/24</td>
+                        <td>[110/2] vía 192.168.1.5, Gi0/0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Análisis de la Ruta OSPF (La línea con 'O'):</h4>
+            <p><code>O 10.10.1.0/24 [110/2] via 192.168.1.5</code></p>
+            <ul>
+                <li><b>O:</b> El router aprendió esta red usando el protocolo OSPF.</li>
+                <li><b>110:</b> La Distancia Administrativa (Confianza).</li>
+                <li><b>2:</b> La Métrica (Costo del camino).</li>
+                <li><b>192.168.1.5:</b> El Siguiente Salto (La IP del router vecino).</li>
+            </ul>
+        </div>
+
+
+        <div class="summary-box">
+            <h3>🧠 Proceso Crítico: Coincidencia de Prefijo Más Largo</h3>
+            <p>Cuando un router tiene varias rutas que coinciden con el destino, siempre elige la más <b>específica</b>
+                (la que tiene la máscara de subred más larga). Esto se conoce como <b>Longest Prefix Match</b>.</p>
+            <ul>
+                <li>Ruta A: 10.0.0.0/8 (Genérica)</li>
+                <li>Ruta B: 10.1.0.0/16 (Específica)</li>
+                <li>Ruta C: 10.1.1.0/24 (Muy específica)</li>
+            </ul>
+            <p>Si llega un paquete para <b>10.1.1.5</b>, el router elegirá la <b>Ruta C</b> porque coincide con 24 bits
+                de la dirección, mientras que las otras coinciden con menos.</p>
+        </div>
+
+        <p>Esta es una pregunta clásica de examen que requiere que conozcas el proceso exacto que sigue un router cuando
+            tiene múltiples rutas hacia el mismo destino. El router sigue un orden estricto de operaciones para
+            determinar qué ruta elegir.</p>
+
+        <h3>1. Longitud del Prefijo (Prefix Length)</h3>
+        <p>La ruta más específica siempre gana. El router primero mira la longitud del prefijo (el número después de la
+            barra) y prefiere las rutas que coinciden con más bits de la dirección IP de destino. Si el router tiene una
+            ruta para 10.0.0.0/8 y otra para 10.1.1.0/24, y llega un paquete para 10.1.1.5, elegirá la /24 porque es más
+            específica.</p>
+
+        <p>Esto tiene sentido intuitivo: si tienes direcciones específicas para una ciudad, un barrio, y una calle
+            específica, y necesitas entregar un paquete a «Calle Mayor #5 en el Barrio Centro de la Ciudad de Madrid»,
+            preferirías la dirección de la calle específica sobre la genérica de la ciudad.</p>
+
+        <h3>2. Distancia Administrativa (AD)</h3>
+        <p>Si las longitudes de prefijo son iguales (el router tiene múltiples rutas igualmente específicas), mira la
+            Distancia Administrativa. Es un número entre 0 y 255 que indica cuánto «confía» el router en la fuente de la
+            información de enrutamiento. Cuanto menor sea el número, mayor la confianza.</p>
+
+        <p>Debes memorizar esta tabla de distancias administrativas:</p>
+
+        <table class="ad-table">
+            <tbody>
+                <tr>
+                    <th>Fuente de Ruta</th>
+                    <th>Distancia Administrativa</th>
+                </tr>
+                <tr>
+                    <td>Conectada directamente</td>
+                    <td>0 (máxima confianza)</td>
+                </tr>
+                <tr>
+                    <td>Ruta estática</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>Ruta estática con AD modificada</td>
+                    <td>Variable (1-255)</td>
+                </tr>
+                <tr>
+                    <td>EIGRP</td>
+                    <td>90</td>
+                </tr>
+                <tr>
+                    <td>OSPF</td>
+                    <td>110</td>
+                </tr>
+                <tr>
+                    <td>IS-IS</td>
+                    <td>115</td>
+                </tr>
+                <tr>
+                    <td>RIP</td>
+                    <td>120</td>
+                </tr>
+                <tr>
+                    <td>Ruta externa BGP</td>
+                    <td>20 (o 200)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Por ejemplo, si un router tiene una ruta estática hacia 192.168.10.0/24 y una ruta OSPF hacia el mismo
+            destino, elegirá la ruta estática porque AD=1 es menor que AD=110.</p>
+
+        <h3>3. Métrica</h3>
+        <p>Si el protocolo de enrutamiento es el mismo (y por tanto la AD es la misma), el router mira la métrica
+            interna del protocolo para elegir el camino «mejor» según los criterios de ese protocolo. Para OSPF, sería
+            el costo acumulado; para EIGRP, sería la métrica compuesta; para BGP, serían los atributos de ruta como AS
+            path length, local preference, MED, etc.</p>
+
+        <h2>Traducción de Direcciones: NAT y PAT</h2>
+        <p>Como vimos en el capítulo de direccionamiento IPv4, las direcciones privadas no pueden navegar en Internet.
+            NAT (Network Address Translation) es el mecanismo que permite que dispositivos con IPs privadas accedan a
+            recursos públicos, y PAT (Port Address Translation) es la versión más común que permite que cientos de
+            dispositivos compartan una sola IP pública.</p>
+
+        <h3>NAT Estático (SNAT)</h3>
+        <p>El NAT estático asigna una dirección IP privada a una dirección IP pública específica y fija de manera uno a
+            uno. Si tienes un servidor web interno con IP 192.168.1.100, configuras una NAT estática que mapea, por
+            ejemplo, 203.0.113.50 (tu IP pública) a 192.168.1.100. Cada conexión dirigida a tu IP pública se traduce
+            directamente al servidor interno. Se usa cuando necesitas que un servidor interno sea accesible desde
+            Internet de manera predecible y consistente.</p>
+
+        <h3>PAT (Port Address Translation) - NAT Overloading</h3>
+        <p>Esta es la versión de NAT que usas en tu casa y en la mayoría de oficinas. Permite que cientos o miles de
+            dispositivos con IPs privadas salgan a Internet usando una sola dirección IP pública. El «truco» está en los
+            números de puerto: el router mantiene una tabla que registra qué dispositivo interno inició cada conexión,
+            asociando cada conexión con un puerto de origen único.</p>
+
+        <p>Si tú y tu compañero de trabajo abren simultáneamente navegadores y acceden a Google, el router recibe ambas
+            peticiones. Externamente, ambas parecen venir de la misma IP pública (la del router), pero con diferentes
+            puertos de origen. Cuando Google responde, el paquete llega al router con el puerto de destino, el router
+            consulta su tabla de NAT y sabe exactamente a quién entregar cada respuesta. Desde la perspectiva de Google,
+            está hablando con una sola IP; desde la perspectiva de la red interna, cada dispositivo tiene su propia
+            «identidad» virtual en Internet.</p>
+
+        <h2>Alta Disponibilidad y Redundancia (FHRP)</h2>
+        <p>Si tu router de gateway falla, toda la oficina pierde la capacidad de comunicarse con el exterior. Para
+            evitar este punto único de fallo, utilizamos protocolos de redundancia de primer salto (First Hop Redundancy
+            Protocols - FHRP) que proporcionan una gateway virtual que permanece disponible incluso si el router físico
+            falla.</p>
+
+        <h3>Concepto de IP Virtual (VIP)</h3>
+        <p>Imagina que tienes dos routers físicos: Router A con IP 192.168.1.2 y Router B con IP 192.168.1.3. En lugar
+            de configurar las computadoras de los usuarios para usar A o B como su gateway, configuras una IP Virtual
+            flotante, por ejemplo 192.168.1.1. Los routers comparten esa IP Virtual y negocian entre ellos cuál es el
+            «maestro» que está activo manejando el tráfico en ese momento.</p>
+
+        <p>En una configuración activo/pasivo, Router A maneja todo el tráfico de la VIP mientras Router B espera en
+            silencio. Si Router A muere por cualquier motivo, Router B detecta el fallo y toma instantáneamente el
+            control de la VIP, asumiendo todas las responsabilidades de gateway. Los usuarios ni siquiera notan el
+            cambio porque siguen configurando su gateway como 192.168.1.1, que sigue respondiendo.</p>
+
+        <p>En una configuración activo/activo, ambos routers utilizan la VIP para balancear la carga entre ellos,
+            compartiendo el trabajo. Esto requiere un algoritmo de balanceo que divida el tráfico entre los dos
+            dispositivos según alguna métrica.</p>
+
+        <h3>Protocolos FHRP Comunes</h3>
+        <p><strong>HSRP (Hot Standby Router Protocol):</strong> Es propietario de Cisco y fue durante mucho tiempo el
+            FHRP más utilizado en redes Cisco. Utiliza direcciones multicast para comunicación entre routers del grupo
+            HSRP. Proporciona failover en segundos.</p>
+
+        <p><strong>VRRP (Virtual Router Redundancy Protocol):</strong> Es un estándar abierto que funciona en cualquier
+            marca de equipo de red, no solo Cisco. Tiene funcionalidad similar a HSRP pero con la ventaja de la
+            interoperabilidad entre fabricantes.</p>
+
+        <p><strong>GLBP (Gateway Load Balancing Protocol):</strong> También de Cisco, proporciona balanceo de carga real
+            entre múltiples routers que comparten una VIP, no solo redundancia pasiva. Utiliza múltiples MACs virtuales
+            para permitir que diferentes hosts usen diferentes routers como su gateway efectivo.</p>
+
+        <h4>Detalles Adicionales de Protocolos</h4>
+        <ul>
+            <li>
+                <strong>RIP (Routing Information Protocol):</strong> Recuerda su limitación crítica de distancia: tiene
+                un máximo estricto de <strong>15 saltos</strong>. Si un destino está a 16 saltos, RIP lo considera
+                inalcanzable.
+            </li>
+            <li>
+                <strong>IS-IS (Intermediate System to Intermediate System):</strong> Un protocolo de Estado de Enlace
+                (Link State) muy similar a OSPF. Se utiliza principalmente en las grandes redes de los Proveedores de
+                Servicios (ISP) debido a su alta escalabilidad. Utiliza el concepto de "costo" como métrica.
+            </li>
+        </ul>
+
+        <div class="chapter-update">
+            <h3>🏆 TABLA MAESTRA: Tecnologías WAN</h3>
+            <p>El examen requiere que identifiques la mejor tecnología según el escenario (costo, distancia, latencia):
+            </p>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Tecnología</th>
+                        <th>Medio</th>
+                        <th>Velocidad / Latencia</th>
+                        <th>Característica Clave</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Fibra (FTTH)</b></td>
+                        <td>Vidrio</td>
+                        <td>1-10 Gbps+</td>
+                        <td>La más rápida y fiable. Directo a casa.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Cable (DOCSIS)</b></td>
+                        <td>Coaxial</td>
+                        <td>1 Gbps (B) / 50 Mbps (S)</td>
+                        <td>Asimétrico. Ancho de banda compartido.</td>
+                    </tr>
+                    <tr>
+                        <td><b>DSL (ADSL)</b></td>
+                        <td>Cobre (Tel.)</td>
+                        <td>8-24 Mbps / Lenta</td>
+                        <td>Sensible a la distancia al DSLAM.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Línea Arrendada</b></td>
+                        <td>Fibra/Cobre</td>
+                        <td>Dedicada (1:1)</td>
+                        <td>Simétrica. Incluye SLA (Garantía). Caro.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Satélite (LEO)</b></td>
+                        <td>RF / Orbital</td>
+                        <td>25-35 ms Lat.</td>
+                        <td>Baja latencia (Starlink). Cobertura rural.</td>
+                    </tr>
+                    <tr>
+                        <td><b>Satélite (GEO)</b></td>
+                        <td>RF / Orbital</td>
+                        <td>~500 ms (Mala)</td>
+                        <td>Latencia alta. Solo si no hay otra opción.</td>
+                    </tr>
+                    <tr>
+                        <td><b>MPLS</b></td>
+                        <td>Capa 2.5</td>
+                        <td>Etiquetas (Labels)</td>
+                        <td>Prioriza tráfico (QoS). Conecta sedes.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="summary-box">
+            <h3>🛠️ Guía Rápida de Selección (Escenarios de Examen)</h3>
+            <ul>
+                <li><b>¿Simetría y Garantía de Uptime para hosting?</b> 👉 Línea Arrendada (Leased Line).</li>
+                <li><b>¿Zona rural remota sin cables?</b> 👉 Satélite (Elige LEO para menor latencia).</li>
+                <li><b>¿Internet lento solo en horas pico (noche)?</b> 👉 Cable (DOCSIS) debido a la contención con
+                    vecinos.</li>
+                <li><b>¿Necesitas priorizar VoIP sobre la WAN?</b> 👉 MPLS (Soporta etiquetas de Calidad de Servicio).
+                </li>
+            </ul>
+        </div>
+
+        <div class="summary-box">
+            <h3>📌 Resumen de Puntos Clave para el Examen</h3>
+            <ul>
+                <li><strong>Ruta por defecto:</strong> 0.0.0.0/0. La salida hacia Internet cuando no hay ruta más
+                    específica.</li>
+                <li><strong>OSPF:</strong> Link-State (Estado de Enlace). Métrica basada en costo (ancho de banda). IGP
+                    estándar y más común.</li>
+                <li><strong>EIGRP:</strong> Híbrido/Cisco-propietario (ahora abierto). Métrica compuesta (ancho de banda
+                    + retardo). Muy eficiente.</li>
+                <li><strong>BGP:</strong> Path-Vector. Usado en Internet (EGP) y entre ISPs. Basado en políticas, no
+                    métricas.</li>
+                <li><strong>Orden de decisión de ruta:</strong> 1) Prefijo más largo wins. 2) Si igual, AD más baja
+                    wins. 3) Si igual, métrica más baja wins.</li>
+                <li><strong>Distancias administrativas clave:</strong> Conectada=0, Estática=1, EIGRP=90, OSPF=110,
+                    RIP=120.</li>
+                <li><strong>PAT:</strong> Permite compartir una IP pública entre muchos usuarios usando puertos. Lo usas
+                    en casa.</li>
+                <li><strong>FHRP/VIP:</strong> Crea una gateway virtual redundante. Si un router físico falla, otro toma
+                    el control instantáneamente.</li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

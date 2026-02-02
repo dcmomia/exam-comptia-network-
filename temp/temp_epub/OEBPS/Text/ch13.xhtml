@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+<head>
+    <title>Capítulo 13: Continuidad del Negocio y Recuperación de Desastres</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 13: Continuidad del Negocio y Recuperación de Desastres</h1>
+        
+        <h2>Introducción: Preparándose para lo Peor</h2>
+        <p>Nadie planifica que su negocio fracase, pero muchas empresas fracasan por no planear. Un desastre puede llegar en muchas formas: un huracán que destruye el centro de datos, un incendio en el servidor principal, un ciberataque de ransomware que cifra todos los archivos, o simplemente un error humano que borra la base de datos de clientes. El objetivo de la Recuperación de Desastres (DR - Disaster Recovery) no es evitar que ocurran estos eventos, que a veces es imposible, sino sobrevivir a ellos y volver a la normalidad lo más rápido posible.</p>
+        
+        <p>La continuidad del negocio va más allá de DR. Mientras DR se enfoca en restaurar la tecnología, la continuidad del negocio se enfoca en mantener las operaciones críticas del negocio durante y después de un desastre. ¿Cómo siguen facturando si el sistema de facturación está caído? ¿Cómo atienden clientes si el centro de llamadas no funciona? Para el examen N10-009, debes entender las métricas que miden la tolerancia al desastre de una organización y las estrategias técnicas para cumplir esos objetivos.</p>
+
+        <h2>Métricas de Recuperación: Definiendo el Límite</h2>
+        <p>Antes de comprar soluciones de respaldo o diseñar centros de datos redundantes, primero debes hablar con la gerencia y definir estas métricas críticas. Son promesas al negocio sobre cuánto pueden tolerar sin operaciones normales.</p>
+
+        <h3>RPO (Recovery Point Objective - Objetivo de Punto de Recuperación)</h3>
+        <p>El RPO define cuánto dato puedes permitirte perder en un desastre. Se mide en tiempo: si tu RPO es 4 horas, significa que si ocurre un desastre, puedes tolerar perder los datos de las últimas 4 horas. En otras palabras, tu última copia de respaldo válida puede tener hasta 4 horas de antigüedad.</p>
+        
+        <p>El RPO está directamente relacionado con tu estrategia de respaldo. Si necesitas un RPO de 1 hora, necesitas respaldos cada hora o replicación continua. Si puedes tolerar un RPO de 24 horas, un respaldo diario es suficiente. Datos más críticos (transacciones financieras, registros médicos) requieren RPOs más pequeños.</p>
+
+        <h3>RTO (Recovery Time Objective - Objetivo de Tiempo de Recuperación)</h3>
+        <p>El RTO define cuánto tiempo puedes estar sin un sistema antes de que el impacto en el negocio sea inaceptable. Se mide en tiempo de inactividad: si tu RTO es 4 horas, significa que el sistema debe estar funcionando nuevamente dentro de las 4 horas siguientes al desastre.</p>
+        
+        <p>El RTO determina qué estrategias de recuperación son necesarias. Si el RTO es de 24 horas, puedes restaurar desde respaldo de cinta. Si el RTO es de 1 hora, necesitas un sitio de recuperación caliente (hot site) con datos sincronizados. Si el RTO es de minutos, necesitas alta disponibilidad activa-activa.</p>
+
+        <h3>Métricas Adicionales</h3>
+        <p><strong>MTTR (Mean Time To Repair - Tiempo Medio Para Reparar):</strong> Es el tiempo promedio que tarda en repararse un dispositivo fallido. Se usa para calcular la disponibilidad esperada de un sistema: si el MTBF es alto y el MTTR es bajo, la disponibilidad es alta.</p>
+        
+        <p><strong>MTBF (Mean Time Between Failures - Tiempo Medio Entre Fallos):</strong> Es el tiempo promedio que un dispositivo funciona antes de fallar. Es una medida de la fiabilidad del hardware. Dispositivos con MTBF más alto son más confiables.</p>
+
+        <h2>Sitios de Recuperación: Tu Plan B</h2>
+        <p>Si tu edificio principal se quema o queda inaccesible, ¿a dónde vas a trabajar? Necesitas un sitio alternativo. Hay tres opciones principales, cada una con diferentes costos y tiempos de recuperación.</p>
+
+        <h3>1. Cold Site (Sitio Frío)</h3>
+        <p>Un cold site es esencialmente un espacio vacío. Tiene electricidad, aire acondicionado, y quizás racks básicos, pero no tiene servidores, no tiene datos, y no tiene equipos configurados.</p>
+        
+        <p><strong> costo:</strong> Barato. Solo pagas el espacio físico y la infraestructura básica.</p>
+        
+        <p><strong>Tiempo de recuperación:</strong> Lento. Típicamente días o semanas. Tienes que comprar o alquilar equipos, instalarlos, cargar los respaldos más recientes, y configurar todo.</p>
+        
+        <p><strong>Uso típico:</strong> Sistemas no críticos donde días de inactividad son aceptables.</p>
+
+        <h3>2. Warm Site (Sitio Tibio)</h3>
+        <p>Un warm site tiene los equipos de hardware listos, pero no tiene los datos actualizados. Hay servidores y equipos instalados, pero sin datos o con datos desactualizados.</p>
+        
+        <p><strong>Costo:</strong> Moderado. Pagas el hardware y el espacio, pero no la operación continua.</p>
+        
+        <p><strong>Tiempo de recuperación:</strong> Medio. Típicamente horas a un día. Tienes que cargar los respaldos más recientes (lo que puede tomar tiempo) y posiblemente aplicar actualizaciones.</p>
+        
+        <p><strong>Uso típico:</strong> Sistemas importantes donde uno o dos días de inactividad son aceptables.</p>
+
+        <h3>3. Hot Site (Sitio Caliente)</h3>
+        <p>Un hot site es una réplica casi exacta de tu centro de datos principal. Los servidores están funcionando, los datos se replican en tiempo real (o casi real), y puede asumir la carga de trabajo inmediatamente.</p>
+        
+        <p><strong>Costo:</strong> Muy caro. Estás pagando infraestructura duplicada: dos centros de datos en lugar de uno. Además del costo de capital, hay costos operativos de mantener ambos sitios sincronizados.</p>
+        
+        <p><strong>Tiempo de recuperación:</strong> Inmediato o muy rápido. Minutos u horas. En un escenario de failover, los usuarios pueden continuar trabajando con mínima interrupción.</p>
+        
+        <p><strong>Uso típico:</strong> Sistemas críticos donde la inactividad de más de unas horas tiene consecuencias financieras severas o riesgos para la seguridad.</p>
+
+        <h2>Conceptos de Alta Disponibilidad (HA)</h2>
+        <p>A veces no quieres recuperarte de un desastre; quieres no caer nunca. La Alta Disponibilidad (HA) se refiere a sistemas que continúan operando sin interrupción incluso cuando algunos componentes fallan.</p>
+
+        <h3>Activo-Pasivo</h3>
+        <p>Tienes dos firewalls, dos servidores, o dos bases de datos. El conjunto A está activo, procesando todo el tráfico. El conjunto B está pasivo, esperando en silencio. Si el conjunto A falla, el conjunto B despierta y toma el control. La ventaja es la simplicidad; la desventaja es que estás desperdiciando la capacidad del conjunto B mientras está pasivo.</p>
+
+        <h3>Activo-Activo</h3>
+        <p>Ambos conjuntos están activos y trabajando simultáneamente. Se reparten la carga de trabajo entre ellos. Si uno falla, el otro asume toda la carga. Es más eficiente porque usas toda la capacidad disponible. Es más complejo de configurar porque necesitas balanceo de carga y sincronización de estado entre los nodos.</p>
+
+        <h2>Pruebas: La Regla de Oro</h2>
+        <p>Un plan de recuperación de desastres que no se ha probado no sirve. Es solo un documento teórico que puede tener errores, inconsistencias, o pasos imposibles de ejecutar cuando más los necesitas.</p>
+
+        <h3>Tabletop Exercise (Ejercicio de Mesa)</h3>
+        <p>Es una reunión donde el equipo de recuperación discute teóricamente «¿Qué haríamos si...?». El facilitador presenta escenarios y el equipo discute cómo respondería, qué pasos seguiría, y qué recursos necesitaría. Es valioso para encontrar fallos lógicos en el plan y asegurar que todos entiendan sus responsabilidades.</p>
+
+        <h3>Prueba Técnica</h3>
+        <p>Es la prueba real: apagar un servidor no crítico y ver si el failover funciona como se diseñó. Estas pruebas deben hacerse en ventanas de mantenimiento (horas de bajo uso) y con un plan de rollback claro. Simular un desastre real es la única forma de verificar que el plan funciona en la práctica, no solo en teoría.</p>
+
+        <div class="summary-box">
+            <h3>Resumen de Puntos Clave para el Examen</h3>
+            
+            <ul>
+                <li><strong>RPO:</strong> Cuántos datos puedes perder (tiempo hacia atrás). Determina frecuencia de respaldos.</li>
+                <li><strong>RTO:</strong> Cuánto tiempo de inactividad es aceptable (tiempo hacia adelante). Determina estrategia de recuperación.</li>
+                <li><strong>Cold Site:</strong> Barato, lento (días). Solo espacio físico, sin equipos.</li>
+                <li><strong>Warm Site:</strong> Moderado, medio (horas). Hardware listo, sin datos actualizados.</li>
+                <li><strong>Hot Site:</strong> Caro, inmediato (minutos). Réplica completa con datos sincronizados.</li>
+                <li><strong>MTBF:</strong> Fiabilidad del hardware. Tiempo promedio entre fallos.</li>
+                <li><strong>MTTR:</strong> Tiempo promedio para reparar un fallo.</li>
+                <li><strong>HA (High Availability):</strong> Redundancia para evitar caídas. Activo-Pasivo o Activo-Activo.</li>
+                <li><strong>Tabletop:</strong> Ejercicio teórico en mesa. Para verificar lógica del plan.</li>
+            </ul>
+            
+            <p><strong>Escenario de examen:</strong> «La empresa necesita poder restaurar operaciones en menos de 4 horas tras un fallo, pero no puede perder más de 1 hora de datos.» RTO = 4 horas, RPO = 1 hora. La estrategia depende del presupuesto y criticidad del sistema.</p>
+        </div>
+    </section>
+</body>
+</html>

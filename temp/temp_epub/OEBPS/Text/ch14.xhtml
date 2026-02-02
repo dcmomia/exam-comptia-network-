@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="es">
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Capítulo 14: Servicios de Red IPv4 e IPv6</title>
+    <link rel="stylesheet" type="text/css" href="../Styles/styles.css"/>
+</head>
+
+<body>
+    <section class="chapter" epub:type="chapter">
+        <h1 class="chapter-title">Capítulo 14: Servicios de Red IPv4 e IPv6</h1>
+
+        <h2 class="section-title">Introducción: Los Servicios que Hacen Funcionar la Red</h2>
+        <p>Si los cables y routers son el cuerpo, DHCP y DNS son el oxígeno y el lenguaje. Sin DHCP, tendrías que
+            configurar manualmente cada teléfono y laptop que entra al edificio. Sin DNS, tendrías que memorizar
+            142.250.184.4 para entrar a Google.</p>
+        <p>Este capítulo trata sobre los servicios que hacen que la red sea automática y amigable para el humano.</p>
+
+        <h2 class="section-title">DHCP (Dynamic Host Configuration Protocol)</h2>
+        <p>El protocolo de configuración dinámica de host se encarga de asignar direcciones IP automáticamente.</p>
+
+        <h3 class="subsection-title">El Proceso DORA</h3>
+        <p>Cuando conectas tu PC, ocurre una conversación de 4 pasos (¡Memorízalos!):</p>
+        <ol>
+            <li><strong>Discover:</strong> El cliente grita "¿Hay algún servidor DHCP aquí?" (Broadcast).</li>
+            <li><strong>Offer:</strong> El servidor responde "Sí, tengo la IP 192.168.1.10 disponible".</li>
+            <li><strong>Request:</strong> El cliente dice "Genial, la quiero".</li>
+            <li><strong>Acknowledge:</strong> El servidor confirma "Es tuya por 24 horas".</li>
+        </ol>
+
+        <div class="tip-box">
+            <strong>💡 Consejo de Examen:</strong> DORA = Discover, Offer, Request, Acknowledge. Es una de las preguntas
+            más frecuentes.
+        </div>
+
+        <h3 class="subsection-title">Configuración del Servidor DHCP</h3>
+        <ul>
+            <li><strong>Scope (Ámbito):</strong> El rango de direcciones IP que el servidor puede repartir (ej:
+                192.168.1.100 a .200).</li>
+            <li><strong>Lease Time (Tiempo de concesión):</strong> Cuánto tiempo te presta la IP.</li>
+            <li><strong>Reservation (Reserva):</strong> Asignar siempre la misma IP a una dirección MAC específica (útil
+                para impresoras de red).</li>
+            <li><strong>Exclusions (Exclusiones):</strong> IPs dentro del scope que NO deben repartirse (ej: la IP
+                estática del router).</li>
+            <li><strong>IP Helper / Relay:</strong> Si el servidor DHCP está en otra subred, el router debe configurarse
+                como un "relevo" para pasar las peticiones DHCP.</li>
+        </ul>
+
+        <h2 class="section-title">DNS (Domain Name System)</h2>
+        <p>El sistema de nombres de dominio traduce nombres humanos a direcciones IP.</p>
+
+        <h3 class="subsection-title">Tipos de Registros DNS (Records)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Nombre</th>
+                    <th>Función</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>A</strong></td>
+                    <td>Address</td>
+                    <td>Nombre a IPv4 (ej: google.com → 142.250...)</td>
+                </tr>
+                <tr>
+                    <td><strong>AAAA</strong></td>
+                    <td>Quad A</td>
+                    <td>Nombre a IPv6</td>
+                </tr>
+                <tr>
+                    <td><strong>CNAME</strong></td>
+                    <td>Canonical Name</td>
+                    <td>Alias. "www.miweb.com" es en realidad "servidor1.miweb.com"</td>
+                </tr>
+                <tr>
+                    <td><strong>MX</strong></td>
+                    <td>Mail Exchange</td>
+                    <td>Dice dónde enviar el correo electrónico de ese dominio</td>
+                </tr>
+                <tr>
+                    <td><strong>TXT</strong></td>
+                    <td>Text</td>
+                    <td>Notas de texto. Se usa para verificar propiedad y seguridad (SPF/DKIM)</td>
+                </tr>
+                <tr>
+                    <td><strong>PTR</strong></td>
+                    <td>Pointer</td>
+                    <td>Lo opuesto a A. IP a Nombre (Reverse Lookup)</td>
+                </tr>
+                <tr>
+                    <td><strong>NS</strong></td>
+                    <td>Name Server</td>
+                    <td>Indica quién es el servidor DNS autorizado para esa zona</td>
+                </tr>
+                <!-- Insertar en la tabla de registros DNS en ch14.html -->
+                <tr>
+                    <td><strong>SRV</strong></td>
+                    <td>Service</td>
+                    <td>Localiza servicios como Controladores de Dominio (Active Directory) o VoIP. Define puerto y
+                        prioridad.</td>
+                </tr>
+                <tr>
+                    <td><strong>CAA</strong></td>
+                    <td>Certification Authority Authorization</td>
+                    <td>Seguridad: Especifica qué Autoridades de Certificación (CA) pueden emitir certificados SSL para
+                        este dominio.</td>
+                </tr>
+                <tr>
+                    <td><strong>DKIM/SPF/DMARC</strong></td>
+                    <td>Email Security</td>
+                    <td>Registros TXT especializados para evitar la suplantación de identidad en correos (Phishing).
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 class="subsection-title">Jerarquía DNS</h3>
+        <p><code>Root (.) → Top Level (.com, .org) → Second Level (google.com) → Subdomain (maps.google.com)</code></p>
+
+        <h2 class="section-title">NTP (Network Time Protocol)</h2>
+        <p>La sincronización de tiempo es crítica. Si tu servidor tiene la hora mal:</p>
+        <ul>
+            <li>Los logs de seguridad no coincidirán.</li>
+            <li>La autenticación Kerberos fallará.</li>
+            <li>Las copias de seguridad pueden fallar.</li>
+        </ul>
+        <p>NTP (Puerto 123 UDP) mantiene todos los relojes alineados con una fuente de tiempo atómica (Stratum 0).</p>
+
+        <h2 class="section-title">Implementación de IPv6</h2>
+        <p>El mundo se quedó sin direcciones IPv4, así que IPv6 llegó para salvarnos (con direcciones de 128 bits).</p>
+
+        <h3 class="subsection-title">Métodos de Transición</h3>
+        <ul>
+            <li><strong>Dual Stack:</strong> La mejor opción. Tus dispositivos ejecutan IPv4 e IPv6 al mismo tiempo.
+            </li>
+            <li><strong>Tunneling:</strong> Empaquetar tráfico IPv6 dentro de paquetes IPv4 para cruzar una red vieja.
+            </li>
+        </ul>
+
+        <h3 class="subsection-title">Tipos de Direcciones IPv6</h3>
+        <ul>
+            <li><strong>Global Unicast:</strong> Pública (empieza por 2000::/3).</li>
+            <li><strong>Link-Local:</strong> Privada, solo funciona en el cable local. Obligatoria. (Empieza por
+                fe80::).</li>
+        </ul>
+        <h3 class="subsection-title">SLAAC (Stateless Address Auto-Configuration)</h3>
+        <p>SLAAC permite que los dispositivos se autoconfiguren sin un servidor DHCP central. El router solo informa
+            sobre la red, y el cliente hace el resto.</p>
+
+        <div class="chapter-update">
+            <h3>⚡ Datos Críticos: El Proceso SLAAC de 5 Pasos</h3>
+            <p>Es fundamental para el examen conocer el orden de estos mensajes:</p>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Paso</th>
+                        <th>Acción</th>
+                        <th>Descripción Técnica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><b>Iniciación</b></td>
+                        <td>El dispositivo genera su dirección <b>Link-Local</b> (fe80::).</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><b>Router Solicitation (RS)</b></td>
+                        <td>El dispositivo pregunta: "¿Hay algún router aquí?" (Multicast).</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><b>Router Advertisement (RA)</b></td>
+                        <td>El router responde con el <b>Prefijo de Red</b> y la Puerta de Enlace.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><b>Configuración</b></td>
+                        <td>El dispositivo combina el <b>Prefijo</b> + <b>Interface ID</b> (vía MAC/EUI-64).</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><b>Verificación (DAD)</b></td>
+                        <td>Duplicate Address Detection: Grita "¿Alguien tiene esta IP?" para evitar conflictos.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Comparativa Rápida</h4>
+            <ul>
+                <li><b>DHCPv4:</b> Servidor central asigna todo (Stateful). Si el servidor cae, no hay IP.</li>
+                <li><b>SLAAC (IPv6):</b> Descentralizado (Stateless). El router da el prefijo, la gestión es del
+                    cliente.</li>
+            </ul>
+        </div>
+
+        <div class="chapter-update">
+            <h3>⚡ Datos Críticos: Prefijos de Direcciones IPv6</h3>
+            <table class="resumen-table">
+                <thead>
+                    <tr>
+                        <th>Tipo de Dirección</th>
+                        <th>Prefijo (Hex)</th>
+                        <th>Equivalente IPv4 / Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Global Unicast</td>
+                        <td>2000 - 3999</td>
+                        <td>IP Pública (Internet).</td>
+                    </tr>
+                    <tr>
+                        <td>Link-Local</td>
+                        <td>FE80</td>
+                        <td>APIPA / IP Privada (Solo LAN).</td>
+                    </tr>
+                    <tr>
+                        <td>Multicast</td>
+                        <td>FF</td>
+                        <td>Broadcast (Enviar a grupo).</td>
+                    </tr>
+                    <tr>
+                        <td>Loopback</td>
+                        <td>::1</td>
+                        <td>127.0.0.1 (Localhost).</td>
+                    </tr>
+                    <tr>
+                        <td>Ruta por defecto</td>
+                        <td>::</td>
+                        <td>0.0.0.0 (Cualquier red).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>El Proceso EUI-64</h4>
+            <div class="mnemonica">
+                <p>Para generar el Interface ID de 64 bits desde una MAC (48 bits):</p>
+                <ol>
+                    <li>Divide la dirección MAC a la mitad.</li>
+                    <li>Inserta <b>FFFE</b> en el medio.</li>
+                    <li>El resultado es el identificador EUI-64.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <h3>🛠️ Escenario: ¿Por qué no salgo a Internet con IPv6?</h3>
+            <p><b>Síntoma:</b> Un usuario imprime en la red local pero no navega. Al revisar <code>ipconfig</code>, su
+                dirección comienza con <b>FE80::</b>.</p>
+            <ul>
+                <li><b>Diagnóstico:</b> FE80 es <b>Link-Local</b>. Solo permite comunicación LAN.</li>
+                <li><b>Causa:</b> No está recibiendo una dirección <b>Global Unicast</b> (2000-3999) del router.</li>
+                <li><b>Solución:</b> Verificar que el router esté enviando <b>Router Advertisements (RA)</b>
+                    correctamente.</li>
+            </ul>
+        </div>
+
+        <div class="summary-box">
+            <h3>📌 Resumen de Puntos Clave</h3>
+            <ul>
+                <li><strong>DORA:</strong> Discover, Offer, Request, Acknowledge (Proceso DHCP).</li>
+                <li><strong>Registros DNS:</strong> A (IPv4), AAAA (IPv6), MX (Correo), CNAME (Alias).</li>
+                <li><strong>IP Helper:</strong> Necesario si el servidor DHCP está en otra VLAN.</li>
+                <li><strong>SLAAC:</strong> Autoconfiguración de IPv6 sin servidor central.</li>
+                <li><strong>NTP:</strong> Mantiene la hora sincronizada (Vital para seguridad/logs).</li>
+            </ul>
+        </div>
+
+        <div class="important-note">
+            <strong>💡 Consejo del Instructor:</strong> Si ves una pregunta sobre "un usuario puede acceder a servidores
+            por IP pero no por nombre", es un problema de DNS. Si la IP del usuario es 169.254.x.x, es un problema de
+            DHCP.
+        </div>
+    </section>
+</body>
+</html>

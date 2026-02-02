@@ -1,0 +1,100 @@
+[
+    {
+        "id": 11,
+        "has_context_image": false,
+        "question": "Al planificar la infraestructura eléctrica de un nuevo centro de datos, ¿por qué es fundamental calcular con precisión la carga de potencia de todos los dispositivos?",
+        "options": [
+            "Para determinar el número de PDUs necesarias.",
+            "Para seleccionar la capacidad adecuada del UPS.",
+            "Para calcular el consumo total de energía a efectos de facturación.",
+            "Para garantizar que la refrigeración ambiental sea suficiente."
+        ],
+        "answer": "Para seleccionar la capacidad adecuada del UPS.",
+        "explanation": "Calcular la carga de potencia total (power load) es esencial para dimensionar correctamente el Sistema de Alimentación Ininterrumpida (UPS). Si la carga de los dispositivos supera la capacidad del UPS, este no podrá mantener el equipo funcionando durante un corte de energía y podría sobrecargarse, fallando en su propósito crítico.",
+        "source_reference": "Capítulo 10: Instalaciones Físicas y Factores Ambientales > Infraestructura de Energía"
+    },
+    {
+        "id": 12,
+        "has_context_image": false,
+        "question": "¿Cuál de los siguientes se utiliza para conectar redes de Categoría 5e o superior en un MDF o IDF?",
+        "options": [
+            "RJ-11",
+            "Conector F",
+            "Bloque 66",
+            "Bloque 110"
+        ],
+        "answer": "Bloque 110",
+        "explanation": "El Bloque 110 es el estándar de terminación para el cableado de datos de Categoría 5e, 6 y superior en los marcos de distribución (MDF/IDF). A diferencia del bloque 66 (usado principalmente para voz analógica), el bloque 110 está diseñado para soportar mayores anchos de banda y reducir la diafonía.",
+        "source_reference": "Capítulo 2: Cables y Conectores de Red > Terminaciones de Cobre"
+    },
+    {
+        "id": 13,
+        "has_context_image": false,
+        "question": "Amanda, una ingeniera de redes, observa un aumento de la pérdida de paquetes en la red de la empresa, lo que provoca una degradación del rendimiento de las aplicaciones en tiempo real, como la VoIP y las videoconferencias. ¿Cuál de los siguientes enfoques debería aplicar Amanda para mitigar mejor la pérdida de paquetes y mejorar el rendimiento de las aplicaciones?",
+        "options": [
+            "Actualizar los switches de red",
+            "Implementar VLANs",
+            "Aumentar el tamaño de la MTU",
+            "Configurar QoS"
+        ],
+        "answer": "Configurar QoS",
+        "explanation": "La Calidad de Servicio (QoS) permite priorizar el tráfico sensible a la latencia y al jitter, como la voz (VoIP) y el vídeo, sobre el tráfico de datos menos crítico. Al configurar QoS, Amanda asegura que durante periodos de congestión, los paquetes de aplicaciones en tiempo real se procesen primero, mitigando su pérdida y mejorando el rendimiento detectado por el usuario.",
+        "source_reference": "Capítulo 13: Optimización y Alta Disponibilidad de Red > Calidad de Servicio (QoS)"
+    },
+    {
+        "id": 14,
+        "has_context_image": false,
+        "question": "¿Qué característica de los dispositivos de red se utiliza comúnmente para aplicar el filtrado de tráfico basado en criterios predefinidos como direcciones IP de origen y destino, puertos y protocolos?",
+        "options": [
+            "VLAN",
+            "ACL",
+            "DHCP",
+            "NAT"
+        ],
+        "answer": "ACL",
+        "explanation": "Las Listas de Control de Acceso (ACL) son el mecanismo fundamental para filtrar el tráfico en routers y switches de capa 3. Permiten permitir o denegar paquetes basándose en información del encabezado, como la IP (Capa 3) y el puerto/protocolo (Capa 4).",
+        "source_reference": "Capítulo 18: Fortalecimiento y Defensa de la Red > Listas de Control de Acceso"
+    },
+    {
+        "id": 15,
+        "has_context_image": false,
+        "question": "Glenn ha sido asignado para resolver problemas de conectividad de red de su organización. Tras investigar, identifica un switch de red como el probable culpable y comienza a revisar las estadísticas de la interfaz del switch. Descubre que la interfaz del switch está activa y recibe un aumento notable de tramas de unos 4600 bytes de tamaño. ¿Cuál es la causa más probable de los problemas de conectividad?",
+        "options": [
+            "Drops (Descartes)",
+            "Errores CRC",
+            "Runts",
+            "Giants"
+        ],
+        "answer": "Giants",
+        "explanation": "En el contexto de Ethernet estándar, las tramas que superan el tamaño máximo de 1518 bytes se denominan 'Giants' (Gigantes). Dado que Glenn detecta tramas de 4600 bytes (muy por encima del límite estándar), estos 'Giants' están causando que el switch las descarte o procese incorrectamente, provocando fallos de conectividad.",
+        "source_reference": "Capítulo 19: Metodología de Resolución de Problemas > Estadísticas de Interfaz"
+    },
+    {
+        "id": 16,
+        "has_context_image": false,
+        "question": "Usted trabaja como técnico de redes inalámbricas y le han enviado a casa de un usuario para instalar un punto de acceso inalámbrico 802.11ac nuevo para sustituir al antiguo. Para asegurarse de que todos los dispositivos actuales de la red se conecten automáticamente a la nueva red, configura el SSID, el tipo de cifrado y la contraseña con los mismos que el punto de acceso anterior. Enciende el nuevo punto de acceso y observa que la mayoría de los dispositivos se conectan automáticamente, pero una impresora inalámbrica antigua no se conecta. Observa que la impresora tiene unos 7 años, pero el usuario dice que siempre ha funcionado de maravilla con la antigua red inalámbrica. ¿Cuál es la razón MÁS probable por la que la impresora no se conecta al nuevo punto de acceso?",
+        "options": [
+            "La potencia de transmisión del punto de acceso es demasiado baja",
+            "La impresora inalámbrica está configurada con una contraseña incorrecta",
+            "El canal configurado en el punto de acceso es incorrecto",
+            "El punto de acceso y la impresora inalámbrica tienen un desajuste de frecuencia"
+        ],
+        "answer": "El punto de acceso y la impresora inalámbrica tienen un desajuste de frecuencia",
+        "explanation": "El estándar 802.11ac (Wi-Fi 5) opera exclusivamente en la banda de 5 GHz. Si la impresora tiene 7 años, es muy probable que solo soporte la banda de 2.4 GHz (802.11b/g/n). Aunque el SSID y la contraseña coincidan, la impresora no 've' la red de 5 GHz del nuevo AP, resultando en un desajuste de frecuencia (frequency mismatch).",
+        "source_reference": "Capítulo 9: Despliegue de Redes Inalámbricas > Estándares y Frecuencias"
+    },
+    {
+        "id": 17,
+        "has_context_image": false,
+        "question": "Una empresa ha sufrido varias infecciones por virus en los últimos meses. Se determinó que la causa principal eran vulnerabilidades conocidas en las aplicaciones de software utilizadas por la empresa. ¿Qué debería aplicar un administrador para evitar futuros brotes?",
+        "options": [
+            "Equipo de respuesta ante incidentes",
+            "Políticas de uso aceptable",
+            "Sistemas de detección de intrusiones basados en host",
+            "Gestión de parches"
+        ],
+        "answer": "Gestión de parches",
+        "explanation": "Dado que la causa raíz son 'vulnerabilidades conocidas en el software', la solución directa y más eficaz es la Gestión de Parches (Patch management). Mantener el software actualizado con los últimos parches de seguridad cierra los agujeros que los virus aprovechan para infectar los sistemas.",
+        "source_reference": "Capítulo 15: Operaciones y Gestión de Red > Gestión de Parches"
+    }
+]
