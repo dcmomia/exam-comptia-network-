@@ -9,7 +9,15 @@
 
 ## 2. Version History & Patch Notes
 
-### v3.0.1 - Hotfix: Bootstrap & Encoding (Current)
+### v3.0.2 - Stabilization & Robustness (Current)
+- **Patch Description:** Stability update for app initialization and data visibility.
+- **Key Changes:**
+    - **Initialization Fix:** Migrated all DOM listeners to `window.onload` to ensure element availability.
+    - **Visibility Fix:** Changed `EXAMS_DATABASE` to `var` for absolute global browser scoping.
+    - **UI Telemetry:** Added visual error reporting for empty or missing databases.
+    - **Syntax Polish:** Fixed logical errors in the result generation engine causing silent crashes.
+
+### v3.0.1 - Hotfix: Bootstrap & Encoding
 - **Patch Description:** Emergency fix for app initialization and data corruption.
 - **Key Changes:**
     - **Bootstrap Fix:** Removed obsolete `startBtn` references in `app.js` that caused script crashes.

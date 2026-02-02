@@ -33,7 +33,6 @@ function getDomainForChapter(chapterName) {
     return "Otros Temas";
 }
 
-// Nueva: Algoritmo de barajado Fisher-Yates
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -50,21 +49,18 @@ let currentFilter = 'all';
 let currentIndex = 0;
 let userAnswers = [];
 let sessionStartTime;
-let totalElapsedTime = 0; // Tiempo acumulado en ms
+let totalElapsedTime = 0;
 let timerInterval;
 let resultsChartInstance = null;
 let isPaused = false;
 
-// Selectores DOM
-const startScreen = document.getElementById('start-screen');
-const quizScreen = document.getElementById('quiz-screen');
-const resultsScreen = document.getElementById('results-screen');
-const pauseOverlay = document.getElementById('pause-overlay');
-const resumeExamBtn = document.getElementById('resume-exam-btn');
-const examsCatalog = document.getElementById('exams-catalog');
+// Elementos UI
+let startScreen, quizScreen, resultsScreen, pauseOverlay, resumeExamBtn, examsCatalog;
+let nextBtn, prevBtn, skipBtn, finishBtn, restartBtn, pauseBtn;
+let questionText, optionsList, feedbackContainer, feedbackMessage, chapterRef, sourceText, explanationText;
+let questionNumber, progressBarFill, timerDisplay, questionGrid, domainFilter;
 
-// Protecciones de Inicialización
-const isDataLoaded = () => filteredQuestions && filteredQuestions.length > 0;
+function isDataLoaded() { return filteredQuestions && filteredQuestions.length > 0; }
 
 function updateFilteredQuestions(domain) {
     currentFilter = domain;
@@ -78,68 +74,79 @@ function updateFilteredQuestions(domain) {
     }
 }
 
-const questionText = document.getElementById('question-text');
-const optionsList = document.getElementById('options-list');
-const feedbackContainer = document.getElementById('feedback-container');
-const feedbackMessage = document.getElementById('feedback-message');
-const chapterRef = document.getElementById('chapter-ref');
-const sourceText = document.getElementById('source-text');
-const explanationText = document.getElementById('explanation-text');
-const questionNumber = document.getElementById('question-number');
-const progressBarFill = document.getElementById('progress-bar-fill');
-const timerDisplay = document.getElementById('timer');
-const questionGrid = document.getElementById('question-grid');
-const domainFilter = document.getElementById('domain-filter');
-
-// Inicialización
 async function init() {
     try {
-        if (typeof EXAMS_DATABASE !== 'undefined') {
+        console.log("Iniciando aplicación v3.0.2...");
+
+        // Asignar selectores
+        startScreen = document.getElementById('start-screen');
+        quizScreen = document.getElementById('quiz-screen');
+        resultsScreen = document.getElementById('results-screen');
+        pauseOverlay = document.getElementById('pause-overlay');
+        resumeExamBtn = document.getElementById('resume-exam-btn');
+        examsCatalog = document.getElementById('exams-catalog');
+        nextBtn = document.getElementById('next-btn');
+        prevBtn = document.getElementById('prev-btn');
+        skipBtn = document.getElementById('skip-btn');
+        finishBtn = document.getElementById('finish-btn');
+        restartBtn = document.getElementById('restart-btn');
+        pauseBtn = document.getElementById('pause-btn');
+        questionText = document.getElementById('question-text');
+        optionsList = document.getElementById('options-list');
+        feedbackContainer = document.getElementById('feedback-container');
+        feedbackMessage = document.getElementById('feedback-message');
+        chapterRef = document.getElementById('chapter-ref');
+        sourceText = document.getElementById('source-text');
+        explanationText = document.getElementById('explanation-text');
+        questionNumber = document.getElementById('question-number');
+        progressBarFill = document.getElementById('progress-bar-fill');
+        timerDisplay = document.getElementById('timer');
+        questionGrid = document.getElementById('question-grid');
+        domainFilter = document.getElementById('domain-filter');
+
+        const dbExists = (typeof EXAMS_DATABASE !== 'undefined');
+        if (dbExists) {
             renderExamsCatalog();
             checkPreviousSession();
         } else {
             console.error('No se encontró EXAMS_DATABASE.');
-            alert('Error: No se pudieron cargar los datos de los exámenes.');
+            const description = document.querySelector('.start-description');
+            if (description) description.innerHTML = '<span style="color:var(--error);font-weight:bold;">Error: No se han podido cargar los datos de los exámenes. Por favor, recarga la página.</span>';
         }
+
+        // Configurar Listeners
+        if (domainFilter) domainFilter.addEventListener('change', (e) => applyDomainFilter(e.target.value));
+        if (resumeExamBtn) resumeExamBtn.onclick = loadExamSession;
+        if (pauseBtn) pauseBtn.onclick = togglePause;
+
+        if (nextBtn) nextBtn.onclick = () => { currentIndex++; saveProgress(); renderQuestion(); };
+        if (prevBtn) prevBtn.onclick = () => { if (currentIndex > 0) { currentIndex--; saveProgress(); renderQuestion(); } };
+        if (skipBtn) skipBtn.onclick = skipQuestion;
+        if (finishBtn) finishBtn.onclick = () => { if (confirm('¿Finalizar examen ahora?')) { saveProgress(); showResults(); } };
+
+        if (restartBtn) {
+            restartBtn.onclick = () => {
+                localStorage.removeItem('network_plus_exam_state');
+                resultsScreen.classList.remove('active');
+                startScreen.classList.add('active');
+                if (resumeExamBtn) resumeExamBtn.classList.add('hidden');
+            };
+        }
+
     } catch (error) {
-        console.error('Error inicializando datos:', error);
-    }
-
-    // Listener para el filtro de dominios
-    if (domainFilter) {
-        domainFilter.addEventListener('change', (e) => {
-            applyDomainFilter(e.target.value);
-        });
-    }
-}
-
-function applyDomainFilter(domain) {
-    // Si estamos en medio de un examen, guardar progreso antes de filtrar
-    if (quizScreen.classList.contains('active')) {
-        saveProgress();
-    }
-
-    updateFilteredQuestions(domain);
-    currentIndex = 0; // Reiniciar al inicio del nuevo subset
-
-    if (quizScreen.classList.contains('active')) {
-        renderQuestion();
-        renderQuestionList();
-    }
-}
-
-function checkPreviousSession() {
-    const savedState = localStorage.getItem('network_plus_exam_state');
-    if (savedState) {
-        resumeExamBtn.classList.remove('hidden');
+        console.error('Error crítico en init:', error);
     }
 }
 
 function renderExamsCatalog() {
     if (!examsCatalog) return;
     examsCatalog.innerHTML = '';
-
-    Object.values(EXAMS_DATABASE).forEach(exam => {
+    const exams = Object.values(EXAMS_DATABASE);
+    if (exams.length === 0) {
+        examsCatalog.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 20px; color: var(--text-muted);">No hay exámenes disponibles en este momento.</p>';
+        return;
+    }
+    exams.forEach(exam => {
         const card = document.createElement('div');
         card.className = 'exam-card';
         card.innerHTML = `
@@ -153,72 +160,59 @@ function renderExamsCatalog() {
     });
 }
 
-// Iniciar Examen
 function startQuiz(examId) {
-    const examData = EXAMS_DATABASE[examId];
-    if (!examData) {
-        console.error('Examen no encontrado:', examId);
-        return;
+    try {
+        const examData = EXAMS_DATABASE[examId];
+        if (!examData) throw new Error('Examen no encontrado');
+        activeExamId = examId;
+        questions = [...examData.questions];
+        shuffleArray(questions);
+        const initialDomain = domainFilter ? domainFilter.value : 'all';
+        updateFilteredQuestions(initialDomain);
+        if (!isDataLoaded()) throw new Error('Sin preguntas cargadas');
+        currentIndex = 0;
+        userAnswers = [];
+        totalElapsedTime = 0;
+        isPaused = false;
+        localStorage.removeItem('network_plus_exam_state');
+        startScreen.classList.remove('active');
+        resultsScreen.classList.remove('active');
+        quizScreen.classList.add('active');
+        if (timerInterval) clearInterval(timerInterval);
+        sessionStartTime = Date.now();
+        startTimer();
+        renderQuestion();
+    } catch (e) {
+        console.error("Error en startQuiz:", e);
     }
-
-    activeExamId = examId;
-    questions = [...examData.questions];
-    shuffleArray(questions);
-
-    // Aplicar filtro inicial si el selector tiene algo
-    const initialDomain = domainFilter ? domainFilter.value : 'all';
-    updateFilteredQuestions(initialDomain);
-
-    if (!isDataLoaded()) {
-        console.error('No hay preguntas cargadas.');
-        return;
-    }
-    currentIndex = 0;
-    userAnswers = [];
-    totalElapsedTime = 0;
-    isPaused = false;
-    localStorage.removeItem('network_plus_exam_state');
-    startScreen.classList.remove('active');
-    resultsScreen.classList.remove('active');
-    quizScreen.classList.add('active');
-    if (timerInterval) clearInterval(timerInterval);
-    sessionStartTime = Date.now();
-    startTimer();
-    renderQuestion();
 }
 
 function loadExamSession() {
     const savedState = localStorage.getItem('network_plus_exam_state');
-    if (savedState) {
+    if (!savedState) return;
+    try {
         const state = JSON.parse(savedState);
-
         activeExamId = state.activeExamId || 'network_plus_exam_1';
         const examData = EXAMS_DATABASE[activeExamId];
-
-        if (state.shuffledIds && examData) {
+        if (!examData) return;
+        if (state.shuffledIds) {
             questions = state.shuffledIds.map(id => examData.questions.find(q => q.id === id)).filter(q => q);
-        } else if (examData) {
+        } else {
             questions = [...examData.questions];
         }
-
         userAnswers = state.userAnswers || [];
         totalElapsedTime = state.totalElapsedTime || 0;
         isPaused = state.isPaused || false;
-
-        // Restaurar filtro antes de renderizar
         const savedFilter = state.currentFilter || 'all';
         if (domainFilter) domainFilter.value = savedFilter;
         updateFilteredQuestions(savedFilter);
-
         currentIndex = state.currentIndex || 0;
-
         startScreen.classList.remove('active');
         resultsScreen.classList.remove('active');
         quizScreen.classList.add('active');
-
         if (isPaused) {
             pauseOverlay.classList.remove('hidden');
-            pauseBtn.textContent = '▶️';
+            if (pauseBtn) pauseBtn.textContent = '▶️';
             renderTime(totalElapsedTime);
         } else {
             sessionStartTime = Date.now();
@@ -226,10 +220,9 @@ function loadExamSession() {
         }
         renderQuestion();
         renderQuestionList();
-    }
+    } catch (e) { console.error(e); }
 }
 
-// Cargar Progreso (Opcional, pero implementamos guardado persistente)
 function saveProgress() {
     const state = {
         activeExamId,
@@ -243,19 +236,19 @@ function saveProgress() {
     localStorage.setItem('network_plus_exam_state', JSON.stringify(state));
 }
 
-// Timer
 function startTimer() {
     if (timerInterval) clearInterval(timerInterval);
     timerInterval = setInterval(() => {
-        const currentSessionDist = Date.now() - sessionStartTime;
-        renderTime(totalElapsedTime + currentSessionDist);
+        const dist = Date.now() - sessionStartTime;
+        renderTime(totalElapsedTime + dist);
     }, 1000);
 }
 
 function renderTime(ms) {
-    const minutes = Math.floor(ms / 60000);
-    const seconds = Math.floor((ms % 60000) / 1000);
-    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    if (!timerDisplay) return;
+    const m = Math.floor(ms / 60000);
+    const s = Math.floor((ms % 60000) / 1000);
+    timerDisplay.textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
 function pauseExam() {
@@ -263,8 +256,8 @@ function pauseExam() {
     isPaused = true;
     clearInterval(timerInterval);
     totalElapsedTime += (Date.now() - sessionStartTime);
-    pauseOverlay.classList.remove('hidden');
-    pauseBtn.textContent = '▶️';
+    if (pauseOverlay) pauseOverlay.classList.remove('hidden');
+    if (pauseBtn) pauseBtn.textContent = '▶️';
     saveProgress();
 }
 
@@ -272,149 +265,90 @@ function resumeExam() {
     if (!isPaused) return;
     isPaused = false;
     sessionStartTime = Date.now();
-    pauseOverlay.classList.add('hidden');
-    pauseBtn.textContent = '⏸️';
+    if (pauseOverlay) pauseOverlay.classList.add('hidden');
+    if (pauseBtn) pauseBtn.textContent = '⏸️';
     startTimer();
     saveProgress();
 }
 
-function togglePause() {
-    if (isPaused) resumeExam();
-    else pauseExam();
-}
+function togglePause() { isPaused ? resumeExam() : pauseExam(); }
 
-// Nueva: Renderizar lista de navegación lateral
 function renderQuestionList() {
     if (!questionGrid) return;
     questionGrid.innerHTML = '';
-
     filteredQuestions.forEach((q, index) => {
         const chip = document.createElement('div');
         chip.className = 'q-chip';
-
-        // Mantenemos el número original para referencia, pero el flujo es del subset
         const originalIndex = questions.indexOf(q);
         chip.textContent = originalIndex + 1;
-
-        // Determinar estado visual
-        if (index === currentIndex) {
-            chip.classList.add('current');
-        } else if (userAnswers[originalIndex]) {
-            if (userAnswers[originalIndex].isCorrect) {
-                chip.classList.add('correct');
-            } else if (!userAnswers[originalIndex].omitted) {
-                chip.classList.add('incorrect');
-            }
+        if (index === currentIndex) chip.classList.add('current');
+        else if (userAnswers[originalIndex]) {
+            if (userAnswers[originalIndex].isCorrect) chip.classList.add('correct');
+            else if (!userAnswers[originalIndex].omitted) chip.classList.add('incorrect');
         }
-
         chip.onclick = () => jumpToQuestion(index);
         questionGrid.appendChild(chip);
     });
 }
 
-// Nueva: Saltar a una pregunta específica
-function jumpToQuestion(index) {
-    if (index === currentIndex) return;
-    currentIndex = index;
-    renderQuestion();
-}
+function jumpToQuestion(index) { currentIndex = index; renderQuestion(); }
 
-// Nueva: Filtrar sidebar
-function filterSidebarByDomain(selectedDomain) {
-    renderQuestionList();
-}
-
-// Renderizar Pregunta
 function renderQuestion() {
-    if (!isDataLoaded()) {
-        console.error('Render abortado: No hay preguntas.');
+    if (!isDataLoaded() || currentIndex >= filteredQuestions.length) {
+        if (currentIndex >= filteredQuestions.length && filteredQuestions.length > 0) showResults();
         return;
     }
-    if (currentIndex >= filteredQuestions.length) {
-        showResults();
-        return;
-    }
-
     const q = filteredQuestions[currentIndex];
     questionText.textContent = q.question;
     optionsList.innerHTML = '';
-
-    // Actualizar sidebar para marcar la actual
     renderQuestionList();
-    feedbackContainer.classList.add('hidden');
-    nextBtn.classList.add('hidden');
-    skipBtn.classList.remove('hidden');
-
-    prevBtn.style.visibility = currentIndex > 0 ? 'visible' : 'hidden';
-
+    if (feedbackContainer) feedbackContainer.classList.add('hidden');
+    if (nextBtn) nextBtn.classList.add('hidden');
+    if (skipBtn) skipBtn.classList.remove('hidden');
+    if (prevBtn) prevBtn.style.visibility = currentIndex > 0 ? 'visible' : 'hidden';
     const originalIndex = questions.indexOf(q);
-    const totalSelected = filteredQuestions.length;
-    const filterText = currentFilter !== 'all' ? ` [${currentFilter}]` : '';
-    questionNumber.textContent = `Pregunta ${currentIndex + 1}/${totalSelected}${filterText}`;
-    progressBarFill.style.width = `${((currentIndex + 1) / totalSelected) * 100}%`;
-
-    q.options.forEach((opt, index) => {
-        const letter = String.fromCharCode(97 + index);
+    const totalSel = filteredQuestions.length;
+    questionNumber.textContent = `Pregunta ${currentIndex + 1}/${totalSel}${currentFilter !== 'all' ? ' [' + currentFilter + ']' : ''}`;
+    progressBarFill.style.width = `${((currentIndex + 1) / totalSel) * 100}%`;
+    q.options.forEach((opt, idx) => {
         const div = document.createElement('div');
         div.className = 'option-item';
-        div.setAttribute('data-letter', letter);
+        div.setAttribute('data-letter', String.fromCharCode(97 + idx));
         div.textContent = opt;
-
-        const existingAns = userAnswers[originalIndex];
-        if (existingAns && !existingAns.omitted) {
+        const ans = userAnswers[originalIndex];
+        if (ans && !ans.omitted) {
             if (opt === q.answer) div.classList.add('correct-reveal');
-            else if (opt === existingAns.answer) div.classList.add('incorrect-reveal');
+            else if (opt === ans.answer) div.classList.add('incorrect-reveal');
             div.style.cursor = 'default';
         } else {
             div.onclick = () => selectOption(div, opt);
         }
-
         optionsList.appendChild(div);
     });
-
     if (userAnswers[originalIndex]) {
-        if (!userAnswers[originalIndex].omitted) {
-            revealFeedback(userAnswers[originalIndex].isCorrect, q.explanation, q.source_reference);
-            nextBtn.classList.remove('hidden');
-            skipBtn.classList.add('hidden');
-        } else {
-            // Si fue omitida, mostrar botón siguiente pero ocultar feedback
-            nextBtn.classList.remove('hidden');
-            skipBtn.classList.add('hidden');
-        }
+        nextBtn.classList.remove('hidden');
+        skipBtn.classList.add('hidden');
+        if (!userAnswers[originalIndex].omitted) revealFeedback(userAnswers[originalIndex].isCorrect, q.explanation, q.source_reference);
     }
 }
 
-// Seleccionar Opción
 function selectOption(element, selectedText) {
     if (!feedbackContainer.classList.contains('hidden')) return;
-
     const q = filteredQuestions[currentIndex];
     const originalIndex = questions.indexOf(q);
     const isCorrect = selectedText === q.answer;
-
-    // Asignar dominio dinámicamente
-    const chapterMatch = q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0";
-    const domainName = getDomainForChapter(chapterMatch);
-
     userAnswers[originalIndex] = {
         questionId: q.id,
         answer: selectedText,
         isCorrect: isCorrect,
-        domain: domainName,
+        domain: getDomainForChapter(q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0"),
         omitted: false
     };
-
-    const items = optionsList.querySelectorAll('.option-item');
-    items.forEach(item => {
+    optionsList.querySelectorAll('.option-item').forEach(item => {
         item.style.cursor = 'default';
-        if (item.textContent === q.answer) {
-            item.classList.add('correct-reveal');
-        } else if (item === element && !isCorrect) {
-            item.classList.add('incorrect-reveal');
-        }
+        if (item.textContent === q.answer) item.classList.add('correct-reveal');
+        else if (item === element && !isCorrect) item.classList.add('incorrect-reveal');
     });
-
     revealFeedback(isCorrect, q.explanation, q.source_reference);
     nextBtn.classList.remove('hidden');
     skipBtn.classList.add('hidden');
@@ -422,201 +356,104 @@ function selectOption(element, selectedText) {
 }
 
 function revealFeedback(isCorrect, explanation, source) {
+    if (!feedbackContainer) return;
     feedbackContainer.classList.remove('hidden');
     feedbackContainer.className = `feedback-container ${isCorrect ? 'correct' : 'incorrect'}`;
     feedbackMessage.textContent = isCorrect ? '¡Correcto!' : 'Incorrecto';
-
-    const chapter = source ? source.split('>')[0].split(':')[0].trim() : 'Ref';
-    chapterRef.textContent = chapter;
+    chapterRef.textContent = source ? source.split('>')[0].split(':')[0].trim() : 'Ref';
     sourceText.textContent = source || 'Sin referencia';
-
     explanationText.textContent = explanation;
 }
 
-// Saltar Pregunta
 function skipQuestion() {
     const q = filteredQuestions[currentIndex];
     const originalIndex = questions.indexOf(q);
-    const chapterMatch = q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0";
-    const domainName = getDomainForChapter(chapterMatch);
-
-    userAnswers[originalIndex] = {
-        questionId: q.id,
-        omitted: true,
-        isCorrect: false,
-        domain: domainName
-    };
-
+    userAnswers[originalIndex] = { questionId: q.id, omitted: true, isCorrect: false, domain: getDomainForChapter(q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0") };
     saveProgress();
     currentIndex++;
     renderQuestion();
 }
 
-// Navegación
-nextBtn.onclick = () => {
-    currentIndex++;
-    // Si llegamos al final de filtradas, se llamará a showResults en el siguiente render
-    saveProgress();
-    renderQuestion();
-};
-
-prevBtn.onclick = () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        saveProgress();
-        renderQuestion();
-    }
-};
-
-skipBtn.onclick = skipQuestion;
-
-// Usamos una función dedicada para procesar el cierre
-function finishExamEarly() {
-    if (confirm('¿Estás seguro de que quieres finalizar el examen ahora? Se calculará tu puntaje actual.')) {
-        // Aseguramos que todas las preguntas hasta el momento se guarden
-        saveProgress();
-        showResults();
-    }
+function applyDomainFilter(domain) {
+    if (quizScreen.classList.contains('active')) saveProgress();
+    updateFilteredQuestions(domain);
+    currentIndex = 0;
+    if (quizScreen.classList.contains('active')) { renderQuestion(); renderQuestionList(); }
 }
 
-finishBtn.onclick = finishExamEarly;
+function checkPreviousSession() {
+    if (localStorage.getItem('network_plus_exam_state') && resumeExamBtn) resumeExamBtn.classList.remove('hidden');
+}
 
-// Mostrar Resultados
 function showResults() {
-    if (!isPaused && sessionStartTime) {
-        totalElapsedTime += (Date.now() - sessionStartTime);
-    }
+    if (!isPaused && sessionStartTime) totalElapsedTime += (Date.now() - sessionStartTime);
     clearInterval(timerInterval);
     isPaused = false;
     quizScreen.classList.remove('active');
     resultsScreen.classList.add('active');
     localStorage.removeItem('network_plus_exam_state');
-
-    const isFilterActive = currentFilter !== 'all';
-    const activeSet = isFilterActive ? filteredQuestions : questions;
+    const activeSet = currentFilter !== 'all' ? filteredQuestions : questions;
     const total = activeSet.length;
-
-    if (total === 0) {
-        console.error("Error: Intentando mostrar resultados sin preguntas.");
-        document.getElementById('final-percentage').textContent = "0%";
-        return;
-    }
-
-    // Rellenamos los huecos en userAnswers para preguntas del set activo
+    if (total === 0) return;
     activeSet.forEach(q => {
-        const originalIdx = questions.indexOf(q);
-        if (!userAnswers[originalIdx]) {
-            const domainName = getDomainForChapter(q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0");
-            userAnswers[originalIdx] = {
-                questionId: q.id,
-                omitted: true,
-                isCorrect: false,
-                domain: domainName
-            };
+        const idx = questions.indexOf(q);
+        if (!userAnswers[idx]) {
+            userAnswers[idx] = { questionId: q.id, omitted: true, isCorrect: false, domain: getDomainForChapter(q.source_reference ? q.source_reference.split('>')[0].trim() : "Capítulo 0") };
         }
     });
-
-    const activeUserAnswers = activeSet.map(q => userAnswers[questions.indexOf(q)]);
-    const answered = activeUserAnswers.filter(a => a && !a.omitted);
+    const activeUA = activeSet.map(q => userAnswers[questions.indexOf(q)]);
+    const answered = activeUA.filter(a => a && !a.omitted);
     const correct = answered.filter(a => a.isCorrect).length;
-    const omitted = total - answered.length;
-
     const percentage = Math.round((correct / total) * 100);
-
-    const resultTitle = isFilterActive ? `Resultados: ${currentFilter}` : "Resultados Finales";
-    document.querySelector('#results-screen h2').textContent = resultTitle;
-
     document.getElementById('final-percentage').textContent = `${percentage}%`;
     document.getElementById('correct-count').textContent = `(${correct}/${total})`;
     document.getElementById('correct-val').textContent = correct;
-    document.getElementById('omitted-val').textContent = omitted;
-    const minutesTaken = Math.floor(totalElapsedTime / 60000);
-    document.getElementById('time-taken').textContent = `${minutesTaken} min`;
-
-    renderChart(correct, answered.length - correct, omitted);
+    document.getElementById('omitted-val').textContent = total - answered.length;
+    document.getElementById('time-taken').textContent = `${Math.floor(totalElapsedTime / 60000)} min`;
+    renderChart(correct, answered.length - correct, total - answered.length);
     renderDomainProgress();
 }
 
 function renderChart(correct, incorrect, omitted) {
-    const ctx = document.getElementById('resultsChart').getContext('2d');
+    const ctx = document.getElementById('resultsChart')?.getContext('2d');
+    if (!ctx) return;
     if (resultsChartInstance) resultsChartInstance.destroy();
-
     resultsChartInstance = new Chart(ctx, {
         type: 'doughnut',
-        data: {
-            labels: ['Correcto', 'Incorrecto', 'Omitido'],
-            datasets: [{
-                data: [correct, incorrect, omitted],
-                backgroundColor: ['#22c55e', '#ef4444', '#cbd5e1'],
-                borderWidth: 0
-            }]
-        },
-        options: {
-            cutout: '80%',
-            plugins: { legend: { display: false } },
-            animation: { animateScale: true }
-        }
+        data: { labels: ['Correcto', 'Incorrecto', 'Omitido'], datasets: [{ data: [correct, incorrect, omitted], backgroundColor: ['#22c55e', '#ef4444', '#cbd5e1'], borderWidth: 0 }] },
+        options: { cutout: '80%', plugins: { legend: { display: false } }, animation: { animateScale: true } }
     });
 }
 
 function renderDomainProgress() {
-    const domainsList = document.getElementById('domains-list');
-    domainsList.innerHTML = '';
-
+    const list = document.getElementById('domains-list');
+    if (!list) return;
+    list.innerHTML = '';
     const stats = {};
-    Object.keys(DOMAIN_MAPPING).forEach(d => {
-        stats[d] = { total: 0, correct: 0, incorrect: 0, omitted: 0 };
-    });
-
+    Object.keys(DOMAIN_MAPPING).forEach(d => stats[d] = { total: 0, correct: 0, incorrect: 0, omitted: 0 });
     userAnswers.forEach(ans => {
-        if (!ans || !stats[ans.domain]) return;
-        stats[ans.domain].total++;
-        if (ans.omitted) stats[ans.domain].omitted++;
-        else if (ans.isCorrect) stats[ans.domain].correct++;
-        else stats[ans.domain].incorrect++;
+        if (ans && stats[ans.domain]) {
+            stats[ans.domain].total++;
+            if (ans.omitted) stats[ans.domain].omitted++;
+            else if (ans.isCorrect) stats[ans.domain].correct++;
+            else stats[ans.domain].incorrect++;
+        }
     });
-
-    Object.entries(stats).forEach(([name, data], index) => {
+    Object.entries(stats).forEach(([name, data], idx) => {
         if (data.total === 0) return;
-
-        const correctPct = Math.round((data.correct / data.total) * 100);
-        const incorrectPct = Math.round((data.incorrect / data.total) * 100);
-        const omittedPct = 100 - correctPct - incorrectPct;
-
-        const description = DOMAIN_MAPPING[name].description;
-        const domainClass = `domain-${index + 1}`;
-
-        const domainItem = document.createElement('div');
-        domainItem.className = `domain-item ${domainClass}`;
-        domainItem.innerHTML = `
-            <div class="domain-info">
-                <span class="domain-name">${name}</span>
-                <span class="domain-desc">${description}</span>
-            </div>
+        const cP = Math.round((data.correct / data.total) * 100), iP = Math.round((data.incorrect / data.total) * 100), oP = 100 - cP - iP;
+        const item = document.createElement('div');
+        item.className = `domain-item domain-${idx + 1}`;
+        item.innerHTML = `
+            <div class="domain-info"><span>${name}</span><span>${DOMAIN_MAPPING[name].description}</span></div>
             <div class="domain-progress-bar">
-                <div class="bar-segment correct" style="width: ${correctPct}%">${correctPct > 5 ? correctPct + '%' : ''}</div>
-                <div class="bar-segment incorrect" style="width: ${incorrectPct}%">${incorrectPct > 5 ? incorrectPct + '%' : ''}</div>
-                <div class="bar-segment omitted" style="width: ${omittedPct}%">${omittedPct > 5 ? omittedPct + '%' : ''}</div>
-            </div>
-            <div class="badge-container">
-                <span class="stat-badge">Total: ${data.total}</span>
-                <span class="stat-badge">✅ ${data.correct}</span>
-                <span class="stat-badge">❌ ${data.incorrect}</span>
+                <div class="bar-segment correct" style="width: ${cP}%">${cP > 5 ? cP + '%' : ''}</div>
+                <div class="bar-segment incorrect" style="width: ${iP}%">${iP > 5 ? iP + '%' : ''}</div>
+                <div class="bar-segment omitted" style="width: ${oP}%">${oP > 5 ? oP + '%' : ''}</div>
             </div>
         `;
-        domainsList.appendChild(domainItem);
+        list.appendChild(item);
     });
 }
 
-// startBtn ya no existe en v3.0, se maneja vía catálogo
-resumeExamBtn.onclick = loadExamSession;
-pauseBtn.onclick = togglePause;
-
-restartBtn.onclick = () => {
-    localStorage.removeItem('network_plus_exam_state');
-    resultsScreen.classList.remove('active');
-    startScreen.classList.add('active');
-    resumeExamBtn.classList.add('hidden');
-};
-
-init();
+window.onload = init;
