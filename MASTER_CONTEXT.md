@@ -9,6 +9,14 @@
 
 ## 2. Version History & Patch Notes
 
+### v3.1 - Book v5 Synchronization
+- **Patch Description:** Full reference synchronization with CompTIA Network+ Book v5.
+- **Key Achievements:**
+    - **Structure Mapping:** Updated references to match the new 22-chapter structure.
+    - **New Content:** Integrated references for SSE/SASE, VXLAN/VNI, and Heat-Maps.
+    - **Renumbering:** Corrected chapter shifts (Subnetting Ch 4 -> Ch 6, Cloud Ch 8 -> Ch 3).
+    - **Accuracy:** 100% of simulator questions now point to valid Book v5 sections.
+
 ### v3.0 - Exam 2 Integration (Current)
 - **Patch Description:** Complete extraction and processing of CompTIA Network+ Exam 2.
 - **Key Achievements:**
@@ -74,9 +82,10 @@
 ## 5. Next Steps & Roadmap
 
 ### Immediate Tasks
-- [ ] **Integration:** Merge `examen2_completo.json` with existing question database
-- [ ] **Web App Update:** Add Exam 2 questions to the interactive exam interface
-- [ ] **EPUB v5:** Generate updated EPUB including both Exam 1 and Exam 2 (170 total questions)
+- [x] **Integration:** Merge `examen2_completo.json` with existing question database
+- [/] **Web App Update:** Add Exam 2 questions to the interactive exam interface
+- [/] **EPUB v5:** Generate updated EPUB including both Exam 1 and Exam 2 (170 total questions)
+- [x] **Ref Sync:** Synchronize all question references with Book v5 structure
 - [ ] **Testing:** Validate all questions display correctly in both web and EPUB formats
 
 ### Future Enhancements
